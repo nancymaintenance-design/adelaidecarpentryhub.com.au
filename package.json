@@ -1,0 +1,16 @@
+{
+  "name": "ellis-services-group-website",
+  "version": "1.0.0",
+  "description": "Ellis Services Group — Adelaide Full-Spectrum Carpentry & Joinery",
+  "private": true,
+  "scripts": {
+    "build":      "node build.mjs",
+    "build:docs": "node build.mjs --docs",
+    "serve":      "node serve.cjs",
+    "start":      "node serve.cjs",
+    "check":      "node check.cjs"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}
