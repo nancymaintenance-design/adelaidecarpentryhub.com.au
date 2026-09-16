@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "slots": {
+    "hero": {
+      "src": "/assets/hero-bg.jpg",
+      "alt": "Ellis Services Group — Adelaide Carpentry & Joinery",
+      "caption": "Ellis Services Group — Adelaide Full-Spectrum Carpentry & Joinery"
+    },
+    "about": {
+      "src": "/assets/about.jpg",
+      "alt": "Ellis Services Group team",
+      "caption": "Our team — carpenters and joiners"
+    },
+    "service.house-framing": {
+      "src": "/assets/framing.jpg",
+      "alt": "House framing — timber frame construction",
+      "caption": "House Framing"
+    },
+    "service.outdoor-living": {
+      "src": "/assets/decking.jpg",
+      "alt": "Outdoor living — timber decking and pergola",
+      "caption": "Outdoor Living"
+    },
+    "service.fix-out-second-fix": {
+      "src": "/assets/secondfix.jpg",
+      "alt": "Fix-out and second-fix carpentry",
+      "caption": "Fix-Out & Second-Fix"
+    },
+    "service.formwork-carpentry": {
+      "src": "/assets/formwork.jpg",
+      "alt": "Formwork carpentry — concrete form systems",
+      "caption": "Formwork Carpentry"
+    },
+    "service.fitout-refurbishment": {
+      "src": "/assets/fitout.jpg",
+      "alt": "Commercial fitout and refurbishment",
+      "caption": "Fitout & Refurbishment"
+    },
+    "service.custom-kitchen-bathroom": {
+      "src": "/assets/kitchen.jpg",
+      "alt": "Custom kitchen and bathroom cabinetry",
+      "caption": "Custom Kitchen & Bathroom Cabinetry"
+    },
+    "service.architectural-joinery": {
+      "src": "/assets/architectural.jpg",
+      "alt": "Architectural joinery — wall panelling and custom millwork",
+      "caption": "Architectural Joinery"
+    },
+    "service.storage-solutions": {
+      "src": "/assets/storage.jpg",
+      "alt": "Custom storage solutions — wardrobes and built-in units",
+      "caption": "Storage Solutions"
+    },
+    "service.custom-doors-furniture": {
+      "src": "/assets/doors-furniture.jpg",
+      "alt": "Custom doors and furniture",
+      "caption": "Custom Doors, Windows & Furniture"
+    },
+    "service.restoration-maintenance": {
+      "src": "/assets/restoration.jpg",
+      "alt": "Restoration and maintenance work",
+      "caption": "Restoration & Maintenance"
+    },
+    "service.heritage-carpentry": {
+      "src": "/assets/heritage.jpg",
+      "alt": "Heritage carpentry — traditional timber repair",
+      "caption": "Heritage Carpentry"
+    },
+    "service.decking-restoration-flooring": {
+      "src": "/assets/flooring.jpg",
+      "alt": "Timber flooring and deck restoration",
+      "caption": "Decking Restoration & Timber Flooring"
+    }
+  }
+}

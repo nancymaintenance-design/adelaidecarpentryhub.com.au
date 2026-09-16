@@ -1,0 +1,540 @@
+{
+  "schema_version": "1.0.0",
+  "brand": {
+    "name": "Ellis Services Group",
+    "short_name": "ESG",
+    "industry_label": "Adelaide Carpentry & Joinery",
+    "tagline": "From structural framing to fine finish — your full-spectrum timber partner across Adelaide homes and businesses"
+  },
+  "hero": {
+    "eyebrow": "Adelaide · South Australia · Full-Spectrum Carpentry",
+    "title": "Structural Carpentry · Fine Joinery",
+    "accent": "One team, the full timber lifecycle",
+    "lead": "Founded in 2011, Ellis Services Group is an Adelaide carpentry, joinery and maintenance company serving homeowners and real estate agents — clear communication, practical support and fair pricing on every job.",
+    "primary_cta": "Explore our services",
+    "secondary_cta": "Why choose us"
+  },
+  "services": [
+    {
+      "slug": "house-framing",
+      "title": "House Framing",
+      "summary": "Structural timber framing for new homes — wall frames, roof trusses, floor joists and load-bearing structure built to the National Construction Code.",
+      "lead": "We deliver complete timber framing for Adelaide residential projects using compliant materials and precise workmanship, so the skeleton of your build is straight, solid and built to last.",
+      "sections": [
+        {
+          "title": "Wall frame construction",
+          "summary": "Load-bearing and non-load-bearing wall frames built to AS 1684 using H3/H4 treated timber, for single, double and split-level homes."
+        },
+        {
+          "title": "Roof trusses & rafters",
+          "summary": "Prefabricated truss or site-cut rafter installation with weatherproof detailing and cyclone-rated fixing for full roof-structure integrity."
+        },
+        {
+          "title": "Floor joist laying",
+          "summary": "Joists sized to span and load, on concrete slab or suspended floors, with moisture barrier and preservative treatment."
+        },
+        {
+          "title": "Structural alignment",
+          "summary": "Laser-levelled checks throughout for plumb, level and dimensional accuracy within building tolerances."
+        }
+      ]
+    },
+    {
+      "slug": "outdoor-living",
+      "title": "Outdoor Living",
+      "summary": "Custom outdoor spaces for Australian homes — treated timber decking, pergolas, fencing and coastal-grade landscape timber.",
+      "lead": "Adelaide's coastal climate is hard on outdoor timber. We specify certified preservative-treated timber with proper drainage and fixing so your outdoor space stays looking new for years.",
+      "sections": [
+        {
+          "title": "Timber decking",
+          "summary": "Merbau, Spotted Gum or Treated Pine decks with vented sub-structure, drainage gaps and slip-resistant finish for homes, pools and commercial areas."
+        },
+        {
+          "title": "Pergolas & shade structures",
+          "summary": "Freestanding or attached pergolas with weatherproof joints, steel connectors and treated hardwood, ready for motorised shade or greenery."
+        },
+        {
+          "title": "Fencing",
+          "summary": "Termite-resistant treated timber fences, custom oiling and staining, with concrete footings and wind bracing for boundary and privacy needs."
+        },
+        {
+          "title": "Coastal preservative timber",
+          "summary": "H4/H5 treated timber with stainless fixings and a maintenance plan for Adelaide's salt-air coastal suburbs."
+        }
+      ]
+    },
+    {
+      "slug": "fix-out-second-fix",
+      "title": "Fix-Out & Second Fix",
+      "summary": "On-site finishing after lock-up — cornices, skirtings, door frames and leaves, window frames and timber stairs to a full building-fit standard.",
+      "lead": "Second fix is the final quality gate before handover. With precise measuring and professional installation we make sure every detail lands perfectly.",
+      "sections": [
+        {
+          "title": "Cornices & mouldings",
+          "summary": "Cornice, ceiling cove, curtain boxes and custom plaster features, with stopper, sand and primer."
+        },
+        {
+          "title": "Skirtings & architraves",
+          "summary": "Solid timber, MDF or composite skirtings and architraves, with accurate cutting, 45° mitres and nail-free fixing."
+        },
+        {
+          "title": "Door frames & leaves",
+          "summary": "Internal, fire-rated and security doors — frame plumb, leaf hung and hardware set, with acoustic and sealing treatment."
+        },
+        {
+          "title": "Timber stair installation",
+          "summary": "Treads, risers, balusters and handrails fitted and tuned on site for consistent step height and a straight rail."
+        }
+      ]
+    },
+    {
+      "slug": "formwork-carpentry",
+      "title": "Formwork Carpentry",
+      "summary": "Precise timber formwork for commercial builds and large footings — accurate concrete shaping and safe site practice.",
+      "lead": "Formwork is the foundation of concrete quality. We use careful set-out, a solid bracing system and strict inspection so large projects get a reliable timber form system.",
+      "sections": [
+        {
+          "title": "Foundation wall formwork",
+          "summary": "Suspended-slab, retaining-wall and beam formwork with damp-proof membrane and embedded-item fixing."
+        },
+        {
+          "title": "Slab & beam formwork",
+          "summary": "Multi-level slab systems with Acrow props, primary and secondary bearers and accurately laid form face."
+        },
+        {
+          "title": "Feature-shape formwork",
+          "summary": "Curved, raked and irregular concrete elements built in timber to match architect detail."
+        }
+      ]
+    },
+    {
+      "slug": "fitout-refurbishment",
+      "title": "Fitout & Refurbishment",
+      "summary": "Timber partitions, feature ceilings and display walls for offices, restaurants and retail — full commercial carpentry.",
+      "lead": "Commercial fitouts need speed and quality together. We work fast, build accurately and disturb trading as little as possible for Adelaide businesses.",
+      "sections": [
+        {
+          "title": "Timber partition systems",
+          "summary": "Steel-stud with timber-faced partitions, acoustic batts and finished surfaces, demountable for future re-layout."
+        },
+        {
+          "title": "Feature & suspended ceilings",
+          "summary": "Commercial ceiling systems with hidden light coves, vents and fire-spray coordination, plus custom timber feature ceilings."
+        },
+        {
+          "title": "Shopfront & display walls",
+          "summary": "Retail timber feature walls, brand displays and custom furniture with commercial-grade hard-wearing surfaces."
+        }
+      ]
+    },
+    {
+      "slug": "custom-kitchen-bathroom",
+      "title": "Custom Kitchen & Bathroom Cabinetry",
+      "summary": "Bespoke kitchen cabinets, islands, vanities and laundry units — designed and installed end to end, sized to your exact space.",
+      "lead": "We build in our own workshop and control every dimension and joint, so cabinets install with zero rework and zero gaps.",
+      "sections": [
+        {
+          "title": "Full kitchen cabinetry",
+          "summary": "Upper and lower cabinets, island benches and hardware (Blum/Hettich) with stone or engineered-stone tops; solid-timber, 2-pac or moisture-resistant doors."
+        },
+        {
+          "title": "Waterproof vanities",
+          "summary": "Vanities built on waterproof substrate with sealed backs, moisture-proof edging and stainless supports for wet areas."
+        },
+        {
+          "title": "Laundry units",
+          "summary": "Stacking washer/dryer cabinets, storage and fold-out benches maximising space, with plumbing coordination."
+        },
+        {
+          "title": "Measure & install",
+          "summary": "On-site measure → 3D design sign-off → workshop build → install, all by one team, no subcontracting."
+        }
+      ]
+    },
+    {
+      "slug": "architectural-joinery",
+      "title": "Architectural Joinery",
+      "summary": "High-difficulty timber features for premium homes and commercial spaces — wall panelling, hidden doors, complex stair rails and feature ceilings.",
+      "lead": "Architectural joinery is a core Ellis Services Group strength — turning a designer's complex vision into precisely built solid-timber product.",
+      "sections": [
+        {
+          "title": "Wall panelling",
+          "summary": "Material choice (Blackwood, American Oak) through to fixing — grooved modules, matched joins and open or closed grain finish."
+        },
+        {
+          "title": "Hidden & pivot doors",
+          "summary": "Flush hidden doors, recessed handles and frameless detail, with door-in-wall and non-load-bearing installation options."
+        },
+        {
+          "title": "Complex stair rails",
+          "summary": "Curved handrails, glass-and-timber balustrades with 3D set-out, custom pieces and on-site tuning."
+        },
+        {
+          "title": "Feature ceilings & light coves",
+          "summary": "Large commercial timber ceilings, hidden cove lighting and acoustic panels with structural fixing plans."
+        }
+      ]
+    },
+    {
+      "slug": "storage-solutions",
+      "title": "Storage Solutions",
+      "summary": "Bespoke wardrobes, display cases, study units and media walls — precise planning and durable hardware for high-use storage.",
+      "lead": "Good storage design doubles a room. We design around real movement so everything has a place and still looks great.",
+      "sections": [
+        {
+          "title": "Walk-in wardrobes",
+          "summary": "Hanging, drawer, shoe and luggage zones with adjustable shelving that grows with you."
+        },
+        {
+          "title": "Study units",
+          "summary": "Desk + bookcase + storage combos with hidden cable management, ergonomic height and monitor-arm provision."
+        },
+        {
+          "title": "Media walls",
+          "summary": "TV wall mounts, speaker gear, media storage and decor in one wall, with cooling and concealed cabling."
+        },
+        {
+          "title": "Display & wine cabinets",
+          "summary": "LED-lit glass-door displays and temperature-controlled wine cabinets for living, dining and commercial spaces."
+        }
+      ]
+    },
+    {
+      "slug": "custom-doors-furniture",
+      "title": "Custom Doors, Windows & Furniture",
+      "summary": "High-precision weatherproof timber doors and windows, plus one-off solid-timber tables and bars built with craft.",
+      "lead": "From building windows to interior furniture, we use solid timber and precise joinery to make pieces that last.",
+      "sections": [
+        {
+          "title": "Solid weatherproof doors",
+          "summary": "AS 2047 compliant entry and side doors with triple-lock provision and sealed gaskets."
+        },
+        {
+          "title": "Custom timber furniture",
+          "summary": "Dining, boardroom, bar, desk and bedside pieces to your space and habits, in local Blackwood, Oak or Jarrah."
+        },
+        {
+          "title": "French & sliding doors",
+          "summary": "Timber French and sliding doors with custom tracks, acoustic seals and secure locking."
+        }
+      ]
+    },
+    {
+      "slug": "restoration-maintenance",
+      "title": "Restoration & Maintenance",
+      "summary": "Repair of termite and moisture timber damage to frames, floors and doors — assessment, safe repair and preventative treatment.",
+      "lead": "Older Adelaide homes carry real termite risk. We offer assessment-to-repair in one team and advise on prevention.",
+      "sections": [
+        {
+          "title": "Termite damage repair",
+          "summary": "With a licensed pest controller, we assess extent and impact, replace damaged frames, floor joists and door jambs, and install termite barriers."
+        },
+        {
+          "title": "Moisture rot repair",
+          "summary": "Repair of water-damaged timber with waterproofing, ventilation improvement, member replacement and damp-proof coating."
+        },
+        {
+          "title": "Structural assessment",
+          "summary": "Pre-repair structural safety check, with engineer's report where needed to meet the Building Code."
+        }
+      ]
+    },
+    {
+      "slug": "heritage-carpentry",
+      "title": "Heritage Carpentry",
+      "summary": "Traditional timber repair for South Australian heritage-listed buildings — mortise-and-tenon joinery and period window restoration.",
+      "lead": "Heritage repair needs expertise and respect for history. We know the SA Heritage Act and combine traditional craft with modern technique to protect heritage value.",
+      "sections": [
+        {
+          "title": "Mortise & tenon repair",
+          "summary": "Dovetail, through, and groove joints inspected, repaired and remade with period-matched timber and hand tools."
+        },
+        {
+          "title": "Carved trim restoration",
+          "summary": "Heritage cornices, eave brackets and carved panels restored by joiners with traditional experience."
+        },
+        {
+          "title": "Period window restoration",
+          "summary": "Box and picket sash windows returned to original with replicated hardware, period glass and paint system."
+        }
+      ]
+    },
+    {
+      "slug": "decking-restoration-flooring",
+      "title": "Decking Restoration & Timber Flooring",
+      "summary": "Deck sanding, oiling and staining plus timber floor laying and refinishing — solid and engineered, full service.",
+      "lead": "Floors and decks live or die by maintenance frequency and method. We handle new laying and regular care so your timber stays new.",
+      "sections": [
+        {
+          "title": "Timber floor laying",
+          "summary": "Solid and engineered timber with damp-proof underlay, expansion gaps and accurate levelling."
+        },
+        {
+          "title": "Deck sanding & oiling",
+          "summary": "High-pressure sanding to remove old coating and mould, fine graded paper, then penetrating oil or stain to restore natural colour."
+        },
+        {
+          "title": "Floor refinishing",
+          "summary": "Worn floors sanded and refinished to original gloss and feel, with edge detailing."
+        }
+      ]
+    }
+  ],
+  "method": {
+    "title": "From frame to finish, delivered as one",
+    "lead": "The same team covers on-site carpentry and workshop joinery, so we cut subcontractor coordination, keep one quality standard and control the program.",
+    "steps": [
+      {
+        "title": "Brief & site check",
+        "summary": "We learn your needs, inspect and measure where needed, and give expert advice and an initial plan — including a free preliminary assessment."
+      },
+      {
+        "title": "Design & quote",
+        "summary": "We prepare a detailed plan and a transparent quote listing material specs, workmanship standard and milestones before any build or site work starts."
+      },
+      {
+        "title": "Build & install",
+        "summary": "Workshop joinery is precision-made and site carpentry built to code, all run by one project lead with live progress updates."
+      },
+      {
+        "title": "Quality & handover",
+        "summary": "Full quality check on completion (plumb, level, hardware), client sign-off, then warranty and care advice."
+      }
+    ]
+  },
+  "insights": [
+    {
+      "slug": "why-integrated-carpentry-joinery",
+      "title": "Why a full-spectrum carpentry partner is the smarter choice",
+      "summary": "Site carpentry and fine joinery look like two trades, but when one project splits them the cost is rework, delay and over-budget. Here is how a full-spectrum partner removes that pain.",
+      "lead": "Choosing a provider that runs both on-site carpentry and workshop joinery sharply cuts project risk and communication cost.",
+      "category": "Buyer Guide",
+      "sections": [
+        {
+          "title": "The problem with split trades",
+          "summary": "Framing, fix-out and cabinetry by different subcontractors means mismatched measurements, poor sequence handover and rework cost that usually lands on the owner."
+        },
+        {
+          "title": "The full-spectrum advantage",
+          "summary": "One team does frame measuring and cabinetry detailing, so dimensions line up; accountability is clear with no finger-pointing; program is coordinated and predictable."
+        },
+        {
+          "title": "How to spot a true full-spectrum partner",
+          "summary": "Signs: ① own workshop and equipment; ② own site carpentry crew; ③ one complete quote (not piecemeal); ④ reference projects you can visit."
+        }
+      ]
+    },
+    {
+      "slug": "kitchen-renovation-cost-guide",
+      "title": "Adelaide kitchen renovation costs: 2026 market guide",
+      "summary": "A kitchen reno is among the highest-return home improvements. We lay out typical Adelaide 2026 price bands and the key cost drivers so you are not over- or under-quoted.",
+      "lead": "Know the market and you avoid both rip-offs and too-good-to-be-true quotes. This is an objective local reference.",
+      "category": "Cost Guide",
+      "sections": [
+        {
+          "title": "Typical Adelaide bands (2026)",
+          "summary": "Cosmetic (new doors + benchtop): $15,000–$30,000. Mid (full cabinets + new stone + tile): $30,000–$55,000. High (solid-timber + stone + appliances): $55,000–$100,000+."
+        },
+        {
+          "title": "Five cost drivers",
+          "summary": "① Cabinet material (solid > 2-pac > moisture board); ② Benchtop (natural stone > engineered > laminate); ③ Moving plumbing/power; ④ Demolition; ⑤ Project size (partial vs full strip)."
+        },
+        {
+          "title": "Holding the budget",
+          "summary": "① Keep existing plumbing points (one move ~$500–800); ② Engineered stone is ~half natural stone, similar durability; ③ Replace doors only, keep boxes; ④ Avoid structural changes."
+        }
+      ]
+    },
+    {
+      "slug": "heritage-building-timber-restoration",
+      "title": "Heritage timber restoration: how it differs from ordinary renovation",
+      "summary": "Heritage timber repair is not just technical — it carries legal compliance and preservation duty. Why it needs a specialist team, and what SA rules apply.",
+      "lead": "Many 1920–1950s Adelaide homes use traditional timber and hand joinery. Restoring them takes both skill and heritage awareness.",
+      "category": "Expertise",
+      "sections": [
+        {
+          "title": "Heritage listing and the rules",
+          "summary": "In SA, buildings on the State or Local Heritage Register need Heritage Approval (Section 49 permit) with a heritage-architect-reviewed method before timber repair starts."
+        },
+        {
+          "title": "Traditional joinery demands",
+          "summary": "Mortise-and-tenon needs hand work not modern connectors; timber must match the original species and era; surface systems must follow period paint (lime wash, milk paint)."
+        },
+        {
+          "title": "Ellis heritage experience",
+          "summary": "Our joiners know Adelaide period forms (Federation Bungalow, Inter-War Californian Bungalow) and deliver compliant, faithful restoration."
+        }
+      ]
+    },
+    {
+      "slug": "timber-flooring-oiling-guide",
+      "title": "Solid vs engineered timber flooring: which suits your home?",
+      "summary": "Solid and engineered timber each have trade-offs. The right pick balances budget, floor level, moisture and look.",
+      "lead": "Timber flooring is among the most-used surfaces in a home. The wrong choice costs heavily in repair; the right one lifts comfort and value.",
+      "category": "Material Guide",
+      "sections": [
+        {
+          "title": "Solid timber pros & cons",
+          "summary": "Pros: natural grain, multiple sandings (100-year life), value. Cons: dearer, moisture-sensitive, pro install, not ideal on damp ground floors."
+        },
+        {
+          "title": "Engineered timber pros & cons",
+          "summary": "Pros: ~60–70% of solid price, stable (less movement), straight onto slab, DIY-able. Cons: limited refinish (1–2 times), less warm sound."
+        },
+        {
+          "title": "Adelaide recommendation",
+          "summary": "Ground floor: engineered (stable in moisture). Upper floors: budget-dependent. High budget + long value: solid (Blackwood, Jarrah). Wet areas (bath, laundry): hybrid flooring instead."
+        }
+      ]
+    },
+    {
+      "slug": "commercial-fitout-process",
+      "title": "Commercial fitout, step by step: from design to opening",
+      "summary": "Restaurant, café, office or retail timber fitout is a complex job of design, fire and code compliance and program. Here is the full flow and key timing.",
+      "lead": "A failed fitout costs more than money — it delays opening and dents the brand. Know the flow and you control risk.",
+      "category": "Process Guide",
+      "sections": [
+        {
+          "title": "Stage 1 — Design & partners",
+          "summary": "Engage designer/architect → our joinery team details → coordinate fire engineer → submit DA (with heritage approval if needed). Typically 4–8 weeks."
+        },
+        {
+          "title": "Stage 2 — Build & install",
+          "summary": "Workshop build (6–8 wks) → strip-out & base works → joinery install (2–3 wks) → paint/finish → hardware. Typically 8–12 weeks."
+        },
+        {
+          "title": "Stage 3 — Handover & open",
+          "summary": "Building compliance → fire inspection → (food) health inspection → pre-open clean → soft furnishings. Usually 2–3 weeks after joinery."
+        },
+        {
+          "title": "Timeline summary",
+          "summary": "Total ~16–26 weeks (4–6 months). A full fitout with DA is 2–3× a home job; start planning 6+ months out."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What kind of company is Ellis Services Group?",
+      "answer": "We are a local Adelaide full-spectrum timber company covering three areas: ① on-site structural carpentry (house framing, outdoor living, fix-out, formwork, commercial fitout); ② workshop fine joinery (custom cabinetry, architectural joinery, storage, timber doors/windows/furniture); ③ restoration & maintenance (termite repair, heritage carpentry, floor restoration). We are not a single subcontractor — we are a one-stop partner taking your project from structural frame to finished piece."
+    },
+    {
+      "question": "Which Adelaide areas do you service?",
+      "answer": "Our core coverage is the Adelaide metropolitan area — City, North Adelaide, East and West Adelaide, the beachside suburbs (Glenelg, Henley Beach, Semaphore and more) and the Hills. Regional SA projects can be discussed by location; tell us where the job is."
+    },
+    {
+      "question": "Are you licensed for building work in SA?",
+      "answer": "Yes. Ellis Services Group holds a South Australian Building Work Contractor Licence issued by Consumer and Business Services (CBS). Our structural carpentry is carried out within licence scope and to the SA Building Rules."
+    },
+    {
+      "question": "Do you work with builders?",
+      "answer": "Absolutely. We support house-and-land builders (carpentry subcontracting), renovation builders (kitchen/bath cabinetry supply and install) and commercial builders (fitout, formwork). We know AS 1684 framing and mainstream Australian build systems and slot into builder teams seamlessly."
+    },
+    {
+      "question": "What does custom cabinetry cost?",
+      "answer": "Price depends on material, size and detail. Adelaide 2026 reference (cabinets only, no benchtops): standard 2-pac MDF $8,000–$18,000; mid composite $15,000–$30,000; solid/high-end (Blackwood, American Oak) $30,000–$60,000+. We give a written quote after measure, with a free preliminary assessment and 3D design."
+    },
+    {
+      "question": "How is decking priced?",
+      "answer": "Driven by material and scope. Adelaide reference: Treated Pine $180–$280/m²; Merbau $280–$400/m²; Spotted Gum $320–$450/m²; base works and waterproofing add $2,000–$5,000. Confirmed after site check."
+    },
+    {
+      "question": "Do you give free quotes?",
+      "answer": "Yes — a free preliminary assessment and quote guidance. Simple jobs (one furniture piece, small repair) get a phone/photo estimate; complex jobs (kitchen reno, structural carpentry, commercial fitout) get an on-site measure and a detailed written quote valid 30 days."
+    },
+    {
+      "question": "What does termite damage repair cost?",
+      "answer": "Depends on extent and whether structure is involved: local jamb/floor replace $1,500–$5,000; partial frame repair (1–2 nodes) $5,000–$15,000; wide frame replace + barrier $15,000–$50,000+; engineer's report adds $1,500–$3,000. Act early — we coordinate a licensed pest controller to limit spread."
+    },
+    {
+      "question": "Can you do heritage building restoration?",
+      "answer": "Yes. Our joiners know Adelaide period forms (Federation Bungalow, Inter-War Californian Bungalow, Georgian/Victorian) and their timber character and repair craft. For heritage-listed buildings we prepare a compliant method under the SA Heritage Act and obtain Heritage Approval before work."
+    },
+    {
+      "question": "How long from kitchen measure to install?",
+      "answer": "Full kitchen reno (measure to install): standard cabinetry build 6–8 weeks; strip-out & base 1–2 weeks; install 1–2 weeks; finish & tune 3–5 days — about 10–14 weeks. Solid-timber cabinets may take 14–18 weeks for material lead. We give a dated program with clear milestones."
+    },
+    {
+      "question": "Do you take on commercial fitouts?",
+      "answer": "Yes. We deliver timber fitouts for Adelaide venues (restaurants, cafés, bars — partitions, feature ceilings, bars, displays), offices (partition walls, meeting feature walls, reception) and retail (brand walls, custom furniture), plus hotels and clinics. On large jobs we work with the head contractor as carpentry subcontractor."
+    },
+    {
+      "question": "Can I see completed projects?",
+      "answer": "Yes. With client consent we publish case studies (photos + description) on our projects page. For a specific type (kitchen, heritage, commercial fitout) we can arrange a visit where possible — Adelaide-local clients first."
+    },
+    {
+      "question": "How long for custom solid-timber furniture (e.g. a dining table)?",
+      "answer": "Design sign-off 1–2 weeks; timber sourcing/drying (if specific size/species) 2–4 weeks; machining & assembly 2–3 weeks; finish (sand, oil/paint) 1 week — about 6–10 weeks. Local Blackwood/Jarrah can run longer on supply; imported Oak is usually quicker. Confirmed at quote."
+    },
+    {
+      "question": "What warranty and quality assurance do you provide?",
+      "answer": "Structural carpentry: 6-year structural warranty per SA building law. Fine joinery/cabinetry: 2-year workmanship & material warranty. Floor & deck oiling: 1-year workmanship. Restoration: 1-year workmanship. All cover workmanship defects; material faults follow each supplier's warranty. Full terms are in the contract."
+    },
+    {
+      "question": "How do you manage site safety and cleanliness?",
+      "answer": "We run SWMS (Safe Work Method Statement): site risk assessment before start; barrier and signage; daily site clean; waste sorted and removed at completion; all workers hold White Card + insurance. On commercial fitouts we coordinate hours (after-hours/weekends) with the head contractor to minimise trading disruption."
+    },
+    {
+      "question": "How do I book a site assessment or quote?",
+      "answer": "Three ways: ① the contact form on our Contact page; ② phone 0403 202 949; ③ email handymanfelix.au2026@outlook.com. We reply within 24 hours. When booking, please note project type (kitchen reno / new home framing / decking / heritage repair), suburb, rough budget and preferred start — so we send the right person."
+    }
+  ],
+  "about": {
+    "title": "About Ellis Services Group",
+    "lead": "Founded in 2011. Adelaide carpentry, joinery and maintenance for homeowners and real estate agents — built on clear communication, practical support and fair pricing.",
+    "story_title": "Our Story & Values",
+    "story": "Ellis Services Group was founded in 2011 and has spent the years since building long-term partnerships with homeowners, real estate agents, builders and property managers across Adelaide and South Australia. Through clear communication, practical support and fair pricing, we have grown almost entirely on repeat business and word-of-mouth referrals — the kind of trust that only comes from showing up, quoting honestly and standing behind every job.",
+    "values": [
+      {
+        "heading": "Real-World Experience",
+        "body": "Our tradespeople bring years of on-the-tools experience across structural carpentry, fine joinery, heritage repair and routine maintenance. We use the right equipment for Australian homes and understand the local conditions that affect timber work — from coastal salt air to Adelaide Hills climate to termite-prone suburbs.",
+        "details": [
+          "13+ years working across Adelaide homes and businesses",
+          "Equipment suited to on-site structural work and in-shop joinery",
+          "Working knowledge of SA building codes and NCC requirements",
+          "Experienced across heritage repair, modern construction and custom fit-out"
+        ]
+      },
+      {
+        "heading": "Integrity First",
+        "body": "We believe home maintenance and timber work should come with honest advice, reliable service and proper follow-up. Every quote is itemised, every schedule is realistic, and every job is finished to a standard we are willing to put our name to.",
+        "details": [
+          "Itemised quotes — no hidden costs or surprise variations",
+          "Realistic scheduling — we arrive when we say we will",
+          "Worksite left clean and tidy at the end of each day",
+          "Workmanship backed by a written guarantee"
+        ]
+      },
+      {
+        "heading": "Long-Term Partnerships",
+        "body": "Most of our work comes from clients who call us back and refer us on. That only happens when you keep your promises on price, quality and timing. We are building the kind of Adelaide business people recommend to their neighbours — one job at a time.",
+        "details": [
+          "Most work is repeat business or direct referral",
+          "You deal with the tradesperson doing the work — no call centre",
+          "Consistent team from quote through to completion",
+          "Property managers and agents welcome ongoing service arrangements"
+        ]
+      }
+    ],
+    "scope_title": "What We Deliver",
+    "scope": "Ellis Services Group is an Adelaide carpentry and joinery company covering on-site structural work, in-house fine joinery and cabinetry, and restoration and maintenance — from the building frame to the finished piece, all delivered by one team under one standard of quality."
+  },
+  "contact": {
+    "title": "Start with one specific need",
+    "lead": "Tell us about your project or question and we will give clear advice and a transparent quote.",
+    "cta": "Contact",
+    "phone": "0403 202 949",
+    "email": "handymanfelix.au2026@outlook.com",
+    "address": "63 Pirie St, Adelaide, SA 5000",
+    "preparation": [
+      "Project type and brief (e.g. kitchen reno / new home framing / decking / heritage repair)",
+      "Suburb (Adelaide metro or regional SA)",
+      "Rough budget range (so we can recommend the right scope)",
+      "Preferred start timeframe",
+      "Any drawings or reference photos you already have"
+    ]
+  },
+  "seo": {
+    "site_description": "Ellis Services Group is a local Adelaide full-spectrum carpentry and joinery company offering house framing, outdoor decking, custom cabinetry, architectural joinery, termite repair and heritage restoration. Servicing the Adelaide metropolitan area."
+  }
+}
