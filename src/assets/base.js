@@ -6,8 +6,8 @@ if (button && nav) button.addEventListener('click', () => {
   button.setAttribute('aria-expanded', String(open));
 });
 
-for (const form of document.querySelectorAll('form[data-local-brief]')) {
-  form.addEventListener('submit', event => {
+for (const form of document.querySelectorAll('form[data-contact-form]')) {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     const data = new FormData(form);
     const name = String(data.get('name') || '').trim();
@@ -23,11 +23,23 @@ for (const form of document.querySelectorAll('form[data-local-brief]')) {
     ].find(([value]) => !value);
     if (missing) { status.textContent = missing[2]; form.elements[missing[1]].focus(); return; }
     if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) { status.textContent = 'Please enter a valid email address.'; form.elements.email.focus(); return; }
-    const text = 'MEL ONE project brief\n\nName: ' + name + '\nPhone: ' + phone + '\nEmail: ' + email + '\n\nProject or first question:\n' + message + '\n';
-    const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
-    const link = document.createElement('a'); link.href = url; link.download = 'mel-one-project-brief.txt';
-    document.body.append(link); link.click(); link.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    status.textContent = 'Your project note has been saved on this device.';
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    status.textContent = 'Sending your enquiry…';
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, email, message, website: String(data.get('website') || '') }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Unable to send your enquiry.');
+      form.reset();
+      status.textContent = 'Thank you — your enquiry has been sent to MEL ONE.';
+    } catch (error) {
+      status.textContent = error.message || 'We could not send your enquiry. Please call or email us directly.';
+    } finally {
+      button.disabled = false;
+    }
   });
 }

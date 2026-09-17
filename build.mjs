@@ -420,14 +420,15 @@ const contactBody = `<section class="page-hero"><div class="wrap page-hero-grid"
       </p>
     </div>
   </div>
-  <form class="contact-form" data-local-brief novalidate>
+  <form class="contact-form" data-contact-form novalidate>
     <h2>Outline your brief</h2>
-    <p>Make a quick note for your conversation with MEL ONE, then call or email the details when you are ready.</p>
+    <p>Send your project details directly to MEL ONE. We will reply using the email address you provide.</p>
     <label>Your name<input name="name" autocomplete="name" required></label>
     <label>Phone number<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required></label>
     <label>Email address<input name="email" type="email" autocomplete="email" required></label>
     <label>Your project or first question<textarea name="message" rows="6" style="resize:none" required></textarea></label>
-    <button class="btn primary" type="submit">Save my note</button>
+    <input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;">
+    <button class="btn primary" type="submit">Send enquiry</button>
     <p data-brief-status role="status" aria-live="polite"></p>
   </form>
 </div></section>`;
