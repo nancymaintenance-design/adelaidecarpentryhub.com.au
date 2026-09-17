@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "brand": {
-    "name": "Ellis Services Group",
-    "short_name": "ESG",
+    "name": "MEL ONE",
+    "short_name": "MEL ONE",
     "industry_label": "Adelaide Carpentry & Joinery",
     "tagline": "From structural framing to fine finish — your full-spectrum timber partner across Adelaide homes and businesses"
   },
@@ -10,9 +10,21 @@
     "eyebrow": "Adelaide · South Australia · Full-Spectrum Carpentry",
     "title": "Structural Carpentry · Fine Joinery",
     "accent": "One team, the full timber lifecycle",
-    "lead": "Founded in 2011, Ellis Services Group is an Adelaide carpentry, joinery and maintenance company serving homeowners and real estate agents — clear communication, practical support and fair pricing on every job.",
+    "lead": "Founded in 2011, MEL ONE is an Adelaide carpentry, joinery and maintenance company serving homeowners and real estate agents — clear communication, practical support and fair pricing on every job.",
     "primary_cta": "Explore our services",
     "secondary_cta": "Why choose us"
+  },
+  "pageCopy": {
+    "servicesTitle": "Carpentry & Joinery",
+    "servicesHomeTitle": "One team, from structure to finish",
+    "servicesLead": "Explore MEL ONE’s practical timber capabilities — planned for the realities of Adelaide homes, businesses and ongoing property care.",
+    "insightsTitle": "Timber Notes",
+    "insightsLead": "Plain-language guides to planning, materials and timber work — prepared to help you ask better questions before work begins.",
+    "faqTitle": "Questions, answered",
+    "faqLead": "A clear starting point for the questions that shape a scope, quote and site visit.",
+    "faqHomeTitle": "Start with the essentials",
+    "faqHomeLead": "A few useful answers before you pick up the phone.",
+    "faqCta": "Browse all questions"
   },
   "services": [
     {
@@ -155,7 +167,7 @@
       "slug": "architectural-joinery",
       "title": "Architectural Joinery",
       "summary": "High-difficulty timber features for premium homes and commercial spaces — wall panelling, hidden doors, complex stair rails and feature ceilings.",
-      "lead": "Architectural joinery is a core Ellis Services Group strength — turning a designer's complex vision into precisely built solid-timber product.",
+      "lead": "Architectural joinery is a core MEL ONE strength — turning a designer's complex vision into precisely built solid-timber product.",
       "sections": [
         {
           "title": "Wall panelling",
@@ -361,7 +373,7 @@
           "summary": "Mortise-and-tenon needs hand work not modern connectors; timber must match the original species and era; surface systems must follow period paint (lime wash, milk paint)."
         },
         {
-          "title": "Ellis heritage experience",
+          "title": "MEL ONE heritage experience",
           "summary": "Our joiners know Adelaide period forms (Federation Bungalow, Inter-War Californian Bungalow) and deliver compliant, faithful restoration."
         }
       ]
@@ -415,7 +427,7 @@
   ],
   "faqs": [
     {
-      "question": "What kind of company is Ellis Services Group?",
+      "question": "What kind of company is MEL ONE?",
       "answer": "We are a local Adelaide full-spectrum timber company covering three areas: ① on-site structural carpentry (house framing, outdoor living, fix-out, formwork, commercial fitout); ② workshop fine joinery (custom cabinetry, architectural joinery, storage, timber doors/windows/furniture); ③ restoration & maintenance (termite repair, heritage carpentry, floor restoration). We are not a single subcontractor — we are a one-stop partner taking your project from structural frame to finished piece."
     },
     {
@@ -424,7 +436,7 @@
     },
     {
       "question": "Are you licensed for building work in SA?",
-      "answer": "Yes. Ellis Services Group holds a South Australian Building Work Contractor Licence issued by Consumer and Business Services (CBS). Our structural carpentry is carried out within licence scope and to the SA Building Rules."
+      "answer": "Yes. MEL ONE holds a South Australian Building Work Contractor Licence issued by Consumer and Business Services (CBS). Our structural carpentry is carried out within licence scope and to the SA Building Rules."
     },
     {
       "question": "Do you work with builders?",
@@ -480,10 +492,10 @@
     }
   ],
   "about": {
-    "title": "About Ellis Services Group",
+    "title": "About MEL ONE",
     "lead": "Founded in 2011. Adelaide carpentry, joinery and maintenance for homeowners and real estate agents — built on clear communication, practical support and fair pricing.",
     "story_title": "Our Story & Values",
-    "story": "Ellis Services Group was founded in 2011 and has spent the years since building long-term partnerships with homeowners, real estate agents, builders and property managers across Adelaide and South Australia. Through clear communication, practical support and fair pricing, we have grown almost entirely on repeat business and word-of-mouth referrals — the kind of trust that only comes from showing up, quoting honestly and standing behind every job.",
+    "story": "MEL ONE was founded in 2011 and has spent the years since building long-term partnerships with homeowners, real estate agents, builders and property managers across Adelaide and South Australia. Through clear communication, practical support and fair pricing, we have grown almost entirely on repeat business and word-of-mouth referrals — the kind of trust that only comes from showing up, quoting honestly and standing behind every job.",
     "values": [
       {
         "heading": "Real-World Experience",
@@ -517,7 +529,7 @@
       }
     ],
     "scope_title": "What We Deliver",
-    "scope": "Ellis Services Group is an Adelaide carpentry and joinery company covering on-site structural work, in-house fine joinery and cabinetry, and restoration and maintenance — from the building frame to the finished piece, all delivered by one team under one standard of quality."
+    "scope": "MEL ONE is an Adelaide carpentry and joinery company covering on-site structural work, in-house fine joinery and cabinetry, and restoration and maintenance — from the building frame to the finished piece, all delivered by one team under one standard of quality."
   },
   "contact": {
     "title": "Start with one specific need",
@@ -535,6 +547,6 @@
     ]
   },
   "seo": {
-    "site_description": "Ellis Services Group is a local Adelaide full-spectrum carpentry and joinery company offering house framing, outdoor decking, custom cabinetry, architectural joinery, termite repair and heritage restoration. Servicing the Adelaide metropolitan area."
+    "site_description": "MEL ONE is a local Adelaide full-spectrum carpentry and joinery company offering house framing, outdoor decking, custom cabinetry, architectural joinery, termite repair and heritage restoration. Servicing the Adelaide metropolitan area."
   }
 }

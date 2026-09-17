@@ -3,32 +3,32 @@
   "slots": {
     "hero": {
       "src": "/assets/hero-bg.jpg",
-      "alt": "Ellis Services Group — Adelaide Carpentry & Joinery",
-      "caption": "Ellis Services Group — Adelaide Full-Spectrum Carpentry & Joinery"
+      "alt": "MEL ONE — Adelaide Carpentry & Joinery",
+      "caption": "MEL ONE — Adelaide Full-Spectrum Carpentry & Joinery"
     },
     "about": {
       "src": "/assets/about.jpg",
-      "alt": "Ellis Services Group team",
+      "alt": "MEL ONE team",
       "caption": "Our team — carpenters and joiners"
     },
     "service.house-framing": {
       "src": "/assets/framing.jpg",
-      "alt": "House framing — timber frame construction",
+      "alt": "House framing — timber wall, roof trusses and floor joists",
       "caption": "House Framing"
     },
     "service.outdoor-living": {
       "src": "/assets/decking.jpg",
-      "alt": "Outdoor living — timber decking and pergola",
+      "alt": "Outdoor living — timber fencing and screening",
       "caption": "Outdoor Living"
     },
     "service.fix-out-second-fix": {
       "src": "/assets/secondfix.jpg",
-      "alt": "Fix-out and second-fix carpentry",
+      "alt": "Staircase handrail installation — precision second-fix carpentry",
       "caption": "Fix-Out & Second-Fix"
     },
     "service.formwork-carpentry": {
       "src": "/assets/formwork.jpg",
-      "alt": "Formwork carpentry — concrete form systems",
+      "alt": "On-site structural carpentry — timber frame construction",
       "caption": "Formwork Carpentry"
     },
     "service.fitout-refurbishment": {
@@ -38,7 +38,7 @@
     },
     "service.custom-kitchen-bathroom": {
       "src": "/assets/kitchen.jpg",
-      "alt": "Custom kitchen and bathroom cabinetry",
+      "alt": "Custom cabinetry — kitchens, bathrooms and laundries",
       "caption": "Custom Kitchen & Bathroom Cabinetry"
     },
     "service.architectural-joinery": {
@@ -53,7 +53,7 @@
     },
     "service.custom-doors-furniture": {
       "src": "/assets/doors-furniture.jpg",
-      "alt": "Custom doors and furniture",
+      "alt": "Custom doors and furniture — handcrafted in our workshop",
       "caption": "Custom Doors, Windows & Furniture"
     },
     "service.restoration-maintenance": {
@@ -68,7 +68,7 @@
     },
     "service.decking-restoration-flooring": {
       "src": "/assets/flooring.jpg",
-      "alt": "Timber flooring and deck restoration",
+      "alt": "Timber deck frame construction and restoration",
       "caption": "Decking Restoration & Timber Flooring"
     }
   }

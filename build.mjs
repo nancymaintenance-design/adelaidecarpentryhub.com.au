@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Ellis Services Group — Website Builder
+ * MEL ONE — Website Builder
  * Standalone: runs without xiaofan environment.
  *   node build.mjs           → outputs to ./public   (local preview)
  *   node build.mjs --docs    → outputs to ./docs     (GitHub Pages)
@@ -18,6 +18,7 @@ const siteDir = path.join(projectDir, isDocs ? 'docs' : 'public');
 const contentPath = path.join(projectDir, 'src', 'content-pack', 'site-content.json');
 const assetPath = path.join(projectDir, 'src', 'assets', 'asset-manifest.json');
 const themeCssSrc = path.join(projectDir, 'src', 'assets', 'theme.css');
+const interiorCssSrc = path.join(projectDir, 'src', 'assets', 'interior.css');
 
 const escapeHtml = (value = '') => String(value)
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
@@ -66,10 +67,10 @@ function svgImage(id, width = 800, height = 533) {
   </defs>
   <rect width="${width}" height="${height}" fill="url(#g1_${id})"/>
   <rect width="${width}" height="${height}" fill="url(#p_${id})"/>
-  <text x="${width/2}" y="${height*0.42}" font-family="system-ui,sans-serif" font-size="${Math.round(width*0.055)}" font-weight="800" fill="rgba(255,255,255,0.15)" text-anchor="middle" letter-spacing="4">ESG</text>
+  <text x="${width/2}" y="${height*0.42}" font-family="system-ui,sans-serif" font-size="${Math.round(width*0.055)}" font-weight="800" fill="rgba(255,255,255,0.15)" text-anchor="middle" letter-spacing="4">${content.brand.short_name}</text>
   <text x="${width/2}" y="${height*0.62}" font-family="system-ui,sans-serif" font-size="${Math.round(width*0.035)}" font-weight="700" fill="rgba(255,255,255,0.55)" text-anchor="middle" letter-spacing="2">${label}</text>
   <rect x="${width*0.08}" y="${height*0.72}" width="${width*0.84}" height="2" fill="rgba(255,255,255,0.1)"/>
-  <text x="${width*0.12}" y="${height*0.83}" font-family="system-ui,sans-serif" font-size="${Math.round(width*0.022)}" fill="rgba(255,255,255,0.35)" letter-spacing="1">Ellis Services Group · Adelaide · ${label}</text>
+  <text x="${width*0.12}" y="${height*0.83}" font-family="system-ui,sans-serif" font-size="${Math.round(width*0.022)}" fill="rgba(255,255,255,0.35)" letter-spacing="1">${content.brand.name} · Adelaide · ${label}</text>
 </svg>`;
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
@@ -77,12 +78,38 @@ function svgImage(id, width = 800, height = 533) {
 function media(slotId, className = 'evidence-media') {
   const item = slot(slotId);
   if (!item) return '';
-  const src = item.src?.startsWith('/assets/')
-    ? svgImage(slotId.replace('service.','').replace('.',''))
-    : item.src;
+  let src;
+  if (item.src?.startsWith('/assets/')) {
+    // Check if real image exists in built assets dir, otherwise fall back to SVG
+    const filename = item.src.replace('/assets/', '');
+    const onDisk = path.join(siteDir, 'assets', filename);
+    if (fs.existsSync(onDisk)) {
+      src = item.src;
+    } else {
+      src = svgImage(slotId.replace('service.','').replace('.',''));
+    }
+  } else {
+    src = item.src;
+  }
   const alt = escapeHtml(item.alt || '');
   const caption = escapeHtml(item.caption || '');
   return `<figure class="${className}"><img src="${src}" alt="${alt}" style="width:100%;height:100%;object-fit:cover;border-radius:2px;"><figcaption class="caption">${caption}</figcaption></figure>`;
+}
+
+// Responsive thumbnail (no caption) — scales with its container via CSS aspect-ratio
+function thumb(slotId) {
+  const item = slot(slotId);
+  if (!item) return '';
+  let src;
+  if (item.src?.startsWith('/assets/')) {
+    const filename = item.src.replace('/assets/', '');
+    const onDisk = path.join(siteDir, 'assets', filename);
+    src = fs.existsSync(onDisk) ? item.src : svgImage(slotId.replace('service.','').replace('.',''));
+  } else {
+    src = item.src;
+  }
+  const alt = escapeHtml(item.alt || '');
+  return `<img src="${src}" alt="${alt}" loading="lazy">`;
 }
 
 function heroMedia(slotId) {
@@ -96,6 +123,7 @@ function heroMedia(slotId) {
 function canonical(route) { return `${origin}${route}`; }
 
 const brandName = content.brand.name;
+const brandMark = content.brand.short_name;
 const copy = {
   servicesTitle: 'Our Services',
   servicesHomeTitle: 'Full-spectrum carpentry, delivered as one',
@@ -119,7 +147,7 @@ const navItems = [
 ];
 
 function header(active = '') {
-  return `<a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="/"><span class="brand-mark">ESG</span><strong>${escapeHtml(brandName)}</strong></a><button class="menu" aria-expanded="false" aria-controls="nav">Menu</button><nav class="nav" id="nav" aria-label="Main"><div class="nav-links">${navItems.map(([href, label, key]) => `<a${active === key ? ' aria-current="page"' : ''} href="${href}">${label}</a>`).join('')}</div><a class="nav-cta" href="/contact/">Contact</a></nav></div></header>`;
+  return `<a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="/"><img class="brand-mark" src="/assets/mel-one-logo.png" alt=""><strong>${escapeHtml(brandName)}</strong></a><button class="menu" aria-expanded="false" aria-controls="nav">Menu</button><nav class="nav" id="nav" aria-label="Main"><div class="nav-links">${navItems.map(([href, label, key]) => `<a${active === key ? ' aria-current="page"' : ''} href="${href}">${label}</a>`).join('')}</div><a class="nav-cta" href="/contact/">Contact</a></nav></div></header>`;
 }
 
 function footer() {
@@ -129,7 +157,9 @@ function footer() {
 function page({ title, description, route, active = '', body, jsonLd }) {
   const fullTitle = title.includes(brandName) ? title : `${title} | ${brandName}`;
   const structured = jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd).replaceAll('<', '\\u003c')}</script>` : '';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(fullTitle)}</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a3a2a'/%3E%3Ctext x='50%25' y='56%25' font-size='28' font-weight='900' fill='%235fa87a' text-anchor='middle' dominant-baseline='middle' font-family='system-ui'%3EESG%3C/text%3E%3C/svg%3E"><link rel="canonical" href="${canonical(route)}"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/theme.css">${structured}</head><body>${header(active)}<main id="main">${body}</main>${footer()}<script src="/assets/base.js" defer></script></body></html>`;
+  const isInterior = route !== '/';
+  const favicon = encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="#17372f"/><text x="50%" y="55%" font-size="25" font-weight="900" fill="#d5a46b" text-anchor="middle" dominant-baseline="middle" font-family="system-ui">${brandMark}</text></svg>`);
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(fullTitle)}</title><link rel="icon" href="data:image/svg+xml,${favicon}"><link rel="canonical" href="${canonical(route)}"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/theme.css">${isInterior ? '<link rel="stylesheet" href="/assets/interior.css">' : ''}${structured}</head><body class="${isInterior ? 'interior' : ''}">${header(active)}<main id="main">${body}</main>${footer()}<script src="/assets/base.js" defer></script></body></html>`;
 }
 
 function writeRoute(route, html) {
@@ -145,7 +175,16 @@ const numberLabel = (index, label) => `<span class="section-no">${String(index).
 const card = (href, item, label) => {
   const cat = escapeHtml(item.category || label);
   const date = item.date ? ` · ${escapeHtml(item.date)}` : '';
-  return `<article class="editorial-card"><a href="${href}"><span class="card-meta">${cat}${date}</span><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.summary)}</p><span class="text-link">Read more ↗</span></a></article>`;
+  const imgSrc = svgImage((item.slug || 'insight').replace(/-/g, ''), 800, 450);
+  return `<article class="editorial-card">
+    <a class="card-media" href="${href}" aria-hidden="true" tabindex="-1"><img src="${imgSrc}" alt=""></a>
+    <div class="card-body">
+      <span class="card-meta">${cat}${date}</span>
+      <h3><a href="${href}">${escapeHtml(item.title)}</a></h3>
+      <p>${escapeHtml(item.summary)}</p>
+      <span class="text-link">Read more ↗</span>
+    </div>
+  </article>`;
 };
 
 // ── Build ──────────────────────────────────────────────────────────────
@@ -158,10 +197,18 @@ const jsSrc  = path.join(projectDir, 'src', 'assets', 'base.js');
 if (fs.existsSync(cssSrc)) fs.copyFileSync(cssSrc, path.join(siteDir, 'assets', 'base.css'));
 if (fs.existsSync(jsSrc))  fs.copyFileSync(jsSrc,  path.join(siteDir, 'assets', 'base.js'));
 if (fs.existsSync(themeCssSrc)) fs.copyFileSync(themeCssSrc, path.join(siteDir, 'assets', 'theme.css'));
+if (fs.existsSync(interiorCssSrc)) fs.copyFileSync(interiorCssSrc, path.join(siteDir, 'assets', 'interior.css'));
 
-// Copy image assets from src/assets
+// Copy image assets from src/assets (hero + about + 7 service images)
 const srcAssets = path.join(projectDir, 'src', 'assets');
-for (const img of ['hero-bg.jpg', 'about.jpg']) {
+const imageFiles = [
+  'hero-bg.jpg', 'about.jpg',
+  'framing.jpg', 'formwork.jpg', 'decking.jpg', 'secondfix.jpg', 'fitout.jpg', 'architectural.jpg', 'storage.jpg', 'restoration.jpg', 'heritage.jpg',
+  'kitchen.jpg', 'doors-furniture.jpg', 'flooring.jpg',
+  'symbol-joint.png', 'symbol-measure.png', 'symbol-grain.png', 'symbol-repair.png',
+  'mel-one-logo.png'
+];
+for (const img of imageFiles) {
   const src = path.join(srcAssets, img);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(siteDir, 'assets', img));
 }
@@ -246,12 +293,16 @@ writeRoute('/', page({ title: content.brand.tagline, description: content.seo.si
 
 // ── Services index (with process merged in) ────────────────────────────
 const servicesBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">${escapeHtml(content.brand.industry_label)}</p><h1>${escapeHtml(copy.servicesTitle)}</h1></div><p class="lede">${escapeHtml(copy.servicesLead)}</p></div></section>
-<section class="section"><div class="wrap service-list">
+<section class="section"><div class="wrap service-grid">
   ${content.services.map((item, index) => `
-    <article class="service-row">
-      <span class="num">${String(index + 1).padStart(2, '0')}</span>
-      <div><h2><a href="/services/${item.slug}/">${escapeHtml(item.title)}</a></h2><a class="text-link" href="/services/${item.slug}/">View detail ↗</a></div>
-      <p>${escapeHtml(item.summary)}</p>
+    <article class="service-card">
+      <a class="service-media" href="/services/${item.slug}/" aria-hidden="true" tabindex="-1">${thumb(`service.${item.slug}`)}</a>
+      <div class="service-card-body">
+        <span class="num">${String(index + 1).padStart(2, '0')}</span>
+        <h2><a href="/services/${item.slug}/">${escapeHtml(item.title)}</a></h2>
+        <p>${escapeHtml(item.summary)}</p>
+        <a class="text-link" href="/services/${item.slug}/">View detail ↗</a>
+      </div>
     </article>`).join('')}
 </div></section>
 <section class="section method">
@@ -355,7 +406,7 @@ writeRoute('/about/', page({ title: content.about.title, description: content.ab
 const contactBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">CONTACT</p><h1>${escapeHtml(content.contact.title)}</h1></div><p class="lede">${escapeHtml(content.contact.lead)}</p></div></section>
 <section class="section"><div class="wrap contact-grid">
   <div>
-    <h2>Before we talk</h2>
+    <h2>Help us prepare</h2>
     <ul class="check-list">
       ${content.contact.preparation.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
     </ul>
@@ -369,12 +420,14 @@ const contactBody = `<section class="page-hero"><div class="wrap page-hero-grid"
       </p>
     </div>
   </div>
-  <form class="contact-form" data-local-brief>
+  <form class="contact-form" data-local-brief novalidate>
     <h2>Outline your brief</h2>
-    <p>Fill this in and save a local note to help the conversation.</p>
-    <label>How should we call you?<input name="name" autocomplete="name"></label>
-    <label>What do you need first?<textarea name="message" rows="6"></textarea></label>
-    <button class="btn primary" type="submit">Save brief</button>
+    <p>Make a quick note for your conversation with MEL ONE, then call or email the details when you are ready.</p>
+    <label>Your name<input name="name" autocomplete="name" required></label>
+    <label>Phone number<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required></label>
+    <label>Email address<input name="email" type="email" autocomplete="email" required></label>
+    <label>Your project or first question<textarea name="message" rows="6" style="resize:none" required></textarea></label>
+    <button class="btn primary" type="submit">Save my note</button>
     <p data-brief-status role="status" aria-live="polite"></p>
   </form>
 </div></section>`;
