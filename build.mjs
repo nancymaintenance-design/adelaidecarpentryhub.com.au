@@ -369,6 +369,12 @@ for (const [index, item] of content.services.entries()) {
   ${media(`service.${item.slug}`)}
   <article class="article">
     ${item.sections.map((section) => `<section><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.summary)}</p></section>`).join('')}
+    <aside class="service-brief">
+      <p class="kicker">Planning notes</p>
+      <h2>One team, from first measure to final finish</h2>
+      <p>Tell us the scope, suburb and preferred timing. MEL ONE will help you establish the right next step before a detailed quote.</p>
+      <a class="text-link" href="/contact/">Discuss your project</a>
+    </aside>
   </article>
 </div></section>`;
   writeRoute(route, page({ title: item.title, description: item.summary, route, active: 'services', body, jsonLd: {
@@ -402,7 +408,13 @@ function collection(kind, label, items, intro) {
     const article = `<section class="article-hero"><div class="wrap reading"><p class="kicker">${cat}${date}</p><h1>${escapeHtml(item.title)}</h1><p class="lede">${escapeHtml(item.lead)}</p></div></section>
 <section class="section"><article class="wrap reading article">
   ${item.sections.map((section) => `<section><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.summary)}</p></section>`).join('')}
-</article></section>`;
+</article></section>
+<section class="section article-cta-section"><div class="wrap reading article-cta">
+  <p class="kicker">Talk through your scope</p>
+  <h2>Planning a timber project in Adelaide?</h2>
+  <p>Share the brief, location and preferred timing. We will help you identify a practical next step.</p>
+  <a class="btn primary" href="/contact/">Start an enquiry</a>
+</div></section>`;
     writeRoute(route, page({ title: item.title, description: item.summary, route, active: kind, body: article, jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
