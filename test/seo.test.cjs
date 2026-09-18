@@ -58,3 +58,14 @@ test('home sections beneath the preserved hero receive the same layered material
   assert.match(theme, /body:not\(\.interior\) main > \.section:has\(\.card-grid\)/);
   assert.doesNotMatch(theme, /\.hero-image-bg \{[^}]*radial-gradient/);
 });
+
+test('mobile layout keeps navigation, content columns and controls within a narrow viewport', () => {
+  const base = fs.readFileSync(path.join(root, 'src', 'assets', 'base.css'), 'utf8');
+  const interior = fs.readFileSync(path.join(root, 'src', 'assets', 'interior.css'), 'utf8');
+  assert.match(base, /\.site-header\s*\{\s*position: relative;/);
+  assert.match(base, /\.header-inner\s*\{\s*position: relative;\s*min-height: 70px;\s*flex-direction: row;/);
+  assert.match(base, /\.nav\s*\{\s*top: 100%;/);
+  assert.match(base, /\.nav a, \.nav-cta\s*\{\s*display: flex;\s*align-items: center;\s*min-height: 44px;/);
+  assert.match(base, /html, body\s*\{ overflow-x: hidden; \}/);
+  assert.match(interior, /\.interior \.contact-form\s*\{ padding: 24px 18px; \}/);
+});

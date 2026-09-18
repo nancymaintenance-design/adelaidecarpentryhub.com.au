@@ -69,8 +69,11 @@
 
 /* Mobile hero */
 @media (max-width: 700px) {
-  .hero-image-bg { min-height: 80vh; }
-  .hero-image-content { padding-top: 40vh; }
+  .hero-image-bg {
+    min-height: min(80svh, 640px);
+    background-attachment: scroll;
+  }
+  .hero-image-content { padding-top: 36svh; }
   .hero-image-bg h1 { font-size: clamp(30px, 9vw, 44px); }
 }
 

@@ -199,4 +199,6 @@
   .interior .method-grid { grid-template-columns: 1fr; }
   .interior .evidence-media { position: static; }
   .interior details p { padding-right: 0; }
+  .interior .contact-form { padding: 24px 18px; }
+  .interior .contact-form label { margin-bottom: 18px; }
 }
