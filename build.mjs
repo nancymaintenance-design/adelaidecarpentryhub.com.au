@@ -33,11 +33,8 @@ const ga4Id = /^G-[A-Z0-9]+$/.test(process.env.GA4_MEASUREMENT_ID || '')
   ? process.env.GA4_MEASUREMENT_ID : '';
 const gscToken = String(process.env.GSC_VERIFICATION_TOKEN || '').trim();
 
-// Update this to your live domain before deploying:
-//   Local preview : http://127.0.0.1:5173
-//   GitHub Pages  : https://YOUR-USERNAME.github.io/YOUR-REPO/
-//   Custom domain : https://yourdomain.com.au
-const origin = process.env.SITE_ORIGIN || 'http://127.0.0.1:5173';
+// The canonical production origin. Override only for an approved alternate domain.
+const origin = process.env.SITE_ORIGIN || 'https://adelaidecarpentryhub.com.au';
 
 // Service card color palette
 const serviceColors = {
@@ -164,7 +161,7 @@ function page({ title, description, route, active = '', body, jsonLd }) {
   const favicon = encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="#17372f"/><text x="50%" y="55%" font-size="25" font-weight="900" fill="#d5a46b" text-anchor="middle" dominant-baseline="middle" font-family="system-ui">${brandMark}</text></svg>`);
   const analyticsHead = ga4Id ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${ga4Id}');</script>` : '';
   const searchConsoleHead = gscToken ? `<meta name="google-site-verification" content="${escapeHtml(gscToken)}">` : '';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(fullTitle)}</title><link rel="icon" href="data:image/svg+xml,${favicon}"><link rel="canonical" href="${canonical(route)}"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/theme.css">${isInterior ? '<link rel="stylesheet" href="/assets/interior.css">' : ''}${analyticsHead}${searchConsoleHead}${structured}</head><body class="${isInterior ? 'interior' : ''}">${header(active)}<main id="main">${body}</main>${footer()}<script src="/assets/base.js" defer></script></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(fullTitle)}</title><meta property="og:type" content="website"><meta property="og:site_name" content="${escapeHtml(brandName)}"><meta property="og:title" content="${escapeHtml(fullTitle)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical(route)}"><meta property="og:image" content="${canonical('/assets/hero-bg.jpg')}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="data:image/svg+xml,${favicon}"><link rel="canonical" href="${canonical(route)}"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/theme.css">${isInterior ? '<link rel="stylesheet" href="/assets/interior.css">' : ''}${analyticsHead}${searchConsoleHead}${structured}</head><body class="${isInterior ? 'interior' : ''}">${header(active)}<main id="main">${body}</main>${footer()}<script src="/assets/base.js" defer></script></body></html>`;
 }
 
 function writeRoute(route, html) {
@@ -294,7 +291,30 @@ const homeBody = `
   </div>
 </section>`;
 
-writeRoute('/', page({ title: content.brand.tagline, description: content.seo.site_description, route: '/', active: 'home', body: homeBody, jsonLd: { '@context': 'https://schema.org', '@type': 'WebSite', name: brandName, url: canonical('/'), description: content.seo.site_description } }));
+writeRoute('/', page({ title: content.brand.tagline, description: content.seo.site_description, route: '/', active: 'home', body: homeBody, jsonLd: {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebSite', name: brandName, url: canonical('/'), description: content.seo.site_description },
+    {
+      '@type': 'HomeAndConstructionBusiness',
+      name: brandName,
+      url: canonical('/'),
+      image: canonical('/assets/hero-bg.jpg'),
+      description: content.seo.site_description,
+      telephone: content.contact.phone,
+      email: content.contact.email,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '63 Pirie St',
+        addressLocality: 'Adelaide',
+        addressRegion: 'SA',
+        postalCode: '5000',
+        addressCountry: 'AU',
+      },
+      areaServed: { '@type': 'City', name: 'Adelaide' },
+    },
+  ],
+} }));
 
 // ── Services index (with process merged in) ────────────────────────────
 const servicesBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">${escapeHtml(content.brand.industry_label)}</p><h1>${escapeHtml(copy.servicesTitle)}</h1></div><p class="lede">${escapeHtml(copy.servicesLead)}</p></div></section>
@@ -452,7 +472,7 @@ fs.writeFileSync(path.join(siteDir, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${
     allRoutes.filter(r => r !== '/404.html').map(r => `<url><loc>${canonical(r)}</loc></url>`).join('')
   }</urlset>`, 'utf8');
-fs.writeFileSync(path.join(siteDir, 'robots.txt'), 'User-agent: *\nDisallow: /\n', 'utf8');
+fs.writeFileSync(path.join(siteDir, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${canonical('/sitemap.xml')}\n`, 'utf8');
 
 console.log('\n✅ Build complete. Output: ' + siteDir);
 console.log(`   Total pages: ${allRoutes.length}`);
