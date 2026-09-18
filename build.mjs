@@ -216,7 +216,7 @@ if (fs.existsSync(interiorCssSrc)) fs.copyFileSync(interiorCssSrc, path.join(sit
 // Copy image assets from src/assets (hero + about + 7 service images)
 const srcAssets = path.join(projectDir, 'src', 'assets');
 const imageFiles = [
-  'hero-bg.jpg', 'about.jpg',
+  'hero-bg.jpg', 'about.jpg', 'about-team-2026.jpg',
   'framing.jpg', 'formwork.jpg', 'decking.jpg', 'secondfix.jpg', 'fitout.jpg', 'architectural.jpg', 'storage.jpg', 'restoration.jpg', 'heritage.jpg',
   'kitchen.jpg', 'doors-furniture.jpg', 'flooring.jpg',
   'symbol-joint.png', 'symbol-measure.png', 'symbol-grain.png', 'symbol-repair.png',
