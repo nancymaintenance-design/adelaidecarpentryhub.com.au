@@ -22,7 +22,7 @@ for (const form of document.querySelectorAll('form[data-contact-form]')) {
       [message, 'message', 'Please add a short project note before saving.']
     ].find(([value]) => !value);
     if (missing) { status.textContent = missing[2]; form.elements[missing[1]].focus(); return; }
-    if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) { status.textContent = 'Please enter a valid email address.'; form.elements.email.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = 'Please enter a valid email address.'; form.elements.email.focus(); return; }
     const button = form.querySelector('button[type="submit"]');
     button.disabled = true;
     status.textContent = 'Sending your enquiry…';
