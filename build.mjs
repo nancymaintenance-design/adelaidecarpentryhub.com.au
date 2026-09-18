@@ -217,7 +217,7 @@ if (fs.existsSync(interiorCssSrc)) fs.copyFileSync(interiorCssSrc, path.join(sit
 const srcAssets = path.join(projectDir, 'src', 'assets');
 const imageFiles = [
   'hero-bg.jpg', 'about.jpg', 'about-team-2026-v2.jpg',
-  'framing.jpg', 'formwork.jpg', 'decking.jpg', 'secondfix.jpg', 'fitout.jpg', 'fitout-2026-v2.jpg', 'architectural.jpg', 'storage.jpg', 'restoration.jpg', 'heritage.jpg',
+  'framing.jpg', 'formwork.jpg', 'decking.jpg', 'secondfix.jpg', 'fitout.jpg', 'fitout-2026-v2.jpg', 'architectural.jpg', 'storage.jpg', 'restoration.jpg', 'restoration-2026-v2.jpg', 'heritage.jpg', 'heritage-2026-v2.jpg',
   'kitchen.jpg', 'doors-furniture.jpg', 'flooring.jpg',
   'symbol-joint.png', 'symbol-measure.png', 'symbol-grain.png', 'symbol-repair.png',
   'mel-one-logo.png'
