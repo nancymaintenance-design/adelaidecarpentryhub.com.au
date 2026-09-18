@@ -263,3 +263,49 @@
   .site-header nav { gap: 14px; }
   .nav-cta { text-align: center; }
 }
+/* Homepage material layers — the hero image above remains intentionally untouched. */
+.hero-image-bg + .section {
+  background:
+    radial-gradient(circle at 8% 4%, rgba(212, 149, 106, 0.16), transparent 24rem),
+    linear-gradient(115deg, #f7f1e7 0%, #fffdf8 58%, #e3ebe0 100%);
+}
+
+body:not(.interior) main > .section:has(.choice-grid) {
+  background:
+    radial-gradient(circle at 92% 10%, rgba(76, 111, 82, 0.16), transparent 22rem),
+    linear-gradient(110deg, #f8f1e6, #edf2ea);
+}
+
+body:not(.interior) main > .section:has(.card-grid) {
+  background:
+    radial-gradient(circle at 4% 88%, rgba(180, 100, 67, 0.15), transparent 23rem),
+    linear-gradient(115deg, #e6eee4, #f8f5ed 62%);
+}
+
+body:not(.interior) main > .section:has(.faq) {
+  background:
+    linear-gradient(90deg, rgba(218, 196, 168, 0.38), transparent 55%),
+    #fdfaf4;
+}
+
+body:not(.interior) main > .closing {
+  background:
+    radial-gradient(circle at 86% 18%, rgba(212, 149, 106, 0.17), transparent 18rem),
+    linear-gradient(125deg, #17372f, #315746);
+  color: #fffdf8;
+}
+
+body:not(.interior) .closing h2 {
+  color: #fffdf8;
+}
+
+body:not(.interior) .closing .btn.primary {
+  background: #d5a46b;
+  border-color: #d5a46b;
+  color: #17372f;
+}
+
+body:not(.interior) .closing .btn.primary:hover {
+  background: #fffdf8;
+  border-color: #fffdf8;
+}
