@@ -29,6 +29,9 @@ const paragraphs = (items) => safeArray(items).map((item) => `<p>${escapeHtml(it
 
 const content = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
 const assets = fs.existsSync(assetPath) ? JSON.parse(fs.readFileSync(assetPath, 'utf8')) : { slots: {} };
+const ga4Id = /^G-[A-Z0-9]+$/.test(process.env.GA4_MEASUREMENT_ID || '')
+  ? process.env.GA4_MEASUREMENT_ID : '';
+const gscToken = String(process.env.GSC_VERIFICATION_TOKEN || '').trim();
 
 // Update this to your live domain before deploying:
 //   Local preview : http://127.0.0.1:5173
@@ -159,7 +162,9 @@ function page({ title, description, route, active = '', body, jsonLd }) {
   const structured = jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd).replaceAll('<', '\\u003c')}</script>` : '';
   const isInterior = route !== '/';
   const favicon = encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="#17372f"/><text x="50%" y="55%" font-size="25" font-weight="900" fill="#d5a46b" text-anchor="middle" dominant-baseline="middle" font-family="system-ui">${brandMark}</text></svg>`);
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(fullTitle)}</title><link rel="icon" href="data:image/svg+xml,${favicon}"><link rel="canonical" href="${canonical(route)}"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/theme.css">${isInterior ? '<link rel="stylesheet" href="/assets/interior.css">' : ''}${structured}</head><body class="${isInterior ? 'interior' : ''}">${header(active)}<main id="main">${body}</main>${footer()}<script src="/assets/base.js" defer></script></body></html>`;
+  const analyticsHead = ga4Id ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${ga4Id}');</script>` : '';
+  const searchConsoleHead = gscToken ? `<meta name="google-site-verification" content="${escapeHtml(gscToken)}">` : '';
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(fullTitle)}</title><link rel="icon" href="data:image/svg+xml,${favicon}"><link rel="canonical" href="${canonical(route)}"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/theme.css">${isInterior ? '<link rel="stylesheet" href="/assets/interior.css">' : ''}${analyticsHead}${searchConsoleHead}${structured}</head><body class="${isInterior ? 'interior' : ''}">${header(active)}<main id="main">${body}</main>${footer()}<script src="/assets/base.js" defer></script></body></html>`;
 }
 
 function writeRoute(route, html) {
