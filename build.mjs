@@ -122,6 +122,18 @@ function heroMedia(slotId) {
 
 function canonical(route) { return `${origin}${route}`; }
 
+function breadcrumbList(items) {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map(([name, route], index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name,
+      item: canonical(route),
+    })),
+  };
+}
+
 const brandName = content.brand.name;
 const brandMark = content.brand.short_name;
 const copy = {
@@ -291,12 +303,13 @@ const homeBody = `
   </div>
 </section>`;
 
-writeRoute('/', page({ title: content.brand.tagline, description: content.seo.site_description, route: '/', active: 'home', body: homeBody, jsonLd: {
+writeRoute('/', page({ title: 'Adelaide Carpentry, Joinery & Timber Restoration', description: content.seo.site_description, route: '/', active: 'home', body: homeBody, jsonLd: {
   '@context': 'https://schema.org',
   '@graph': [
     { '@type': 'WebSite', name: brandName, url: canonical('/'), description: content.seo.site_description },
     {
       '@type': 'HomeAndConstructionBusiness',
+      '@id': canonical('/#business'),
       name: brandName,
       url: canonical('/'),
       image: canonical('/assets/hero-bg.jpg'),
@@ -358,7 +371,21 @@ for (const [index, item] of content.services.entries()) {
     ${item.sections.map((section) => `<section><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.summary)}</p></section>`).join('')}
   </article>
 </div></section>`;
-  writeRoute(route, page({ title: item.title, description: item.summary, route, active: 'services', body, jsonLd: { '@context': 'https://schema.org', '@type': 'Service', name: item.title, description: item.summary, provider: { '@type': 'Organization', name: brandName } } }));
+  writeRoute(route, page({ title: item.title, description: item.summary, route, active: 'services', body, jsonLd: {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': canonical(`${route}#service`),
+        name: item.title,
+        description: item.summary,
+        url: canonical(route),
+        areaServed: { '@type': 'City', name: 'Adelaide' },
+        provider: { '@id': canonical('/#business') },
+      },
+      breadcrumbList([['Home', '/'], [copy.servicesTitle, '/services/'], [item.title, route]]),
+    ],
+  } }));
 }
 
 // ── Insights ─────────────────────────────────────────────────────────────
@@ -376,7 +403,19 @@ function collection(kind, label, items, intro) {
 <section class="section"><article class="wrap reading article">
   ${item.sections.map((section) => `<section><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.summary)}</p></section>`).join('')}
 </article></section>`;
-    writeRoute(route, page({ title: item.title, description: item.summary, route, active: kind, body: article, jsonLd: { '@context': 'https://schema.org', '@type': 'Article', headline: item.title, description: item.summary, publisher: { '@type': 'Organization', name: brandName } } }));
+    writeRoute(route, page({ title: item.title, description: item.summary, route, active: kind, body: article, jsonLd: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Article',
+          headline: item.title,
+          description: item.summary,
+          mainEntityOfPage: canonical(route),
+          publisher: { '@id': canonical('/#business') },
+        },
+        breadcrumbList([['Home', '/'], [label, `/${kind}/`], [item.title, route]]),
+      ],
+    } }));
   }
 }
 
