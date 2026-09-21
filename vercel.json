@@ -1,9 +1,10 @@
 {
-  "buildCommand": "node build.mjs --docs",
-  "outputDirectory": "docs",
-  "functions": {
-    "api/contact.js": {
-      "maxDuration": 10
+  "buildCommand": "unzip -q adelaide-carpentry-hub-site.zip -d dist",
+  "outputDirectory": "dist",
+  "headers": [
+    {
+      "source": "/(.*)\\.(png|jpg|jpeg|webp|gif|svg|ico|woff|woff2)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
     }
-  }
+  ]
 }
