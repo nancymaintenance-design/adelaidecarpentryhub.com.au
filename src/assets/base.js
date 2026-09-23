@@ -68,7 +68,7 @@ for (const directory of document.querySelectorAll('[data-area-directory]')) {
     });
     empty.hidden = visible !== 0;
     clear.hidden = !query;
-    status.textContent = query ? `${visible} locality${visible === 1 ? '' : 'ies'} found for “${input.value.trim()}”.` : `Showing all ${items.length} localities.`;
+    status.textContent = query ? `${visible} ${visible === 1 ? 'locality' : 'localities'} found for “${input.value.trim()}”.` : `Showing all ${items.length} localities.`;
     const url = new URL(window.location.href);
     if (query) url.searchParams.set('suburb', input.value.trim()); else url.searchParams.delete('suburb');
     window.history.replaceState({}, '', url);
