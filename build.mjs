@@ -147,12 +147,14 @@ const copy = {
   faqHomeTitle: 'Start with the common questions',
   faqHomeLead: 'The questions visitors ask most — answered plainly so you can decide fast.',
   faqCta: 'See all questions',
+  serviceAreasTitle: 'Service areas',
   ...(content.pageCopy || {}),
 };
 
 const navItems = [
   ['/', 'Home', 'home'],
   ['/services/', copy.servicesTitle, 'services'],
+  ['/service-areas/', copy.serviceAreasTitle, 'areas'],
   ['/insights/', copy.insightsTitle, 'insights'],
   ['/faq/', copy.faqTitle, 'faq'],
   ['/about/', 'About', 'about'],
@@ -163,7 +165,7 @@ function header(active = '') {
 }
 
 function footer() {
-  return `<footer class="site-footer"><div class="wrap footer-grid"><div><a class="footer-brand" href="/">${escapeHtml(brandName)}</a><p>${escapeHtml(content.brand.tagline)}</p></div><div><strong>Services</strong><a href="/services/">${escapeHtml(copy.servicesTitle)}</a><a href="/about/">About</a></div><div><strong>Content</strong><a href="/insights/">${escapeHtml(copy.insightsTitle)}</a><a href="/faq/">${escapeHtml(copy.faqTitle)}</a></div><div><strong>Contact</strong><a href="/contact/">${escapeHtml(content.contact.cta)}</a><p style="color:var(--muted);font-size:14px;margin-top:8px;">${escapeHtml(content.contact.phone)}<br>${escapeHtml(content.contact.email)}<br>${escapeHtml(content.contact.address)}</p></div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} ${escapeHtml(brandName)} · Adelaide, SA</span><span>${escapeHtml(content.brand.industry_label)}</span></div></footer>`;
+  return `<footer class="site-footer"><div class="wrap footer-grid"><div><a class="footer-brand" href="/">${escapeHtml(brandName)}</a><p>${escapeHtml(content.brand.tagline)}</p></div><div><strong>Services</strong><a href="/services/">${escapeHtml(copy.servicesTitle)}</a><a href="/service-areas/">Service areas</a><a href="/about/">About</a></div><div><strong>Content</strong><a href="/insights/">${escapeHtml(copy.insightsTitle)}</a><a href="/faq/">${escapeHtml(copy.faqTitle)}</a></div><div><strong>Contact</strong><a href="/contact/">${escapeHtml(content.contact.cta)}</a><p style="color:var(--muted);font-size:14px;margin-top:8px;">${escapeHtml(content.contact.phone)}<br>${escapeHtml(content.contact.email)}<br>${escapeHtml(content.contact.address)}</p></div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} ${escapeHtml(brandName)} · Adelaide, SA</span><span>${escapeHtml(content.brand.industry_label)}</span></div></footer>`;
 }
 
 function page({ title, description, route, active = '', body, jsonLd }) {
@@ -436,6 +438,19 @@ function collection(kind, label, items, intro) {
 
 collection('insights', copy.insightsTitle, content.insights, copy.insightsLead);
 
+
+// ── Service areas ───────────────────────────────────────────────────────
+const serviceAreas = content.serviceAreas || { title: copy.serviceAreasTitle, lead: '', searchLabel: 'Find your suburb', searchPlaceholder: 'Start typing a suburb or area', regions: [] };
+const areaCount = safeArray(serviceAreas.regions).reduce((total, region) => total + safeArray(region.suburbs).length, 0);
+const areasBody = `<section class="page-hero service-areas-hero"><div class="wrap page-hero-grid"><div><p class="kicker">ADELAIDE · SOUTH AUSTRALIA</p><h1>${escapeHtml(serviceAreas.title)}</h1></div><p class="lede">${escapeHtml(serviceAreas.lead)}</p></div></section>
+<section class="section area-directory-section"><div class="wrap" data-area-directory>
+  <div class="area-directory-intro"><p class="kicker">Local directory</p><h2>Find your suburb</h2><p>Browse ${areaCount} Adelaide suburbs and localities by area, or search the directory directly.</p></div>
+  <div class="area-search-panel"><label for="area-search">${escapeHtml(serviceAreas.searchLabel)}</label><div class="area-search-control"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.15a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z"/></svg><input id="area-search" data-area-search type="search" autocomplete="off" placeholder="${escapeHtml(serviceAreas.searchPlaceholder)}"><button type="button" data-area-clear hidden>Clear</button></div><p class="area-search-status" data-area-status role="status" aria-live="polite">Showing all ${areaCount} localities.</p></div>
+  <div class="area-grid">${safeArray(serviceAreas.regions).map((region, index) => `<section class="area-region" data-area-region><header><span class="num">${String(index + 1).padStart(2, '0')}</span><h2>${escapeHtml(region.name)}</h2><span class="area-region-count">${safeArray(region.suburbs).length} localities</span></header><ul class="suburb-list">${safeArray(region.suburbs).map(suburb => `<li data-suburb data-search="${escapeHtml((suburb + ' ' + region.name).toLocaleLowerCase('en-AU'))}">${escapeHtml(suburb)}</li>`).join('')}</ul></section>`).join('')}</div>
+  <p class="area-empty" data-area-empty hidden>No Adelaide locality matched that search. Try the full suburb name or clear the search.</p>
+</div></section>`;
+writeRoute('/service-areas/', page({ title: serviceAreas.title, description: serviceAreas.lead, route: '/service-areas/', active: 'areas', body: areasBody, jsonLd: { '@context': 'https://schema.org', '@type': 'Service', name: 'MEL ONE service areas', provider: { '@id': canonical('/#business') }, areaServed: safeArray(serviceAreas.regions).flatMap(region => safeArray(region.suburbs).map(name => ({ '@type': 'Place', name: `${name}, South Australia` }))) } }));
+
 // ── FAQ ─────────────────────────────────────────────────────────────────
 const faqBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">FAQ</p><h1>${escapeHtml(copy.faqTitle)}</h1></div><p class="lede">${escapeHtml(copy.faqLead)}</p></div></section>
 <section class="section"><div class="wrap faq-page">
@@ -518,7 +533,7 @@ writeRoute('/404.html', page({ title: 'Page not found', description: 'The page y
 
 // ── Sitemap & robots ────────────────────────────────────────────────────
 const allRoutes = [
-  '/', '/services/', '/insights/', '/faq/', '/about/', '/contact/', '/404.html',
+  '/', '/services/', '/service-areas/', '/insights/', '/faq/', '/about/', '/contact/', '/404.html',
   ...content.services.map((item) => `/services/${item.slug}/`),
   ...content.insights.map((item) => `/insights/${item.slug}/`),
 ];

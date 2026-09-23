@@ -43,3 +43,38 @@ for (const form of document.querySelectorAll('form[data-contact-form]')) {
     }
   });
 }
+
+
+for (const directory of document.querySelectorAll('[data-area-directory]')) {
+  const input = directory.querySelector('[data-area-search]');
+  const clear = directory.querySelector('[data-area-clear]');
+  const status = directory.querySelector('[data-area-status]');
+  const empty = directory.querySelector('[data-area-empty]');
+  const regions = [...directory.querySelectorAll('[data-area-region]')];
+  const items = [...directory.querySelectorAll('[data-suburb]')];
+  if (!input || !status || !empty) continue;
+  const initial = new URLSearchParams(window.location.search).get('suburb') || '';
+  input.value = initial;
+  const filter = () => {
+    const query = input.value.trim().toLocaleLowerCase('en-AU');
+    let visible = 0;
+    items.forEach(item => {
+      const match = !query || item.dataset.search.includes(query);
+      item.hidden = !match;
+      if (match) visible += 1;
+    });
+    regions.forEach(region => {
+      region.hidden = ![...region.querySelectorAll('[data-suburb]')].some(item => !item.hidden);
+    });
+    empty.hidden = visible !== 0;
+    clear.hidden = !query;
+    status.textContent = query ? `${visible} locality${visible === 1 ? '' : 'ies'} found for “${input.value.trim()}”.` : `Showing all ${items.length} localities.`;
+    const url = new URL(window.location.href);
+    if (query) url.searchParams.set('suburb', input.value.trim()); else url.searchParams.delete('suburb');
+    window.history.replaceState({}, '', url);
+  };
+  input.addEventListener('input', filter);
+  clear.addEventListener('click', () => { input.value = ''; filter(); input.focus(); });
+  input.addEventListener('keydown', event => { if (event.key === 'Escape' && input.value) { input.value = ''; filter(); } });
+  filter();
+}
