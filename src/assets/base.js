@@ -78,3 +78,13 @@ for (const directory of document.querySelectorAll('[data-area-directory]')) {
   input.addEventListener('keydown', event => { if (event.key === 'Escape' && input.value) { input.value = ''; filter(); } });
   filter();
 }
+
+
+const selectedSuburb = new URLSearchParams(window.location.search).get('suburb');
+if (selectedSuburb) {
+  const message = document.querySelector('form[data-contact-form] textarea[name="message"]');
+  if (message && !message.value.trim()) {
+    message.value = `My suburb: ${selectedSuburb}\n\n`;
+    message.focus();
+  }
+}

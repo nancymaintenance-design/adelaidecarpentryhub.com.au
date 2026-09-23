@@ -235,3 +235,7 @@
   .interior .area-region-count { grid-column: 2; }
   .interior .suburb-list { padding: 18px; }
 }
+
+.interior .suburb-list li { padding: 0; overflow: hidden; }
+.interior .suburb-list li a { display: block; padding: 5px 9px; color: inherit; text-decoration: none; transition: background .16s ease, color .16s ease; }
+.interior .suburb-list li a:hover { background: var(--ink); color: #fffdf8; }
