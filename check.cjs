@@ -24,7 +24,7 @@ let all = true;
 console.log('\n=== Ellis Website Integrity Check ===\n');
 
 // Page count
-all &= check(`Total pages: ${htmlFiles.length} (expect 23)`, htmlFiles.length === 23);
+all &= check(`Total pages: ${htmlFiles.length} (expect 27)`, htmlFiles.length === 27);
 
 // Home page content
 const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
@@ -91,7 +91,8 @@ for (const slug of servicePages) {
 
 // Insights pages
 const insightPages = ['why-integrated-carpentry-joinery', 'kitchen-renovation-cost-guide',
-  'heritage-building-timber-restoration', 'timber-flooring-oiling-guide', 'commercial-fitout-process'];
+  'heritage-building-timber-restoration', 'timber-flooring-oiling-guide', 'commercial-fitout-process',
+  'adelaide-deck-replacement-guide', 'adelaide-custom-wardrobe-planning', 'adelaide-heritage-timber-repairs'];
 for (const slug of insightPages) {
   const ip = path.join(root, 'insights', slug, 'index.html');
   all &= check(`Insight page: ${slug}`, fs.existsSync(ip) && fs.readFileSync(ip, 'utf8').length > 500);

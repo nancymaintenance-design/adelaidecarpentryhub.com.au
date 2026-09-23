@@ -16,6 +16,7 @@ const projectDir = __dirname;
 const isDocs = process.argv.includes('--docs');
 const siteDir = path.join(projectDir, isDocs ? 'docs' : 'public');
 const contentPath = path.join(projectDir, 'src', 'content-pack', 'site-content.json');
+const additionalInsightsPath = path.join(projectDir, 'src', 'content-pack', 'adelaide-insights.json');
 const assetPath = path.join(projectDir, 'src', 'assets', 'asset-manifest.json');
 const themeCssSrc = path.join(projectDir, 'src', 'assets', 'theme.css');
 const interiorCssSrc = path.join(projectDir, 'src', 'assets', 'interior.css');
@@ -28,6 +29,9 @@ const slot = (id) => (assets.slots || {})[id] || null;
 const paragraphs = (items) => safeArray(items).map((item) => `<p>${escapeHtml(item)}</p>`).join('');
 
 const content = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
+const additionalInsights = fs.existsSync(additionalInsightsPath)
+  ? JSON.parse(fs.readFileSync(additionalInsightsPath, 'utf8')) : [];
+content.insights.push(...safeArray(additionalInsights));
 const assets = fs.existsSync(assetPath) ? JSON.parse(fs.readFileSync(assetPath, 'utf8')) : { slots: {} };
 const ga4Id = /^G-[A-Z0-9]+$/.test(process.env.GA4_MEASUREMENT_ID || '')
   ? process.env.GA4_MEASUREMENT_ID : '';
@@ -437,6 +441,27 @@ function collection(kind, label, items, intro) {
 }
 
 collection('insights', copy.insightsTitle, content.insights, copy.insightsLead);
+
+const feedDate = (item) => `${item.date || '2026-09-23'}T00:00:00+09:30`;
+const feedItems = content.insights.map((item) => ({
+  id: canonical(`/insights/${item.slug}/`),
+  url: canonical(`/insights/${item.slug}/`),
+  title: item.title,
+  summary: item.summary,
+  content_text: [item.lead, ...item.sections.map((section) => `${section.title}: ${section.summary}`)].join('\n\n'),
+  date_published: feedDate(item),
+  tags: [item.category || copy.insightsTitle, 'Adelaide', 'Carpentry & Joinery'],
+}));
+fs.writeFileSync(path.join(siteDir, 'feed.json'), JSON.stringify({
+  version: 'https://jsonfeed.org/version/1.1',
+  title: `${brandName} — ${copy.insightsTitle}`,
+  home_page_url: canonical('/'),
+  feed_url: canonical('/feed.json'),
+  description: copy.insightsLead,
+  language: 'en-AU',
+  items: feedItems,
+}, null, 2), 'utf8');
+fs.writeFileSync(path.join(siteDir, 'rss.xml'), `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>${escapeHtml(`${brandName} — ${copy.insightsTitle}`)}</title><link>${canonical('/insights/')}</link><description>${escapeHtml(copy.insightsLead)}</description><language>en-au</language>${feedItems.map((item) => `<item><title>${escapeHtml(item.title)}</title><link>${item.url}</link><guid isPermaLink="true">${item.id}</guid><description>${escapeHtml(item.summary)}</description><pubDate>${new Date(item.date_published).toUTCString()}</pubDate><category>${escapeHtml(item.tags[0])}</category></item>`).join('')}</channel></rss>`, 'utf8');
 
 
 // ── Service areas ───────────────────────────────────────────────────────

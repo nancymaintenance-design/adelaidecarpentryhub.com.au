@@ -25,6 +25,15 @@ test('service and insight pages publish breadcrumb and local business relationsh
   assert.match(source, /mainEntityOfPage: canonical\(route\)/);
 });
 
+test('Adelaide insight pack generates JSON Feed and RSS entries', () => {
+  const pack = fs.readFileSync(path.join(root, 'src', 'content-pack', 'adelaide-insights.json'), 'utf8');
+  assert.match(pack, /adelaide-deck-replacement-guide/);
+  assert.match(pack, /adelaide-custom-wardrobe-planning/);
+  assert.match(pack, /adelaide-heritage-timber-repairs/);
+  assert.match(source, /writeFileSync\(path\.join\(siteDir, 'feed\.json'\)/);
+  assert.match(source, /writeFileSync\(path\.join\(siteDir, 'rss\.xml'\)/);
+});
+
 test('home page title and description target Adelaide carpentry searches concisely', () => {
   const content = fs.readFileSync(path.join(root, 'src', 'content-pack', 'site-content.json'), 'utf8');
   assert.match(source, /title: 'Adelaide Carpentry, Joinery & Timber Restoration'/);
