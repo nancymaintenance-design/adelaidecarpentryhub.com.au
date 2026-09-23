@@ -1,6 +1,6 @@
 {
-  "buildCommand": "unzip -q adelaide-carpentry-hub-site.zip -d dist",
-  "outputDirectory": "dist",
+  "buildCommand": "node build.mjs",
+  "outputDirectory": "public",
   "headers": [
     {
       "source": "/(.*)\\.(png|jpg|jpeg|webp|gif|svg|ico|woff|woff2)",
