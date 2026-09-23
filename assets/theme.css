@@ -1,0 +1,314 @@
+/* Ellis Services Group — hero image + navigation spacing */
+
+/* ── Homepage full-bleed hero image ─────────────────────────────────── */
+.hero-image-bg {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  min-height: 520px;
+  overflow: hidden;
+  background-image: url('/assets/hero-bg.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-attachment: fixed;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Dark gradient overlay: covers the top ~35% (where the original logo text sits)
+   and fades to transparent so the bottom scenic content shows through */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(12, 6, 2, 0.82) 0%,
+    rgba(12, 6, 2, 0.72) 30%,
+    rgba(12, 6, 2, 0.45) 55%,
+    rgba(12, 6, 2, 0.15) 75%,
+    transparent 100%
+  );
+  z-index: 0;
+}
+
+/* Content sits above the overlay */
+.hero-image-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-top: 45vh;   /* push content down below the dark zone */
+  padding-bottom: clamp(48px, 8vw, 96px);
+}
+
+/* The hero-copy inside the wrap: keep it readable and not too wide */
+.hero-image-bg .hero-copy {
+  max-width: 640px;
+}
+
+/* Hero text colours on dark background */
+.hero-image-bg .kicker { color: #d4956a; }
+.hero-image-bg h1 { color: #fff; max-width: 18ch; }
+.hero-image-bg h1 span { color: #e8c49a; }
+.hero-image-bg .lede { color: rgba(255,255,255,0.82); max-width: 46ch; }
+
+/* Ghost button (white outline) */
+.btn.ghost {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.7);
+  color: #fff;
+  padding: 11px 20px;
+  font: 700 14px/1 system-ui, sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.18s, border-color 0.18s;
+}
+.btn.ghost:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+}
+
+/* Mobile hero */
+@media (max-width: 700px) {
+  .hero-image-bg {
+    min-height: min(80svh, 640px);
+    background-attachment: scroll;
+  }
+  .hero-image-content { padding-top: 36svh; }
+  .hero-image-bg h1 { font-size: clamp(30px, 9vw, 44px); }
+}
+
+/* ── About page layout ───────────────────────────────────────────── */
+.about-section-title {
+  margin: 0 0 28px;
+  font-size: clamp(22px, 3vw, 30px);
+  color: var(--theme-ink, #2b2118);
+  font-weight: 700;
+}
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+.about-story-grid .reading { margin: 0; }
+.about-story-grid .reading p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--theme-ink, #2b2118);
+}
+
+.about-image {
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+.about-image img { display: block; width: 100%; height: auto; }
+.about-image figcaption { padding: 10px 4px 0; font-size: 13px; color: var(--theme-muted, #6b5d4f); }
+
+.about-image-placeholder {
+  aspect-ratio: 4 / 3;
+  border: 2px dashed rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--theme-muted, #6b5d4f);
+  text-align: center;
+  padding: 24px;
+}
+.about-image-placeholder span {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--theme-ink, #2b2118);
+}
+.about-image-placeholder small { font-size: 12px; max-width: 22ch; line-height: 1.4; opacity: 0.8; }
+
+@media (max-width: 760px) {
+  .about-story-grid { grid-template-columns: 1fr; gap: 24px; margin-bottom: 32px; }
+}
+
+/* ── Value cards (rich, with sub-points) ───────────────────────────── */
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.value-card {
+  background: var(--theme-surface, #ffffff);
+  border: 1.5px solid rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+  padding: 28px 24px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.value-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.09);
+}
+.value-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--theme-accent, #b76443) 0%, #d4956a 100%);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 44px;
+  text-align: center;
+  margin: 0 0 16px;
+  flex-shrink: 0;
+}
+.value-card h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--theme-ink, #2b2118);
+  line-height: 1.3;
+}
+.value-card > p {
+  margin: 0 0 16px;
+  color: var(--theme-muted, #6b5d4f);
+  line-height: 1.65;
+  font-size: 14px;
+}
+.value-details {
+  margin: 0;
+  padding: 14px 0 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.value-details li {
+  font-size: 13px;
+  color: var(--theme-ink, #2b2118);
+  line-height: 1.5;
+  padding-left: 16px;
+  position: relative;
+}
+.value-details li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--theme-accent, #b76443);
+}
+
+@media (max-width: 880px) { .value-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .value-grid { grid-template-columns: 1fr; } }
+.section-alt { background: rgba(0, 0, 0, 0.025); }
+
+/* ── Navigation spacing & contact-label overrides */
+/* Loaded after base.css so these win. */
+
+/* Homepage services grid: force exactly 3 columns so 6 items render as 3×2 with no empty cells */
+.choice-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 880px) {
+  .choice-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .choice-grid { grid-template-columns: 1fr; }
+}
+
+/* The links group must be a real flex row with breathing room */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.nav-links a {
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+/* More space between the links group and the Contact button */
+.site-header nav {
+  gap: 28px;
+}
+.nav-cta {
+  white-space: nowrap;
+}
+
+/* Tablet: tighten a little so nothing wraps */
+@media (max-width: 880px) and (min-width: 701px) {
+  .nav-links { gap: 18px; }
+  .site-header nav { gap: 18px; }
+  .header-inner { gap: 20px; }
+}
+
+/* Mobile dropdown: stack the links vertically, full width */
+@media (max-width: 700px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .nav-links a {
+    padding: 12px 2px;
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header nav { gap: 14px; }
+  .nav-cta { text-align: center; }
+}
+/* Homepage material layers — the hero image above remains intentionally untouched. */
+.hero-image-bg + .section {
+  background:
+    radial-gradient(circle at 8% 4%, rgba(212, 149, 106, 0.16), transparent 24rem),
+    linear-gradient(115deg, #f7f1e7 0%, #fffdf8 58%, #e3ebe0 100%);
+}
+
+body:not(.interior) main > .section:has(.choice-grid) {
+  background:
+    radial-gradient(circle at 92% 10%, rgba(76, 111, 82, 0.16), transparent 22rem),
+    linear-gradient(110deg, #f8f1e6, #edf2ea);
+}
+
+body:not(.interior) main > .section:has(.card-grid) {
+  background:
+    radial-gradient(circle at 4% 88%, rgba(180, 100, 67, 0.15), transparent 23rem),
+    linear-gradient(115deg, #e6eee4, #f8f5ed 62%);
+}
+
+body:not(.interior) main > .section:has(.faq) {
+  background:
+    linear-gradient(90deg, rgba(218, 196, 168, 0.38), transparent 55%),
+    #fdfaf4;
+}
+
+body:not(.interior) main > .closing {
+  background:
+    radial-gradient(circle at 86% 18%, rgba(212, 149, 106, 0.17), transparent 18rem),
+    linear-gradient(125deg, #17372f, #315746);
+  color: #fffdf8;
+}
+
+body:not(.interior) .closing h2 {
+  color: #fffdf8;
+}
+
+body:not(.interior) .closing .btn.primary {
+  background: #d5a46b;
+  border-color: #d5a46b;
+  color: #17372f;
+}
+
+body:not(.interior) .closing .btn.primary:hover {
+  background: #fffdf8;
+  border-color: #fffdf8;
+}
