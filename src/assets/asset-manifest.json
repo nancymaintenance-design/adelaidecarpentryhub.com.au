@@ -70,6 +70,26 @@
       "src": "/assets/flooring.jpg",
       "alt": "Timber deck frame construction and restoration",
       "caption": "Decking Restoration & Timber Flooring"
+    },
+    "insight.why-integrated-carpentry-joinery": {
+      "src": "/assets/insight-integrated-joinery.jpg",
+      "alt": "Warm timber architectural joinery in a contemporary Adelaide home"
+    },
+    "insight.kitchen-renovation-cost-guide": {
+      "src": "/assets/insight-kitchen-costs.jpg",
+      "alt": "Custom timber kitchen with stone island in an Adelaide home"
+    },
+    "insight.heritage-building-timber-restoration": {
+      "src": "/assets/insight-heritage-restoration.jpg",
+      "alt": "Restored timber window and entry detail in an Adelaide heritage home"
+    },
+    "insight.timber-flooring-oiling-guide": {
+      "src": "/assets/insight-timber-flooring.jpg",
+      "alt": "Wide-plank oak flooring in a contemporary Australian living room"
+    },
+    "insight.commercial-fitout-process": {
+      "src": "/assets/insight-commercial-fitout.jpg",
+      "alt": "Commercial timber joinery and feature wall fitout in progress"
     }
   }
 }

@@ -189,9 +189,11 @@ const numberLabel = (index, label) => `<span class="section-no">${String(index).
 const card = (href, item, label) => {
   const cat = escapeHtml(item.category || label);
   const date = item.date ? ` · ${escapeHtml(item.date)}` : '';
-  const imgSrc = svgImage((item.slug || 'insight').replace(/-/g, ''), 800, 450);
+  const image = slot(`insight.${item.slug}`);
+  const imgSrc = image?.src || svgImage((item.slug || 'insight').replace(/-/g, ''), 800, 450);
+  const alt = escapeHtml(image?.alt || '');
   return `<article class="editorial-card">
-    <a class="card-media" href="${href}" aria-hidden="true" tabindex="-1"><img src="${imgSrc}" alt=""></a>
+    <a class="card-media" href="${href}" aria-hidden="true" tabindex="-1"><img src="${imgSrc}" alt="${alt}" loading="lazy"></a>
     <div class="card-body">
       <span class="card-meta">${cat}${date}</span>
       <h3><a href="${href}">${escapeHtml(item.title)}</a></h3>
@@ -220,7 +222,8 @@ const imageFiles = [
   'framing.jpg', 'formwork.jpg', 'decking.jpg', 'secondfix.jpg', 'fitout.jpg', 'fitout-2026-v2.jpg', 'architectural.jpg', 'storage.jpg', 'restoration.jpg', 'restoration-2026-v2.jpg', 'heritage.jpg', 'heritage-2026-v2.jpg',
   'kitchen.jpg', 'doors-furniture.jpg', 'flooring.jpg',
   'symbol-joint.png', 'symbol-measure.png', 'symbol-grain.png', 'symbol-repair.png',
-  'mel-one-logo.png'
+  'insight-integrated-joinery.jpg', 'insight-kitchen-costs.jpg', 'insight-heritage-restoration.jpg',
+  'insight-timber-flooring.jpg', 'insight-commercial-fitout.jpg', 'mel-one-logo.png'
 ];
 for (const img of imageFiles) {
   const src = path.join(srcAssets, img);
