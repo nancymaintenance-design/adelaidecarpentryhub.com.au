@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { execFileSync } = require('node:child_process');
 const root = path.join(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'build.mjs'), 'utf8');
 
@@ -16,6 +17,15 @@ test('home page publishes LocalBusiness schema for MEL ONE in Adelaide', () => {
   assert.match(source, /'@type': 'HomeAndConstructionBusiness'/);
   assert.match(source, /addressLocality: 'Adelaide'/);
   assert.match(source, /telephone: content\.contact\.phone/);
+});
+
+test('built homepage gives visitors the Adelaide office address and Google Maps route', () => {
+  execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
+  const home = fs.readFileSync(path.join(root, 'public', 'index.html'), 'utf8');
+  assert.match(home, /Visit our Adelaide office/);
+  assert.match(home, /63 Pirie St, Adelaide, SA 5000/);
+  assert.match(home, /<iframe[^>]+title="Map showing 63 Pirie St, Adelaide SA 5000"/);
+  assert.match(home, /href="https:\/\/www\.google\.com\/maps\/place\/63\+Pirie\+St/);
 });
 
 test('service and insight pages publish breadcrumb and local business relationships', () => {

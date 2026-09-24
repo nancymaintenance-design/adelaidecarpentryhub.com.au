@@ -9,7 +9,7 @@
     "serve":      "node serve.cjs",
     "start":      "node serve.cjs",
     "check":      "node check.cjs",
-    "test":       "node --test test/*.test.cjs"
+    "test":       "node --test --test-concurrency=1 test/*.test.cjs"
   },
   "engines": {
     "node": ">=22.13.0"

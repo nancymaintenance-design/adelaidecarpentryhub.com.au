@@ -39,6 +39,8 @@ const gscToken = String(process.env.GSC_VERIFICATION_TOKEN || '').trim();
 
 // The canonical production origin. Override only for an approved alternate domain.
 const origin = process.env.SITE_ORIGIN || 'https://adelaidecarpentryhub.com.au';
+const officeMapUrl = 'https://www.google.com/maps/place/63+Pirie+St,+Adelaide+SA+5000,+Australia/@-34.925497,138.5996439,16.75z/data=!4m6!3m5!1s0x6ab0cfef572241a3:0x3a231d0888541f86!8m2!3d-34.9258917!4d138.6022966!16s%2Fg%2F11t_rlhdw2?entry=ttu&g_ep=EgoyMDI2MDkyMS4wIKXMDSoASAFQAw%3D%3D';
+const officeMapEmbedUrl = 'https://www.google.com/maps?q=63%20Pirie%20St%2C%20Adelaide%20SA%205000&output=embed';
 
 // Service card color palette
 const serviceColors = {
@@ -309,6 +311,23 @@ const homeBody = `
       <p>${escapeHtml(content.contact.lead)}</p>
       <a class="btn primary" href="/contact/">${escapeHtml(content.contact.cta)}</a>
     </div>
+  </div>
+</section>
+
+<section class="section office-location" aria-labelledby="office-location-title">
+  <div class="wrap">
+    <div class="office-location-copy">
+      <div>
+        ${numberLabel(4, 'Office')}
+        <h2 id="office-location-title">Visit our Adelaide office</h2>
+      </div>
+      <div>
+        <p class="office-address">63 Pirie St, Adelaide, SA 5000</p>
+        <p>Visits are by appointment. Contact MEL ONE first and we will arrange a suitable time to discuss your project.</p>
+      </div>
+    </div>
+    <div class="office-map"><iframe src="${officeMapEmbedUrl}" title="Map showing 63 Pirie St, Adelaide SA 5000" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <a class="text-link office-map-link" href="${officeMapUrl}" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a>
   </div>
 </section>`;
 
