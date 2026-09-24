@@ -18,6 +18,14 @@ test('home page publishes LocalBusiness schema for MEL ONE in Adelaide', () => {
   assert.match(source, /telephone: content\.contact\.phone/);
 });
 
+test('site footer gives visitors safe access to Ellis Services Group social profiles', () => {
+  assert.match(source, /href="https:\/\/www\.facebook\.com\/p\/Ellis-Services-Group-100082926022259\/"/);
+  assert.match(source, /href="https:\/\/au\.linkedin\.com\/in\/ellis-services-group-091541266"/);
+  assert.match(source, /target="_blank" rel="noopener noreferrer"/);
+  assert.match(source, /aria-label="Follow Ellis Services Group on Facebook"/);
+  assert.match(source, /aria-label="Follow Ellis Services Group on LinkedIn"/);
+});
+
 test('service and insight pages publish breadcrumb and local business relationships', () => {
   assert.match(source, /'@type': 'BreadcrumbList'/);
   assert.match(source, /provider: \{ '@id': canonical\('\/#business'\) \}/);

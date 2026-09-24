@@ -169,7 +169,7 @@ function header(active = '') {
 }
 
 function footer() {
-  return `<footer class="site-footer"><div class="wrap footer-grid"><div><a class="footer-brand" href="/">${escapeHtml(brandName)}</a><p>${escapeHtml(content.brand.tagline)}</p></div><div><strong>Services</strong><a href="/services/">${escapeHtml(copy.servicesTitle)}</a><a href="/service-areas/">Service areas</a><a href="/about/">About</a></div><div><strong>Content</strong><a href="/insights/">${escapeHtml(copy.insightsTitle)}</a><a href="/faq/">${escapeHtml(copy.faqTitle)}</a></div><div><strong>Contact</strong><a href="/contact/">${escapeHtml(content.contact.cta)}</a><p style="color:var(--muted);font-size:14px;margin-top:8px;">${escapeHtml(content.contact.phone)}<br>${escapeHtml(content.contact.email)}<br>${escapeHtml(content.contact.address)}</p></div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} ${escapeHtml(brandName)} · Adelaide, SA</span><span>${escapeHtml(content.brand.industry_label)}</span></div></footer>`;
+  return `<footer class="site-footer"><div class="wrap footer-grid"><div><a class="footer-brand" href="/">${escapeHtml(brandName)}</a><p>${escapeHtml(content.brand.tagline)}</p></div><div><strong>Services</strong><a href="/services/">${escapeHtml(copy.servicesTitle)}</a><a href="/service-areas/">Service areas</a><a href="/about/">About</a></div><div><strong>Content</strong><a href="/insights/">${escapeHtml(copy.insightsTitle)}</a><a href="/faq/">${escapeHtml(copy.faqTitle)}</a></div><div><strong>Contact</strong><a href="/contact/">${escapeHtml(content.contact.cta)}</a><p style="color:var(--muted);font-size:14px;margin-top:8px;">${escapeHtml(content.contact.phone)}<br>${escapeHtml(content.contact.email)}<br>${escapeHtml(content.contact.address)}</p></div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} ${escapeHtml(brandName)} · Adelaide, SA</span><div class="footer-social" aria-label="Follow MEL ONE"><span>Follow MEL ONE</span><a class="social-link" href="https://www.facebook.com/p/Ellis-Services-Group-100082926022259/" target="_blank" rel="noopener noreferrer" aria-label="Follow Ellis Services Group on Facebook"><img src="/assets/facebook.png" alt="" width="28" height="28"></a><a class="social-link" href="https://au.linkedin.com/in/ellis-services-group-091541266" target="_blank" rel="noopener noreferrer" aria-label="Follow Ellis Services Group on LinkedIn"><img src="/assets/linkedin.png" alt="" width="28" height="28"></a></div><span>${escapeHtml(content.brand.industry_label)}</span></div></footer>`;
 }
 
 function page({ title, description, route, active = '', body, jsonLd }) {
@@ -229,7 +229,7 @@ const imageFiles = [
   'kitchen.jpg', 'doors-furniture.jpg', 'flooring.jpg',
   'symbol-joint.png', 'symbol-measure.png', 'symbol-grain.png', 'symbol-repair.png',
   'insight-integrated-joinery.jpg', 'insight-kitchen-costs.jpg', 'insight-heritage-restoration.jpg',
-  'insight-timber-flooring.jpg', 'insight-commercial-fitout.jpg', 'mel-one-logo.png'
+  'insight-timber-flooring.jpg', 'insight-commercial-fitout.jpg', 'mel-one-logo.png', 'facebook.png', 'linkedin.png'
 ];
 for (const img of imageFiles) {
   const src = path.join(srcAssets, img);
