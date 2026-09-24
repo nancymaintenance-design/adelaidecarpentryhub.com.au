@@ -75,12 +75,6 @@ summary { cursor: pointer; font-weight: 700; }
 .footer-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: var(--space-3); }
 .footer-grid a { display: block; margin-top: 8px; }
 .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 26px; margin-top: 30px; border-top: 1px solid var(--line); }
-.footer-social { display: flex; align-items: center; gap: 10px; }
-.footer-social > span { color: var(--muted); }
-.social-link { display: inline-flex; width: 28px; height: 28px; border-radius: 6px; overflow: hidden; transition: transform 160ms ease, opacity 160ms ease; }
-.social-link:hover, .social-link:focus-visible { transform: translateY(-2px); opacity: .82; }
-.social-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.social-link img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .admin-note { color: var(--muted); font-size: 14px; }
 /* Fastlane compatibility: deterministic blocks use this small public class set. */
 main > section, main > .site-header, main > footer { width: var(--wide); margin-inline: auto; }
