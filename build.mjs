@@ -142,6 +142,24 @@ function breadcrumbList(items) {
 
 const brandName = content.brand.name;
 const brandMark = content.brand.short_name;
+const imageDimensions = {
+  '/assets/mel-one-logo.png': [512, 512], '/assets/hero-bg.jpg': [1344, 768],
+  '/assets/about-team-2026-v2.jpg': [960, 717], '/assets/framing.jpg': [1200, 654],
+  '/assets/decking.jpg': [1200, 654], '/assets/secondfix.jpg': [1200, 654],
+  '/assets/formwork.jpg': [1200, 654], '/assets/fitout-2026-v2.jpg': [960, 513],
+  '/assets/kitchen.jpg': [1200, 654], '/assets/architectural.jpg': [1408, 752],
+  '/assets/storage.jpg': [1408, 752], '/assets/doors-furniture.jpg': [800, 1200],
+  '/assets/restoration-2026-v2.jpg': [960, 513], '/assets/heritage-2026-v2.jpg': [960, 513],
+  '/assets/flooring.jpg': [1200, 654], '/assets/insight-integrated-joinery.jpg': [960, 540],
+  '/assets/insight-kitchen-costs.jpg': [960, 540], '/assets/insight-heritage-restoration.jpg': [960, 540],
+  '/assets/insight-timber-flooring.jpg': [960, 540], '/assets/insight-commercial-fitout.jpg': [960, 540],
+};
+const reserveImageSpace = (html) => html.replace(/<img\b[^>]*>/gi, (tag) => {
+  if (/\bwidth="\d+"/i.test(tag) && /\bheight="\d+"/i.test(tag)) return tag;
+  const src = tag.match(/\bsrc="([^"]+)"/i)?.[1];
+  const dimensions = imageDimensions[src] || (src?.startsWith('data:image/svg+xml') ? [800, 450] : null);
+  return dimensions ? tag.replace('>', ` width="${dimensions[0]}" height="${dimensions[1]}">`) : tag;
+});
 const copy = {
   servicesTitle: 'Our Services',
   servicesHomeTitle: 'Full-spectrum carpentry, delivered as one',
@@ -189,7 +207,7 @@ function writeRoute(route, html) {
     : route === '/404.html' ? path.join(siteDir, '404.html')
     : path.join(siteDir, route, 'index.html');
   fs.mkdirSync(path.dirname(destination), { recursive: true });
-  fs.writeFileSync(destination, html, 'utf8');
+  fs.writeFileSync(destination, reserveImageSpace(html), 'utf8');
   console.log(`  ✓ ${route}`);
 }
 
