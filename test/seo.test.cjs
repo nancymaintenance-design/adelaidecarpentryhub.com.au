@@ -9,6 +9,7 @@ const vercelConfig = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 
 
 test('production build permits indexing and publishes canonical crawl signals', () => {
   assert.match(source, /const origin = process\.env\.SITE_ORIGIN \|\| 'https:\/\/www\.adelaidecarpentryhub\.com\.au'/);
+  assert.match(source, /<html lang="en-AU">/);
   assert.match(source, /<meta name="robots" content="index,follow">/);
   assert.match(source, /Sitemap: \$\{canonical\('\/sitemap\.xml'\)\}/);
   assert.doesNotMatch(source, /Disallow: \/\\n/);
