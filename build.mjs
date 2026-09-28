@@ -408,6 +408,18 @@ const servicesBody = `<section class="page-hero"><div class="wrap page-hero-grid
 writeRoute('/services/', page({ title: copy.servicesTitle, description: copy.servicesLead, route: '/services/', active: 'services', body: servicesBody }));
 
 // ── Service detail ──────────────────────────────────────────────────────
+const serviceRelatedLinks = {
+  'custom-doors-furniture': [
+    ['/services/storage-solutions/', 'Storage solutions for wardrobes and built-ins'],
+    ['/services/architectural-joinery/', 'Architectural joinery for detailed timber work'],
+    ['/insights/adelaide-custom-wardrobe-planning/', 'Adelaide custom wardrobe planning guide'],
+  ],
+  'storage-solutions': [
+    ['/services/custom-doors-furniture/', 'Custom doors, windows and furniture'],
+    ['/services/architectural-joinery/', 'Architectural joinery services'],
+    ['/insights/adelaide-custom-wardrobe-planning/', 'Adelaide custom wardrobe planning guide'],
+  ],
+};
 for (const [index, item] of content.services.entries()) {
   const route = `/services/${item.slug}/`;
   const body = `<section class="detail-hero"><div class="wrap detail-grid"><div><p class="kicker">SERVICE ${String(index + 1).padStart(2, '0')}</p><h1>${escapeHtml(item.title)}</h1></div><p class="lede">${escapeHtml(item.lead)}</p></div></section>
@@ -421,6 +433,7 @@ for (const [index, item] of content.services.entries()) {
       <p>Tell us the scope, suburb and preferred timing. MEL ONE will help you establish the right next step before a detailed quote.</p>
       <a class="text-link" href="/contact/">Discuss your project</a>
     </aside>
+    ${serviceRelatedLinks[item.slug] ? `<aside class="service-brief"><p class="kicker">Related planning</p><h2>Explore connected timber work</h2>${serviceRelatedLinks[item.slug].map(([href, label]) => `<p><a class="text-link" href="${href}">${label}</a></p>`).join('')}</aside>` : ''}
   </article>
 </div></section>`;
   writeRoute(route, page({ title: item.title, description: item.summary, route, active: 'services', body, jsonLd: {
