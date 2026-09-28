@@ -5,12 +5,22 @@ const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const root = path.join(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'build.mjs'), 'utf8');
+const vercelConfig = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
 
 test('production build permits indexing and publishes canonical crawl signals', () => {
-  assert.match(source, /const origin = process\.env\.SITE_ORIGIN \|\| 'https:\/\/adelaidecarpentryhub\.com\.au'/);
+  assert.match(source, /const origin = process\.env\.SITE_ORIGIN \|\| 'https:\/\/www\.adelaidecarpentryhub\.com\.au'/);
   assert.match(source, /<meta name="robots" content="index,follow">/);
   assert.match(source, /Sitemap: \$\{canonical\('\/sitemap\.xml'\)\}/);
   assert.doesNotMatch(source, /Disallow: \/\\n/);
+});
+
+test('apex host permanently redirects to the approved www canonical origin', () => {
+  assert.deepEqual(vercelConfig.redirects, [{
+    source: '/:path*',
+    has: [{ type: 'host', value: 'adelaidecarpentryhub.com.au' }],
+    destination: 'https://www.adelaidecarpentryhub.com.au/:path*',
+    permanent: true,
+  }]);
 });
 
 test('home page publishes LocalBusiness schema for MEL ONE in Adelaide', () => {
