@@ -196,10 +196,9 @@ function page({ title, description, route, active = '', body, jsonLd }) {
   const fullTitle = title.includes(brandName) ? title : `${title} | ${brandName}`;
   const structured = jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd).replaceAll('<', '\\u003c')}</script>` : '';
   const isInterior = route !== '/';
-  const favicon = encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="#17372f"/><text x="50%" y="55%" font-size="25" font-weight="900" fill="#d5a46b" text-anchor="middle" dominant-baseline="middle" font-family="system-ui">${brandMark}</text></svg>`);
   const analyticsHead = ga4Id ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${ga4Id}');</script>` : '';
   const searchConsoleHead = gscToken ? `<meta name="google-site-verification" content="${escapeHtml(gscToken)}">` : '';
-  return `<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(fullTitle)}</title><meta property="og:type" content="website"><meta property="og:site_name" content="${escapeHtml(brandName)}"><meta property="og:title" content="${escapeHtml(fullTitle)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical(route)}"><meta property="og:image" content="${canonical('/assets/hero-bg.jpg')}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="data:image/svg+xml,${favicon}"><link rel="canonical" href="${canonical(route)}"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/theme.css">${isInterior ? '<link rel="stylesheet" href="/assets/interior.css">' : ''}${analyticsHead}${searchConsoleHead}${structured}</head><body class="${isInterior ? 'interior' : ''}">${header(active)}<main id="main">${body}</main>${footer()}<script src="/assets/base.js" defer></script></body></html>`;
+  return `<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(fullTitle)}</title><meta property="og:type" content="website"><meta property="og:site_name" content="${escapeHtml(brandName)}"><meta property="og:title" content="${escapeHtml(fullTitle)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical(route)}"><meta property="og:image" content="${canonical('/assets/hero-bg.jpg')}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/assets/favicon-192.png"><link rel="canonical" href="${canonical(route)}"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/theme.css">${isInterior ? '<link rel="stylesheet" href="/assets/interior.css">' : ''}${analyticsHead}${searchConsoleHead}${structured}</head><body class="${isInterior ? 'interior' : ''}">${header(active)}<main id="main">${body}</main>${footer()}<script src="/assets/base.js" defer></script></body></html>`;
 }
 
 function writeRoute(route, html) {
@@ -249,7 +248,7 @@ const imageFiles = [
   'kitchen.jpg', 'doors-furniture.jpg', 'flooring.jpg',
   'symbol-joint.png', 'symbol-measure.png', 'symbol-grain.png', 'symbol-repair.png',
   'insight-integrated-joinery.jpg', 'insight-kitchen-costs.jpg', 'insight-heritage-restoration.jpg',
-  'insight-timber-flooring.jpg', 'insight-commercial-fitout.jpg', 'mel-one-logo.png'
+  'insight-timber-flooring.jpg', 'insight-commercial-fitout.jpg', 'mel-one-logo.png', 'favicon-192.png'
 ];
 for (const img of imageFiles) {
   const src = path.join(srcAssets, img);
