@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "node build.mjs",
+  "buildCommand": "node --test --test-concurrency=1 test/*.test.cjs && node build.mjs && node check.cjs",
   "outputDirectory": "public",
   "redirects": [
     {
