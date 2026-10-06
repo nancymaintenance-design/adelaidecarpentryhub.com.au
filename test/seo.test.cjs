@@ -58,7 +58,7 @@ test('Adelaide insight pack generates JSON Feed and RSS entries', () => {
 test('home page title and description target Adelaide carpentry searches concisely', () => {
   const content = fs.readFileSync(path.join(root, 'src', 'content-pack', 'site-content.json'), 'utf8');
   assert.match(source, /title: 'Adelaide Carpentry, Joinery & Timber Restoration'/);
-  assert.match(content, /MEL ONE provides Adelaide carpentry, custom joinery, decking, cabinetry and heritage timber restoration/);
+  assert.match(content, /Need carpentry in Adelaide\\? Explore MEL ONE services for framing, custom joinery, cabinetry, built-in storage and timber restoration/);
 });
 
 test('detail pages provide a clear planning path and enquiry action without altering the home hero', () => {
