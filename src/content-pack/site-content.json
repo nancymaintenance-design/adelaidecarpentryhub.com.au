@@ -8,9 +8,9 @@
   },
   "hero": {
     "eyebrow": "Adelaide · South Australia · Full-Spectrum Carpentry",
-    "title": "Structural Carpentry · Fine Joinery",
-    "accent": "One team, the full timber lifecycle",
-    "lead": "Founded in 2011, MEL ONE is an Adelaide carpentry, joinery and maintenance company serving homeowners and real estate agents — clear communication, practical support and fair pricing on every job.",
+    "title": "Adelaide Carpentry & Joinery",
+    "accent": "From structure to timber finish",
+    "lead": "MEL ONE works on carpentry and joinery projects across Adelaide, including framing, cabinetry, built-in storage and timber restoration. Explore the service that fits your project, then contact the team to discuss scope.",
     "primary_cta": "Explore our services",
     "secondary_cta": "Why choose us"
   },
@@ -189,13 +189,13 @@
     },
     {
       "slug": "storage-solutions",
-      "title": "Storage Solutions",
-      "summary": "Bespoke wardrobes, display cases, study units and media walls — precise planning and durable hardware for high-use storage.",
-      "lead": "Good storage design doubles a room. We design around real movement so everything has a place and still looks great.",
+      "title": "Custom Wardrobes & Built-In Storage in Adelaide",
+      "summary": "Custom wardrobes and built-in storage for Adelaide homes. Explore walk-in wardrobe layouts, study units and media walls, then discuss your project with MEL ONE.",
+      "lead": "MEL ONE plans built-in and walk-in wardrobe storage for Adelaide homes. Start with the room dimensions, door clearance and what you need to store, then discuss a layout that fits daily use.",
       "sections": [
         {
-          "title": "Walk-in wardrobes",
-          "summary": "Hanging, drawer, shoe and luggage zones with adjustable shelving that grows with you."
+          "title": "Built-in and walk-in wardrobes",
+          "summary": "Plan hanging space, drawers, shoes and luggage around the available width, depth and door access. Adjustable shelves can make the layout easier to adapt."
         },
         {
           "title": "Study units",
@@ -547,7 +547,7 @@
     ]
   },
   "seo": {
-    "site_description": "MEL ONE provides Adelaide carpentry, custom joinery, decking, cabinetry and heritage timber restoration. Request a clear quote from one local team."
+    "site_description": "Need carpentry in Adelaide? Explore MEL ONE services for framing, custom joinery, cabinetry, built-in storage and timber restoration, then discuss your project."
   },
   "serviceAreas": {
     "title": "Service areas",

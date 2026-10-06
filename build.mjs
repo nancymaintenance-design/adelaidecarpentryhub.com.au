@@ -289,6 +289,7 @@ const homeBody = `
           <span class="text-link">View service ↗</span>
         </a>`).join('')}
     </div>
+    <p>Considering a built-in wardrobe? <a class="text-link" href="/services/storage-solutions/">Explore custom wardrobes and built-in storage in Adelaide</a>, or read our <a class="text-link" href="/insights/adelaide-custom-wardrobe-planning/">wardrobe planning guide</a>.</p>
     <div style="margin-top:32px;text-align:center;">
       <a class="btn" href="/services/">See all ${content.services.length} services →</a>
     </div>
@@ -414,6 +415,7 @@ const serviceRelatedLinks = {
     ['/insights/adelaide-custom-wardrobe-planning/', 'Adelaide custom wardrobe planning guide'],
   ],
   'storage-solutions': [
+    ['/', 'Adelaide carpentry and joinery overview'],
     ['/services/custom-doors-furniture/', 'Custom doors, windows and furniture'],
     ['/services/architectural-joinery/', 'Architectural joinery services'],
     ['/insights/adelaide-custom-wardrobe-planning/', 'Adelaide custom wardrobe planning guide'],
