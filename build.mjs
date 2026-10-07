@@ -568,8 +568,8 @@ const homeBody = `
         <h1>${escapeHtml(content.hero.title)}<br><span>${escapeHtml(content.hero.accent)}</span></h1>
         <p class="lede">${escapeHtml(content.hero.lead)}</p>
         <div class="actions">
-          <a class="btn primary" href="/services/">${escapeHtml(content.hero.primary_cta)}</a>
-          <a class="btn ghost" href="/about/">${escapeHtml(content.hero.secondary_cta)}</a>
+          <a class="btn primary" href="/contact/">${escapeHtml(content.hero.primary_cta)}</a>
+          <a class="btn ghost" href="/services/">${escapeHtml(content.hero.secondary_cta)}</a>
         </div>
       </div>
     </div>
@@ -815,7 +815,7 @@ for (const [index, item] of content.services.entries()) {
     <aside class="service-brief">
       <p class="kicker">Planning notes</p>
       <h2>One team, from first measure to final finish</h2>
-      <p>Tell us the scope, suburb and preferred timing. Book a site assessment to discuss the work scope, practical recommendations and written quote guidance.</p>
+      <p>Tell MEL ONE what needs attention or what you want built, your Adelaide suburb and preferred timing. We arrange a site assessment, check the existing condition or measure for new work, and provide a written quote for the agreed scope, materials and access.</p>
       <a class="text-link" href="/contact/">Discuss your project</a>
     </aside>
     ${relatedContent('service', item.slug)}
@@ -859,7 +859,7 @@ function collection(kind, label, items, intro) {
 <section class="section article-cta-section"><div class="wrap reading article-cta">
   <p class="kicker">Talk through your scope</p>
   <h2>Planning a timber project in Adelaide?</h2>
-  <p>Share the project details, photos and Adelaide location for a tailored timber project discussion.</p>
+  <p>Tell MEL ONE about your Adelaide timber project or repair concern. We arrange a site assessment, confirm the work required and provide a written quote for the agreed scope. Existing photos or drawings are optional; email them to handymanfelix.au2026@outlook.com.</p>
   <a class="btn primary" href="/contact/">Start an enquiry</a>
 </div></section>`;
     writeRoute(route, page({ title: detailTitle('insight', item), description: detailDescription(item), route, active: kind, body: article, jsonLd: {
@@ -949,15 +949,15 @@ const renderServiceAreaPage = (region) => {
   const services = safeArray(region.serviceSlugs).map(serviceBySlug).filter(Boolean);
   const faqs = safeArray(region.faqs);
   const locations = locationsFor(region);
-  const body = `<section class="page-hero service-areas-hero"><div class="wrap page-hero-grid"><div><p class="kicker">ADELAIDE · ${escapeHtml(region.name.toUpperCase())}</p><h1>${escapeHtml(region.title)}</h1></div><div><p class="lede">${escapeHtml(region.lead)}</p><a class="btn primary" href="#book-area-work">Book a local carpentry enquiry</a></div></div></section>
+  const body = `<section class="page-hero service-areas-hero"><div class="wrap page-hero-grid"><div><p class="kicker">ADELAIDE · ${escapeHtml(region.name.toUpperCase())}</p><h1>${escapeHtml(region.title)}</h1></div><div><p class="lede">${escapeHtml(region.lead)}</p><a class="btn primary" href="#book-area-work">Request a local site assessment</a></div></div></section>
 <section class="section area-detail-section"><div class="wrap area-detail-grid"><div><p class="kicker">LOCATION AND ACCESS</p><h2>Start with the street, access and timber work you need</h2></div><div><p>${escapeHtml(region.focus)}</p><p>${escapeHtml(region.assessment)}</p></div></div></section>
 <section class="section area-detail-section area-detail-tint"><div class="wrap"><p class="kicker">PREPARE THE ENQUIRY</p><h2>Three details that prevent guesswork</h2><div class="area-detail-cards">${safeArray(region.bookingDetails).map((item, index) => `<article><span class="section-no">0${index + 1}</span><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)}</p></article>`).join('')}</div></div></section>
 <section class="section area-detail-section"><div class="wrap"><p class="kicker">PROPERTY REPAIR CONTEXT</p><h2>Carpentry and joinery work we can discuss in ${escapeHtml(region.name)}</h2><div class="area-detail-cards">${safeArray(region.scenarios).map((item) => `<article><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)}</p></article>`).join('')}</div></div></section>
 <section class="section area-detail-section area-detail-tint"><div class="wrap"><p class="kicker">RELATED SERVICE PATHS</p><h2>Find the closest type of timber work</h2><div class="area-service-links">${services.map((service) => `<a href="/services/${service.slug}/"><strong>${escapeHtml(service.title)}</strong><span>${escapeHtml(service.summary)}</span><em>View service details →</em></a>`).join('')}</div></div></section>
-<section class="section area-detail-section"><div class="wrap"><p class="kicker">STREETS SERVED</p><h2>Carpentry and joinery near ${escapeHtml(region.name)} streets</h2><p class="area-detail-intro">Choose your street to include it in the booking form below. MEL ONE has more than ten years in carpentry, experienced carpenters and a standardised maintenance team for accurate repair discussions.</p><ul class="suburb-list area-detail-streets">${locations.map((location) => `<li><a href="${route}?street=${encodeURIComponent(location)}#book-area-work" aria-label="Book carpentry and joinery near ${escapeHtml(location)} in ${escapeHtml(region.name)}">${escapeHtml(location)}</a></li>`).join('')}</ul></div></section>
-<section class="section area-detail-section area-detail-trust"><div class="wrap area-detail-grid"><div><p class="kicker">WHY MEL ONE</p><h2>Experienced local timber repair conversations</h2></div><div><p>MEL ONE has served more than 10,000 customers with a practical, standardised maintenance approach. Our team listens to the visible problem, checks the location and access context, and uses photos and dimensions to help identify the next useful question.</p><p>For Adelaide enquiries, MEL ONE can respond in as little as 30 minutes, subject to current availability. A detailed street and a short description of the timber work help us move quickly without making assumptions.</p></div></div></section>
+<section class="section area-detail-section"><div class="wrap"><p class="kicker">STREETS SERVED</p><h2>Carpentry and joinery near ${escapeHtml(region.name)} streets</h2><p class="area-detail-intro">Choose your street to include it in the booking form below. MEL ONE has more than ten years in carpentry, experienced carpenters and a standardised maintenance team for on-site assessment and agreed repairs.</p><ul class="suburb-list area-detail-streets">${locations.map((location) => `<li><a href="${route}?street=${encodeURIComponent(location)}#book-area-work" aria-label="Book carpentry and joinery near ${escapeHtml(location)} in ${escapeHtml(region.name)}">${escapeHtml(location)}</a></li>`).join('')}</ul></div></section>
+<section class="section area-detail-section area-detail-trust"><div class="wrap area-detail-grid"><div><p class="kicker">WHY MEL ONE</p><h2>Experienced local timber repair team</h2></div><div><p>MEL ONE provides carpentry and joinery repairs in Adelaide. Our carpenters inspect the timber, hardware and adjoining finishes on site, identify the repair required and confirm the plan and written quote, including access and any qualified service arrangements.</p><p>For Adelaide enquiries, MEL ONE can respond in as little as 30 minutes, subject to current availability. A detailed street and a short description of the timber work help us move quickly without making assumptions.</p></div></div></section>
 <section class="section area-detail-section"><div class="wrap area-faq"><p class="kicker">LOCAL QUESTIONS</p><h2>${escapeHtml(region.name)} carpentry FAQs</h2>${faqs.map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('')}</div></section>
-<section class="section area-booking" id="book-area-work"><div class="wrap contact-grid"><div><p class="kicker">CONTACT MEL ONE</p><h2>${escapeHtml(region.bookingTitle)}</h2><p data-area-context>Send the street, the type of timber work, photos where available and any access notes. We will reply using the contact details you provide.</p><p><strong>Phone:</strong> ${escapeHtml(content.contact.phone)}<br><strong>Email:</strong> ${escapeHtml(content.contact.email)}<br><strong>Office:</strong> ${escapeHtml(content.contact.address)}</p></div>${contactForm(region.bookingTitle, 'Outline the timber repair, joinery or maintenance work you would like to discuss.', `data-area-region="${escapeHtml(region.name)}" data-area-streets="${escapeHtml(JSON.stringify(locations))}"`)}</div></section>`;
+<section class="section area-booking" id="book-area-work"><div class="wrap contact-grid"><div><p class="kicker">CONTACT MEL ONE</p><h2>${escapeHtml(region.bookingTitle)}</h2><p data-area-context>Tell us the street, timber work and any access notes. We contact you to arrange the assessment, check the work required and confirm the scope and quote. Photos are optional; email existing images to handymanfelix.au2026@outlook.com.</p><p><strong>Phone:</strong> ${escapeHtml(content.contact.phone)}<br><strong>Email:</strong> ${escapeHtml(content.contact.email)}<br><strong>Office:</strong> ${escapeHtml(content.contact.address)}</p></div>${contactForm(region.bookingTitle, 'Outline the timber repair, joinery or maintenance work you would like to discuss.', `data-area-region="${escapeHtml(region.name)}" data-area-streets="${escapeHtml(JSON.stringify(locations))}"`)}</div></section>`;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -1047,7 +1047,7 @@ const aboutBody = `<section class="page-hero"><div class="wrap page-hero-grid"><
   <p class="kicker">GOOD TO KNOW</p><h2>${escapeHtml(content.about.faq_title || 'Company and project questions')}</h2>
   ${aboutFaq}
 </div></section>
-<section class="section closing"><div class="wrap closing-inner"><h2>Start with the job, suburb and a few photos</h2><div><p>Call ${escapeHtml(content.contact.phone)}, email ${escapeHtml(content.contact.email)} or use our contact form. Tell us the Adelaide suburb, what needs attention and any important access details.</p><a class="btn primary" href="/contact/">Contact MEL ONE</a></div></div></section>`;
+<section class="section closing"><div class="wrap closing-inner"><h2>Start with the job and suburb</h2><div><p>Call ${escapeHtml(content.contact.phone)}, email ${escapeHtml(content.contact.email)} or use our contact form. Tell us the Adelaide suburb, what needs attention and any important access details. We arrange a site assessment and confirm the work scope and written quote. Photos are optional; email existing images to handymanfelix.au2026@outlook.com.</p><a class="btn primary" href="/contact/">Contact MEL ONE</a></div></div></section>`;
 writeRoute('/about/', page({ title: content.about.title, description: content.about.lead, route: '/about/', active: 'about', body: aboutBody, jsonLd: { '@context': 'https://schema.org', '@type': 'Organization', name: brandName, description: content.about.lead } }));
 
 // ── Contact ─────────────────────────────────────────────────────────────

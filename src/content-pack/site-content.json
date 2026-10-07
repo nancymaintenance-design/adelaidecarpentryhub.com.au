@@ -11,8 +11,8 @@
     "title": "Structural Carpentry · Fine Joinery",
     "accent": "One team, the full timber lifecycle",
     "lead": "Founded in 2011, MEL ONE is an Adelaide carpentry, joinery and maintenance company serving homeowners and real estate agents — clear communication, practical support and fair pricing on every job.",
-    "primary_cta": "Explore our services",
-    "secondary_cta": "Why choose us"
+    "primary_cta": "Request a site assessment and quote",
+    "secondary_cta": "Explore our services"
   },
   "pageCopy": {
     "servicesTitle": "Carpentry & Joinery",
@@ -119,7 +119,7 @@
         },
         {
           "title": "Preparing an outdoor-living brief",
-          "summary": "Send photos, approximate dimensions, a site address and examples of the style you prefer. It also helps to note access through the house or side gate, desired features such as stairs or screens, and whether the work connects to a renovation. A clear brief lets us discuss options in a way that is useful for an Adelaide site, not merely decorative."
+          "summary": "Tell MEL ONE the outdoor area, features and style you want. We measure the site and check access, levels and connections to the house before confirming design, preparation and the written quote. Existing photos, sketches and approximate dimensions are optional; email them to handymanfelix.au2026@outlook.com if available."
         }
       ]
     },
@@ -255,7 +255,7 @@
         },
         {
           "title": "Briefing a commercial refurbishment",
-          "summary": "Send the current drawings, tenancy or landlord requirements, photos, programme, opening deadline and a list of desired carpentry outcomes. Note whether the site is occupied and which trades are already engaged. This lets us evaluate the actual carpentry package and its interfaces, rather than providing a broad allowance that hides risk until the project is underway."
+          "summary": "Tell MEL ONE the premises, project stage, opening deadline and desired carpentry work. We assess the site, occupied areas and interfaces with other trades, then confirm the carpentry package and written quote. Existing drawings, tenancy requirements, programme and photos help if available; we agree any required approvals and final specifications before work begins."
         }
       ]
     },
@@ -351,7 +351,7 @@
         },
         {
           "title": "What to bring to an architectural joinery brief",
-          "summary": "Provide drawings, elevations, materials schedule, inspiration imagery, site photos, dimensions and the intended completion date. Identify any nominated products, lighting, hardware, stone or glazing that meet the joinery. This gives us the context to discuss scope, manufacturing sequence and installation access in detail, rather than treating a bespoke feature as standard cabinetry."
+          "summary": "Tell MEL ONE the feature and finish you want and the current project stage. We measure the site and confirm interfaces with hardware, lighting, stone or glazing, the manufacture and installation sequence and the written quote. Existing drawings, elevations, materials schedules, inspiration images and photos are optional for first contact. Final drawings, specifications and required approvals are agreed before manufacture."
         }
       ]
     },
@@ -399,7 +399,7 @@
         },
         {
           "title": "Preparing for a custom-storage consultation",
-          "summary": "Photos, a rough room plan, ceiling height, wall dimensions and a list of what needs to be stored are an excellent starting point. Include appliances, screens or equipment that must fit, and note access restrictions in apartments or older homes. This lets us develop a storage conversation around real constraints rather than generic cupboard modules."
+          "summary": "Photos, a rough room plan, ceiling height, wall dimensions and a list of what needs to be stored are an excellent starting point. Include appliances, screens or equipment that must fit, and note access restrictions in apartments or older homes. We measure the room and clearances on site, develop the storage layout around your needs and confirm the materials, installation scope and written quote."
         }
       ]
     },
@@ -443,7 +443,7 @@
         },
         {
           "title": "A useful custom-piece enquiry",
-          "summary": "Share photos, dimensions, sketches or drawings, inspiration images, timber or finish preferences, intended use and target timing. For external doors and windows, include the opening, orientation and existing construction; for furniture, include how many people will use it. This gives us enough context to discuss a genuinely tailored solution rather than an unsuitable off-the-shelf assumption."
+          "summary": "Tell MEL ONE the intended use, timber or finish preferences and target timing. Existing photos, approximate dimensions, sketches, drawings and inspiration images are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. For external doors and windows, describe the opening and orientation; for furniture, describe who will use it. We measure on site and confirm the design, materials and quote before manufacture."
         }
       ]
     },
@@ -487,7 +487,7 @@
         },
         {
           "title": "What to send for a repair assessment",
-          "summary": "Photos from near and far, the address, age or type of building, when the issue was first noticed, and any reports from pest, plumbing or building professionals are helpful. Mention access limitations and whether the area is occupied. This information lets us triage the likely carpentry scope and advise what further investigation may be needed before a permanent repair is priced."
+          "summary": "Photos from near and far, the address, age or type of building, when the issue was first noticed, and any reports from pest, plumbing or building professionals are helpful. Mention access limitations and whether the area is occupied. MEL ONE uses this information to prepare the site assessment. We inspect the timber, investigate moisture or movement concerns and confirm the restoration scope and written quote, including any qualified investigation required."
         }
       ]
     },
@@ -530,8 +530,8 @@
           "summary": "Traditional openings depend on many small elements working together: sashes, cords, weights, stops, weathering details, glazing and paint systems. We review operation and visible condition as part of the carpentry scope, while specialist glazing, coatings or performance requirements are coordinated with the relevant trades. Ongoing inspection helps identify coating or water-entry issues before more substantial damage develops."
         },
         {
-          "title": "Starting a heritage carpentry conversation",
-          "summary": "Provide clear photos, the address, any existing heritage advice or approvals, drawings, known history and the areas that concern you most. Wide shots establish context; close-ups show profiles and deterioration. This lets us discuss whether the next step is a site assessment, a design or heritage consultation, a limited repair or a broader staged restoration plan."
+          "title": "Arrange a heritage carpentry assessment",
+          "summary": "Tell MEL ONE the address, timber elements and concerns you have noticed. Existing heritage advice, approvals, drawings, history and safe photos help if available, but are optional for first contact. We assess the timber on site, identify what can be retained or repaired and confirm the restoration plan and quote, including qualified heritage input and approval requirements."
         }
       ]
     },
@@ -575,7 +575,7 @@
         },
         {
           "title": "Information for a flooring or deck review",
-          "summary": "Send photos in daylight, approximate area, material if known, age of the existing finish, signs of movement or moisture and your preferred outcome. For decks, include the underside where safely accessible and note nearby drainage or vegetation. This helps us distinguish maintenance from repair or replacement and plan a site visit around the parts of the timber system that matter most."
+          "summary": "Describe the flooring or deck condition and your preferred finish. Existing daylight photos, approximate area, material or coating history are optional; do not enter an unsafe underside to photograph it. We inspect the timber, fixings, moisture exposure and drainage on site and confirm maintenance, repair or replacement work and the quote."
         }
       ]
     },
@@ -583,7 +583,7 @@
       "slug": "door-window-repairs",
       "title": "Door & Window Repairs",
       "summary": "Practical repairs for timber doors, window frames, sashes and trim — assess sticking, weathering and local damage before deciding the right next step.",
-      "lead": "MEL ONE helps Adelaide owners plan practical timber door and window repairs. We look at the visible condition, how the opening operates and the surrounding trim so an enquiry can distinguish a small adjustment from a wider repair scope.",
+      "lead": "MEL ONE repairs timber doors and windows in Adelaide. We inspect the opening, timber, hardware and adjoining trim on site, identify the adjustment or repair needed and confirm the work plan and written quote.",
       "sections": [
         {
           "title": "What door and window repair can cover",
@@ -591,7 +591,7 @@
         },
         {
           "title": "Common signs worth recording",
-          "summary": "Owners often notice a door rubbing, a latch that no longer meets, loose trim, peeling paint, soft timber, a window that is difficult to open or a draft around an opening. Photograph the whole opening as well as close-ups of the affected area. Note whether the issue changes after rain, heat or seasonal movement. These details help establish whether a local repair, adjustment or broader condition review is the sensible next conversation."
+          "summary": "Owners may notice rubbing doors, misaligned latches, loose trim, peeling paint, soft timber, difficult windows or draughts. Tell MEL ONE what has changed, including whether it follows rain or seasonal movement. Safely taken whole-opening and detail photos are optional. We check the timber, hardware and adjoining surfaces on site and confirm local repair, adjustment or any wider condition assessment required."
         },
         {
           "title": "Condition, water and surrounding materials",
@@ -611,7 +611,7 @@
         },
         {
           "title": "Information for a useful repair enquiry",
-          "summary": "Send daylight photos, the Adelaide suburb, approximate opening size, the number of doors or windows involved and a short description of when the issue occurs. Include close-ups of any damaged timber, hardware or water staining and say whether painting, glazing, flooring or other renovation work is planned. This makes it easier to discuss an appropriate site review, likely repair sequence and related services such as door jamb and trim work, restoration or custom doors."
+          "summary": "Describe when the door or window problem occurs, your Adelaide suburb and the number of openings. Existing daylight photos and approximate sizes are optional; email them to handymanfelix.au2026@outlook.com if available. Tell us about planned painting, glazing or flooring. We inspect the openings on site and confirm the repair sequence, any related trim or qualified glazing arrangements and the written quote."
         }
       ]
     },
@@ -646,8 +646,8 @@
           "summary": "The most successful interior finish comes from sequencing. Painting, flooring, door hanging, joinery installation and skirting work can affect one another, especially where caulking, filling, coating and touch-up responsibilities differ. Let us know what stage the room is at and which trades are still to follow. We can then discuss when trim should be measured and installed, and how it will connect to new door jambs, wardrobes or kitchen cabinetry."
         },
         {
-          "title": "What to send before requesting a quote",
-          "summary": "Provide wide room photos, close-ups of the existing profile, approximate room dimensions, floor-finish information and whether you want repair, matching or a new profile. Mention any wet areas, curved walls, stairs, built-ins or planned doors. A simple sketch can be helpful for larger areas. Clear information lets MEL ONE discuss an Adelaide skirting-board scope based on the actual junctions and finishes rather than a generic estimate."
+          "title": "Details that help us prepare the site measure",
+          "summary": "Tell MEL ONE whether you need skirting repair, profile matching or new installation, and which rooms are involved. Photos, approximate dimensions and a sketch are optional for first contact; existing floor-finish and planned-door details help us prepare. We measure the junctions on site, check wet areas, curves and built-ins and confirm the profile, work scope and written quote."
         }
       ]
     },
@@ -683,7 +683,7 @@
         },
         {
           "title": "Preparing an Adelaide trim enquiry",
-          "summary": "Share photos of both sides of the opening, rough width and height, wall thickness if known, floor-finish details and photos of any existing trim to match. Include the proposed door type, hardware and the current build stage. For a renovation, show nearby skirtings, cabinetry and walls so the scope can account for visible transitions. MEL ONE can then discuss door-jamb, architrave and related second-fix work on a clear basis."
+          "summary": "Tell MEL ONE the proposed door type, hardware, current build stage and trim that needs matching. Existing photos of the opening or trim and approximate measurements are optional; email them to handymanfelix.au2026@outlook.com if available. We measure the opening, wall thickness and floor-finish transitions on site, check nearby skirtings and cabinetry, and confirm the door-jamb, architrave and second-fix work in the quote."
         }
       ]
     },
@@ -719,7 +719,7 @@
         },
         {
           "title": "Details for a useful fencing enquiry",
-          "summary": "Send photos from both sides where appropriate, approximate length and height, the number of affected bays, access information and a note of the damage or movement you have seen. Include nearby structures, slopes, garden beds and any gate that connects to the run. For Adelaide fence repairs or replacement, this information lets MEL ONE discuss whether a site review, local repair or broader replacement conversation is the appropriate next step."
+          "summary": "Tell MEL ONE which fence sections need attention, what has moved or broken and any nearby gates, structures, slopes or garden beds. Safely taken photos and approximate lengths or heights are optional. We check posts, rails, panels, access and ground conditions on site, explain repair or replacement options and confirm the agreed scope and written quote."
         }
       ]
     },
@@ -735,7 +735,7 @@
         },
         {
           "title": "New gates for access and privacy",
-          "summary": "A new side gate, pedestrian gate or garden entry should suit how the area is used. Opening direction, clear width, rubbish-bin or garden access, privacy, sight lines and the relationship to a deck or path all affect the right layout. Share photos and a rough measurement of the opening, plus examples of the style you prefer. This helps turn a general request for a timber gate into a clear discussion about access, finish and integration with the existing fence."
+          "summary": "A new side gate, pedestrian gate or garden entry should suit how the area is used. Opening direction, clear width, rubbish-bin or garden access, privacy, sight lines and the relationship to a deck or path all affect the layout. Tell MEL ONE the access and style you want; existing photos and approximate measurements are optional via handymanfelix.au2026@outlook.com. We measure the opening, check the existing fence and confirm the gate design, hardware and quote."
         },
         {
           "title": "Gate alignment and daily movement",
@@ -755,7 +755,7 @@
         },
         {
           "title": "What to include in a gate enquiry",
-          "summary": "Send photos of the whole opening, dimensions if available, desired use, opening direction, current hardware and nearby fence or path conditions. Mention pets, children, shared access, security needs and any work that is planned around the same time. With this information, MEL ONE can discuss an Adelaide timber gate repair or installation scope that accounts for the actual opening and the way the property is used."
+          "summary": "Tell MEL ONE how the gate will be used, the opening direction and any existing hardware or nearby fence and path issues. Photos and approximate dimensions are optional for first contact. Mention pets, children, shared access and security needs. We measure the opening and check hinges, posts, latch and clearances on site, then confirm repair or installation requirements and the written quote."
         }
       ]
     },
@@ -808,12 +808,12 @@
           "summary": "Deck boards commonly weather first: raised grain, splinters, loose fasteners and localised rot can make the surface uncomfortable without proving that the frame needs replacement. A closer inspection should also include joists, bearers, posts, connection points and the timber where it meets the house. Soft timber, persistent movement, visible decay around fasteners or a deck that no longer drains freely are reasons to investigate the structure rather than simply re-oil the surface."
         },
         {
-          "title": "Why Adelaide exposure changes the maintenance conversation",
+          "title": "How Adelaide exposure affects maintenance priorities",
           "summary": "Sun, rain and coastal air do not affect every Adelaide deck in the same way. An exposed western deck may need a different finishing cycle from a sheltered courtyard, while salt-laden air can accelerate corrosion where the wrong fixings have been used. The useful starting point is not a generic lifespan claim: note the deck orientation, shade, moisture paths, proximity to the coast and whether leaf litter or planter boxes keep sections damp."
         },
         {
           "title": "Prepare a quote-ready scope",
-          "summary": "Take wide photos, close-ups of concern areas and a simple plan showing stairs, balustrades, built-in seating or roof posts. Record approximate deck size, access constraints, preferred material and whether you want the existing frame assessed for reuse. A good scope separates demolition, structural repairs, new boards, stairs, handrails, finishing and waste removal, so the quote can show what is included and which items depend on the site condition."
+          "summary": "Tell MEL ONE the deck location, preferred material, access constraints and whether you want the existing frame checked for reuse. Existing wide photos, close-ups and plans are optional; email them to handymanfelix.au2026@outlook.com if available. We inspect the frame, measure the deck and check stairs, balustrades, seating and posts. The quote separates demolition, structural repairs, boards, stairs, handrails, finishing and waste removal, with any site-dependent items explained."
         },
         {
           "title": "Choose the next step based on evidence",
@@ -863,7 +863,7 @@
         },
         {
           "title": "Plan the installation as carefully as the cabinet",
-          "summary": "Confirm access from the street to the room, stair turns, parking, flooring protection and the timing of painting, electrical work and new carpet. A clear installation sequence reduces the risk that joinery is measured before adjoining finishes are ready. When requesting a quote, provide photos, a rough sketch, preferred finishes and a list of the contents the wardrobe needs to store."
+          "summary": "Confirm access from the street to the room, stair turns, parking, flooring protection and the timing of painting, electrical work and new carpet. A clear installation sequence reduces the risk that joinery is measured before adjoining finishes are ready. To request a quote, tell MEL ONE what the wardrobe needs to store and the finishes you prefer. Existing room photos, a rough sketch and approximate measurements are optional; email them to handymanfelix.au2026@outlook.com if available. MEL ONE confirms the room and access measurements on site."
         },
         {
           "title": "Set realistic depths and clearances",
@@ -887,7 +887,7 @@
         },
         {
           "title": "From your first brief to an agreed wardrobe scope",
-          "summary": "Start with room photos, approximate dimensions, a storage list and preferred door or finish options. MEL ONE then carries out the site measure, checks walls, floors and access, and confirms the proposed internal layout. Review door movement, drawer projection, hardware clearances, filler details and any lighting interfaces together. Approve the drawings and specification before the final quoted scope proceeds to manufacture and installation."
+          "summary": "Start with a storage list and the door or finish options you want. Existing room photos and approximate dimensions are optional; email them to handymanfelix.au2026@outlook.com if available. MEL ONE then carries out the site measure, checks walls, floors and access, and confirms the proposed internal layout. Review door movement, drawer projection, hardware clearances, filler details and any lighting interfaces together. Approve the drawings and specification before the final quoted scope proceeds to manufacture and installation."
         },
         {
           "title": "What your wardrobe quote should include",
@@ -943,7 +943,7 @@
         },
         {
           "title": "Check heritage and planning requirements early",
-          "summary": "Some Adelaide properties are subject to heritage or planning controls. Requirements vary with the property and the proposed work, especially where external fabric or visible street-facing elements are affected. Before starting substantial alterations, confirm the current requirements with the relevant authority or a suitably qualified adviser. This article is a planning guide, not heritage or legal advice."
+          "summary": "Some Adelaide properties are subject to heritage or planning controls. Requirements vary with the property and the proposed work, especially where external fabric or visible street-facing elements are affected. Contact MEL ONE for an on-site assessment of the heritage timber. We review the proposed repair, identify the heritage or planning requirements, and confirm qualified service arrangements and required project documents before work starts. Formal approvals remain with the relevant authority; this guide does not replace heritage or legal advice."
         },
         {
           "title": "Give the repair a maintenance plan",
@@ -1200,7 +1200,7 @@
         },
         {
           "title": "Prepare an opening-ready brief",
-          "summary": "For an initial fitout conversation, share drawings, site photos, intended opening date, tenancy or landlord information, brand requirements, operating hours and a list of nominated trades or suppliers. Identify any existing approvals and known constraints. This enables a practical discussion about carpentry and joinery scope, programme risk and the information still needed before a reliable price or sequence can be confirmed."
+          "summary": "Tell MEL ONE the intended opening date, tenancy or landlord arrangements, brand requirements, operating hours and nominated trades or suppliers. Existing drawings and site photos are optional for the initial request; email them to handymanfelix.au2026@outlook.com if available. We inspect and measure the premises, review known constraints and confirm the work, programme and quote. Required approvals and agreed specifications must be in place before the affected fitout work begins."
         }
       ]
     }
@@ -1224,15 +1224,15 @@
     },
     {
       "question": "What does custom cabinetry cost?",
-      "answer": "Price depends on material, size and detail. Adelaide 2026 reference (cabinets only, no benchtops): standard 2-pac MDF $8,000–$18,000; mid composite $15,000–$30,000; solid/high-end (Blackwood, American Oak) $30,000–$60,000+. We give a written quote after measure, with a free preliminary assessment and 3D design."
+      "answer": "Price depends on material, size and detail. MEL ONE cabinetry price range (cabinets only, no benchtops): standard 2-pac MDF $8,000–$18,000; mid composite $15,000–$30,000; solid/high-end (Blackwood, American Oak) $30,000–$60,000+. We give a written quote after measure, with a free preliminary assessment and 3D design."
     },
     {
       "question": "How is decking priced?",
-      "answer": "Driven by material and scope. Adelaide reference: Treated Pine $180–$280/m²; Merbau $280–$400/m²; Spotted Gum $320–$450/m²; base works and waterproofing add $2,000–$5,000. Confirmed after site check."
+      "answer": "MEL ONE decking price ranges: Treated Pine $180–$280/m²; Merbau $280–$400/m²; Spotted Gum $320–$450/m²; base works and waterproofing add $2,000–$5,000. We confirm the materials, agreed scope and written quote after a site assessment."
     },
     {
       "question": "Do you give free quotes?",
-      "answer": "Yes — a free preliminary assessment and quote guidance. Simple jobs (one furniture piece, small repair) get a phone/photo estimate; complex jobs (kitchen reno, structural carpentry, commercial fitout) get an on-site measure and a detailed written quote valid 30 days."
+      "answer": "Yes — a free preliminary assessment and quote. Simple jobs (one furniture piece, small repair) get a phone/photo estimate; complex jobs (kitchen reno, structural carpentry, commercial fitout) get an on-site measure and a detailed written quote valid 30 days."
     },
     {
       "question": "What does termite damage repair cost?",
@@ -1273,7 +1273,7 @@
   ],
   "about": {
     "title": "About MEL ONE Adelaide",
-    "lead": "MEL ONE takes Adelaide carpentry, joinery, repair and renovation enquiries with a practical focus on clear scope, considered sequencing and a reliable point of contact from first photos through to handover.",
+    "lead": "MEL ONE provides Adelaide carpentry, joinery, repair and renovation services. We assess or measure the work on site, confirm the materials, scope and written quote, and coordinate the agreed work through to handover.",
     "story_title": "A practical Adelaide timber and property-care team",
     "story": "MEL ONE supports homeowners, property managers, builders and businesses across Adelaide with on-site carpentry, workshop joinery, cabinetry, timber repair and maintenance. We begin with the condition of the property and the practical outcome the client needs: a safer deck, a workable kitchen, a repaired opening, a durable fitout or a well-resolved custom timber feature. Good work starts before tools arrive. We ask for the suburb, photos, drawings where available, access details and the decisions that matter most to the people who will use the space. That gives the project a clearer scope, helps coordinate the right trades and reduces avoidable surprises after work has started. Our approach is straightforward: explain what is known, identify what still needs checking, document the agreed work and keep communication practical as the job progresses.",
     "values": [
@@ -1299,55 +1299,113 @@
       },
       {
         "heading": "Long-Term Partnerships",
-        "body": "Timber work often becomes part of a longer property story: an owner improves a home in stages, an agent needs responsive maintenance or a builder needs a carpentry team that can coordinate with the next trade. We aim to make the first job a useful foundation for the next conversation by leaving clients with clear information about what was done and what to watch over time.",
+        "body": "Timber work can form part of staged home improvements, agent maintenance or a builder’s programme. We record the agreed work and explain care and any outstanding tasks after completion, so clients have useful information for planning later repairs or improvements.",
         "details": [
           "A direct Adelaide point of contact for new enquiries",
-          "Photos and property details used to prepare a more useful first discussion",
+          "On-site assessment to check the property, timber condition and repair requirements",
           "Homeowners, property managers, builders and businesses can discuss staged work",
           "Care and maintenance considerations included where they affect the result"
         ]
       }
     ],
     "scope_title": "What we deliver across Adelaide",
-    "scope": "MEL ONE brings together on-site carpentry, custom joinery and property-care work so clients can discuss the building structure, the visible finish and the day-to-day use of a space in one place. Our services include framing, decks and outdoor structures, second fix, commercial fitout, cabinetry, architectural joinery, storage, timber doors and furniture, flooring, restoration and heritage timber repair. The appropriate solution depends on the property, drawings, existing conditions and the project team. We use the early conversation to identify the real scope and the information needed for a clear next step.",
+    "scope": "MEL ONE brings together on-site carpentry, custom joinery and property-care work so clients can discuss the building structure, the visible finish and the day-to-day use of a space in one place. Our services include framing, decks and outdoor structures, second fix, commercial fitout, cabinetry, architectural joinery, storage, timber doors and furniture, flooring, restoration and heritage timber repair. The appropriate solution depends on the property, drawings, existing conditions and the project team. We inspect repairs or measure for new work on site and confirm the required materials, work scope and written quote. We agree qualified service arrangements and approval requirements before work begins.",
     "company_title": "Company & insurance details",
     "company_intro": "Company identity, current public-liability information and the Adelaide enquiry contact are presented together so clients can check the basic details before arranging work.",
     "company_details": [
-      { "label": "Legal entity", "value": "Mel One Property Maintenance Pty Ltd" },
-      { "label": "Entity type", "value": "Australian private company" },
-      { "label": "ABN", "value": "39 666 325 408" },
-      { "label": "ACN", "value": "666 325 408" },
-      { "label": "GST status", "value": "Registered" },
-      { "label": "Insurer", "value": "Chubb Insurance Australia Limited" },
-      { "label": "Public & Products Liability", "value": "AUD 20 million" },
-      { "label": "Policy period", "value": "13 April 2026 – 13 April 2027, subject to policy terms" },
-      { "label": "Official record", "value": "View ABN Lookup", "url": "https://abr.business.gov.au/ABN/View?abn=39666325408" }
+      {
+        "label": "Legal entity",
+        "value": "Mel One Property Maintenance Pty Ltd"
+      },
+      {
+        "label": "Entity type",
+        "value": "Australian private company"
+      },
+      {
+        "label": "ABN",
+        "value": "39 666 325 408"
+      },
+      {
+        "label": "ACN",
+        "value": "666 325 408"
+      },
+      {
+        "label": "GST status",
+        "value": "Registered"
+      },
+      {
+        "label": "Insurer",
+        "value": "Chubb Insurance Australia Limited"
+      },
+      {
+        "label": "Public & Products Liability",
+        "value": "AUD 20 million"
+      },
+      {
+        "label": "Policy period",
+        "value": "13 April 2026 – 13 April 2027, subject to policy terms"
+      },
+      {
+        "label": "Official record",
+        "value": "View ABN Lookup",
+        "url": "https://abr.business.gov.au/ABN/View?abn=39666325408"
+      }
     ],
     "process_title": "Clear details before work begins",
     "process_lead": "The responsible person, scope, access and booking arrangements should be understandable before a project moves from enquiry to site work.",
     "process_steps": [
-      { "heading": "Start with the property and the job", "body": "Share the Adelaide suburb, clear photos, the requested work, preferred timing and any access details. For larger work, drawings, a room plan or a list of priorities helps identify what needs a site measure or further technical input." },
-      { "heading": "Identify specialist work early", "body": "Carpentry often meets plumbing, electrical, waterproofing, glazing, engineering, heritage or other specialist work. The quote and project discussion should identify the relevant scope and responsible contracting party before that work is booked." },
-      { "heading": "Agree the working scope", "body": "Before work begins, confirm the intended outcome, inclusions, assumptions, timing, access, selected materials and any decision points. This gives homeowners and project teams a practical record to work from when site conditions or design decisions need attention." }
+      {
+        "heading": "Start with the property and the job",
+        "body": "Tell MEL ONE the Adelaide suburb, requested work, preferred timing and any access details. Existing photos, a room plan or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange the site measure or inspection and confirm any approved drawings or technical documents needed before work begins."
+      },
+      {
+        "heading": "Identify specialist work early",
+        "body": "Carpentry often meets plumbing, electrical, waterproofing, glazing, engineering, heritage or other specialist work. MEL ONE confirms the qualified service arrangements, responsible contracting party, scope and required documents before that work is booked."
+      },
+      {
+        "heading": "Agree the working scope",
+        "body": "Before work begins, confirm the intended outcome, inclusions, assumptions, timing, access, selected materials and any decision points. This gives homeowners and project teams a practical record to work from when site conditions or design decisions need attention."
+      }
     ],
     "priorities_title": "What shapes a workable Adelaide project",
     "priorities_lead": "Existing conditions, everyday use and trade sequencing matter as much as the visible finish. Discussing them early leads to more durable decisions.",
     "priorities": [
-      { "heading": "Living or trading in the property", "body": "Access, dust, noise, pets, parking and rooms that must stay operational influence the practical staging of a home, tenancy or commercial project. Those details should be part of the initial brief, not an afterthought once materials arrive." },
-      { "heading": "Existing conditions", "body": "Older alterations, uneven walls, concealed services, moisture paths and prior repairs can affect the work. Contact MEL ONE to arrange an on-site assessment, identify the cause and confirm the repair plan and quote. We agree any further access or staged work with you before proceeding." },
-      { "heading": "Selections and lead times", "body": "Cabinetry, hardware, timber, glazing, flooring and made-to-order materials need to align with the project sequence. Selecting a finish is more useful when the dimensions, interfaces, installation access and timing are also understood." }
+      {
+        "heading": "Living or trading in the property",
+        "body": "Access, dust, noise, pets, parking and rooms that must stay operational influence the practical staging of a home, tenancy or commercial project. Those details should be part of the initial brief, not an afterthought once materials arrive."
+      },
+      {
+        "heading": "Existing conditions",
+        "body": "Older alterations, uneven walls, concealed services, moisture paths and prior repairs can affect the work. Contact MEL ONE to arrange an on-site assessment, identify the cause and confirm the repair plan and quote. We agree any further access or staged work with you before proceeding."
+      },
+      {
+        "heading": "Selections and lead times",
+        "body": "Cabinetry, hardware, timber, glazing, flooring and made-to-order materials need to align with the project sequence. Selecting a finish is more useful when the dimensions, interfaces, installation access and timing are also understood."
+      }
     ],
     "faq_title": "Company and project questions",
     "faqs": [
-      { "question": "Who is the contact for an Adelaide enquiry?", "answer": "Contact MEL ONE on 0403 202 949 or handymanfelix.au2026@outlook.com. Include the suburb, a short description and photos where possible so we can discuss whether a site visit, drawing review or a simple photo-based estimate is the right next step." },
-      { "question": "Who completes specialist or regulated work?", "answer": "Where a project includes work that requires a specialist, licensed contractor, engineering input, approval or certification, the relevant responsibility is identified through the project scope before that work is booked. This helps clients understand what sits within the carpentry package and what is coordinated with another trade or professional." },
-      { "question": "Where does MEL ONE take enquiries?", "answer": "MEL ONE takes carpentry, joinery, maintenance and renovation enquiries across Adelaide. Travel, access and current availability can be discussed once you share the property suburb and the nature of the job." },
-      { "question": "What information helps prepare a clear quote?", "answer": "Photos, drawings or dimensions, intended outcome, approximate timing, access constraints, existing conditions and any materials or appliances already selected are all useful. A good brief allows the conversation to focus on the real work required rather than a vague allowance that may not match the property." }
+      {
+        "question": "Who is the contact for an Adelaide enquiry?",
+        "answer": "Contact MEL ONE on 0403 202 949 or handymanfelix.au2026@outlook.com. Include the suburb and a short description to arrange a site assessment. We inspect repairs or measure for new work and confirm the agreed scope and written quote. Photos are optional; email existing images to handymanfelix.au2026@outlook.com."
+      },
+      {
+        "question": "Who completes specialist or regulated work?",
+        "answer": "MEL ONE confirms qualified service arrangements, the relevant work scope and required documents before specialist, licensed, engineering, approval or certification work is booked. This helps clients understand what sits within the carpentry package and what is coordinated with another trade or professional."
+      },
+      {
+        "question": "Where does MEL ONE take enquiries?",
+        "answer": "MEL ONE provides carpentry, joinery, maintenance and renovation services across Adelaide. Share the suburb and job details so we can confirm the assessment appointment, access and attending team, then provide the agreed scope and quote."
+      },
+      {
+        "question": "What information helps prepare a clear quote?",
+        "answer": "Photos, drawings or dimensions, intended outcome, approximate timing, access constraints, existing conditions and any materials or appliances already selected are all useful. A good brief allows the conversation to focus on the real work required rather than a vague allowance that may not match the property."
+      }
     ]
   },
   "contact": {
     "title": "Start with one specific need",
-    "lead": "Tell us about your project or question and we will give clear advice and a transparent quote.",
+    "lead": "Tell MEL ONE what needs attention or what you want built. We arrange an on-site assessment or measure, confirm the required work and provide a written quote.",
     "cta": "Contact",
     "phone": "0403 202 949",
     "email": "handymanfelix.au2026@outlook.com",
@@ -1357,7 +1415,7 @@
       "Suburb (Adelaide metro or regional SA)",
       "Rough budget range (so we can recommend the right scope)",
       "Preferred start timeframe",
-      "Any drawings or reference photos you already have"
+      "Existing drawings or reference photos are optional; email them to handymanfelix.au2026@outlook.com"
     ]
   },
   "seo": {
