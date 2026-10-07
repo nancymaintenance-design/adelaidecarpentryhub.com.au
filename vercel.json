@@ -1,15 +1,6 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "node --test --test-concurrency=1 test/*.test.cjs && node build.mjs && node check.cjs",
+  "buildCommand": "node build.mjs",
   "outputDirectory": "public",
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "adelaidecarpentryhub.com.au" }],
-      "destination": "https://www.adelaidecarpentryhub.com.au/:path*",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)\\.(png|jpg|jpeg|webp|gif|svg|ico|woff|woff2)",

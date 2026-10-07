@@ -109,7 +109,9 @@
 .interior .service-media img { width: 100%; height: 100%; min-height: 260px; object-fit: cover; transition: transform .45s ease; }
 .interior .service-card:hover .service-media img { transform: scale(1.05); }
 .interior .service-card-body { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(24px, 3vw, 38px); }
-.interior .service-card h2 { margin: 14px 0 12px; font-size: clamp(27px, 2.2vw, 36px); line-height: 1.04; }
+.interior .service-card h2, .interior .service-card h3 { margin: 14px 0 12px; font-size: clamp(27px, 2.2vw, 36px); line-height: 1.04; }
+.interior .service-directory-group + .service-directory-group { margin-top: clamp(56px, 8vw, 104px); }
+.interior .service-directory-group .section-head { margin-bottom: 28px; }
 .interior .service-card p { color: var(--muted); margin-bottom: 22px; }
 .interior .text-link { margin-top: auto; color: var(--ink); font: 700 13px/1 "Aptos Narrow", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
 .interior .text-link::after { content: " →"; color: var(--accent); }
@@ -126,13 +128,26 @@
 
 .interior .card-grid { gap: 28px; border: 0; background: none; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 .interior .editorial-card { display: flex; flex-direction: column; min-height: 100%; padding: 0; overflow: hidden; border: 1px solid var(--line); background: var(--surface); transition: transform .22s ease, box-shadow .22s ease; }
+.interior .editorial-card-link { display: flex; flex: 1; flex-direction: column; color: inherit; text-decoration: none; }
+.interior .editorial-card-link:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
 .interior .editorial-card:hover { transform: translateY(-4px); box-shadow: 0 18px 32px rgba(23, 55, 47, .1); }
 .interior .card-media { display: block; aspect-ratio: 16 / 8; overflow: hidden; background: #17372f; }
 .interior .card-media img { height: 100%; object-fit: cover; transition: transform .45s ease; }
 .interior .editorial-card:hover .card-media img { transform: scale(1.04); }
 .interior .card-body { display: flex; flex: 1; flex-direction: column; padding: 28px; }
-.interior .card-body h3 { margin: 12px 0; }
-.interior .card-body p { color: var(--muted); }
+.interior .card-title { display: block; margin: 12px 0; color: var(--ink); font: 700 clamp(22px, 1.9vw, 29px)/1.1 "Aptos Display", Georgia, serif; }
+.interior .card-summary { color: var(--muted); }
+
+/* About: company record and project-planning details */
+.interior .company-details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0; background: var(--line); border: 1px solid var(--line); }
+.interior .company-details > div { padding: 22px; background: var(--surface); }
+.interior .company-details dt { color: var(--muted); font: 700 12px/1.2 "Aptos Narrow", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+.interior .company-details dd { margin: 9px 0 0; color: var(--ink); font-weight: 700; }
+.interior .about-faq details { border-top: 1px solid var(--line); padding: 18px 0; }
+.interior .about-faq details:last-child { border-bottom: 1px solid var(--line); }
+.interior .about-faq summary { cursor: pointer; color: var(--ink); font-weight: 700; }
+.interior .about-faq details p { color: var(--muted); margin: 12px 0 0; }
+@media (max-width: 760px) { .interior .company-details { grid-template-columns: 1fr; } }
 
 .interior .article { font-size: 18px; line-height: 1.78; }
 .interior .article > section + section { margin-top: 44px; padding-top: 36px; }
@@ -149,6 +164,22 @@
 .interior .evidence-media { margin: 0; position: sticky; top: 116px; align-self: start; overflow: hidden; background: var(--ink); border: 1px solid var(--line); }
 .interior .evidence-media img { aspect-ratio: 4 / 5; object-fit: cover; }
 .interior .caption { background: var(--surface); color: var(--muted); }
+
+/* Real projects: a quiet four-frame job record, ordered from condition to finish. */
+.interior .real-project { padding-block: clamp(64px, 9vw, 112px); border-top: 1px solid var(--line); background: linear-gradient(115deg, rgba(223,231,222,.6), rgba(255,253,248,.9) 55%, rgba(220,200,173,.3)); }
+.interior .real-project + .real-project { border-top: 0; padding-top: 0; }
+.interior .real-project-head { display: grid; grid-template-columns: minmax(0, .95fr) minmax(280px, .75fr); gap: clamp(28px, 7vw, 96px); align-items: end; margin-bottom: clamp(28px, 4vw, 48px); }
+.interior .real-project-head h2 { max-width: 15ch; margin: 8px 0 0; }
+.interior .real-project-head > p { max-width: 48ch; margin: 0; color: var(--muted); }
+.interior .project-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.interior .project-gallery figure { position: relative; min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line); background: var(--ink); }
+.interior .project-gallery img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .35s ease; }
+.interior .project-gallery figure:hover img { transform: scale(1.035); }
+.interior .project-gallery figcaption { padding: 11px 12px; background: var(--surface); color: var(--muted); font: 700 10px/1.2 "Aptos Narrow", Arial, sans-serif; letter-spacing: .11em; text-transform: uppercase; }
+@media (max-width: 760px) {
+  .interior .real-project-head { grid-template-columns: 1fr; gap: 14px; }
+  .interior .project-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+}
 
 .interior details { padding: 0; border-top: 1px solid var(--line); background: rgba(255,253,248,.62); }
 .interior details:last-child { border-bottom: 1px solid var(--line); }
@@ -239,3 +270,36 @@
 .interior .suburb-list li { padding: 0; overflow: hidden; }
 .interior .suburb-list li a { display: block; padding: 5px 9px; color: inherit; text-decoration: none; transition: background .16s ease, color .16s ease; }
 .interior .suburb-list li a:hover { background: var(--ink); color: #fffdf8; }
+
+/* Regional carpentry and joinery pages */
+.interior .area-region h2 a, .interior .area-region-link { color: inherit; text-decoration: none; }
+.interior .area-region-link { display: inline-block; margin: 16px 23px -5px; color: var(--accent); font-weight: 700; }
+.interior .area-detail-section { padding-block: clamp(58px, 7vw, 104px); }
+.interior .area-detail-tint { background: linear-gradient(115deg, rgba(223,231,222,.72), rgba(255,253,248,.86)); border-block: 1px solid rgba(23,55,47,.09); }
+.interior .area-detail-grid { display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); gap: clamp(28px, 7vw, 110px); align-items: start; }
+.interior .area-detail-grid h2, .interior .area-detail-section > .wrap > h2 { max-width: 17ch; margin-top: 0; }
+.interior .area-detail-grid p { color: var(--muted); }
+.interior .area-detail-cards, .interior .area-service-links { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-top: 30px; }
+.interior .area-detail-cards article, .interior .area-service-links a { display: block; padding: 25px; border: 1px solid var(--line); background: var(--surface); }
+.interior .area-detail-cards h3 { margin: 15px 0 10px; font-size: 21px; }
+.interior .area-detail-cards p { margin: 0; color: var(--muted); }
+.interior .area-service-links { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.interior .area-service-links a { color: var(--ink); text-decoration: none; transition: transform .16s ease, box-shadow .16s ease; }
+.interior .area-service-links a:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(23,55,47,.12); }
+.interior .area-service-links strong, .interior .area-service-links span, .interior .area-service-links em { display: block; }
+.interior .area-service-links span { margin-top: 10px; color: var(--muted); font-size: 14px; }
+.interior .area-service-links em { margin-top: 17px; color: var(--accent); font-style: normal; font-weight: 700; }
+.interior .area-detail-intro { max-width: 70ch; color: var(--muted); }
+.interior .area-detail-streets { margin-top: 25px; padding: 0; }
+.interior .area-detail-trust { background: radial-gradient(circle at 86% 22%, rgba(180,111,69,.2), transparent 18rem), var(--ink); color: #fffdf8; }
+.interior .area-detail-trust .kicker, .interior .area-detail-trust p { color: rgba(255,253,248,.82); }
+.interior .area-faq { max-width: 880px; }
+.interior .area-faq details { padding: 20px 0; border-top: 1px solid var(--line); }
+.interior .area-faq details:last-child { border-bottom: 1px solid var(--line); }
+.interior .area-faq summary { cursor: pointer; font-weight: 700; }
+.interior .area-faq p { max-width: 70ch; color: var(--muted); }
+.interior .area-booking { background: linear-gradient(120deg, #e9dec9, var(--paper)); }
+@media (max-width: 900px) {
+  .interior .area-detail-grid, .interior .area-detail-cards, .interior .area-service-links { grid-template-columns: 1fr; }
+  .interior .area-detail-grid h2, .interior .area-detail-section > .wrap > h2 { max-width: none; }
+}

@@ -22,9 +22,9 @@
       "caption": "Outdoor Living"
     },
     "service.fix-out-second-fix": {
-      "src": "/assets/secondfix.jpg",
-      "alt": "Staircase handrail installation — precision second-fix carpentry",
-      "caption": "Fix-Out & Second-Fix"
+      "src": "/assets/project-door-after.webp",
+      "alt": "Completed timber entry door and jamb repair",
+      "caption": "Fix-Out & Second Fix — real project"
     },
     "service.formwork-carpentry": {
       "src": "/assets/formwork.jpg",
@@ -37,8 +37,8 @@
       "caption": "Fitout & Refurbishment"
     },
     "service.custom-kitchen-bathroom": {
-      "src": "/assets/kitchen.jpg",
-      "alt": "Custom cabinetry — kitchens, bathrooms and laundries",
+      "src": "/assets/custom-kitchen-bathroom-project.png",
+      "alt": "Carpenter installing custom kitchen and bathroom cabinetry",
       "caption": "Custom Kitchen & Bathroom Cabinetry"
     },
     "service.architectural-joinery": {
@@ -62,14 +62,44 @@
       "caption": "Restoration & Maintenance"
     },
     "service.heritage-carpentry": {
-      "src": "/assets/heritage-2026-v2.jpg",
-      "alt": "Heritage carpentry — traditional timber repair",
-      "caption": "Heritage Carpentry"
+      "src": "/assets/project-heritage-detail.webp",
+      "alt": "Completed heritage verandah timber restoration",
+      "caption": "Heritage Carpentry — real Adelaide project"
     },
     "service.decking-restoration-flooring": {
-      "src": "/assets/flooring.jpg",
-      "alt": "Timber deck frame construction and restoration",
-      "caption": "Decking Restoration & Timber Flooring"
+      "src": "/assets/project-deck-after.webp",
+      "alt": "Completed timber deck replacement with integrated steps",
+      "caption": "Decking Restoration & Timber Flooring — real Adelaide project"
+    },
+    "service.door-window-repairs": {
+      "src": "/assets/project-window-after-wide.webp",
+      "alt": "Completed timber window repair on an Adelaide home",
+      "caption": "Door & Window Repairs — real Adelaide project"
+    },
+    "service.skirting-board-installation-repairs": {
+      "src": "/assets/service-skirting-board-installation-repairs.png",
+      "alt": "Carpenter installing interior skirting boards",
+      "caption": "Skirting Board Installation & Repairs"
+    },
+    "service.door-jamb-interior-trim": {
+      "src": "/assets/service-door-jamb-interior-trim.png",
+      "alt": "Carpenter fitting a timber door jamb and interior trim",
+      "caption": "Door Jambs & Interior Trim"
+    },
+    "service.timber-fencing-repairs-replacement": {
+      "src": "/assets/project-fence-after-gate.webp",
+      "alt": "Completed timber boundary fence and side gate",
+      "caption": "Timber Fencing Repairs & Replacement — real Adelaide project"
+    },
+    "service.timber-gates-installation-repairs": {
+      "src": "/assets/project-fence-after-gate.webp",
+      "alt": "Completed timber side gate integrated with a boundary fence",
+      "caption": "Timber Gate Installation & Repairs — real Adelaide project"
+    },
+    "service.renovation-carpentry": {
+      "src": "/assets/service-renovation-carpentry.png",
+      "alt": "Carpenter completing kitchen renovation timber work",
+      "caption": "Renovation Carpentry"
     },
     "insight.why-integrated-carpentry-joinery": {
       "src": "/assets/insight-integrated-joinery.jpg",
@@ -90,6 +120,18 @@
     "insight.commercial-fitout-process": {
       "src": "/assets/insight-commercial-fitout.jpg",
       "alt": "Commercial timber joinery and feature wall fitout in progress"
+    },
+    "insight.adelaide-deck-replacement-guide": {
+      "src": "/assets/insight-adelaide-deck-replacement.png",
+      "alt": "Timber deck replacement in progress, showing weathered boards beside new decking"
+    },
+    "insight.adelaide-custom-wardrobe-planning": {
+      "src": "/assets/insight-adelaide-custom-wardrobe.png",
+      "alt": "Open custom wardrobe with integrated hanging, shelves and drawers"
+    },
+    "insight.adelaide-heritage-timber-repairs": {
+      "src": "/assets/insight-adelaide-heritage-timber-repairs.png",
+      "alt": "Carpenter restoring a heritage timber window"
     }
   }
 }

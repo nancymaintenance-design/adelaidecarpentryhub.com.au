@@ -24,7 +24,7 @@ let all = true;
 console.log('\n=== Ellis Website Integrity Check ===\n');
 
 // Page count
-all &= check(`Total pages: ${htmlFiles.length} (expect 27)`, htmlFiles.length === 27);
+all &= check(`Total pages: ${htmlFiles.length} (expect 38)`, htmlFiles.length === 38);
 
 // Home page content
 const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
@@ -50,7 +50,7 @@ all &= check('Contact page has address', contactPage.includes('63 Pirie St'));
 
 // About page
 const aboutPage = fs.readFileSync(path.join(root, 'about', 'index.html'), 'utf8');
-all &= check('About page has story', aboutPage.includes('Story') || aboutPage.includes('Founded') || aboutPage.includes('2011'));
+all &= check('About page has company record', aboutPage.includes('Company &amp; insurance details') && aboutPage.includes('39 666 325 408'));
 
 // No Chinese placeholders remaining
 all &= check('No Chinese placeholder text', !home.includes('全周期') && !home.includes('待补充') && !home.includes('阿德莱德'));
@@ -60,7 +60,7 @@ all &= check('No old contact email', !home.includes('ellisservicesgroup9'));
 if (fs.existsSync(path.join(root, 'sitemap.xml'))) {
   const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
   const locMatches = sitemap.match(/<loc>/g) || [];
-  all &= check(`Sitemap has ${locMatches.length} <loc> entries`, locMatches.length >= 23);
+  all &= check(`Sitemap has ${locMatches.length} <loc> entries`, locMatches.length === 38 && !sitemap.includes('/404.html'));
 } else {
   all &= check('Sitemap exists', false);
 }
@@ -83,11 +83,28 @@ all &= check('base.js served', fs.existsSync(path.join(root, 'assets', 'base.js'
 const servicePages = ['house-framing', 'outdoor-living', 'fix-out-second-fix',
   'formwork-carpentry', 'fitout-refurbishment', 'custom-kitchen-bathroom',
   'architectural-joinery', 'storage-solutions', 'custom-doors-furniture',
-  'restoration-maintenance', 'heritage-carpentry', 'decking-restoration-flooring'];
+  'restoration-maintenance', 'heritage-carpentry', 'decking-restoration-flooring',
+  'door-window-repairs', 'skirting-board-installation-repairs', 'door-jamb-interior-trim',
+  'timber-fencing-repairs-replacement', 'timber-gates-installation-repairs', 'renovation-carpentry'];
 for (const slug of servicePages) {
   const sp = path.join(root, 'services', slug, 'index.html');
   all &= check(`Service page: ${slug}`, fs.existsSync(sp) && fs.readFileSync(sp, 'utf8').length > 500);
 }
+
+// Machine-readable public catalogues
+const servicesCataloguePath = path.join(root, 'services.json');
+if (fs.existsSync(servicesCataloguePath)) {
+  try {
+    const servicesCatalogue = JSON.parse(fs.readFileSync(servicesCataloguePath, 'utf8'));
+    all &= check('services.json lists all 18 visible services', Array.isArray(servicesCatalogue.items) && servicesCatalogue.items.length === 18);
+  } catch {
+    all &= check('services.json is valid JSON', false);
+  }
+} else {
+  all &= check('services.json exists', false);
+}
+all &= check('feed.json exists', fs.existsSync(path.join(root, 'feed.json')));
+all &= check('rss.xml exists', fs.existsSync(path.join(root, 'rss.xml')));
 
 // Insights pages
 const insightPages = ['why-integrated-carpentry-joinery', 'kitchen-renovation-cost-guide',

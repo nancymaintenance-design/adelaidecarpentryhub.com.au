@@ -51,9 +51,9 @@ for (const directory of document.querySelectorAll('[data-area-directory]')) {
   const status = directory.querySelector('[data-area-status]');
   const empty = directory.querySelector('[data-area-empty]');
   const regions = [...directory.querySelectorAll('[data-area-region]')];
-  const items = [...directory.querySelectorAll('[data-suburb]')];
+  const items = [...directory.querySelectorAll('[data-location]')];
   if (!input || !status || !empty) continue;
-  const initial = new URLSearchParams(window.location.search).get('suburb') || '';
+  const initial = new URLSearchParams(window.location.search).get('location') || '';
   input.value = initial;
   const filter = () => {
     const query = input.value.trim().toLocaleLowerCase('en-AU');
@@ -64,13 +64,13 @@ for (const directory of document.querySelectorAll('[data-area-directory]')) {
       if (match) visible += 1;
     });
     regions.forEach(region => {
-      region.hidden = ![...region.querySelectorAll('[data-suburb]')].some(item => !item.hidden);
+      region.hidden = ![...region.querySelectorAll('[data-location]')].some(item => !item.hidden);
     });
     empty.hidden = visible !== 0;
     clear.hidden = !query;
-    status.textContent = query ? `${visible} ${visible === 1 ? 'locality' : 'localities'} found for “${input.value.trim()}”.` : `Showing all ${items.length} localities.`;
+    status.textContent = query ? `${visible} ${visible === 1 ? 'street' : 'streets'} found for “${input.value.trim()}”.` : `Showing all ${items.length} streets.`;
     const url = new URL(window.location.href);
-    if (query) url.searchParams.set('suburb', input.value.trim()); else url.searchParams.delete('suburb');
+    if (query) url.searchParams.set('location', input.value.trim()); else url.searchParams.delete('location');
     window.history.replaceState({}, '', url);
   };
   input.addEventListener('input', filter);
@@ -80,11 +80,30 @@ for (const directory of document.querySelectorAll('[data-area-directory]')) {
 }
 
 
-const selectedSuburb = new URLSearchParams(window.location.search).get('suburb');
-if (selectedSuburb) {
+const selectedLocation = new URLSearchParams(window.location.search).get('location');
+if (selectedLocation) {
   const message = document.querySelector('form[data-contact-form] textarea[name="message"]');
   if (message && !message.value.trim()) {
-    message.value = `My suburb: ${selectedSuburb}\n\n`;
+    message.value = `Project location: ${selectedLocation}\n\n`;
     message.focus();
   }
 }
+
+function applyAreaBookingContext() {
+  const searchParams = new URLSearchParams(window.location.search);
+  const street = searchParams.get('street');
+  if (!street) return;
+  for (const form of document.querySelectorAll('form[data-area-region]')) {
+    const region = form.dataset.areaRegion;
+    let allowedStreets = [];
+    try { allowedStreets = JSON.parse(form.dataset.areaStreets || '[]'); } catch { allowedStreets = []; }
+    if (!allowedStreets.includes(street)) continue;
+    const location = `${street}, ${region}`;
+    const message = form.querySelector('textarea[name="message"]');
+    const context = form.closest('.area-booking')?.querySelector('[data-area-context]');
+    if (context) context.textContent = `Selected location: ${location}. Add the timber work, photos where available and any access notes.`;
+    if (message && !message.value.trim()) message.value = `Project location: ${location}\n\n`;
+  }
+}
+
+applyAreaBookingContext();

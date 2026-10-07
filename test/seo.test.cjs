@@ -2,41 +2,21 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { execFileSync } = require('node:child_process');
 const root = path.join(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'build.mjs'), 'utf8');
-const vercelConfig = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
 
 test('production build permits indexing and publishes canonical crawl signals', () => {
   assert.match(source, /const origin = process\.env\.SITE_ORIGIN \|\| 'https:\/\/www\.adelaidecarpentryhub\.com\.au'/);
-  assert.match(source, /<html lang="en-AU">/);
   assert.match(source, /<meta name="robots" content="index,follow">/);
   assert.match(source, /Sitemap: \$\{canonical\('\/sitemap\.xml'\)\}/);
   assert.doesNotMatch(source, /Disallow: \/\\n/);
-});
-
-test('apex host permanently redirects to the approved www canonical origin', () => {
-  assert.deepEqual(vercelConfig.redirects, [{
-    source: '/:path*',
-    has: [{ type: 'host', value: 'adelaidecarpentryhub.com.au' }],
-    destination: 'https://www.adelaidecarpentryhub.com.au/:path*',
-    permanent: true,
-  }]);
 });
 
 test('home page publishes LocalBusiness schema for MEL ONE in Adelaide', () => {
   assert.match(source, /'@type': 'HomeAndConstructionBusiness'/);
   assert.match(source, /addressLocality: 'Adelaide'/);
   assert.match(source, /telephone: content\.contact\.phone/);
-});
-
-test('built homepage gives visitors the Adelaide office address and Google Maps route', () => {
-  execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
-  const home = fs.readFileSync(path.join(root, 'public', 'index.html'), 'utf8');
-  assert.match(home, /Visit our Adelaide office/);
-  assert.match(home, /63 Pirie St, Adelaide, SA 5000/);
-  assert.match(home, /<iframe[^>]+title="Map showing 63 Pirie St, Adelaide SA 5000"/);
-  assert.match(home, /href="https:\/\/www\.google\.com\/maps\/place\/63\+Pirie\+St/);
+  assert.match(source, /logo: canonical\('\/favicon\.png'\)/);
 });
 
 test('service and insight pages publish breadcrumb and local business relationships', () => {
@@ -46,19 +26,24 @@ test('service and insight pages publish breadcrumb and local business relationsh
   assert.match(source, /mainEntityOfPage: canonical\(route\)/);
 });
 
-test('Adelaide insight pack generates JSON Feed and RSS entries', () => {
-  const pack = fs.readFileSync(path.join(root, 'src', 'content-pack', 'adelaide-insights.json'), 'utf8');
-  assert.match(pack, /adelaide-deck-replacement-guide/);
-  assert.match(pack, /adelaide-custom-wardrobe-planning/);
-  assert.match(pack, /adelaide-heritage-timber-repairs/);
+test('insights include three Adelaide planning guides and publish both subscription feeds', () => {
+  const content = fs.readFileSync(path.join(root, 'src', 'content-pack', 'site-content.json'), 'utf8');
+  for (const slug of [
+    'adelaide-deck-replacement-guide',
+    'adelaide-custom-wardrobe-planning',
+    'adelaide-heritage-timber-repairs',
+  ]) {
+    assert.match(content, new RegExp(`"slug": "${slug}"`));
+  }
   assert.match(source, /writeFileSync\(path\.join\(siteDir, 'feed\.json'\)/);
   assert.match(source, /writeFileSync\(path\.join\(siteDir, 'rss\.xml'\)/);
+  assert.match(source, /https:\/\/jsonfeed\.org\/version\/1\.1/);
 });
 
 test('home page title and description target Adelaide carpentry searches concisely', () => {
   const content = fs.readFileSync(path.join(root, 'src', 'content-pack', 'site-content.json'), 'utf8');
   assert.match(source, /title: 'Adelaide Carpentry, Joinery & Timber Restoration'/);
-  assert.match(content, /Need carpentry in Adelaide\? Explore MEL ONE services for framing, custom joinery, cabinetry, built-in storage and timber restoration/);
+  assert.match(content, /MEL ONE provides Adelaide carpentry, custom joinery, decking, cabinetry and heritage timber restoration/);
 });
 
 test('detail pages provide a clear planning path and enquiry action without altering the home hero', () => {

@@ -16,7 +16,7 @@ const projectDir = __dirname;
 const isDocs = process.argv.includes('--docs');
 const siteDir = path.join(projectDir, isDocs ? 'docs' : 'public');
 const contentPath = path.join(projectDir, 'src', 'content-pack', 'site-content.json');
-const additionalInsightsPath = path.join(projectDir, 'src', 'content-pack', 'adelaide-insights.json');
+const cityStreetsPath = path.join(projectDir, 'src', 'content-pack', 'city-streets.json');
 const assetPath = path.join(projectDir, 'src', 'assets', 'asset-manifest.json');
 const themeCssSrc = path.join(projectDir, 'src', 'assets', 'theme.css');
 const interiorCssSrc = path.join(projectDir, 'src', 'assets', 'interior.css');
@@ -29,9 +29,14 @@ const slot = (id) => (assets.slots || {})[id] || null;
 const paragraphs = (items) => safeArray(items).map((item) => `<p>${escapeHtml(item)}</p>`).join('');
 
 const content = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
-const additionalInsights = fs.existsSync(additionalInsightsPath)
-  ? JSON.parse(fs.readFileSync(additionalInsightsPath, 'utf8')) : [];
-content.insights.push(...safeArray(additionalInsights));
+const insightSlugs = new Set([
+  'adelaide-deck-replacement-guide',
+  'adelaide-custom-wardrobe-planning',
+  'adelaide-heritage-timber-repairs',
+]);
+const draftedInsights = content.services.filter((item) => insightSlugs.has(item.slug));
+content.services = content.services.filter((item) => !insightSlugs.has(item.slug));
+content.insights.push(...draftedInsights);
 const assets = fs.existsSync(assetPath) ? JSON.parse(fs.readFileSync(assetPath, 'utf8')) : { slots: {} };
 const ga4Id = /^G-[A-Z0-9]+$/.test(process.env.GA4_MEASUREMENT_ID || '')
   ? process.env.GA4_MEASUREMENT_ID : '';
@@ -39,8 +44,6 @@ const gscToken = String(process.env.GSC_VERIFICATION_TOKEN || '').trim();
 
 // The canonical production origin. Override only for an approved alternate domain.
 const origin = process.env.SITE_ORIGIN || 'https://www.adelaidecarpentryhub.com.au';
-const officeMapUrl = 'https://www.google.com/maps/place/63+Pirie+St,+Adelaide+SA+5000,+Australia/@-34.925497,138.5996439,16.75z/data=!4m6!3m5!1s0x6ab0cfef572241a3:0x3a231d0888541f86!8m2!3d-34.9258917!4d138.6022966!16s%2Fg%2F11t_rlhdw2?entry=ttu&g_ep=EgoyMDI2MDkyMS4wIKXMDSoASAFQAw%3D%3D';
-const officeMapEmbedUrl = 'https://www.google.com/maps?q=63%20Pirie%20St%2C%20Adelaide%20SA%205000&output=embed';
 
 // Service card color palette
 const serviceColors = {
@@ -142,17 +145,176 @@ function breadcrumbList(items) {
 
 const brandName = content.brand.name;
 const brandMark = content.brand.short_name;
+// Preserve the existing layout-space guard using verified source-image dimensions.
 const imageDimensions = {
-  '/assets/mel-one-logo.png': [512, 512], '/assets/hero-bg.jpg': [1344, 768],
-  '/assets/about-team-2026-v2.jpg': [960, 717], '/assets/framing.jpg': [1200, 654],
-  '/assets/decking.jpg': [1200, 654], '/assets/secondfix.jpg': [1200, 654],
-  '/assets/formwork.jpg': [1200, 654], '/assets/fitout-2026-v2.jpg': [960, 513],
-  '/assets/kitchen.jpg': [1200, 654], '/assets/architectural.jpg': [1408, 752],
-  '/assets/storage.jpg': [1408, 752], '/assets/doors-furniture.jpg': [800, 1200],
-  '/assets/restoration-2026-v2.jpg': [960, 513], '/assets/heritage-2026-v2.jpg': [960, 513],
-  '/assets/flooring.jpg': [1200, 654], '/assets/insight-integrated-joinery.jpg': [960, 540],
-  '/assets/insight-kitchen-costs.jpg': [960, 540], '/assets/insight-heritage-restoration.jpg': [960, 540],
-  '/assets/insight-timber-flooring.jpg': [960, 540], '/assets/insight-commercial-fitout.jpg': [960, 540],
+  "/assets/mel-one-logo.png": [
+    1402,
+    1122
+  ],
+  "/assets/about-team-2026-v2.jpg": [
+    960,
+    717
+  ],
+  "/assets/insight-integrated-joinery.jpg": [
+    960,
+    540
+  ],
+  "/assets/insight-kitchen-costs.jpg": [
+    960,
+    540
+  ],
+  "/assets/insight-heritage-restoration.jpg": [
+    960,
+    540
+  ],
+  "/assets/insight-timber-flooring.jpg": [
+    960,
+    540
+  ],
+  "/assets/insight-commercial-fitout.jpg": [
+    960,
+    540
+  ],
+  "/assets/insight-adelaide-deck-replacement.png": [
+    1672,
+    941
+  ],
+  "/assets/insight-adelaide-custom-wardrobe.png": [
+    1672,
+    941
+  ],
+  "/assets/insight-adelaide-heritage-timber-repairs.png": [
+    1672,
+    941
+  ],
+  "/assets/architectural.jpg": [
+    1408,
+    752
+  ],
+  "/assets/doors-furniture.jpg": [
+    800,
+    1200
+  ],
+  "/assets/custom-kitchen-bathroom-project.png": [
+    1672,
+    941
+  ],
+  "/assets/project-deck-after.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-deck-before.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-deck-during.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-deck-detail.webp": [
+    1440,
+    1080
+  ],
+  "/assets/service-door-jamb-interior-trim.png": [
+    1672,
+    941
+  ],
+  "/assets/project-window-after-wide.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-window-before.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-window-during.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-window-after-detail.webp": [
+    1440,
+    1080
+  ],
+  "/assets/fitout-2026-v2.jpg": [
+    960,
+    513
+  ],
+  "/assets/project-door-after.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-door-before.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-door-during.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-door-detail.webp": [
+    1440,
+    1080
+  ],
+  "/assets/formwork.jpg": [
+    1200,
+    654
+  ],
+  "/assets/project-heritage-detail.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-heritage-before.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-heritage-during.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-heritage-after.webp": [
+    1440,
+    1080
+  ],
+  "/assets/framing.jpg": [
+    1200,
+    654
+  ],
+  "/assets/service-skirting-board-installation-repairs.png": [
+    1672,
+    941
+  ],
+  "/assets/service-renovation-carpentry.png": [
+    1672,
+    941
+  ],
+  "/assets/storage.jpg": [
+    1408,
+    752
+  ],
+  "/assets/decking.jpg": [
+    1200,
+    654
+  ],
+  "/assets/project-fence-after-gate.webp": [
+    1440,
+    1080
+  ],
+  "/assets/restoration-2026-v2.jpg": [
+    960,
+    513
+  ],
+  "/assets/project-fence-before.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-fence-during.webp": [
+    1440,
+    1080
+  ],
+  "/assets/project-fence-after-wide.webp": [
+    1440,
+    1080
+  ]
 };
 const reserveImageSpace = (html) => html.replace(/<img\b[^>]*>/gi, (tag) => {
   if (/\bwidth="\d+"/i.test(tag) && /\bheight="\d+"/i.test(tag)) return tag;
@@ -198,7 +360,7 @@ function page({ title, description, route, active = '', body, jsonLd }) {
   const isInterior = route !== '/';
   const analyticsHead = ga4Id ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${ga4Id}');</script>` : '';
   const searchConsoleHead = gscToken ? `<meta name="google-site-verification" content="${escapeHtml(gscToken)}">` : '';
-  return `<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(fullTitle)}</title><meta property="og:type" content="website"><meta property="og:site_name" content="${escapeHtml(brandName)}"><meta property="og:title" content="${escapeHtml(fullTitle)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical(route)}"><meta property="og:image" content="${canonical('/assets/hero-bg.jpg')}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/assets/favicon-192.png"><link rel="canonical" href="${canonical(route)}"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/theme.css">${isInterior ? '<link rel="stylesheet" href="/assets/interior.css">' : ''}${analyticsHead}${searchConsoleHead}${structured}</head><body class="${isInterior ? 'interior' : ''}">${header(active)}<main id="main">${body}</main>${footer()}<script src="/assets/base.js" defer></script></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(fullTitle)}</title><meta property="og:type" content="website"><meta property="og:site_name" content="${escapeHtml(brandName)}"><meta property="og:title" content="${escapeHtml(fullTitle)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical(route)}"><meta property="og:image" content="${canonical('/assets/hero-bg.jpg')}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="512x512" href="/favicon.png"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="${canonical(route)}"><link rel="alternate" type="application/feed+json" href="/feed.json"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/theme.css">${isInterior ? '<link rel="stylesheet" href="/assets/interior.css">' : ''}${analyticsHead}${searchConsoleHead}${structured}</head><body class="${isInterior ? 'interior' : ''}">${header(active)}<main id="main">${body}</main>${footer()}<script src="/assets/base.js" defer></script></body></html>`;
 }
 
 function writeRoute(route, html) {
@@ -218,15 +380,137 @@ const card = (href, item, label) => {
   const imgSrc = image?.src || svgImage((item.slug || 'insight').replace(/-/g, ''), 800, 450);
   const alt = escapeHtml(image?.alt || '');
   return `<article class="editorial-card">
-    <a class="card-media" href="${href}" aria-hidden="true" tabindex="-1"><img src="${imgSrc}" alt="${alt}" loading="lazy"></a>
-    <div class="card-body">
-      <span class="card-meta">${cat}${date}</span>
-      <h3><a href="${href}">${escapeHtml(item.title)}</a></h3>
-      <p>${escapeHtml(item.summary)}</p>
-      <span class="text-link">Read more ↗</span>
-    </div>
+    <a class="editorial-card-link" href="${href}" aria-label="Read ${escapeHtml(item.title)}">
+      <span class="card-media"><img src="${imgSrc}" alt="${alt}" loading="lazy"></span>
+      <span class="card-body">
+        <span class="card-meta">${cat}${date}</span>
+        <span class="card-title">${escapeHtml(item.title)}</span>
+        <span class="card-summary">${escapeHtml(item.summary)}</span>
+        <span class="text-link">Read more ↗</span>
+      </span>
+    </a>
   </article>`;
 };
+
+const seoTitles = {
+  service: {
+    'house-framing': 'Adelaide House Framing',
+    'outdoor-living': 'Adelaide Outdoor Living Carpentry',
+    'fix-out-second-fix': 'Adelaide Fix-Out & Second Fix',
+    'formwork-carpentry': 'Adelaide Formwork Carpentry',
+    'fitout-refurbishment': 'Adelaide Fitout & Refurbishment',
+    'custom-kitchen-bathroom': 'Adelaide Kitchen & Bathroom Cabinetry',
+    'architectural-joinery': 'Adelaide Architectural Joinery',
+    'storage-solutions': 'Adelaide Custom Storage Solutions',
+    'custom-doors-furniture': 'Adelaide Custom Doors & Furniture',
+    'restoration-maintenance': 'Adelaide Timber Restoration & Maintenance',
+    'heritage-carpentry': 'Adelaide Heritage Carpentry',
+    'decking-restoration-flooring': 'Adelaide Decking & Timber Flooring',
+    'door-window-repairs': 'Adelaide Door & Window Repairs',
+    'skirting-board-installation-repairs': 'Adelaide Skirting Board Installation & Repairs',
+    'door-jamb-interior-trim': 'Adelaide Door Jambs & Interior Trim',
+    'timber-fencing-repairs-replacement': 'Adelaide Timber Fencing Repairs & Replacement',
+    'timber-gates-installation-repairs': 'Adelaide Timber Gate Installation & Repairs',
+    'renovation-carpentry': 'Adelaide Renovation Carpentry',
+  },
+  insight: {
+    'why-integrated-carpentry-joinery': 'Integrated Carpentry & Joinery Adelaide',
+    'kitchen-renovation-cost-guide': 'Adelaide Kitchen Renovation Cost Guide',
+    'heritage-building-timber-restoration': 'Adelaide Heritage Timber Restoration Guide',
+    'timber-flooring-oiling-guide': 'Timber Flooring Guide for Adelaide Homes',
+    'commercial-fitout-process': 'Adelaide Commercial Fitout Guide',
+    'adelaide-deck-replacement-guide': 'Adelaide Deck Replacement Guide',
+    'adelaide-custom-wardrobe-planning': 'Adelaide Custom Wardrobe Planning',
+    'adelaide-heritage-timber-repairs': 'Adelaide Heritage Timber Repair Guide',
+  },
+};
+
+const seoDescriptions = {
+  'door-window-repairs': 'Adelaide door and window repairs for timber frames, sashes and trim. Discuss visible damage, operation and a practical repair scope with MEL ONE.',
+  'skirting-board-installation-repairs': 'Adelaide skirting board installation and repairs for new rooms and renovations, planned around profiles, flooring transitions and interior trim.',
+  'door-jamb-interior-trim': 'Adelaide door jambs, architraves and interior trim for renovated homes, with practical planning for reveals, floors and second-fix details.',
+  'timber-fencing-repairs-replacement': 'Adelaide timber fencing repairs and replacement for damaged palings, rails and posts. Plan access, visible condition and practical next steps.',
+  'timber-gates-installation-repairs': 'Adelaide timber gate installation and repairs for side access, gardens and fences, planned around alignment, hardware and everyday use.',
+  'renovation-carpentry': 'Adelaide renovation carpentry for altered openings, trim, repairs and joinery interfaces. Plan staged work around the existing home with MEL ONE.',
+  'why-integrated-carpentry-joinery': 'Learn how coordinated Adelaide carpentry and joinery can reduce handover gaps, duplicated work and avoidable project delays.',
+  'kitchen-renovation-cost-guide': 'Understand Adelaide kitchen renovation cost drivers, scope decisions and the information needed for a clearer cabinetry quote.',
+  'adelaide-deck-replacement-guide': 'An Adelaide guide to deck replacement: inspect boards, joists and fixings, then prepare a safer, more useful repair brief.',
+  'adelaide-custom-wardrobe-planning': 'Plan an Adelaide custom wardrobe with MEL ONE: measurements, storage layout, materials, hardware, quote inclusions, approved changes and installation handover.',
+  'adelaide-heritage-timber-repairs': 'Plan Adelaide heritage timber repairs for doors, windows and external joinery with condition checks and repair-versus-replace guidance.',
+};
+
+const relatedTargets = {
+  'service:house-framing': ['service:fix-out-second-fix', 'service:architectural-joinery', 'insight:commercial-fitout-process'],
+  'service:outdoor-living': ['service:decking-restoration-flooring', 'service:timber-fencing-repairs-replacement', 'service:timber-gates-installation-repairs', 'insight:adelaide-deck-replacement-guide'],
+  'service:fix-out-second-fix': ['service:door-jamb-interior-trim', 'service:skirting-board-installation-repairs', 'service:renovation-carpentry', 'insight:commercial-fitout-process'],
+  'service:formwork-carpentry': ['service:fitout-refurbishment', 'service:house-framing', 'insight:commercial-fitout-process'],
+  'service:fitout-refurbishment': ['service:formwork-carpentry', 'service:fix-out-second-fix', 'insight:commercial-fitout-process'],
+  'service:custom-kitchen-bathroom': ['service:architectural-joinery', 'service:storage-solutions', 'insight:kitchen-renovation-cost-guide'],
+  'service:architectural-joinery': ['service:custom-kitchen-bathroom', 'service:custom-doors-furniture', 'insight:why-integrated-carpentry-joinery'],
+  'service:storage-solutions': ['service:custom-kitchen-bathroom', 'service:custom-doors-furniture', 'service:architectural-joinery', 'insight:adelaide-custom-wardrobe-planning'],
+  'service:custom-doors-furniture': ['service:architectural-joinery', 'service:storage-solutions', 'insight:adelaide-custom-wardrobe-planning'],
+  'service:restoration-maintenance': ['service:door-window-repairs', 'service:heritage-carpentry', 'service:decking-restoration-flooring', 'insight:timber-flooring-oiling-guide'],
+  'service:heritage-carpentry': ['service:door-window-repairs', 'service:restoration-maintenance', 'insight:heritage-building-timber-restoration', 'insight:adelaide-heritage-timber-repairs'],
+  'service:decking-restoration-flooring': ['service:outdoor-living', 'service:restoration-maintenance', 'insight:adelaide-deck-replacement-guide'],
+  'service:door-window-repairs': ['service:custom-doors-furniture', 'service:restoration-maintenance', 'service:heritage-carpentry', 'service:door-jamb-interior-trim'],
+  'service:skirting-board-installation-repairs': ['service:door-jamb-interior-trim', 'service:fix-out-second-fix', 'service:renovation-carpentry', 'service:decking-restoration-flooring'],
+  'service:door-jamb-interior-trim': ['service:skirting-board-installation-repairs', 'service:custom-doors-furniture', 'service:fix-out-second-fix', 'service:renovation-carpentry'],
+  'service:timber-fencing-repairs-replacement': ['service:timber-gates-installation-repairs', 'service:outdoor-living', 'service:decking-restoration-flooring', 'service:restoration-maintenance'],
+  'service:timber-gates-installation-repairs': ['service:timber-fencing-repairs-replacement', 'service:outdoor-living', 'service:custom-doors-furniture', 'service:restoration-maintenance'],
+  'service:renovation-carpentry': ['service:door-jamb-interior-trim', 'service:skirting-board-installation-repairs', 'service:custom-kitchen-bathroom', 'service:architectural-joinery', 'service:fitout-refurbishment'],
+  'insight:why-integrated-carpentry-joinery': ['service:architectural-joinery', 'service:house-framing', 'service:fitout-refurbishment'],
+  'insight:kitchen-renovation-cost-guide': ['service:custom-kitchen-bathroom', 'service:architectural-joinery', 'service:storage-solutions'],
+  'insight:heritage-building-timber-restoration': ['service:heritage-carpentry', 'service:restoration-maintenance', 'insight:adelaide-heritage-timber-repairs'],
+  'insight:timber-flooring-oiling-guide': ['service:decking-restoration-flooring', 'service:restoration-maintenance', 'service:outdoor-living'],
+  'insight:commercial-fitout-process': ['service:fitout-refurbishment', 'service:formwork-carpentry', 'service:fix-out-second-fix'],
+  'insight:adelaide-deck-replacement-guide': ['service:outdoor-living', 'service:decking-restoration-flooring', 'service:restoration-maintenance'],
+  'insight:adelaide-custom-wardrobe-planning': ['service:storage-solutions', 'service:custom-kitchen-bathroom', 'service:architectural-joinery', 'service:custom-doors-furniture'],
+  'insight:adelaide-heritage-timber-repairs': ['service:heritage-carpentry', 'service:restoration-maintenance', 'service:custom-doors-furniture'],
+};
+
+function detailTitle(kind, item) {
+  return seoTitles[kind][item.slug] || `${item.title} Adelaide`;
+}
+
+function detailDescription(item) {
+  return seoDescriptions[item.slug] || item.summary;
+}
+
+function relatedContent(kind, slug) {
+  const links = (relatedTargets[`${kind}:${slug}`] || []).map((target) => {
+    const [targetKind, targetSlug] = target.split(':');
+    const items = targetKind === 'service' ? content.services : content.insights;
+    const item = items.find((entry) => entry.slug === targetSlug);
+    if (!item) return '';
+    const href = targetKind === 'service' ? `/services/${item.slug}/` : `/insights/${item.slug}/`;
+    return `<li><a href="${href}">${escapeHtml(item.title)}</a></li>`;
+  }).filter(Boolean).join('');
+  return `<aside class="service-brief related-content"><p class="kicker">Related planning</p><h2>Continue your Adelaide project research</h2><ul>${links}</ul><a class="text-link" href="/contact/">Discuss your project</a></aside>`;
+}
+
+function collectionJsonLd(route, label, intro, items, kind) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        name: label,
+        url: canonical(route),
+        description: intro,
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: items.map((item, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: item.title,
+            url: canonical(`/${kind}/${item.slug}/`),
+          })),
+        },
+      },
+      breadcrumbList([['Home', '/'], [label, route]]),
+    ],
+  };
+}
 
 // ── Build ──────────────────────────────────────────────────────────────
 fs.mkdirSync(siteDir, { recursive: true });
@@ -245,17 +529,35 @@ const srcAssets = path.join(projectDir, 'src', 'assets');
 const imageFiles = [
   'hero-bg.jpg', 'about.jpg', 'about-team-2026-v2.jpg',
   'framing.jpg', 'formwork.jpg', 'decking.jpg', 'secondfix.jpg', 'fitout.jpg', 'fitout-2026-v2.jpg', 'architectural.jpg', 'storage.jpg', 'restoration.jpg', 'restoration-2026-v2.jpg', 'heritage.jpg', 'heritage-2026-v2.jpg',
-  'kitchen.jpg', 'doors-furniture.jpg', 'flooring.jpg',
+  'kitchen.jpg', 'custom-kitchen-bathroom-project.png', 'doors-furniture.jpg', 'flooring.jpg',
   'symbol-joint.png', 'symbol-measure.png', 'symbol-grain.png', 'symbol-repair.png',
   'insight-integrated-joinery.jpg', 'insight-kitchen-costs.jpg', 'insight-heritage-restoration.jpg',
-  'insight-timber-flooring.jpg', 'insight-commercial-fitout.jpg', 'mel-one-logo.png', 'favicon-192.png'
+  'insight-timber-flooring.jpg', 'insight-commercial-fitout.jpg',
+  'insight-adelaide-deck-replacement.png', 'insight-adelaide-custom-wardrobe.png', 'insight-adelaide-heritage-timber-repairs.png',
+  'service-door-window-repairs.png', 'service-skirting-board-installation-repairs.png', 'service-door-jamb-interior-trim.png',
+  'service-timber-fencing-repairs-replacement.png', 'service-timber-gates-installation-repairs.png', 'service-renovation-carpentry.png',
+  'project-deck-before.webp', 'project-deck-during.webp', 'project-deck-detail.webp', 'project-deck-after.webp',
+  'project-heritage-before.webp', 'project-heritage-during.webp', 'project-heritage-detail.webp', 'project-heritage-after.webp',
+  'project-door-before.webp', 'project-door-during.webp', 'project-door-detail.webp', 'project-door-after.webp',
+  'project-fence-during.webp', 'project-fence-after-wide.webp', 'project-fence-after-gate.webp', 'project-fence-before.webp',
+  'project-window-after-wide.webp', 'project-window-during.webp', 'project-window-after-detail.webp', 'project-window-before.webp',
+  'mel-one-logo.png'
 ];
 for (const img of imageFiles) {
   const src = path.join(srcAssets, img);
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(siteDir, 'assets', img));
 }
 
+// A crawlable, stable PNG is required for search-engine favicon discovery.
+const faviconSource = path.join(srcAssets, 'favicon.png');
+if (fs.existsSync(faviconSource)) fs.copyFileSync(faviconSource, path.join(siteDir, 'favicon.png'));
+const faviconIcoSource = path.join(srcAssets, 'favicon.ico');
+if (fs.existsSync(faviconIcoSource)) fs.copyFileSync(faviconIcoSource, path.join(siteDir, 'favicon.ico'));
+
 // ── Homepage ────────────────────────────────────────────────────────────
+const officeMapUrl = 'https://www.google.com/maps/place/63+Pirie+St,+Adelaide+SA+5000,+Australia/';
+const officeEmbedUrl = 'https://www.google.com/maps?q=63+Pirie+St%2C+Adelaide%20SA%205000%2C%20Australia&output=embed';
+
 const homeBody = `
 <section class="hero-image-bg">
   <div class="hero-overlay"></div>
@@ -289,7 +591,6 @@ const homeBody = `
           <span class="text-link">View service ↗</span>
         </a>`).join('')}
     </div>
-    <p>Considering a built-in wardrobe? <a class="text-link" href="/services/storage-solutions/">Explore custom wardrobes and built-in storage in Adelaide</a>, or read our <a class="text-link" href="/insights/adelaide-custom-wardrobe-planning/">wardrobe planning guide</a>.</p>
     <div style="margin-top:32px;text-align:center;">
       <a class="btn" href="/services/">See all ${content.services.length} services →</a>
     </div>
@@ -333,19 +634,20 @@ const homeBody = `
 </section>
 
 <section class="section office-location" aria-labelledby="office-location-title">
-  <div class="wrap">
+  <div class="wrap office-location-grid">
     <div class="office-location-copy">
-      <div>
-        ${numberLabel(4, 'Office')}
-        <h2 id="office-location-title">Visit our Adelaide office</h2>
-      </div>
-      <div>
-        <p class="office-address">63 Pirie St, Adelaide, SA 5000</p>
-        <p>Visits are by appointment. Contact MEL ONE first and we will arrange a suitable time to discuss your project.</p>
+      <span class="section-no">04 / Visit us</span>
+      <h2 id="office-location-title">Visit our Adelaide office</h2>
+      <p class="office-address">63 Pirie St, Adelaide SA 5000</p>
+      <p>Please contact us before visiting so we can make sure the right person is available to discuss your project.</p>
+      <div class="actions">
+        <a class="btn primary" href="${officeMapUrl}" target="_blank" rel="noopener">Open in Google Maps</a>
+        <a class="btn ghost-dark" href="/contact/">Contact us first</a>
       </div>
     </div>
-    <div class="office-map"><iframe src="${officeMapEmbedUrl}" title="Map showing 63 Pirie St, Adelaide SA 5000" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-    <a class="text-link office-map-link" href="${officeMapUrl}" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a>
+    <div class="office-map-frame">
+      <iframe title="Map to MEL ONE's Adelaide office" src="${officeEmbedUrl}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
   </div>
 </section>`;
 
@@ -359,6 +661,7 @@ writeRoute('/', page({ title: 'Adelaide Carpentry, Joinery & Timber Restoration'
       name: brandName,
       url: canonical('/'),
       image: canonical('/assets/hero-bg.jpg'),
+      logo: canonical('/favicon.png'),
       description: content.seo.site_description,
       telephone: content.contact.phone,
       email: content.contact.email,
@@ -376,18 +679,45 @@ writeRoute('/', page({ title: 'Adelaide Carpentry, Joinery & Timber Restoration'
 } }));
 
 // ── Services index (with process merged in) ────────────────────────────
+const serviceGroups = [
+  {
+    title: 'Structural and construction carpentry',
+    lead: 'Timber work that helps establish and complete the building sequence from frame through second fix.',
+    slugs: ['house-framing', 'formwork-carpentry', 'fix-out-second-fix'],
+  },
+  {
+    title: 'Interior finishing and renovation',
+    lead: 'Detailed interior timber work for openings, trim, joinery and rooms being renewed.',
+    slugs: ['skirting-board-installation-repairs', 'door-jamb-interior-trim', 'renovation-carpentry', 'custom-kitchen-bathroom', 'architectural-joinery', 'storage-solutions', 'custom-doors-furniture', 'fitout-refurbishment'],
+  },
+  {
+    title: 'Outdoor timber work',
+    lead: 'Decking, outdoor structures, fencing and gates planned for everyday use and site conditions.',
+    slugs: ['outdoor-living', 'decking-restoration-flooring', 'timber-fencing-repairs-replacement', 'timber-gates-installation-repairs'],
+  },
+  {
+    title: 'Repairs, restoration and heritage work',
+    lead: 'Practical repair and careful timber-restoration planning for existing Adelaide homes and details.',
+    slugs: ['door-window-repairs', 'restoration-maintenance', 'heritage-carpentry'],
+  },
+];
+
+const serviceCard = (item, index) => `<article class="service-card">
+  <a class="service-media" href="/services/${item.slug}/" aria-hidden="true" tabindex="-1">${thumb(`service.${item.slug}`)}</a>
+  <div class="service-card-body">
+    <span class="num">${String(index + 1).padStart(2, '0')}</span>
+    <h3><a href="/services/${item.slug}/">${escapeHtml(item.title)}</a></h3>
+    <p>${escapeHtml(item.summary)}</p>
+    <a class="text-link" href="/services/${item.slug}/">View detail ↗</a>
+  </div>
+</article>`;
+
 const servicesBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">${escapeHtml(content.brand.industry_label)}</p><h1>${escapeHtml(copy.servicesTitle)}</h1></div><p class="lede">${escapeHtml(copy.servicesLead)}</p></div></section>
-<section class="section"><div class="wrap service-grid">
-  ${content.services.map((item, index) => `
-    <article class="service-card">
-      <a class="service-media" href="/services/${item.slug}/" aria-hidden="true" tabindex="-1">${thumb(`service.${item.slug}`)}</a>
-      <div class="service-card-body">
-        <span class="num">${String(index + 1).padStart(2, '0')}</span>
-        <h2><a href="/services/${item.slug}/">${escapeHtml(item.title)}</a></h2>
-        <p>${escapeHtml(item.summary)}</p>
-        <a class="text-link" href="/services/${item.slug}/">View detail ↗</a>
-      </div>
-    </article>`).join('')}
+<section class="section service-directory"><div class="wrap">
+  ${serviceGroups.map((group) => {
+    const items = group.slugs.map((slug) => content.services.find((item) => item.slug === slug)).filter(Boolean);
+    return `<section class="service-directory-group"><div class="section-head"><div><p class="kicker">Service directory</p><h2>${escapeHtml(group.title)}</h2></div><p>${escapeHtml(group.lead)}</p></div><div class="service-grid">${items.map((item) => serviceCard(item, content.services.indexOf(item))).join('')}</div></section>`;
+  }).join('')}
 </div></section>
 <section class="section method">
   <div class="wrap">
@@ -405,22 +735,76 @@ const servicesBody = `<section class="page-hero"><div class="wrap page-hero-grid
     </div>
   </div>
 </section>`;
-writeRoute('/services/', page({ title: copy.servicesTitle, description: copy.servicesLead, route: '/services/', active: 'services', body: servicesBody }));
+writeRoute('/services/', page({ title: 'Adelaide Carpentry & Joinery | MEL ONE', description: copy.servicesLead, route: '/services/', active: 'services', body: servicesBody, jsonLd: collectionJsonLd('/services/', 'Adelaide Carpentry & Joinery', copy.servicesLead, content.services, 'services') }));
 
 // ── Service detail ──────────────────────────────────────────────────────
-const serviceRelatedLinks = {
-  'custom-doors-furniture': [
-    ['/services/storage-solutions/', 'Storage solutions for wardrobes and built-ins'],
-    ['/services/architectural-joinery/', 'Architectural joinery for detailed timber work'],
-    ['/insights/adelaide-custom-wardrobe-planning/', 'Adelaide custom wardrobe planning guide'],
-  ],
-  'storage-solutions': [
-    ['/', 'Adelaide carpentry and joinery overview'],
-    ['/services/custom-doors-furniture/', 'Custom doors, windows and furniture'],
-    ['/services/architectural-joinery/', 'Architectural joinery services'],
-    ['/insights/adelaide-custom-wardrobe-planning/', 'Adelaide custom wardrobe planning guide'],
-  ],
+const realProjects = {
+  'decking-restoration-flooring': [{
+    id: 'deck-replacement-adelaide',
+    title: 'Timber deck replacement',
+    summary: 'A four-stage record of a weathered outdoor deck: its condition before work, removal and framing access, completed step detailing and the finished deck.',
+    images: [
+      ['project-deck-before.webp', 'Weathered timber deck before replacement', 'Before work'],
+      ['project-deck-during.webp', 'Carpenter removing old boards during deck replacement', 'During work'],
+      ['project-deck-detail.webp', 'Completed timber deck step and edge detailing', 'Completed detail'],
+      ['project-deck-after.webp', 'Completed timber deck replacement', 'Completed project'],
+    ],
+  }],
+  'heritage-carpentry': [{
+    id: 'heritage-verandah-restoration',
+    title: 'Heritage verandah timber restoration',
+    summary: 'This sequence records the weathered verandah fabric, careful preparation, restored decorative timberwork and the completed period frontage.',
+    images: [
+      ['project-heritage-before.webp', 'Weathered heritage verandah before restoration', 'Existing condition'],
+      ['project-heritage-during.webp', 'Carpenter preparing decorative heritage verandah timber', 'Restoration in progress'],
+      ['project-heritage-detail.webp', 'Restored heritage verandah posts and decorative timberwork', 'Completed detail'],
+      ['project-heritage-after.webp', 'Heritage verandah condition documented before restoration', 'Project record'],
+    ],
+  }],
+  'fix-out-second-fix': [{
+    id: 'timber-door-jamb-repair',
+    title: 'Timber door and jamb repair',
+    summary: 'The project documents lower-jamb deterioration, timber preparation, threshold detailing and the finished entry door.',
+    images: [
+      ['project-door-before.webp', 'Timber entry door and lower jamb before repair', 'Existing condition'],
+      ['project-door-during.webp', 'Carpenter repairing the timber door jamb', 'Repair in progress'],
+      ['project-door-detail.webp', 'Completed timber door threshold and lower panel detail', 'Completed detail'],
+      ['project-door-after.webp', 'Finished timber entry door after repair', 'Completed project'],
+    ],
+  }],
+  'door-window-repairs': [{
+      id: 'timber-window-repair',
+      title: 'Timber window repair',
+      summary: 'A timber window repair sequence covering weathered paint and damaged sections, preparation work, refreshed sill detailing and the completed window.',
+      images: [
+        ['project-window-before.webp', 'Weathered timber window frame before repair', 'Existing condition'],
+        ['project-window-during.webp', 'Carpenter preparing a timber window frame for repair', 'Repair in progress'],
+        ['project-window-after-detail.webp', 'Completed timber window sill detail', 'Completed detail'],
+        ['project-window-after-wide.webp', 'Completed timber window repair on a weatherboard home', 'Completed project'],
+      ],
+  }],
+  'timber-fencing-repairs-replacement': [{
+    id: 'timber-fence-gate-replacement',
+    title: 'Timber fence and gate replacement',
+    summary: 'The photo record shows the failed original fence, installation work, the completed boundary line and the finished side gate hardware.',
+    images: [
+      ['project-fence-before.webp', 'Weathered timber boundary fence before replacement', 'Existing condition'],
+      ['project-fence-during.webp', 'Carpenter installing timber fence panels and gate framing', 'Installation in progress'],
+      ['project-fence-after-wide.webp', 'Completed timber boundary fence', 'Completed fence'],
+      ['project-fence-after-gate.webp', 'Completed timber side gate with black hardware', 'Completed gate'],
+    ],
+  }],
 };
+
+function realProjectGallery(serviceSlug) {
+  return safeArray(realProjects[serviceSlug]).map((project) => `<section class="real-project" data-project="${project.id}">
+  <div class="wrap">
+    <div class="real-project-head"><div><p class="kicker">REAL PROJECT</p><h2>${escapeHtml(project.title)}</h2></div><p>${escapeHtml(project.summary)}</p></div>
+    <div class="project-gallery">${project.images.map(([src, alt, label]) => `<figure><img src="/assets/${src}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async"><figcaption><span>${escapeHtml(label)}</span></figcaption></figure>`).join('')}</div>
+  </div>
+</section>`).join('');
+}
+
 for (const [index, item] of content.services.entries()) {
   const route = `/services/${item.slug}/`;
   const body = `<section class="detail-hero"><div class="wrap detail-grid"><div><p class="kicker">SERVICE ${String(index + 1).padStart(2, '0')}</p><h1>${escapeHtml(item.title)}</h1></div><p class="lede">${escapeHtml(item.lead)}</p></div></section>
@@ -431,20 +815,20 @@ for (const [index, item] of content.services.entries()) {
     <aside class="service-brief">
       <p class="kicker">Planning notes</p>
       <h2>One team, from first measure to final finish</h2>
-      <p>Tell us the scope, suburb and preferred timing. MEL ONE will help you establish the right next step before a detailed quote.</p>
+      <p>Tell us the scope, suburb and preferred timing. Book a site assessment to discuss the work scope, practical recommendations and written quote guidance.</p>
       <a class="text-link" href="/contact/">Discuss your project</a>
     </aside>
-    ${serviceRelatedLinks[item.slug] ? `<aside class="service-brief"><p class="kicker">Related planning</p><h2>Explore connected timber work</h2>${serviceRelatedLinks[item.slug].map(([href, label]) => `<p><a class="text-link" href="${href}">${label}</a></p>`).join('')}</aside>` : ''}
+    ${relatedContent('service', item.slug)}
   </article>
-</div></section>`;
-  writeRoute(route, page({ title: item.title, description: item.summary, route, active: 'services', body, jsonLd: {
+</div></section>${realProjectGallery(item.slug)}`;
+  writeRoute(route, page({ title: detailTitle('service', item), description: detailDescription(item), route, active: 'services', body, jsonLd: {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'Service',
         '@id': canonical(`${route}#service`),
         name: item.title,
-        description: item.summary,
+        description: item.lead,
         url: canonical(route),
         areaServed: { '@type': 'City', name: 'Adelaide' },
         provider: { '@id': canonical('/#business') },
@@ -460,7 +844,8 @@ function collection(kind, label, items, intro) {
 <section class="section"><div class="wrap card-grid">
   ${items.map((item) => card(`/${kind}/${item.slug}/`, item, label)).join('')}
 </div></section>`;
-  writeRoute(`/${kind}/`, page({ title: label, description: intro, route: `/${kind}/`, active: kind, body }));
+  const collectionTitle = kind === 'insights' ? 'Adelaide Carpentry Insights | MEL ONE' : `${label} | MEL ONE`;
+  writeRoute(`/${kind}/`, page({ title: collectionTitle, description: intro, route: `/${kind}/`, active: kind, body, jsonLd: collectionJsonLd(`/${kind}/`, label, intro, items, kind) }));
   for (const item of items) {
     const route = `/${kind}/${item.slug}/`;
     const cat = escapeHtml(item.category || label);
@@ -468,30 +853,45 @@ function collection(kind, label, items, intro) {
     const article = `<section class="article-hero"><div class="wrap reading"><p class="kicker">${cat}${date}</p><h1>${escapeHtml(item.title)}</h1><p class="lede">${escapeHtml(item.lead)}</p></div></section>
 <section class="section"><article class="wrap reading article">
   ${item.sections.map((section) => `<section><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.summary)}</p></section>`).join('')}
+  ${item.faqs?.length ? `<section><h2>Wardrobe quote and handover questions</h2>${item.faqs.map(faq => `<details><summary>${escapeHtml(faq.question)}</summary><p>${escapeHtml(faq.answer)}</p></details>`).join('')}</section>` : ''}
+  ${relatedContent('insight', item.slug)}
 </article></section>
 <section class="section article-cta-section"><div class="wrap reading article-cta">
   <p class="kicker">Talk through your scope</p>
   <h2>Planning a timber project in Adelaide?</h2>
-  <p>Share the brief, location and preferred timing. We will help you identify a practical next step.</p>
+  <p>Share the project details, photos and Adelaide location for a tailored timber project discussion.</p>
   <a class="btn primary" href="/contact/">Start an enquiry</a>
 </div></section>`;
-    writeRoute(route, page({ title: item.title, description: item.summary, route, active: kind, body: article, jsonLd: {
+    writeRoute(route, page({ title: detailTitle('insight', item), description: detailDescription(item), route, active: kind, body: article, jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
         {
           '@type': 'Article',
           headline: item.title,
-          description: item.summary,
+          description: detailDescription(item),
           mainEntityOfPage: canonical(route),
           publisher: { '@id': canonical('/#business') },
         },
         breadcrumbList([['Home', '/'], [label, `/${kind}/`], [item.title, route]]),
+        ...(item.faqs?.length ? [{ '@type': 'FAQPage', mainEntity: item.faqs.map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) }] : []),
       ],
     } }));
   }
 }
 
 collection('insights', copy.insightsTitle, content.insights, copy.insightsLead);
+
+fs.writeFileSync(path.join(siteDir, 'services.json'), JSON.stringify({
+  version: 'https://adelaidecarpentryhub.com.au/services-catalogue/1.0',
+  title: 'MEL ONE Adelaide Carpentry Services',
+  home_page_url: canonical('/services/'),
+  items: content.services.map((item) => ({
+    name: item.title,
+    title: detailTitle('service', item),
+    url: canonical(`/services/${item.slug}/`),
+    description: item.summary,
+  })),
+}, null, 2), 'utf8');
 
 const feedDate = (item) => `${item.date || '2026-09-23'}T00:00:00+09:30`;
 const feedItems = content.insights.map((item) => ({
@@ -516,16 +916,74 @@ fs.writeFileSync(path.join(siteDir, 'rss.xml'), `<?xml version="1.0" encoding="U
 
 
 // ── Service areas ───────────────────────────────────────────────────────
-const serviceAreas = content.serviceAreas || { title: copy.serviceAreasTitle, lead: '', searchLabel: 'Find your suburb', searchPlaceholder: 'Start typing a suburb or area', regions: [] };
-const areaCount = safeArray(serviceAreas.regions).reduce((total, region) => total + safeArray(region.suburbs).length, 0);
+const serviceAreas = fs.existsSync(cityStreetsPath)
+  ? JSON.parse(fs.readFileSync(cityStreetsPath, 'utf8'))
+  : (content.serviceAreas || { title: copy.serviceAreasTitle, lead: '', searchLabel: 'Find your location', searchPlaceholder: 'Start typing a street or area', regions: [] });
+const locationsFor = (region) => safeArray(region.locations || region.suburbs);
+const regionRoute = (region) => `/service-areas/${region.slug}/`;
+const areaCount = safeArray(serviceAreas.regions).reduce((total, region) => total + locationsFor(region).length, 0);
 const areasBody = `<section class="page-hero service-areas-hero"><div class="wrap page-hero-grid"><div><p class="kicker">ADELAIDE · SOUTH AUSTRALIA</p><h1>${escapeHtml(serviceAreas.title)}</h1></div><p class="lede">${escapeHtml(serviceAreas.lead)}</p></div></section>
 <section class="section area-directory-section"><div class="wrap" data-area-directory>
-  <div class="area-directory-intro"><p class="kicker">Local directory</p><h2>Find your suburb</h2><p>Browse ${areaCount} Adelaide suburbs and localities by area, or search the directory directly.</p></div>
-  <div class="area-search-panel"><label for="area-search">${escapeHtml(serviceAreas.searchLabel)}</label><div class="area-search-control"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.15a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z"/></svg><input id="area-search" data-area-search type="search" autocomplete="off" placeholder="${escapeHtml(serviceAreas.searchPlaceholder)}"><button type="button" data-area-clear hidden>Clear</button></div><p class="area-search-status" data-area-status role="status" aria-live="polite">Showing all ${areaCount} localities.</p></div>
-  <div class="area-grid">${safeArray(serviceAreas.regions).map((region, index) => `<section class="area-region" data-area-region><header><span class="num">${String(index + 1).padStart(2, '0')}</span><h2>${escapeHtml(region.name)}</h2><span class="area-region-count">${safeArray(region.suburbs).length} localities</span></header><ul class="suburb-list">${safeArray(region.suburbs).map(suburb => `<li data-suburb data-search="${escapeHtml((suburb + ' ' + region.name).toLocaleLowerCase('en-AU'))}"><a href="/contact/?suburb=${encodeURIComponent(suburb)}" aria-label="Enquire about work in ${escapeHtml(suburb)}">${escapeHtml(suburb)}</a></li>`).join('')}</ul></section>`).join('')}</div>
-  <p class="area-empty" data-area-empty hidden>No Adelaide locality matched that search. Try the full suburb name or clear the search.</p>
+  <div class="area-directory-intro"><p class="kicker">City directory</p><h2>Find your street</h2><p>Browse ${areaCount} City of Adelaide streets by precinct, or search the directory directly.</p></div>
+  <div class="area-search-panel"><label for="area-search">${escapeHtml(serviceAreas.searchLabel)}</label><div class="area-search-control"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.15a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z"/></svg><input id="area-search" data-area-search type="search" autocomplete="off" placeholder="${escapeHtml(serviceAreas.searchPlaceholder)}"><button type="button" data-area-clear hidden>Clear</button></div><p class="area-search-status" data-area-status role="status" aria-live="polite">Showing all ${areaCount} streets.</p></div>
+  <div class="area-grid">${safeArray(serviceAreas.regions).map((region, index) => `<section class="area-region" data-area-region><header><span class="num">${String(index + 1).padStart(2, '0')}</span><h2><a href="${regionRoute(region)}">${escapeHtml(region.name)}</a></h2><span class="area-region-count">${locationsFor(region).length} streets</span></header><p><a class="area-region-link" href="${regionRoute(region)}">View ${escapeHtml(region.name)} carpentry services</a></p><ul class="suburb-list">${locationsFor(region).map(location => `<li data-location data-search="${escapeHtml((location + ' ' + region.name).toLocaleLowerCase('en-AU'))}"><a href="${regionRoute(region)}?street=${encodeURIComponent(location)}" aria-label="View carpentry services for ${escapeHtml(location)} in ${escapeHtml(region.name)}">${escapeHtml(location)}</a></li>`).join('')}</ul></section>`).join('')}</div>
+  <p class="area-empty" data-area-empty hidden>No Adelaide street matched that search. Try the full street name or clear the search.</p>
 </div></section>`;
-writeRoute('/service-areas/', page({ title: serviceAreas.title, description: serviceAreas.lead, route: '/service-areas/', active: 'areas', body: areasBody, jsonLd: { '@context': 'https://schema.org', '@type': 'Service', name: 'MEL ONE service areas', provider: { '@id': canonical('/#business') }, areaServed: safeArray(serviceAreas.regions).flatMap(region => safeArray(region.suburbs).map(name => ({ '@type': 'Place', name: `${name}, South Australia` }))) } }));
+writeRoute('/service-areas/', page({ title: serviceAreas.title, description: serviceAreas.lead, route: '/service-areas/', active: 'areas', body: areasBody, jsonLd: { '@context': 'https://schema.org', '@type': 'Service', name: 'MEL ONE service areas', provider: { '@id': canonical('/#business') }, areaServed: safeArray(serviceAreas.regions).flatMap(region => locationsFor(region).map(name => ({ '@type': 'Place', name: `${name}, ${region.name}, Adelaide, South Australia` }))) } }));
+
+const serviceBySlug = (slug) => content.services.find((service) => service.slug === slug);
+const contactForm = (heading, lead, attributes = '') => `<form class="contact-form" data-contact-form ${attributes} novalidate>
+  <h2>${escapeHtml(heading)}</h2>
+  <p>${escapeHtml(lead)}</p>
+  <label>Your name<input name="name" autocomplete="name" required></label>
+  <label>Phone number<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required></label>
+  <label>Email address<input name="email" type="email" autocomplete="email" required></label>
+  <label>Your project or first question<textarea name="message" rows="6" style="resize:none" required></textarea></label>
+  <input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;">
+  <button class="btn primary" type="submit">Send enquiry</button>
+  <p data-brief-status role="status" aria-live="polite"></p>
+</form>`;
+
+const renderServiceAreaPage = (region) => {
+  const route = regionRoute(region);
+  const services = safeArray(region.serviceSlugs).map(serviceBySlug).filter(Boolean);
+  const faqs = safeArray(region.faqs);
+  const locations = locationsFor(region);
+  const body = `<section class="page-hero service-areas-hero"><div class="wrap page-hero-grid"><div><p class="kicker">ADELAIDE · ${escapeHtml(region.name.toUpperCase())}</p><h1>${escapeHtml(region.title)}</h1></div><div><p class="lede">${escapeHtml(region.lead)}</p><a class="btn primary" href="#book-area-work">Book a local carpentry enquiry</a></div></div></section>
+<section class="section area-detail-section"><div class="wrap area-detail-grid"><div><p class="kicker">LOCATION AND ACCESS</p><h2>Start with the street, access and timber work you need</h2></div><div><p>${escapeHtml(region.focus)}</p><p>${escapeHtml(region.assessment)}</p></div></div></section>
+<section class="section area-detail-section area-detail-tint"><div class="wrap"><p class="kicker">PREPARE THE ENQUIRY</p><h2>Three details that prevent guesswork</h2><div class="area-detail-cards">${safeArray(region.bookingDetails).map((item, index) => `<article><span class="section-no">0${index + 1}</span><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)}</p></article>`).join('')}</div></div></section>
+<section class="section area-detail-section"><div class="wrap"><p class="kicker">PROPERTY REPAIR CONTEXT</p><h2>Carpentry and joinery work we can discuss in ${escapeHtml(region.name)}</h2><div class="area-detail-cards">${safeArray(region.scenarios).map((item) => `<article><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)}</p></article>`).join('')}</div></div></section>
+<section class="section area-detail-section area-detail-tint"><div class="wrap"><p class="kicker">RELATED SERVICE PATHS</p><h2>Find the closest type of timber work</h2><div class="area-service-links">${services.map((service) => `<a href="/services/${service.slug}/"><strong>${escapeHtml(service.title)}</strong><span>${escapeHtml(service.summary)}</span><em>View service details →</em></a>`).join('')}</div></div></section>
+<section class="section area-detail-section"><div class="wrap"><p class="kicker">STREETS SERVED</p><h2>Carpentry and joinery near ${escapeHtml(region.name)} streets</h2><p class="area-detail-intro">Choose your street to include it in the booking form below. MEL ONE has more than ten years in carpentry, experienced carpenters and a standardised maintenance team for accurate repair discussions.</p><ul class="suburb-list area-detail-streets">${locations.map((location) => `<li><a href="${route}?street=${encodeURIComponent(location)}#book-area-work" aria-label="Book carpentry and joinery near ${escapeHtml(location)} in ${escapeHtml(region.name)}">${escapeHtml(location)}</a></li>`).join('')}</ul></div></section>
+<section class="section area-detail-section area-detail-trust"><div class="wrap area-detail-grid"><div><p class="kicker">WHY MEL ONE</p><h2>Experienced local timber repair conversations</h2></div><div><p>MEL ONE has served more than 10,000 customers with a practical, standardised maintenance approach. Our team listens to the visible problem, checks the location and access context, and uses photos and dimensions to help identify the next useful question.</p><p>For Adelaide enquiries, MEL ONE can respond in as little as 30 minutes, subject to current availability. A detailed street and a short description of the timber work help us move quickly without making assumptions.</p></div></div></section>
+<section class="section area-detail-section"><div class="wrap area-faq"><p class="kicker">LOCAL QUESTIONS</p><h2>${escapeHtml(region.name)} carpentry FAQs</h2>${faqs.map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('')}</div></section>
+<section class="section area-booking" id="book-area-work"><div class="wrap contact-grid"><div><p class="kicker">CONTACT MEL ONE</p><h2>${escapeHtml(region.bookingTitle)}</h2><p data-area-context>Send the street, the type of timber work, photos where available and any access notes. We will reply using the contact details you provide.</p><p><strong>Phone:</strong> ${escapeHtml(content.contact.phone)}<br><strong>Email:</strong> ${escapeHtml(content.contact.email)}<br><strong>Office:</strong> ${escapeHtml(content.contact.address)}</p></div>${contactForm(region.bookingTitle, 'Outline the timber repair, joinery or maintenance work you would like to discuss.', `data-area-region="${escapeHtml(region.name)}" data-area-streets="${escapeHtml(JSON.stringify(locations))}"`)}</div></section>`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'Service', name: region.title, description: region.description, url: canonical(route), provider: { '@id': canonical('/#business') }, areaServed: locations.map((name) => ({ '@type': 'Place', name: `${name}, ${region.name}, Adelaide, South Australia` })) },
+      { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: canonical('/') }, { '@type': 'ListItem', position: 2, name: 'Service areas', item: canonical('/service-areas/') }, { '@type': 'ListItem', position: 3, name: region.name, item: canonical(route) }] },
+      { '@type': 'FAQPage', mainEntity: faqs.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) }
+    ]
+  };
+  writeRoute(route, page({ title: region.title, description: region.description, route, active: 'areas', body, jsonLd }));
+};
+
+safeArray(serviceAreas.regions).forEach(renderServiceAreaPage);
+fs.writeFileSync(path.join(siteDir, 'service-areas.json'), JSON.stringify({
+  version: 1,
+  title: serviceAreas.title,
+  updated: new Date().toISOString().slice(0, 10),
+  regions: safeArray(serviceAreas.regions).map((region) => ({
+    name: region.name,
+    slug: region.slug,
+    title: region.title,
+    description: region.description,
+    url: canonical(regionRoute(region)),
+    streets: locationsFor(region),
+    services: safeArray(region.serviceSlugs).map(serviceBySlug).filter(Boolean).map((service) => ({ title: service.title, summary: service.summary, url: canonical(`/services/${service.slug}/`) }))
+  }))
+}, null, 2), 'utf8');
 
 // ── FAQ ─────────────────────────────────────────────────────────────────
 const faqBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">FAQ</p><h1>${escapeHtml(copy.faqTitle)}</h1></div><p class="lede">${escapeHtml(copy.faqLead)}</p></div></section>
@@ -554,6 +1012,10 @@ const aboutImageSlot = (() => {
   }
   return `<div class="about-image-placeholder" title="Drop your team/workshop photo here"><span>Image slot</span><small>Drop at assets/about.jpg</small></div>`;
 })();
+const companyDetails = (content.about.company_details || []).map((item) => `<div><dt>${escapeHtml(item.label)}</dt><dd>${item.url ? `<a class="text-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.value)} ↗</a>` : escapeHtml(item.value)}</dd></div>`).join('');
+const aboutSteps = (content.about.process_steps || []).map((item, index) => `<article class="value-card"><div class="value-icon">${String(index + 1).padStart(2, '0')}</div><h3>${escapeHtml(item.heading)}</h3><p>${escapeHtml(item.body)}</p></article>`).join('');
+const aboutPriorities = (content.about.priorities || []).map((item, index) => `<article class="value-card"><div class="value-icon">${String(index + 1).padStart(2, '0')}</div><h3>${escapeHtml(item.heading)}</h3><p>${escapeHtml(item.body)}</p></article>`).join('');
+const aboutFaq = (content.about.faqs || []).map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('');
 const aboutBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">ABOUT</p><h1>${escapeHtml(content.about.title)}</h1></div><p class="lede">${escapeHtml(content.about.lead)}</p></div></section>
 <section class="section"><div class="wrap">
   <h2 class="about-section-title">${escapeHtml(content.about.story_title)}</h2>
@@ -568,8 +1030,24 @@ const aboutBody = `<section class="page-hero"><div class="wrap page-hero-grid"><
 <section class="section section-alt"><div class="wrap reading">
   <h2>${escapeHtml(content.about.scope_title)}</h2>
   <p>${escapeHtml(content.about.scope)}</p>
-  </article>
-</div></section>`;
+</div></section>
+<section class="section"><div class="wrap about-company">
+  <div class="section-head"><div><p class="kicker">COMPANY &amp; INSURANCE</p><h2>${escapeHtml(content.about.company_title || 'Company & insurance details')}</h2></div><p>${escapeHtml(content.about.company_intro || '')}</p></div>
+  <dl class="company-details">${companyDetails}</dl>
+</div></section>
+<section class="section section-alt"><div class="wrap">
+  <div class="section-head"><div><p class="kicker">HOW A JOB IS ARRANGED</p><h2>${escapeHtml(content.about.process_title || 'Clear details before work begins')}</h2></div><p>${escapeHtml(content.about.process_lead || '')}</p></div>
+  <div class="value-grid">${aboutSteps}</div>
+</div></section>
+<section class="section"><div class="wrap">
+  <div class="section-head"><div><p class="kicker">CUSTOMER PRIORITIES</p><h2>${escapeHtml(content.about.priorities_title || 'What shapes a workable Adelaide project')}</h2></div><p>${escapeHtml(content.about.priorities_lead || '')}</p></div>
+  <div class="value-grid">${aboutPriorities}</div>
+</div></section>
+<section class="section section-alt"><div class="wrap reading about-faq">
+  <p class="kicker">GOOD TO KNOW</p><h2>${escapeHtml(content.about.faq_title || 'Company and project questions')}</h2>
+  ${aboutFaq}
+</div></section>
+<section class="section closing"><div class="wrap closing-inner"><h2>Start with the job, suburb and a few photos</h2><div><p>Call ${escapeHtml(content.contact.phone)}, email ${escapeHtml(content.contact.email)} or use our contact form. Tell us the Adelaide suburb, what needs attention and any important access details.</p><a class="btn primary" href="/contact/">Contact MEL ONE</a></div></div></section>`;
 writeRoute('/about/', page({ title: content.about.title, description: content.about.lead, route: '/about/', active: 'about', body: aboutBody, jsonLd: { '@context': 'https://schema.org', '@type': 'Organization', name: brandName, description: content.about.lead } }));
 
 // ── Contact ─────────────────────────────────────────────────────────────
@@ -602,7 +1080,19 @@ const contactBody = `<section class="page-hero"><div class="wrap page-hero-grid"
     <p data-brief-status role="status" aria-live="polite"></p>
   </form>
 </div></section>`;
-writeRoute('/contact/', page({ title: 'Contact', description: content.contact.lead, route: '/contact/', active: 'contact', body: contactBody }));
+writeRoute('/contact/', page({ title: 'Contact Adelaide Carpenters | MEL ONE', description: content.contact.lead, route: '/contact/', active: 'contact', body: contactBody, jsonLd: {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ContactPage',
+      name: 'Contact MEL ONE Adelaide',
+      url: canonical('/contact/'),
+      description: content.contact.lead,
+      mainEntity: { '@id': canonical('/#business') },
+    },
+    breadcrumbList([['Home', '/'], ['Contact', '/contact/']]),
+  ],
+} }));
 
 // ── 404 ─────────────────────────────────────────────────────────────────
 writeRoute('/404.html', page({ title: 'Page not found', description: 'The page you requested does not exist.', route: '/404.html', body: `<section class="page-hero"><div class="wrap"><p class="kicker">404</p><h1>This page was not found</h1><p class="lede">Head back to the homepage to keep exploring our services and insights.</p><a class="btn primary" href="/">Back to home</a></div></section>` }));
@@ -610,6 +1100,7 @@ writeRoute('/404.html', page({ title: 'Page not found', description: 'The page y
 // ── Sitemap & robots ────────────────────────────────────────────────────
 const allRoutes = [
   '/', '/services/', '/service-areas/', '/insights/', '/faq/', '/about/', '/contact/', '/404.html',
+  ...safeArray(serviceAreas.regions).map(regionRoute),
   ...content.services.map((item) => `/services/${item.slug}/`),
   ...content.insights.map((item) => `/insights/${item.slug}/`),
 ];
