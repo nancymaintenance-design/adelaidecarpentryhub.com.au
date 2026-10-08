@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { execFileSync } = require('node:child_process');
 const root = path.join(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'build.mjs'), 'utf8');
 
@@ -46,6 +47,19 @@ test('home page title and description target Adelaide carpentry searches concise
   assert.match(content, /MEL ONE provides Adelaide carpentry, custom joinery, decking, cabinetry and heritage timber restoration/);
 });
 
+test('approved enquiry language keeps the on-site assessment and written-quote path clear', () => {
+  const content = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content-pack', 'site-content.json'), 'utf8'));
+  assert.equal(content.hero.primary_cta, 'Request a site assessment and quote');
+  assert.equal(content.hero.secondary_cta, 'Explore our services');
+  execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
+  const home = fs.readFileSync(path.join(root, 'public', 'index.html'), 'utf8');
+  assert.match(home, /<a class="btn primary" href="\/contact\/">Request a site assessment and quote<\/a>/);
+  assert.match(home, /<a class="btn ghost" href="\/services\/">Explore our services<\/a>/);
+  assert.match(content.contact.lead, /on-site assessment or measure/i);
+  assert.match(content.contact.lead, /written quote/i);
+  assert.match(content.contact.preparation.at(-1), /drawings or reference photos/i);
+});
+
 test('detail pages provide a clear planning path and enquiry action without altering the home hero', () => {
   const interior = fs.readFileSync(path.join(root, 'src', 'assets', 'interior.css'), 'utf8');
   assert.match(source, /class="service-brief"/);
@@ -83,4 +97,27 @@ test('mobile layout keeps navigation, content columns and controls within a narr
   assert.match(base, /\.nav a, \.nav-cta\s*\{\s*display: flex;\s*align-items: center;\s*min-height: 44px;/);
   assert.match(base, /html, body\s*\{ overflow-x: hidden; \}/);
   assert.match(interior, /\.interior \.contact-form\s*\{ padding: 24px 18px; \}/);
+});
+
+test('insight cards use a balanced responsive grid with rounded corners', () => {
+  execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
+  const insights = fs.readFileSync(path.join(root, 'public', 'insights', 'index.html'), 'utf8');
+  const interior = fs.readFileSync(path.join(root, 'src', 'assets', 'interior.css'), 'utf8');
+  assert.match(insights, /class="[^"]*card-grid--balanced[^"]*"/);
+  assert.match(interior, /\.interior \.card-grid\.card-grid--balanced/);
+  assert.match(interior, /:nth-last-child\(2\):nth-child\(3n \+ 1\)/);
+  assert.match(interior, /\.interior \.editorial-card\s*\{[^}]*border-radius: 12px;/s);
+});
+
+test('home page service and insight cards share the rounded-card treatment', () => {
+  execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
+  const home = fs.readFileSync(path.join(root, 'public', 'index.html'), 'utf8');
+  const theme = fs.readFileSync(path.join(root, 'src', 'assets', 'theme.css'), 'utf8');
+  assert.equal((home.match(/class="choice"/g) || []).length, 6);
+  assert.equal((home.match(/class="editorial-card"/g) || []).length, 3);
+  assert.match(theme, /body:not\(\.interior\) \.choice-grid\s*\{[^}]*gap: 16px;[^}]*border: 0;/s);
+  assert.match(theme, /body:not\(\.interior\) \.choice\s*\{[^}]*border-radius: 12px;/s);
+  assert.match(theme, /body:not\(\.interior\) \.editorial-card\s*\{[^}]*border-radius: 12px;/s);
+  assert.match(theme, /body:not\(\.interior\) \.card-grid\.card-grid--balanced\s*\{\s*grid-template-columns: 1fr;/);
+  assert.match(theme, /body:not\(\.interior\) \.card-grid\.card-grid--balanced > :last-child:nth-child\(odd\)/);
 });

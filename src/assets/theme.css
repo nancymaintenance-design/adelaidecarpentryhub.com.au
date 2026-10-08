@@ -216,6 +216,38 @@
 /* Loaded after base.css so these win. */
 
 /* Homepage services grid: force exactly 3 columns so 6 items render as 3×2 with no empty cells */
+body:not(.interior) .choice-grid {
+  gap: 16px;
+  border: 0;
+  background: none;
+}
+body:not(.interior) .choice {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  box-shadow: 0 8px 22px rgba(23, 55, 47, 0.05);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+body:not(.interior) .choice:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 18px 32px rgba(23, 55, 47, 0.1);
+}
+body:not(.interior) .editorial-card {
+  overflow: hidden;
+  border-radius: 12px;
+}
+body:not(.interior) .card-grid.card-grid--balanced { grid-template-columns: 1fr; }
+@media (min-width: 900px) {
+  body:not(.interior) .card-grid.card-grid--balanced { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  body:not(.interior) .card-grid.card-grid--balanced:has(> :nth-child(2):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body:not(.interior) .card-grid.card-grid--balanced > :last-child:nth-child(3n + 1) { grid-column: span 3; }
+  body:not(.interior) .card-grid.card-grid--balanced > :nth-last-child(2):nth-child(3n + 1) { grid-column: span 2; }
+}
+@media (min-width: 701px) and (max-width: 899px) {
+  body:not(.interior) .card-grid.card-grid--balanced { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body:not(.interior) .card-grid.card-grid--balanced > :last-child:nth-child(odd) { grid-column: span 2; }
+}
 .choice-grid {
   grid-template-columns: repeat(3, 1fr);
 }

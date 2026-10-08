@@ -603,7 +603,7 @@ const homeBody = `
       <div>${numberLabel(2, 'Insights')}<h2>${escapeHtml(copy.insightsTitle)}</h2></div>
       <a class="text-link" href="/insights/">See all ↗</a>
     </div>
-    <div class="card-grid">
+    <div class="card-grid card-grid--balanced">
       ${content.insights.slice(0, 3).map((item) => card(`/insights/${item.slug}/`, item, copy.insightsTitle)).join('')}
     </div>
   </div>
@@ -841,7 +841,7 @@ for (const [index, item] of content.services.entries()) {
 // ── Insights ─────────────────────────────────────────────────────────────
 function collection(kind, label, items, intro) {
   const body = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">${escapeHtml(label)}</p><h1>${escapeHtml(label)}</h1></div><p class="lede">${escapeHtml(intro)}</p></div></section>
-<section class="section"><div class="wrap card-grid">
+<section class="section"><div class="wrap card-grid card-grid--balanced">
   ${items.map((item) => card(`/${kind}/${item.slug}/`, item, label)).join('')}
 </div></section>`;
   const collectionTitle = kind === 'insights' ? 'Adelaide Carpentry Insights | MEL ONE' : `${label} | MEL ONE`;
