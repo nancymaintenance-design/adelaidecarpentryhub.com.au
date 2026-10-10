@@ -106,7 +106,7 @@
 
 验收裁定：首页原本没有 FAQPage，批准范围要求已有标记与可见内容一致，而非每个 FAQ 区块必须新增标记。因此首页按 canonical 前六问逐条校验；若存在 FAQPage 则同样核对。代价是首页仍无该可选结构数据，不影响可见答案或内部服务链接。About 的资料 disclosure 不属于问答标记契约。18 服务、8 指南、5 地区与 FAQ 页仍强制检查 FAQPage。服务/指南/地区 106 对问答核查未发现完全相同的问答对（不含首页与 FAQ 的有意复用）。
 
-浏览器由控制器使用 localhost-only http://127.0.0.1:5174/ 只读预览检查。桌面 1280 与手机 390 抽查首页、door-window 服务、kitchen 服务、kitchen 指南、CBD 地区、Contact：每页单一 H1、scrollWidth≤innerWidth，已加载图片无失败；Contact/地区一个表单。CBD Pirie Street 链接带 ?street=Pirie%20Street#book-area-work，正确预填地点。键盘 FAQ 展开与 CTA 焦点跳转正常、日志无错误；截图目视检查布局/页脚社交 Logo。最终重建后真实桌面重新载入确认 preparation card 及选街道上下文均显式说明图片/尺寸可选并给出邮件；桌面宽 1265≤1280、手机 390=390，地区一个表单。未发送询盘，未生成截图文件。浏览器抽查不等于全部设备/浏览器组合测试。
+浏览器由控制器使用 localhost-only http://127.0.0.1:5174/ 只读预览检查。桌面 1280 与手机 390 抽查首页、door-window 服务、kitchen 服务、kitchen 指南、CBD 地区、Contact：每页单一 H1、scrollWidth≤innerWidth，已加载图片无失败；Contact/地区一个表单。CBD Pirie Street 链接带 ?street=Pirie%20Street#book-area-work，正确预填地点。键盘 FAQ 展开正常；Enter 激活 CTA 后到达目标片段（未验证目标元素焦点）、日志无错误；截图目视检查布局/页脚社交 Logo。最终重建后真实桌面重新载入确认 preparation card 及选街道上下文均显式说明图片/尺寸可选并给出邮件；桌面宽 1265≤1280、手机 390=390，地区一个表单。未发送询盘，未生成截图文件。浏览器抽查不等于全部设备/浏览器组合测试。
 
 ## 上线前仍需业主提供或确认
 

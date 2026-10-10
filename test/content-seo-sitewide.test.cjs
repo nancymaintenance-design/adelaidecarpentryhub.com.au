@@ -27,9 +27,45 @@ test('38 canonical routes retain unique metadata and continuous heading hierarch
 test('all generated internal links resolve paths and fragments',()=>{
   for(const route of [...expected,'/404.html']) for(const m of read(route).matchAll(/href="([^"]*)"/g)){const href=decode(m[1]);if(/^(mailto:|tel:|https?:\/\/|\/\/)/.test(href))continue;const url=new URL(href,'https://example.com'+route);const file=path.join(output,url.pathname.endsWith('/')?url.pathname+'index.html':url.pathname);assert.ok(fs.existsSync(file),route+' → '+href);if(url.hash&&file.endsWith('.html')) assert.ok(fs.readFileSync(file,'utf8').includes('id="'+decodeURIComponent(url.hash.slice(1))+'"'),route+' → '+href);}
 });
-// Break caught: published unsupported business promises or divergent visible/schema answers.
-test('visible FAQs match their canonical answers and required detail schema without unsupported claims',()=>{
- for(const route of expected){const html=read(route),body=html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g,'');assert.doesNotMatch(body,/10,000 customers|ten.plus years|ten.year.experience|more than ten years|30 minutes/i,route);const blocks=[...body.matchAll(/<details\b[^>]*>([\s\S]*?)<\/details>/g)].map(m=>m[1]);const schemas=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap(m=>{const j=JSON.parse(m[1]);return j['@graph']||[j];});const faq=schemas.find(s=>s['@type']==='FAQPage');if(blocks.length && (faq || route==='/' || route==='/faq/' || /^\/(services|insights|service-areas)\/[^/]+\/$/.test(route))){if(route!=='/')assert.ok(faq,route);const entities=faq?.mainEntity || require('../src/content-pack/site-content.json').faqs.slice(0,6).map(f=>({name:f.question,acceptedAnswer:{text:f.answer}}));assert.equal(entities.length,blocks.length,route);blocks.forEach((b,i)=>{assert.equal(decode(b.match(/<summary>([\s\S]*?)<\/summary>/)[1]),entities[i].name,route);assert.equal(decode(b.match(/<p>([\s\S]*?)<\/p>/)[1]),entities[i].acceptedAnswer.text,route);});}}
+// Break caught: both visible and structured FAQs disappear, or their answers diverge.
+function assertFaqContract(route, html) {
+  const count = route === '/' ? 6 : route === '/faq/' ? 16 :
+    /^\/services\/[^/]+\/$/.test(route) ? 3 :
+    /^\/insights\/[^/]+\/$/.test(route) ? 4 :
+    /^\/service-areas\/[^/]+\/$/.test(route) ? 4 : 0;
+  const body = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '');
+  assert.doesNotMatch(body, /10,000 customers|ten.plus years|ten.year.experience|more than ten years|30 minutes/i, route);
+  if (!count) return; // About disclosures are not FAQ blocks.
+  const blocks = [...body.matchAll(/<details\b[^>]*>([\s\S]*?)<\/details>/g)].map(m => m[1]);
+  assert.equal(blocks.length, count, route + ': required visible FAQ count');
+  const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap(m => {
+    const json = JSON.parse(m[1]); return json['@graph'] || [json];
+  });
+  const faq = schemas.find(s => s['@type'] === 'FAQPage');
+  if (route !== '/') assert.ok(faq, route + ': required FAQPage');
+  const entities = faq?.mainEntity || require('../src/content-pack/site-content.json').faqs.slice(0, 6).map(f => ({name:f.question, acceptedAnswer:{text:f.answer}}));
+  assert.equal(entities.length, count, route + ': required schema/canonical FAQ count');
+  blocks.forEach((block, i) => {
+    assert.equal(decode(block.match(/<summary>([\s\S]*?)<\/summary>/)[1]), entities[i].name, route);
+    assert.equal(decode(block.match(/<p>([\s\S]*?)<\/p>/)[1]), entities[i].acceptedAnswer.text, route);
+  });
+}
+test('visible FAQs match fixed counts and canonical/schema answers without unsupported claims', () => {
+  for (const route of expected) assertFaqContract(route, read(route));
+});
+test('FAQ acceptance rejects simultaneous loss of visible and structured questions', () => {
+  const route = '/services/house-framing/';
+  const mutated = read(route).replace(/<details\b[^>]*>[\s\S]*?<\/details>/g, '').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '');
+  assert.throws(() => assertFaqContract(route, mutated), /required visible FAQ count/);
+});
+test('area FAQ first-enquiry images and dimensions remain explicitly optional', () => {
+  for (const region of require('../src/content-pack/city-streets.json').regions) {
+    const html = read('/service-areas/' + region.slug + '/');
+    for (const block of html.matchAll(/<details\b[^>]*>([\s\S]*?)<\/details>/g)) {
+      const answer = decode(block[1].match(/<p>([\s\S]*?)<\/p>/)[1]);
+      if (/photos|images|approximate dimensions/i.test(answer)) assert.match(answer, /optional/i, region.slug + ': first enquiry evidence');
+    }
+  }
 });
 // Break caught: missing street context, multiple forms, expanded area schema.
 test('five existing areas keep street query links, one form and exact location schema',()=>{
