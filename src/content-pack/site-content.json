@@ -30,20 +30,43 @@
     {
       "slug": "house-framing",
       "title": "House Framing",
-      "summary": "Structural timber framing for new homes — wall frames, roof trusses, floor joists and load-bearing structure built to the National Construction Code.",
-      "lead": "We deliver complete timber framing for Adelaide residential projects using compliant materials and precise workmanship, so the skeleton of your build is straight, solid and built to last.",
+      "summary": "Timber framing planned around issued drawings, site access and inspection responsibilities for Adelaide residential builds.",
+      "lead": "Frame installation begins with the project design: wall frames, roof framing and floor members need coordinated drawings, specified connections and a clear handover to the next trade.",
+      "seo_title": "Framing Carpenter Adelaide",
+      "seo_description": "Timber framing planned around issued drawings, site access and inspection responsibilities for Adelaide residential builds.",
+      "faq_title": "Prepare the framing stage — questions",
+      "faqs": [
+        {
+          "question": "Can framing start from architectural drawings alone?",
+          "answer": "Structural details, truss information and any unresolved connections need review with the responsible designer or engineer before the affected work begins. Architectural drawings alone may leave critical items unresolved."
+        },
+        {
+          "question": "Who checks the frame before it is covered?",
+          "answer": "Agree the required inspections and the responsible builder, engineer or certifier in advance. MEL ONE's carpentry checks do not replace statutory inspections or engineering sign-off."
+        },
+        {
+          "question": "What changes a framing quote?",
+          "answer": "Supply versus labour-only scope, member schedules, roof geometry, lifting access, bracing requirements and connections to existing work all affect the allowance. Identify the current drawing revision in the quote."
+        }
+      ],
+      "planning": {
+        "title": "Prepare the framing stage",
+        "body": "Tell MEL ONE about build stage, drawing revisions, supply responsibilities and delivery access, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Prepare the framing stage"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Wall frame construction",
-          "summary": "Load-bearing and non-load-bearing wall frames built to AS 1684 using H3/H4 treated timber, for single, double and split-level homes."
+          "summary": "Wall framing follows the issued design, including member sizes, treatment suited to exposure and specified connections. Resolve design changes with the responsible designer before installation."
         },
         {
           "title": "Roof trusses & rafters",
-          "summary": "Prefabricated truss or site-cut rafter installation with weatherproof detailing and cyclone-rated fixing for full roof-structure integrity."
+          "summary": "Roof trusses and rafters follow project and supplier documentation. Connection, bracing, lifting and inspection responsibilities need confirmation with the builder and relevant designer."
         },
         {
           "title": "Floor joist laying",
-          "summary": "Joists sized to span and load, on concrete slab or suspended floors, with moisture barrier and preservative treatment."
+          "summary": "Floor members, support details and connections follow the issued design. Moisture management and treatment depend on the floor system and exposure rather than a single rule for every build."
         },
         {
           "title": "Structural alignment",
@@ -71,31 +94,54 @@
         },
         {
           "title": "What to include in a framing enquiry",
-          "summary": "For a useful Adelaide framing discussion, provide current architectural and structural drawings, site address, access constraints, build stage, preferred start window and whether supply is included. Mention slopes, extensions tying into an existing home, unusual roof shapes or tight boundaries. Clear information lets us assess the real scope instead of offering a vague allowance."
+          "summary": "Describe the build stage, access, preferred timing and supply responsibilities. Existing drawings are optional for initial contact; current design documents are needed before the affected work can be confirmed. Mention slopes, ties into existing structures and unusual roof geometry."
         }
       ]
     },
     {
       "slug": "outdoor-living",
       "title": "Outdoor Living",
-      "summary": "Custom outdoor spaces for Australian homes — treated timber decking, pergolas, fencing and coastal-grade landscape timber.",
-      "lead": "Adelaide's coastal climate is hard on outdoor timber. We specify certified preservative-treated timber with proper drainage and fixing so your outdoor space stays looking new for years.",
+      "summary": "Plan new timber decking and pergolas around levels, drainage, exposure and access; compare restoration when an existing deck needs attention.",
+      "lead": "New outdoor carpentry should suit how you use the yard and how it meets the house. MEL ONE discusses decking and pergola scope, material choices, access and the design responsibilities before work is scheduled.",
+      "seo_title": "Outdoor Carpentry Adelaide",
+      "seo_description": "Plan new timber decking and pergolas around levels, drainage, exposure and access; compare restoration when an existing deck needs attention.",
+      "faq_title": "Plan a new deck or pergola — questions",
+      "faqs": [
+        {
+          "question": "Is this the right service for an existing worn deck?",
+          "answer": "For coating wear or repairs to an existing deck, start with Decking Restoration & Timber Flooring. A new deck or a redesigned outdoor layout belongs in this outdoor-living discussion."
+        },
+        {
+          "question": "Can a pergola be attached to any existing wall?",
+          "answer": "The existing construction, load path and proposed design must be checked. Attachment, engineering and approval requirements need resolution before construction; a convenient wall is not sufficient evidence."
+        },
+        {
+          "question": "Which outdoor timber needs the least upkeep?",
+          "answer": "Exposure, board profile, finish and drainage influence care as well as species. Compare cleaning and recoating needs for the actual location rather than assuming a timber is maintenance-free."
+        }
+      ],
+      "planning": {
+        "title": "Plan a new deck or pergola",
+        "body": "Tell MEL ONE about intended use, site levels, shade needs and access, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Plan a new deck or pergola"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Timber decking",
-          "summary": "Merbau, Spotted Gum or Treated Pine decks with vented sub-structure, drainage gaps and slip-resistant finish for homes, pools and commercial areas."
+          "summary": "Compare decking species and profiles alongside drainage, ventilation, exposure and the selected finish. Pool edges and other special locations need their own design and performance review."
         },
         {
           "title": "Pergolas & shade structures",
-          "summary": "Freestanding or attached pergolas with weatherproof joints, steel connectors and treated hardwood, ready for motorised shade or greenery."
+          "summary": "Freestanding or attached pergolas need a design suited to the site. Roof coverings, shade equipment and planting loads should be identified before connections and materials are selected."
         },
         {
           "title": "Fencing",
-          "summary": "Termite-resistant treated timber fences, custom oiling and staining, with concrete footings and wind bracing for boundary and privacy needs."
+          "summary": "Fence and privacy-screen details can be coordinated with a new outdoor area. Materials, supports and finishing depend on exposure, boundary arrangements and site conditions."
         },
         {
-          "title": "Coastal preservative timber",
-          "summary": "H4/H5 treated timber with stainless fixings and a maintenance plan for Adelaide's salt-air coastal suburbs."
+          "title": "Materials for the actual exposure",
+          "summary": "Treatment, fasteners and coatings are selected for actual exposure and the specified system. Coastal conditions warrant discussion of corrosion, drainage and ongoing care rather than a universal material prescription."
         },
         {
           "title": "Start with how the space will be used",
@@ -126,20 +172,43 @@
     {
       "slug": "fix-out-second-fix",
       "title": "Fix-Out & Second Fix",
-      "summary": "On-site finishing after lock-up — cornices, skirtings, door frames and leaves, window frames and timber stairs to a full building-fit standard.",
-      "lead": "Second fix is the final quality gate before handover. With precise measuring and professional installation we make sure every detail lands perfectly.",
+      "summary": "Coordinate doors, skirtings, architraves and finishing junctions as a second-fix carpentry package for Adelaide builds and renovations.",
+      "lead": "MEL ONE plans second-fix carpentry around room readiness, floor levels and door schedules. Define the finishing package early so trims, hardware and adjoining trades can meet with fewer unresolved junctions.",
+      "seo_title": "Second Fix Carpentry Adelaide",
+      "seo_description": "Coordinate doors, skirtings, architraves and finishing junctions as a second-fix carpentry package for Adelaide builds and renovations.",
+      "faq_title": "Scope the finishing package — questions",
+      "faqs": [
+        {
+          "question": "When should second-fix carpentry be booked?",
+          "answer": "Confirm that linings, moisture conditions, openings and final floor levels are sufficiently settled. Agree room access and protection with the builder before deliveries and installation are scheduled."
+        },
+        {
+          "question": "Do I need a full second-fix package for one damaged skirting?",
+          "answer": "A local skirting or architrave repair can be scoped separately. Use the skirting-board or door-jamb service when the task is a specific trim problem rather than a coordinated finishing stage."
+        },
+        {
+          "question": "Does second fix include painting or specialist doors?",
+          "answer": "Filling, caulking, painting and specialist fire, acoustic or security door systems need explicit scope and responsible trades. Ordinary door carpentry does not establish a rated system's performance."
+        }
+      ],
+      "planning": {
+        "title": "Scope the finishing package",
+        "body": "Tell MEL ONE about room readiness, door schedules, trim profiles and floor finishes, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Scope the finishing package"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Cornices & mouldings",
-          "summary": "Cornice, ceiling cove, curtain boxes and custom plaster features, with stopper, sand and primer."
+          "summary": "Timber mouldings and curtain-box details can form part of the finishing package. Identify plaster features, preparation and painting as separate trade interfaces where required."
         },
         {
           "title": "Skirtings & architraves",
-          "summary": "Solid timber, MDF or composite skirtings and architraves, with accurate cutting, 45° mitres and nail-free fixing."
+          "summary": "Skirtings and architraves are selected around profiles, room conditions and adjoining finishes. Joint and fixing methods depend on material, wall condition and the agreed finish."
         },
         {
           "title": "Door frames & leaves",
-          "summary": "Internal, fire-rated and security doors — frame plumb, leaf hung and hardware set, with acoustic and sealing treatment."
+          "summary": "Ordinary internal door installation includes the agreed frame, leaf and hardware adjustments. Fire-rated, acoustic, security and accessibility systems require specified products and appropriate specialist responsibilities."
         },
         {
           "title": "Timber stair installation",
@@ -167,23 +236,46 @@
         },
         {
           "title": "Information that improves a second-fix quote",
-          "summary": "Provide the door and window schedules, interior elevations, trim profiles, hardware schedule, finish level, floor finish details and timing. For renovations, photos of existing openings and walls are valuable. These details let us allow for the actual junctions and installation conditions instead of treating a detailed finishing package as a simple linear-metre estimate."
+          "summary": "Describe the rooms, finish level, floor finishes and timing. Existing schedules, elevations, profiles and hardware information are optional for initial enquiry; confirm them before installation. Renovations also require checking existing openings and junctions before a detailed finishing package is priced."
         }
       ]
     },
     {
       "slug": "formwork-carpentry",
       "title": "Formwork Carpentry",
-      "summary": "Precise timber formwork for commercial builds and large footings — accurate concrete shaping and safe site practice.",
-      "lead": "Formwork is the foundation of concrete quality. We use careful set-out, a solid bracing system and strict inspection so large projects get a reliable timber form system.",
+      "summary": "Timber formwork scope coordinated with structural drawings, temporary works, pour interfaces and release responsibilities.",
+      "lead": "MEL ONE discusses timber formwork with the builder and project team before fabrication. Set-out, temporary supports, embedded items and pour readiness need a documented sequence and clearly assigned responsibilities.",
+      "seo_title": "Formwork Carpenter Adelaide",
+      "seo_description": "Timber formwork scope coordinated with structural drawings, temporary works, pour interfaces and release responsibilities.",
+      "faq_title": "Discuss the pour interface — questions",
+      "faqs": [
+        {
+          "question": "Does the formwork quote include the concrete pour?",
+          "answer": "Concrete supply, reinforcement, placement and curing are separate interfaces unless expressly included in an agreed project scope. Identify who checks cast-in items and authorises pour readiness."
+        },
+        {
+          "question": "Who determines when formwork can be stripped?",
+          "answer": "Release follows the project's engineering, temporary-works documentation and responsible site direction. Visual appearance or an assumed number of days is not a release criterion."
+        },
+        {
+          "question": "What formwork information is needed for pricing?",
+          "answer": "Provide the element dimensions, levels, issued drawings, finish requirements and whether supply, erection or stripping is required. Access, lifting and staged pours can change the labour and system needed."
+        }
+      ],
+      "planning": {
+        "title": "Discuss the pour interface",
+        "body": "Tell MEL ONE about structural drawings, pour sequence, finish requirements and lifting access, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Discuss the pour interface"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Foundation wall formwork",
-          "summary": "Suspended-slab, retaining-wall and beam formwork with damp-proof membrane and embedded-item fixing."
+          "summary": "Foundation, wall and beam formwork scope depends on structural details, temporary works and cast-in items. Agree the required system and responsible project checks before fabrication."
         },
         {
           "title": "Slab & beam formwork",
-          "summary": "Multi-level slab systems with Acrow props, primary and secondary bearers and accurately laid form face."
+          "summary": "Slab and beam support systems follow the project design and temporary-works documentation. Specify the intended form face, access and erection and stripping responsibilities before pricing."
         },
         {
           "title": "Feature-shape formwork",
@@ -218,16 +310,39 @@
     {
       "slug": "fitout-refurbishment",
       "title": "Fitout & Refurbishment",
-      "summary": "Timber partitions, feature ceilings and display walls for offices, restaurants and retail — full commercial carpentry.",
-      "lead": "Commercial fitouts need speed and quality together. We work fast, build accurately and disturb trading as little as possible for Adelaide businesses.",
+      "summary": "Commercial timber fitouts planned around operating hours, finishes, site access and specialist service handovers.",
+      "lead": "MEL ONE scopes commercial carpentry for offices, retail and hospitality spaces around the premises and operating requirements. Timber partitions, feature finishes and displays need coordination with services, landlord conditions and the responsible project team.",
+      "seo_title": "Commercial Carpenter Adelaide",
+      "seo_description": "Commercial timber fitouts planned around operating hours, finishes, site access and specialist service handovers.",
+      "faq_title": "Brief the commercial timber scope — questions",
+      "faqs": [
+        {
+          "question": "Can a business remain open during carpentry work?",
+          "answer": "That depends on the work zone, public separation, noise, dust and safe access. Agree staging with the premises manager; continued trading is not assumed when defining the programme."
+        },
+        {
+          "question": "Are acoustic or fire performance ratings included?",
+          "answer": "Only a specified and appropriately designed system can support a performance requirement. Identify specialist design, installation and certification responsibilities rather than treating timber finishes as proof of a rating."
+        },
+        {
+          "question": "What should a commercial carpentry quote separate?",
+          "answer": "List timber work, finishes, removal, protection, delivery restrictions and handover areas. Keep electrical, mechanical, fire services, approvals and other trades clearly assigned."
+        }
+      ],
+      "planning": {
+        "title": "Brief the commercial timber scope",
+        "body": "Tell MEL ONE about premises use, operating hours, drawings and landlord access conditions, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Brief the commercial timber scope"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Timber partition systems",
-          "summary": "Steel-stud with timber-faced partitions, acoustic batts and finished surfaces, demountable for future re-layout."
+          "summary": "Timber-faced partition details are scoped against project drawings. Structural, acoustic, fire and service requirements need identified design and specialist interfaces; demountability depends on the selected system."
         },
         {
           "title": "Feature & suspended ceilings",
-          "summary": "Commercial ceiling systems with hidden light coves, vents and fire-spray coordination, plus custom timber feature ceilings."
+          "summary": "Timber feature ceilings and light coves need coordination with supports, service access and the specified ceiling system. Electrical, mechanical and fire-service work remains with the responsible trades."
         },
         {
           "title": "Shopfront & display walls",
@@ -262,16 +377,39 @@
     {
       "slug": "custom-kitchen-bathroom",
       "title": "Custom Kitchen & Bathroom Cabinetry",
-      "summary": "Bespoke kitchen cabinets, islands, vanities and laundry units — designed and installed end to end, sized to your exact space.",
-      "lead": "We build in our own workshop and control every dimension and joint, so cabinets install with zero rework and zero gaps.",
+      "summary": "Kitchen cabinets, laundry units and vanity joinery with measured layouts, material selections and defined plumbing and benchtop interfaces.",
+      "lead": "MEL ONE plans kitchen cabinet installation, vanity joinery and laundry storage around the room, appliances and selected finishes. Confirm layout, hardware, manufacture and installation responsibilities before committing to the cabinetry scope.",
+      "seo_title": "Adelaide Kitchen & Bathroom Cabinetry",
+      "seo_description": "Kitchen cabinets, laundry units and vanity joinery with measured layouts, material selections and defined plumbing and benchtop interfaces.",
+      "faq_title": "Prepare your cabinetry brief — questions",
+      "faqs": [
+        {
+          "question": "Does cabinetry work include a complete bathroom renovation?",
+          "answer": "Cabinets and vanity joinery are the focus here. Waterproofing, plumbing, electrical work, tiling and other bathroom work need their own agreed scope and appropriately qualified trades."
+        },
+        {
+          "question": "Can new engineered-stone benchtops be included?",
+          "answer": "New engineered-stone benchtops, panels and slabs are prohibited under the applicable South Australian rules. Legacy work and exemptions have separate conditions. Confirm a lawful selected product and specialist responsibilities before ordering; alternative stone products may still present silica risks."
+        },
+        {
+          "question": "What must be approved before cabinet manufacture?",
+          "answer": "Approve the measured layout, cabinet and door materials, hardware, appliance clearances and benchtop interfaces. The quote should identify removal, installation, finishing and service connections as included or separately arranged."
+        }
+      ],
+      "planning": {
+        "title": "Prepare your cabinetry brief",
+        "body": "Tell MEL ONE about storage needs, appliance models, room layout and selected finishes, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Prepare your cabinetry brief"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Full kitchen cabinetry",
-          "summary": "Upper and lower cabinets, island benches and hardware (Blum/Hettich) with stone or engineered-stone tops; solid-timber, 2-pac or moisture-resistant doors."
+          "summary": "Kitchen cabinets and islands are scoped around the measured layout, selected doors, hardware and lawful benchtop product. New engineered-stone benchtops, panels and slabs are prohibited; legacy work and exemptions have separate conditions. Confirm the applicable rules and specialist interfaces before ordering."
         },
         {
-          "title": "Waterproof vanities",
-          "summary": "Vanities built on waterproof substrate with sealed backs, moisture-proof edging and stainless supports for wet areas."
+          "title": "Vanity joinery and wet-area interfaces",
+          "summary": "Vanity substrates, edging and supports must suit the selected product and exposure. Cabinet joinery does not replace wet-area waterproofing; plumbing and waterproofing responsibilities are separately agreed."
         },
         {
           "title": "Laundry units",
@@ -279,7 +417,7 @@
         },
         {
           "title": "Measure & install",
-          "summary": "On-site measure → 3D design sign-off → workshop build → install, all by one team, no subcontracting."
+          "summary": "Site measure, agreed drawings and selections precede manufacture and installation. Confirm who supplies each component and which specialist trades handle benchtops, plumbing, electrical work and finishing."
         },
         {
           "title": "Begin with the way you cook and live",
@@ -303,15 +441,38 @@
         },
         {
           "title": "Useful information for a cabinetry consultation",
-          "summary": "Bring room dimensions or plans, photos, appliance models, inspiration images, storage requirements and an indication of the project stage. For bathrooms and laundries, include plumbing layout and wall finish information where available. The better the brief, the more accurately we can discuss a tailored Adelaide cabinetry solution and the decisions that affect cost and timing."
+          "summary": "Start with storage requirements, appliance models and the project stage. Existing room dimensions, plans, photos and inspiration images are optional. For bathroom and laundry cabinetry, discuss the plumbing and wall finishes so the joinery scope and specialist interfaces can be defined."
         }
       ]
     },
     {
       "slug": "architectural-joinery",
       "title": "Architectural Joinery",
-      "summary": "High-difficulty timber features for premium homes and commercial spaces — wall panelling, hidden doors, complex stair rails and feature ceilings.",
-      "lead": "Architectural joinery is a core MEL ONE strength — turning a designer's complex vision into precisely built solid-timber product.",
+      "summary": "Custom timber panelling, concealed-door details and feature joinery coordinated with drawings, samples and installation interfaces.",
+      "lead": "Architectural joinery brings designed timber details into a room. MEL ONE discusses profiles, finish samples, supports and adjoining surfaces so bespoke features can be scoped before manufacture and installation.",
+      "seo_title": "Architectural Joinery Adelaide",
+      "seo_description": "Custom timber panelling, concealed-door details and feature joinery coordinated with drawings, samples and installation interfaces.",
+      "faq_title": "Define the architectural detail — questions",
+      "faqs": [
+        {
+          "question": "How is architectural joinery different from kitchen cabinetry?",
+          "answer": "This service focuses on designed timber features and detailed interior interfaces. Use the kitchen-cabinetry service for cabinet installation and the storage service for wardrobes, bookcases and storage layouts."
+        },
+        {
+          "question": "Can a concealed door be added to any wall?",
+          "answer": "Wall construction, opening size, hardware, door weight and adjacent finishes need checking. Structural alterations and rated-door requirements need separate design and specialist responsibilities."
+        },
+        {
+          "question": "How do we agree the finished appearance?",
+          "answer": "Use profile drawings and material or finish samples to agree grain direction, junctions, visible fixings and access panels. Confirm the approved details and change process before manufacture."
+        }
+      ],
+      "planning": {
+        "title": "Define the architectural detail",
+        "body": "Tell MEL ONE about design drawings, feature locations, finish references and adjoining trades, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Define the architectural detail"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Wall panelling",
@@ -323,11 +484,11 @@
         },
         {
           "title": "Complex stair rails",
-          "summary": "Curved handrails, glass-and-timber balustrades with 3D set-out, custom pieces and on-site tuning."
+          "summary": "Stair-rail and balustrade details need coordinated design, supports and installation responsibilities. Agree the specified system and any engineering or certification before fabrication; decorative joinery alone does not establish barrier performance."
         },
         {
           "title": "Feature ceilings & light coves",
-          "summary": "Large commercial timber ceilings, hidden cove lighting and acoustic panels with structural fixing plans."
+          "summary": "Timber ceiling features, light coves and panels are coordinated with specified supports and services. Acoustic or fire performance requires relevant system evidence and specialist design."
         },
         {
           "title": "Turning a design concept into buildable detail",
@@ -358,8 +519,31 @@
     {
       "slug": "storage-solutions",
       "title": "Storage Solutions",
-      "summary": "Bespoke wardrobes, display cases, study units and media walls — precise planning and durable hardware for high-use storage.",
-      "lead": "Good storage design doubles a room. We design around real movement so everything has a place and still looks great.",
+      "summary": "Built-in wardrobes, bookcases and study storage planned around daily use, door clearances, materials and a confirmed site measure.",
+      "lead": "MEL ONE plans built-in wardrobes and storage around what needs a place and how the room is used. Review layout, door movement, shelves, finishes and installation access before approving the joinery.",
+      "seo_title": "Built In Wardrobes Adelaide",
+      "seo_description": "Built-in wardrobes, bookcases and study storage planned around daily use, door clearances, materials and a confirmed site measure.",
+      "faq_title": "Plan usable built-in storage — questions",
+      "faqs": [
+        {
+          "question": "Should I choose sliding or hinged wardrobe doors?",
+          "answer": "Hinged doors need swing space and give broad access; sliding doors preserve room circulation but cover part of the interior at a time. Compare both against the bed, walkway and drawer positions."
+        },
+        {
+          "question": "Are my rough wardrobe measurements enough for manufacture?",
+          "answer": "They are useful for the first discussion, but manufacture follows a site measure and approved layout. Wall variation, skirtings, cornices and floor levels affect fillers and the final dimensions."
+        },
+        {
+          "question": "What belongs in a storage installation quote?",
+          "answer": "Specify internal zones, drawers, shelves, substrate, doors and hardware. Confirm removal, room protection, waste, making-good and any lighting or power work separately so quotes cover comparable work."
+        }
+      ],
+      "planning": {
+        "title": "Plan usable built-in storage",
+        "body": "Tell MEL ONE about storage list, door preferences, obstructions and room access, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Plan usable built-in storage"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Walk-in wardrobes",
@@ -375,7 +559,7 @@
         },
         {
           "title": "Display & wine cabinets",
-          "summary": "LED-lit glass-door displays and temperature-controlled wine cabinets for living, dining and commercial spaces."
+          "summary": "Display joinery can be planned around selected lighting or wine-storage equipment. Electrical work, cooling equipment, ventilation and service access require separate specification and responsible trades."
         },
         {
           "title": "Map what needs to be stored",
@@ -406,12 +590,35 @@
     {
       "slug": "custom-doors-furniture",
       "title": "Custom Doors, Windows & Furniture",
-      "summary": "High-precision weatherproof timber doors and windows, plus one-off solid-timber tables and bars built with craft.",
-      "lead": "From building windows to interior furniture, we use solid timber and precise joinery to make pieces that last.",
+      "summary": "New custom timber doors and furniture matched to opening conditions, use, hardware and finish requirements.",
+      "lead": "MEL ONE discusses new timber doors and one-off furniture around the setting, dimensions and daily use. Existing sticking doors or damaged windows should first be assessed as repair work before a replacement is specified.",
+      "seo_title": "Custom Timber Doors Adelaide",
+      "seo_description": "New custom timber doors and furniture matched to opening conditions, use, hardware and finish requirements.",
+      "faq_title": "Discuss a new timber piece — questions",
+      "faqs": [
+        {
+          "question": "Should a sticking timber door be replaced with a custom door?",
+          "answer": "Not automatically. Adjustment, local timber repair or hardware work may restore operation. Start with Door & Window Repairs when the aim is to repair an existing opening."
+        },
+        {
+          "question": "Will a custom external door be weatherproof or security-rated?",
+          "answer": "Exposure, frame, seals, hardware and the selected product or system determine performance. Agree documented requirements and evidence for the complete opening rather than assuming solid timber establishes a rating."
+        },
+        {
+          "question": "What details help price a bespoke table or door?",
+          "answer": "Describe the intended use, dimensions, timber or finish preferences and access. For doors, add the opening, handing, glazing and hardware requirements; for furniture, discuss supports, edge details and delivery."
+        }
+      ],
+      "planning": {
+        "title": "Discuss a new timber piece",
+        "body": "Tell MEL ONE about opening or furniture use, exposure, style and hardware preferences, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Discuss a new timber piece"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
-          "title": "Solid weatherproof doors",
-          "summary": "AS 2047 compliant entry and side doors with triple-lock provision and sealed gaskets."
+          "title": "External timber door requirements",
+          "summary": "Entry and side doors are selected around exposure, frame interfaces, hardware and documented requirements for the opening. Confirm product and system evidence for specified weather or security performance."
         },
         {
           "title": "Custom timber furniture",
@@ -419,7 +626,7 @@
         },
         {
           "title": "French & sliding doors",
-          "summary": "Timber French and sliding doors with custom tracks, acoustic seals and secure locking."
+          "summary": "French and sliding timber doors need coordinated tracks, clearances, seals and hardware. Confirm acoustic, weather or security requirements against the selected complete system."
         },
         {
           "title": "Match the piece to its setting",
@@ -450,20 +657,43 @@
     {
       "slug": "restoration-maintenance",
       "title": "Restoration & Maintenance",
-      "summary": "Repair of termite and moisture timber damage to frames, floors and doors — assessment, safe repair and preventative treatment.",
-      "lead": "Older Adelaide homes carry real termite risk. We offer assessment-to-repair in one team and advise on prevention.",
+      "summary": "Timber rot and damage repairs scoped around moisture causes, sound material, concealed conditions and separate pest or structural advice.",
+      "lead": "MEL ONE assesses accessible timber damage and discusses repair options for Adelaide homes. Trace the water or pest issue, identify sound material and agree any opening-up before defining the carpentry repair.",
+      "seo_title": "Timber Rot Repairs Adelaide",
+      "seo_description": "Timber rot and damage repairs scoped around moisture causes, sound material, concealed conditions and separate pest or structural advice.",
+      "faq_title": "Discuss the damaged timber — questions",
+      "faqs": [
+        {
+          "question": "Can rotten timber be repaired without replacing the whole member?",
+          "answer": "A local repair may be possible where sufficient sound timber remains and the function can be restored. Extent, access and structural role determine whether a splice, component replacement or wider assessment is appropriate."
+        },
+        {
+          "question": "Does termite-damage carpentry include pest treatment?",
+          "answer": "Pest inspection, treatment and barrier design belong with a licensed pest controller. Carpentry repair should be coordinated after the pest issue and structural implications have been assessed by the responsible specialists."
+        },
+        {
+          "question": "What if opening-up reveals more decay?",
+          "answer": "Record the exposed condition and discuss the revised repair, cost and timing before additional work proceeds. A visible inspection cannot establish the condition of every concealed member."
+        }
+      ],
+      "planning": {
+        "title": "Discuss the damaged timber",
+        "body": "Tell MEL ONE about affected location, symptoms, water history and any pest or engineer reports, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Discuss the damaged timber"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Termite damage repair",
-          "summary": "With a licensed pest controller, we assess extent and impact, replace damaged frames, floor joists and door jambs, and install termite barriers."
+          "summary": "A licensed pest controller assesses and treats pest activity and advises on barriers. MEL ONE scopes damaged timber repair separately, with engineering advice where structural members are affected."
         },
         {
           "title": "Moisture rot repair",
-          "summary": "Repair of water-damaged timber with waterproofing, ventilation improvement, member replacement and damp-proof coating."
+          "summary": "Water-damaged timber repairs depend on the extent of sound material and the cause of wetting. Identify roofing, plumbing, waterproofing or ventilation work that needs the responsible specialist before closing repaired areas."
         },
         {
           "title": "Structural assessment",
-          "summary": "Pre-repair structural safety check, with engineer's report where needed to meet the Building Code."
+          "summary": "Where damage affects a structural member or load path, obtain assessment and repair direction from the responsible engineer. A carpentry condition review does not replace structural design or certification."
         },
         {
           "title": "Diagnose the cause before repairing the symptom",
@@ -494,8 +724,31 @@
     {
       "slug": "heritage-carpentry",
       "title": "Heritage Carpentry",
-      "summary": "Traditional timber repair for South Australian heritage-listed buildings — mortise-and-tenon joinery and period window restoration.",
-      "lead": "Heritage repair needs expertise and respect for history. We know the SA Heritage Act and combine traditional craft with modern technique to protect heritage value.",
+      "summary": "Heritage timber repair focused on retained fabric, matching profiles, condition records and property-specific approval responsibilities.",
+      "lead": "MEL ONE discusses heritage carpentry with retention as the starting point. Record original profiles and condition, then agree the repair approach and any heritage advice or approvals needed for the property.",
+      "seo_title": "Adelaide Heritage Carpentry",
+      "seo_description": "Heritage timber repair focused on retained fabric, matching profiles, condition records and property-specific approval responsibilities.",
+      "faq_title": "Prepare a heritage timber enquiry — questions",
+      "faqs": [
+        {
+          "question": "Must heritage timber be replaced to improve operation?",
+          "answer": "No. Sound original material may be retained while local damage, hardware or joints are repaired. The condition and conservation requirements should guide how much intervention is justified."
+        },
+        {
+          "question": "Can modern profiles replace original heritage trim?",
+          "answer": "Matching an original profile may matter to the building's character and any consent conditions. Record a sound reference section and agree materials, dimensions and finish before choosing a replacement."
+        },
+        {
+          "question": "Who confirms heritage approval requirements?",
+          "answer": "Requirements depend on the property, its status and the proposed work. Confirm them with the relevant authority and heritage adviser where needed; the carpentry quote should state who obtains approvals before work starts."
+        }
+      ],
+      "planning": {
+        "title": "Prepare a heritage timber enquiry",
+        "body": "Tell MEL ONE about property details, affected fabric, matching requirements and any approval documents, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Prepare a heritage timber enquiry"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Mortise & tenon repair",
@@ -503,11 +756,11 @@
         },
         {
           "title": "Carved trim restoration",
-          "summary": "Heritage cornices, eave brackets and carved panels restored by joiners with traditional experience."
+          "summary": "Existing cornices, eave brackets and carved panels are recorded before deciding what can be retained, locally repaired or replicated. Match the agreed profile and material without assuming all original fabric needs replacement."
         },
         {
           "title": "Period window restoration",
-          "summary": "Box and picket sash windows returned to original with replicated hardware, period glass and paint system."
+          "summary": "Period sash windows are assessed for retained timber, joints and operation. Agree hardware, glazing and coating interfaces against the repair scope and heritage requirements."
         },
         {
           "title": "Record original fabric before intervention",
@@ -538,8 +791,31 @@
     {
       "slug": "decking-restoration-flooring",
       "title": "Decking Restoration & Timber Flooring",
-      "summary": "Deck sanding, oiling and staining plus timber floor laying and refinishing — solid and engineered, full service.",
-      "lead": "Floors and decks live or die by maintenance frequency and method. We handle new laying and regular care so your timber stays new.",
+      "summary": "Existing deck repair and refinishing, plus separate indoor timber-floor installation and surface-restoration decisions.",
+      "lead": "MEL ONE scopes existing deck restoration and indoor timber-floor work as different tasks. Establish timber condition and the cause of wear before choosing repairs, sanding, recoating or replacement.",
+      "seo_title": "Deck Restoration Adelaide",
+      "seo_description": "Existing deck repair and refinishing, plus separate indoor timber-floor installation and surface-restoration decisions.",
+      "faq_title": "Describe the deck or indoor floor — questions",
+      "faqs": [
+        {
+          "question": "Can sanding fix a soft or moving deck?",
+          "answer": "Sanding changes the surface; it does not restore a weakened support or resolve movement. Assess boards, accessible substructure and moisture conditions before deciding whether cosmetic restoration is suitable."
+        },
+        {
+          "question": "Can every engineered timber floor be sanded?",
+          "answer": "No. The product, remaining wear layer, previous sanding and manufacturer guidance determine whether sanding is suitable. Identify the flooring before choosing refinishing rather than assuming it behaves like solid timber."
+        },
+        {
+          "question": "Where should I enquire about a completely new deck?",
+          "answer": "Use Outdoor Living for a new deck or redesigned outdoor structure. This page starts with existing deck condition and also covers separately scoped indoor timber-floor work."
+        }
+      ],
+      "planning": {
+        "title": "Describe the deck or indoor floor",
+        "body": "Tell MEL ONE about whether the work is outdoors or indoors, symptoms, previous finishes and access, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Describe the deck or indoor floor"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Timber floor laying",
@@ -547,11 +823,11 @@
         },
         {
           "title": "Deck sanding & oiling",
-          "summary": "High-pressure sanding to remove old coating and mould, fine graded paper, then penetrating oil or stain to restore natural colour."
+          "summary": "Deck preparation and coating depend on timber condition, existing finish and product compatibility. Resolve decay or movement first, then agree appropriate surface treatment and a care plan."
         },
         {
           "title": "Floor refinishing",
-          "summary": "Worn floors sanded and refinished to original gloss and feel, with edge detailing."
+          "summary": "Floor refinishing depends on product identification, remaining wear layer, previous treatments and surface condition. Agree the achievable finish and protection requirements before sanding."
         },
         {
           "title": "Assess the timber beneath the finish",
@@ -582,8 +858,30 @@
     {
       "slug": "door-window-repairs",
       "title": "Door & Window Repairs",
-      "summary": "Practical repairs for timber doors, window frames, sashes and trim — assess sticking, weathering and local damage before deciding the right next step.",
-      "lead": "MEL ONE repairs timber doors and windows in Adelaide. We inspect the opening, timber, hardware and adjoining trim on site, identify the adjustment or repair needed and confirm the work plan and written quote.",
+      "summary": "Adelaide timber door and window repairs: assess operation, local timber damage and repair options before specifying replacement.",
+      "lead": "MEL ONE repairs existing timber doors and windows in Adelaide, starting with what has changed. We check the leaf or sash, hardware, exposed timber and surrounding opening before agreeing adjustment, local repair or replacement scope.",
+      "seo_description": "Adelaide timber door and window repairs: assess operation, local timber damage and repair options before specifying replacement.",
+      "faq_title": "Describe the opening that needs attention — questions",
+      "faqs": [
+        {
+          "question": "Can a rubbing door be adjusted instead of replaced?",
+          "answer": "Often the cause needs checking first: hinge movement, floor changes, swelling or frame movement can produce similar symptoms. Repair is considered where the existing leaf and opening remain suitable."
+        },
+        {
+          "question": "Does timber window repair include new glazing?",
+          "answer": "Glazing, seals and coatings can affect the repair, but their supply and specialist work need explicit agreement. Describe broken glass or water entry so the necessary trade interfaces can be identified."
+        },
+        {
+          "question": "When should I use the door-frame service instead?",
+          "answer": "Use Door Jambs & Interior Trim when the main task is a damaged frame, jamb or architrave. This repair service starts with the operation and condition of existing door leaves and timber windows."
+        }
+      ],
+      "planning": {
+        "title": "Describe the opening that needs attention",
+        "body": "Tell MEL ONE about which door or window is affected, sticking or water symptoms and when they occur, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Describe the opening that needs attention"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "What door and window repair can cover",
@@ -618,8 +916,30 @@
     {
       "slug": "skirting-board-installation-repairs",
       "title": "Skirting Board Installation & Repairs",
-      "summary": "New, replacement and repaired skirting boards for Adelaide interiors — planned around wall condition, flooring transitions, timber profiles and paint-ready finishing.",
-      "lead": "MEL ONE installs and repairs skirting boards for Adelaide homes, renovations and fit-outs. We consider the room, existing trim, finished floor height and adjacent door details so the completed line looks intentional and works with the rest of the interior.",
+      "summary": "Skirting board replacement and local repairs in Adelaide, with matched profiles, floor sequencing and clear finishing allowances.",
+      "lead": "MEL ONE installs, replaces and repairs Adelaide skirting boards. Start with the affected lengths and existing profile, then coordinate wall condition, finished floor height and painting responsibilities.",
+      "seo_description": "Skirting board replacement and local repairs in Adelaide, with matched profiles, floor sequencing and clear finishing allowances.",
+      "faq_title": "Plan the skirting lengths and profile — questions",
+      "faqs": [
+        {
+          "question": "Can just one damaged skirting length be replaced?",
+          "answer": "Yes, where the adjacent material and fixing surface are suitable. Matching depends on profile availability, existing paint build-up and finish; a new length may need a wider painting allowance."
+        },
+        {
+          "question": "Should skirting go in before or after new flooring?",
+          "answer": "The flooring system, final thickness and agreed junction determine the order. Confirm those details with the flooring trade before trim is measured and fixed."
+        },
+        {
+          "question": "Is skirting painting included in the carpentry price?",
+          "answer": "Ask the quote to identify removal, wall repairs, fixing, filling, caulking and coating separately. A paint-ready allowance should describe the actual preparation rather than imply a completed painted finish."
+        }
+      ],
+      "planning": {
+        "title": "Plan the skirting lengths and profile",
+        "body": "Tell MEL ONE about rooms, affected lengths, profile references and flooring or painting sequence, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Plan the skirting lengths and profile"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "New skirting, replacement and local repair",
@@ -654,8 +974,30 @@
     {
       "slug": "door-jamb-interior-trim",
       "title": "Door Jambs & Interior Trim",
-      "summary": "Door jamb, architrave and interior trim carpentry for Adelaide homes — focused on clean reveals, practical door operation and coordinated second-fix details.",
-      "lead": "MEL ONE provides Adelaide door-jamb and interior-trim carpentry for renovations, repairs and finishing stages. We plan the frame, architraves, reveals and adjacent flooring or cabinetry details together, so a door opening is practical to use and visually resolved.",
+      "summary": "Door frame and jamb repairs in Adelaide, with architrave matching, existing door reuse and clear structural boundaries.",
+      "lead": "MEL ONE scopes door-frame, jamb and architrave work for Adelaide repairs and renovations. Check whether the existing door can be reused and how the opening meets the wall, floor and trim before choosing local repair or replacement.",
+      "seo_description": "Door frame and jamb repairs in Adelaide, with architrave matching, existing door reuse and clear structural boundaries.",
+      "faq_title": "Discuss the frame and trim — questions",
+      "faqs": [
+        {
+          "question": "Can I keep the door when replacing its jamb?",
+          "answer": "Possibly. Check the leaf condition, dimensions, hardware and required clearances against the proposed frame. Reuse should be agreed before sizing the replacement jamb."
+        },
+        {
+          "question": "Does a new door frame allow a wider opening?",
+          "answer": "Widening an opening can involve structural work, services and approvals. A trim or jamb replacement does not include authorisation to alter a load-bearing wall; resolve design and responsible trades first."
+        },
+        {
+          "question": "How do architraves meet existing skirting?",
+          "answer": "Compare the profiles, widths and finished floor level before selecting trim. Existing wall irregularity and paint build-up can affect returns and matching, so define any adjacent making-good in the quote."
+        }
+      ],
+      "planning": {
+        "title": "Discuss the frame and trim",
+        "body": "Tell MEL ONE about damaged frame areas, existing door reuse, wall finishes and floor changes, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Discuss the frame and trim"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "What interior trim work includes",
@@ -690,8 +1032,30 @@
     {
       "slug": "timber-fencing-repairs-replacement",
       "title": "Timber Fencing Repairs & Replacement",
-      "summary": "Timber fence repairs and replacement for Adelaide properties — inspect palings, rails, posts and access conditions before choosing a practical scope.",
-      "lead": "MEL ONE helps Adelaide owners plan timber fencing repairs and replacement work. We consider the fence condition, access, adjacent outdoor structures and the difference between a local repair and a longer replacement section before setting out the next step.",
+      "summary": "Timber fence repairs in Adelaide: compare paling, rail and post damage, replacement extent, access and boundary responsibilities.",
+      "lead": "MEL ONE assesses timber fence boards, rails and posts before recommending local repair or a replacement section. Discuss both sides of the boundary, access and matching expectations when defining the work.",
+      "seo_description": "Timber fence repairs in Adelaide: compare paling, rail and post damage, replacement extent, access and boundary responsibilities.",
+      "faq_title": "Scope the affected fence section — questions",
+      "faqs": [
+        {
+          "question": "Will replacing palings straighten a leaning fence?",
+          "answer": "Not if the cause is failed posts, rails or ground movement. Assess the supporting parts and access before treating the visible boards as the whole repair."
+        },
+        {
+          "question": "Who agrees work on a shared boundary fence?",
+          "answer": "Confirm ownership, neighbour discussions, permission and cost arrangements before removal or replacement is booked. The carpentry quote does not settle a boundary dispute or establish a legal boundary."
+        },
+        {
+          "question": "Can new boards match an old fence exactly?",
+          "answer": "Profile and layout may be matched where materials are available, but new timber usually looks different from weathered boards. Discuss any wider coating work and the limits of colour matching in advance."
+        }
+      ],
+      "planning": {
+        "title": "Scope the affected fence section",
+        "body": "Tell MEL ONE about damaged sections, post movement, boundary arrangements and access on both sides, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Scope the affected fence section"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Understanding the affected part of a fence",
@@ -726,8 +1090,30 @@
     {
       "slug": "timber-gates-installation-repairs",
       "title": "Timber Gate Installation & Repairs",
-      "summary": "Timber pedestrian and access-gate installation and repair for Adelaide properties — planned around alignment, hinges, latches, privacy and fence integration.",
-      "lead": "MEL ONE provides Adelaide timber gate installation and repair planning for pedestrian gates, side access and garden entries. We consider the opening, gate weight, hardware, fence condition and everyday use so the scope addresses operation as well as appearance.",
+      "summary": "Timber gate repairs and installation in Adelaide, assessing sagging, posts, hinges, latches and opening clearances.",
+      "lead": "MEL ONE plans timber gate repairs and new pedestrian gates around everyday movement. Check the supporting posts, gate leaf, hinges and latch together before deciding whether adjustment, repair or replacement will solve the problem.",
+      "seo_description": "Timber gate repairs and installation in Adelaide, assessing sagging, posts, hinges, latches and opening clearances.",
+      "faq_title": "Describe how the gate behaves — questions",
+      "faqs": [
+        {
+          "question": "Will new hinges fix a sagging timber gate?",
+          "answer": "Only if the hinges are the cause. Post movement, leaf distortion, gate weight and ground levels can also affect operation, so assess the support and opening as well as the hardware."
+        },
+        {
+          "question": "Can a garden gate be used as a pool barrier gate?",
+          "answer": "Pool barriers have specific requirements for the complete system. Identify the location before quoting and arrange appropriate assessment; ordinary timber gate work does not establish pool-barrier compliance."
+        },
+        {
+          "question": "Does timber gate work include automation?",
+          "answer": "Automation, intercoms, power and access-control equipment need specialist scope and coordination. Agree the timber leaf and support requirements with the responsible installer before manufacture or adjustment."
+        }
+      ],
+      "planning": {
+        "title": "Describe how the gate behaves",
+        "body": "Tell MEL ONE about dragging or latching problems, post condition, opening use and existing hardware, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Describe how the gate behaves"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "A gate is more than its timber face",
@@ -762,8 +1148,30 @@
     {
       "slug": "renovation-carpentry",
       "title": "Renovation Carpentry",
-      "summary": "Adelaide renovation carpentry for existing homes — coordinate altered openings, timber repairs, trim, joinery interfaces and staged interior work.",
-      "lead": "MEL ONE provides Adelaide renovation carpentry for homes where existing conditions, new finishes and multiple trades need to meet cleanly. We help define the timber scope around openings, trim, repairs, cabinetry and the sequence of work before the project reaches its finishing stage.",
+      "summary": "Renovation carpentry in Adelaide coordinated around existing conditions, altered openings, finishing stages and approved changes.",
+      "lead": "MEL ONE coordinates carpentry within Adelaide renovations, where existing fabric and new finishes have to meet. Define the rooms, work stages and responsible trades before opening-up or committing to final trim and joinery interfaces.",
+      "seo_description": "Renovation carpentry in Adelaide coordinated around existing conditions, altered openings, finishing stages and approved changes.",
+      "faq_title": "Plan the renovation sequence — questions",
+      "faqs": [
+        {
+          "question": "Can renovation carpentry be staged while we live at home?",
+          "answer": "Staging depends on safe separation, access, dust, services and the rooms affected. Agree usable areas and daily handover with the project team before the sequence is booked."
+        },
+        {
+          "question": "Does this service include permission to remove a wall?",
+          "answer": "No. Structural implications, design, approvals and services must be resolved with the responsible professionals before an affected wall or opening is altered."
+        },
+        {
+          "question": "How are unexpected repairs handled during renovation?",
+          "answer": "Document the exposed condition, explain the additional carpentry and agree a written change to price and sequence before proceeding. Keep local repair details with the service responsible for that element."
+        }
+      ],
+      "planning": {
+        "title": "Plan the renovation sequence",
+        "body": "Tell MEL ONE about rooms, proposed changes, occupancy needs and the builder or trade programme, your Adelaide location and preferred timing. Existing photos, approximate dimensions or drawings are optional for the first enquiry; email them to handymanfelix.au2026@outlook.com if available. We arrange a site assessment and measure as needed before confirming the written scope, inclusions and next steps.",
+        "cta_label": "Plan the renovation sequence"
+      },
+      "related_title": "Related services and practical guides",
       "sections": [
         {
           "title": "Renovation carpentry starts with the existing home",

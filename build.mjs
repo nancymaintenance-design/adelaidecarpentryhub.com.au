@@ -481,7 +481,7 @@ const relatedTargets = {
   'service:custom-kitchen-bathroom': ['service:architectural-joinery', 'service:storage-solutions', 'insight:kitchen-renovation-cost-guide'],
   'service:architectural-joinery': ['service:custom-kitchen-bathroom', 'service:custom-doors-furniture', 'insight:why-integrated-carpentry-joinery'],
   'service:storage-solutions': ['service:custom-kitchen-bathroom', 'service:custom-doors-furniture', 'service:architectural-joinery', 'insight:adelaide-custom-wardrobe-planning'],
-  'service:custom-doors-furniture': ['service:architectural-joinery', 'service:storage-solutions', 'insight:adelaide-custom-wardrobe-planning'],
+  'service:custom-doors-furniture': ['service:door-window-repairs', 'service:door-jamb-interior-trim', 'service:architectural-joinery', 'service:storage-solutions', 'insight:adelaide-custom-wardrobe-planning'],
   'service:restoration-maintenance': ['service:door-window-repairs', 'service:heritage-carpentry', 'service:decking-restoration-flooring', 'insight:timber-flooring-oiling-guide'],
   'service:heritage-carpentry': ['service:door-window-repairs', 'service:restoration-maintenance', 'insight:heritage-building-timber-restoration', 'insight:adelaide-heritage-timber-repairs'],
   'service:decking-restoration-flooring': ['service:outdoor-living', 'service:restoration-maintenance', 'insight:adelaide-deck-replacement-guide'],
