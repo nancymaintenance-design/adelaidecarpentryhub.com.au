@@ -212,6 +212,22 @@
 @media (max-width: 560px) { .value-grid { grid-template-columns: 1fr; } }
 .section-alt { background: rgba(0, 0, 0, 0.025); }
 
+/* Short project routes continue the existing timber-and-paper visual system. */
+.intent-links { border-block: 1px solid var(--line); background: var(--surface); }
+.intent-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.intent-grid > a, .intent-pair { display: flex; align-items: center; padding: 20px 18px; border-left: 1px solid var(--line); font: 700 14px/1.45 system-ui, sans-serif; }
+.intent-grid > :last-child { border-right: 1px solid var(--line); }
+.intent-pair { flex-direction: column; align-items: flex-start; justify-content: center; gap: 8px; }
+.intent-links a:hover { color: var(--accent); }
+.intent-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.intent-links span { margin-left: 8px; color: var(--accent); }
+.responsive-media { display: block; width: 100%; }
+.service-media .responsive-media { height: 100%; }
+.editorial-attribution { color: var(--muted); font-size: 14px; margin-top: 24px; }
+.editorial-attribution a, .hub-planning a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 880px) { .intent-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .intent-grid { grid-template-columns: 1fr; } .intent-grid > a, .intent-pair { border-inline: 0; border-bottom: 1px solid var(--line); } .intent-grid > :last-child { border: 0; } }
+
 /* ── Navigation spacing & contact-label overrides */
 /* Loaded after base.css so these win. */
 

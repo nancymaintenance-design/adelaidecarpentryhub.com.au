@@ -8,6 +8,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectDir = __dirname;
@@ -20,6 +21,10 @@ const cityStreetsPath = path.join(projectDir, 'src', 'content-pack', 'city-stree
 const assetPath = path.join(projectDir, 'src', 'assets', 'asset-manifest.json');
 const themeCssSrc = path.join(projectDir, 'src', 'assets', 'theme.css');
 const interiorCssSrc = path.join(projectDir, 'src', 'assets', 'interior.css');
+const assetUrls = {};
+const kitchenVariants = [480, 960, 1672].map((width) => ({
+  width, filename: `custom-kitchen-bathroom-project-${width}.webp`,
+}));
 
 const escapeHtml = (value = '') => String(value)
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
@@ -84,6 +89,11 @@ function svgImage(id, width = 800, height = 533) {
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
+function kitchenPicture(src, alt, sizes, attributes = '') {
+  const srcset = kitchenVariants.map(({ width, filename }) => `/assets/${filename} ${width}w`).join(', ');
+  return `<picture class="responsive-media"><source type="image/webp" srcset="${srcset}" sizes="${sizes}"><img src="${src}" alt="${alt}" loading="lazy" decoding="async" width="1672" height="941"${attributes}></picture>`;
+}
+
 function media(slotId, className = 'evidence-media') {
   const item = slot(slotId);
   if (!item) return '';
@@ -102,7 +112,10 @@ function media(slotId, className = 'evidence-media') {
   }
   const alt = escapeHtml(item.alt || '');
   const caption = escapeHtml(item.caption || '');
-  return `<figure class="${className}"><img src="${src}" alt="${alt}" style="width:100%;height:100%;object-fit:cover;border-radius:2px;"><figcaption class="caption">${caption}</figcaption></figure>`;
+  const image = src === '/assets/custom-kitchen-bathroom-project.png'
+    ? kitchenPicture(src, alt, '(max-width: 700px) calc(100vw - 32px), (max-width: 1200px) 46vw, 552px', ' style="width:100%;height:100%;object-fit:cover;border-radius:2px;"')
+    : `<img src="${src}" alt="${alt}" style="width:100%;height:100%;object-fit:cover;border-radius:2px;">`;
+  return `<figure class="${className}">${image}<figcaption class="caption">${caption}</figcaption></figure>`;
 }
 
 // Responsive thumbnail (no caption) — scales with its container via CSS aspect-ratio
@@ -118,6 +131,9 @@ function thumb(slotId) {
     src = item.src;
   }
   const alt = escapeHtml(item.alt || '');
+  if (src === '/assets/custom-kitchen-bathroom-project.png') {
+    return kitchenPicture(src, alt, '(max-width: 700px) calc(100vw - 32px), (max-width: 880px) 36vw, 216px');
+  }
   return `<img src="${src}" alt="${alt}" loading="lazy">`;
 }
 
@@ -360,7 +376,7 @@ function page({ title, description, route, active = '', body, jsonLd }) {
   const isInterior = route !== '/';
   const analyticsHead = ga4Id ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${ga4Id}');</script>` : '';
   const searchConsoleHead = gscToken ? `<meta name="google-site-verification" content="${escapeHtml(gscToken)}">` : '';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(fullTitle)}</title><meta property="og:type" content="website"><meta property="og:site_name" content="${escapeHtml(brandName)}"><meta property="og:title" content="${escapeHtml(fullTitle)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical(route)}"><meta property="og:image" content="${canonical('/assets/hero-bg.jpg')}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="512x512" href="/favicon.png"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="${canonical(route)}"><link rel="alternate" type="application/feed+json" href="/feed.json"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/theme.css">${isInterior ? '<link rel="stylesheet" href="/assets/interior.css">' : ''}${analyticsHead}${searchConsoleHead}${structured}</head><body class="${isInterior ? 'interior' : ''}">${header(active)}<main id="main">${body}</main>${footer()}<script src="/assets/base.js" defer></script></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(fullTitle)}</title><meta property="og:type" content="website"><meta property="og:site_name" content="${escapeHtml(brandName)}"><meta property="og:title" content="${escapeHtml(fullTitle)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical(route)}"><meta property="og:image" content="${canonical('/assets/hero-bg.jpg')}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="512x512" href="/favicon.png"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="${canonical(route)}"><link rel="alternate" type="application/feed+json" href="/feed.json"><link rel="alternate" type="application/rss+xml" href="/rss.xml"><link rel="stylesheet" href="${assetUrls['base.css']}"><link rel="stylesheet" href="${assetUrls['theme.css']}">${isInterior ? `<link rel="stylesheet" href="${assetUrls['interior.css']}">` : ''}${analyticsHead}${searchConsoleHead}${structured}</head><body class="${isInterior ? 'interior' : ''}">${header(active)}<main id="main">${body}</main>${footer()}<script src="${assetUrls['base.js']}" defer></script></body></html>`;
 }
 
 function writeRoute(route, html) {
@@ -458,14 +474,14 @@ const relatedTargets = {
   'service:timber-fencing-repairs-replacement': ['service:timber-gates-installation-repairs', 'service:outdoor-living', 'service:decking-restoration-flooring', 'service:restoration-maintenance'],
   'service:timber-gates-installation-repairs': ['service:timber-fencing-repairs-replacement', 'service:outdoor-living', 'service:custom-doors-furniture', 'service:restoration-maintenance'],
   'service:renovation-carpentry': ['service:door-jamb-interior-trim', 'service:skirting-board-installation-repairs', 'service:custom-kitchen-bathroom', 'service:architectural-joinery', 'service:fitout-refurbishment'],
-  'insight:why-integrated-carpentry-joinery': ['service:architectural-joinery', 'service:house-framing', 'service:fitout-refurbishment'],
+  'insight:why-integrated-carpentry-joinery': ['service:architectural-joinery', 'service:house-framing', 'service:fitout-refurbishment', 'service:renovation-carpentry'],
   'insight:kitchen-renovation-cost-guide': ['service:custom-kitchen-bathroom', 'service:architectural-joinery', 'service:storage-solutions'],
-  'insight:heritage-building-timber-restoration': ['service:heritage-carpentry', 'service:restoration-maintenance', 'insight:adelaide-heritage-timber-repairs'],
+  'insight:heritage-building-timber-restoration': ['service:heritage-carpentry', 'service:restoration-maintenance', 'insight:adelaide-heritage-timber-repairs', 'service:door-window-repairs'],
   'insight:timber-flooring-oiling-guide': ['service:decking-restoration-flooring', 'service:restoration-maintenance', 'service:outdoor-living'],
   'insight:commercial-fitout-process': ['service:fitout-refurbishment', 'service:formwork-carpentry', 'service:fix-out-second-fix'],
   'insight:adelaide-deck-replacement-guide': ['service:outdoor-living', 'service:decking-restoration-flooring', 'service:restoration-maintenance'],
   'insight:adelaide-custom-wardrobe-planning': ['service:storage-solutions', 'service:custom-kitchen-bathroom', 'service:architectural-joinery', 'service:custom-doors-furniture'],
-  'insight:adelaide-heritage-timber-repairs': ['service:heritage-carpentry', 'service:restoration-maintenance', 'service:custom-doors-furniture'],
+  'insight:adelaide-heritage-timber-repairs': ['service:heritage-carpentry', 'service:restoration-maintenance', 'service:custom-doors-furniture', 'service:door-window-repairs'],
 };
 
 function detailTitle(kind, item) {
@@ -516,20 +532,25 @@ function collectionJsonLd(route, label, intro, items, kind) {
 fs.mkdirSync(siteDir, { recursive: true });
 fs.mkdirSync(path.join(siteDir, 'assets'), { recursive: true });
 
-// Copy base CSS & JS from src/assets (shipped with this repo)
+// Hash the exact shipped bytes. Keep legacy aliases for existing tools and tests.
 const cssSrc = path.join(projectDir, 'src', 'assets', 'base.css');
 const jsSrc  = path.join(projectDir, 'src', 'assets', 'base.js');
-if (fs.existsSync(cssSrc)) fs.copyFileSync(cssSrc, path.join(siteDir, 'assets', 'base.css'));
-if (fs.existsSync(jsSrc))  fs.copyFileSync(jsSrc,  path.join(siteDir, 'assets', 'base.js'));
-if (fs.existsSync(themeCssSrc)) fs.copyFileSync(themeCssSrc, path.join(siteDir, 'assets', 'theme.css'));
-if (fs.existsSync(interiorCssSrc)) fs.copyFileSync(interiorCssSrc, path.join(siteDir, 'assets', 'interior.css'));
+for (const source of [cssSrc, jsSrc, themeCssSrc, interiorCssSrc]) {
+  const bytes = fs.readFileSync(source);
+  const { name, ext, base } = path.parse(source);
+  const hash = createHash('sha256').update(bytes).digest('hex').slice(0, 16);
+  const hashedName = `${name}.${hash}${ext}`;
+  fs.writeFileSync(path.join(siteDir, 'assets', hashedName), bytes);
+  fs.writeFileSync(path.join(siteDir, 'assets', base), bytes);
+  assetUrls[base] = `/assets/${hashedName}`;
+}
 
 // Copy image assets from src/assets (hero + about + 7 service images)
 const srcAssets = path.join(projectDir, 'src', 'assets');
 const imageFiles = [
   'hero-bg.jpg', 'about.jpg', 'about-team-2026-v2.jpg',
   'framing.jpg', 'formwork.jpg', 'decking.jpg', 'secondfix.jpg', 'fitout.jpg', 'fitout-2026-v2.jpg', 'architectural.jpg', 'storage.jpg', 'restoration.jpg', 'restoration-2026-v2.jpg', 'heritage.jpg', 'heritage-2026-v2.jpg',
-  'kitchen.jpg', 'custom-kitchen-bathroom-project.png', 'doors-furniture.jpg', 'flooring.jpg',
+  'kitchen.jpg', 'custom-kitchen-bathroom-project.png', ...kitchenVariants.map(({ filename }) => filename), 'doors-furniture.jpg', 'flooring.jpg',
   'symbol-joint.png', 'symbol-measure.png', 'symbol-grain.png', 'symbol-repair.png',
   'insight-integrated-joinery.jpg', 'insight-kitchen-costs.jpg', 'insight-heritage-restoration.jpg',
   'insight-timber-flooring.jpg', 'insight-commercial-fitout.jpg',
@@ -545,6 +566,9 @@ const imageFiles = [
 ];
 for (const img of imageFiles) {
   const src = path.join(srcAssets, img);
+  if (kitchenVariants.some(({ filename }) => filename === img) && !fs.existsSync(src)) {
+    throw new Error(`Required responsive image is missing: ${src}`);
+  }
   if (fs.existsSync(src)) fs.copyFileSync(src, path.join(siteDir, 'assets', img));
 }
 
@@ -575,6 +599,13 @@ const homeBody = `
     </div>
   </div>
 </section>
+
+<nav class="intent-links" aria-label="Find carpentry for your project"><div class="wrap intent-grid">
+  <a href="/services/door-window-repairs/">Door &amp; window repairs <span aria-hidden="true">↗</span></a>
+  <a href="/services/outdoor-living/">Decks &amp; outdoor timber <span aria-hidden="true">↗</span></a>
+  <a href="/services/renovation-carpentry/">Joinery &amp; renovation <span aria-hidden="true">↗</span></a>
+  <div class="intent-pair"><a href="/services/fitout-refurbishment/">Commercial fitouts <span aria-hidden="true">↗</span></a><a href="/services/heritage-carpentry/">Heritage timber <span aria-hidden="true">↗</span></a></div>
+</div></nav>
 
 <section class="section">
   <div class="wrap">
@@ -797,7 +828,7 @@ const realProjects = {
 };
 
 function realProjectGallery(serviceSlug) {
-  return safeArray(realProjects[serviceSlug]).map((project) => `<section class="real-project" data-project="${project.id}">
+  return safeArray(realProjects[serviceSlug]).map((project) => `<section class="real-project" data-project="${project.id}" id="${project.id}">
   <div class="wrap">
     <div class="real-project-head"><div><p class="kicker">REAL PROJECT</p><h2>${escapeHtml(project.title)}</h2></div><p>${escapeHtml(project.summary)}</p></div>
     <div class="project-gallery">${project.images.map(([src, alt, label]) => `<figure><img src="/assets/${src}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async"><figcaption><span>${escapeHtml(label)}</span></figcaption></figure>`).join('')}</div>
@@ -839,18 +870,26 @@ for (const [index, item] of content.services.entries()) {
 }
 
 // ── Insights ─────────────────────────────────────────────────────────────
+const insightsPlanning = `<section class="section hub-planning"><div class="wrap reading article">
+  <p class="kicker">Choose your next step</p><h2>Turn a timber question into a clearer brief</h2>
+  <p>Start with the guide closest to the decision you need to make. The <a href="/insights/adelaide-deck-replacement-guide/">deck replacement guide</a> explains what to record before comparing repair and replacement, while the <a href="/insights/kitchen-renovation-cost-guide/">kitchen renovation cost guide</a> helps you separate cabinetry choices from the wider renovation. For built-in storage, the <a href="/insights/adelaide-custom-wardrobe-planning/">wardrobe planning guide</a> covers layout, measurements and quote inclusions.</p>
+  <p>Use those notes to select the matching service: <a href="/services/decking-restoration-flooring/">decking and timber flooring</a>, <a href="/services/custom-kitchen-bathroom/">kitchen and bathroom cabinetry</a>, or <a href="/services/storage-solutions/">storage solutions</a>. Describe the outcome, visible condition and any adjoining work. Photos and drawings help explain a question, but a site assessment establishes the accessible condition and agreed scope.</p>
+  <p>Existing project records show how work develops. Compare the <a href="/services/decking-restoration-flooring/#deck-replacement-adelaide">deck replacement sequence</a> with the <a href="/services/heritage-carpentry/#heritage-verandah-restoration">heritage verandah gallery</a>, then use the <a href="/insights/adelaide-heritage-timber-repairs/">heritage timber repair guide</a> for questions about retaining existing fabric. These examples support planning; they do not establish what your property needs.</p>
+  <p>Before enquiring, note access restrictions, occupied rooms, preferred timing and which trades are involved. For an operating workplace, read the <a href="/insights/commercial-fitout-process/">commercial fitout guide</a> and review <a href="/services/fitout-refurbishment/">fitout and refurbishment</a> for staging considerations. Bring unresolved questions to the first discussion so the written quote can identify inclusions, exclusions and the next decisions.</p>
+</div></section>`;
+
 function collection(kind, label, items, intro) {
   const body = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">${escapeHtml(label)}</p><h1>${escapeHtml(label)}</h1></div><p class="lede">${escapeHtml(intro)}</p></div></section>
 <section class="section"><div class="wrap card-grid card-grid--balanced">
   ${items.map((item) => card(`/${kind}/${item.slug}/`, item, label)).join('')}
-</div></section>`;
+</div></section>${kind === 'insights' ? insightsPlanning : ''}`;
   const collectionTitle = kind === 'insights' ? 'Adelaide Carpentry Insights | MEL ONE' : `${label} | MEL ONE`;
   writeRoute(`/${kind}/`, page({ title: collectionTitle, description: intro, route: `/${kind}/`, active: kind, body, jsonLd: collectionJsonLd(`/${kind}/`, label, intro, items, kind) }));
   for (const item of items) {
     const route = `/${kind}/${item.slug}/`;
     const cat = escapeHtml(item.category || label);
     const date = item.date ? ` · ${escapeHtml(item.date)}` : '';
-    const article = `<section class="article-hero"><div class="wrap reading"><p class="kicker">${cat}${date}</p><h1>${escapeHtml(item.title)}</h1><p class="lede">${escapeHtml(item.lead)}</p></div></section>
+    const article = `<section class="article-hero"><div class="wrap reading"><p class="kicker">${cat}${date}</p><h1>${escapeHtml(item.title)}</h1><p class="lede">${escapeHtml(item.lead)}</p><p class="editorial-attribution">Editorial guidance by <a href="/about/">${escapeHtml(brandName)}</a></p></div></section>
 <section class="section"><article class="wrap reading article">
   ${item.sections.map((section) => `<section><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.summary)}</p></section>`).join('')}
   ${item.faqs?.length ? `<section><h2>Wardrobe quote and handover questions</h2>${item.faqs.map(faq => `<details><summary>${escapeHtml(faq.question)}</summary><p>${escapeHtml(faq.answer)}</p></details>`).join('')}</section>` : ''}
@@ -872,6 +911,7 @@ function collection(kind, label, items, intro) {
           mainEntityOfPage: canonical(route),
           publisher: { '@id': canonical('/#business') },
           author: { '@id': canonical('/#business') },
+          ...(slot(`insight.${item.slug}`)?.src ? { image: canonical(slot(`insight.${item.slug}`).src) } : {}),
           ...(item.date ? { datePublished: item.date } : {}),
         },
         breadcrumbList([['Home', '/'], [label, `/${kind}/`], [item.title, route]]),
@@ -895,14 +935,14 @@ fs.writeFileSync(path.join(siteDir, 'services.json'), JSON.stringify({
   })),
 }, null, 2), 'utf8');
 
-const feedDate = (item) => `${item.date || '2026-09-23'}T00:00:00+09:30`;
+const feedDate = (item) => item.date ? `${item.date}T00:00:00+09:30` : null;
 const feedItems = content.insights.map((item) => ({
   id: canonical(`/insights/${item.slug}/`),
   url: canonical(`/insights/${item.slug}/`),
   title: item.title,
   summary: item.summary,
   content_text: [item.lead, ...item.sections.map((section) => `${section.title}: ${section.summary}`)].join('\n\n'),
-  date_published: feedDate(item),
+  ...(feedDate(item) ? { date_published: feedDate(item) } : {}),
   tags: [item.category || copy.insightsTitle, 'Adelaide', 'Carpentry & Joinery'],
 }));
 fs.writeFileSync(path.join(siteDir, 'feed.json'), JSON.stringify({
@@ -914,7 +954,7 @@ fs.writeFileSync(path.join(siteDir, 'feed.json'), JSON.stringify({
   language: 'en-AU',
   items: feedItems,
 }, null, 2), 'utf8');
-fs.writeFileSync(path.join(siteDir, 'rss.xml'), `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>${escapeHtml(`${brandName} — ${copy.insightsTitle}`)}</title><link>${canonical('/insights/')}</link><description>${escapeHtml(copy.insightsLead)}</description><language>en-au</language>${feedItems.map((item) => `<item><title>${escapeHtml(item.title)}</title><link>${item.url}</link><guid isPermaLink="true">${item.id}</guid><description>${escapeHtml(item.summary)}</description><pubDate>${new Date(item.date_published).toUTCString()}</pubDate><category>${escapeHtml(item.tags[0])}</category></item>`).join('')}</channel></rss>`, 'utf8');
+fs.writeFileSync(path.join(siteDir, 'rss.xml'), `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>${escapeHtml(`${brandName} — ${copy.insightsTitle}`)}</title><link>${canonical('/insights/')}</link><description>${escapeHtml(copy.insightsLead)}</description><language>en-au</language>${feedItems.map((item) => `<item><title>${escapeHtml(item.title)}</title><link>${item.url}</link><guid isPermaLink="true">${item.id}</guid><description>${escapeHtml(item.summary)}</description>${item.date_published ? `<pubDate>${new Date(item.date_published).toUTCString()}</pubDate>` : ''}<category>${escapeHtml(item.tags[0])}</category></item>`).join('')}</channel></rss>`, 'utf8');
 
 
 // ── Service areas ───────────────────────────────────────────────────────
@@ -930,6 +970,13 @@ const areasBody = `<section class="page-hero service-areas-hero"><div class="wra
   <div class="area-search-panel"><label for="area-search">${escapeHtml(serviceAreas.searchLabel)}</label><div class="area-search-control"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.15a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z"/></svg><input id="area-search" data-area-search type="search" autocomplete="off" placeholder="${escapeHtml(serviceAreas.searchPlaceholder)}"><button type="button" data-area-clear hidden>Clear</button></div><p class="area-search-status" data-area-status role="status" aria-live="polite">Showing all ${areaCount} streets.</p></div>
   <div class="area-grid">${safeArray(serviceAreas.regions).map((region, index) => `<section class="area-region" data-area-region><header><span class="num">${String(index + 1).padStart(2, '0')}</span><h2><a href="${regionRoute(region)}">${escapeHtml(region.name)}</a></h2><span class="area-region-count">${locationsFor(region).length} streets</span></header><p><a class="area-region-link" href="${regionRoute(region)}">View ${escapeHtml(region.name)} carpentry services</a></p><ul class="suburb-list">${locationsFor(region).map(location => `<li data-location data-search="${escapeHtml((location + ' ' + region.name).toLocaleLowerCase('en-AU'))}"><a href="${regionRoute(region)}?street=${encodeURIComponent(location)}" aria-label="View carpentry services for ${escapeHtml(location)} in ${escapeHtml(region.name)}">${escapeHtml(location)}</a></li>`).join('')}</ul></section>`).join('')}</div>
   <p class="area-empty" data-area-empty hidden>No Adelaide street matched that search. Try the full street name or clear the search.</p>
+</div></section>
+<section class="section hub-planning"><div class="wrap reading article">
+  <p class="kicker">Plan the site visit</p><h2>Connect your location with the work required</h2>
+  <p>Use the directory to find the existing precinct page for your street, then choose a service by the timber task. A street listing helps organise an enquiry; the property, access and work required still need discussion. If your street is not listed, <a href="/contact/">contact MEL ONE</a> with the address and a short description so availability and scope can be confirmed.</p>
+  <p>For sticking windows or damaged frames, start with <a href="/services/door-window-repairs/">door and window repairs</a> and compare the <a href="/services/door-window-repairs/#timber-window-repair">timber window project gallery</a>. For an outdoor project, read the <a href="/insights/adelaide-deck-replacement-guide/">deck replacement guide</a> alongside <a href="/services/outdoor-living/">outdoor living carpentry</a>. Older decorative timber may call for <a href="/services/heritage-carpentry/">heritage carpentry</a>; the <a href="/insights/adelaide-heritage-timber-repairs/">heritage repair guide</a> explains what to record before a repair decision.</p>
+  <p>Include entry arrangements, stairs, shared passages, parking or delivery constraints and whether rooms or premises remain occupied. Mention any building manager requirements, preferred work windows and nearby finishes needing protection. These details help shape a practical site assessment without assuming that neighbouring properties have the same conditions.</p>
+  <p>For interior changes, review <a href="/services/renovation-carpentry/">renovation carpentry</a>; for a workplace, use <a href="/services/fitout-refurbishment/">fitout and refurbishment</a>. Explain the desired result, other trades involved and what is already decided. The initial discussion can then separate the carpentry package from adjoining work, identify further measurements or approvals and establish the information needed for a written quote.</p>
 </div></section>`;
 writeRoute('/service-areas/', page({ title: serviceAreas.title, description: serviceAreas.lead, route: '/service-areas/', active: 'areas', body: areasBody, jsonLd: { '@context': 'https://schema.org', '@type': 'Service', name: 'MEL ONE service areas', provider: { '@id': canonical('/#business') }, areaServed: safeArray(serviceAreas.regions).flatMap(region => locationsFor(region).map(name => ({ '@type': 'Place', name: `${name}, ${region.name}, Adelaide, South Australia` }))) } }));
 
@@ -1050,7 +1097,7 @@ const aboutBody = `<section class="page-hero"><div class="wrap page-hero-grid"><
   ${aboutFaq}
 </div></section>
 <section class="section closing"><div class="wrap closing-inner"><h2>Start with the job and suburb</h2><div><p>Call ${escapeHtml(content.contact.phone)}, email ${escapeHtml(content.contact.email)} or use our contact form. Tell us the Adelaide suburb, what needs attention and any important access details. We arrange a site assessment and confirm the work scope and written quote. Photos are optional; email existing images to handymanfelix.au2026@outlook.com.</p><a class="btn primary" href="/contact/">Contact MEL ONE</a></div></div></section>`;
-writeRoute('/about/', page({ title: content.about.title, description: content.about.lead, route: '/about/', active: 'about', body: aboutBody, jsonLd: { '@context': 'https://schema.org', '@type': 'Organization', name: brandName, description: content.about.lead } }));
+writeRoute('/about/', page({ title: content.about.title, description: content.about.lead, route: '/about/', active: 'about', body: aboutBody, jsonLd: { '@context': 'https://schema.org', '@type': 'AboutPage', name: content.about.title, url: canonical('/about/'), description: content.about.lead, mainEntity: { '@id': canonical('/#business') } } }));
 
 // ── Contact ─────────────────────────────────────────────────────────────
 const contactBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">CONTACT</p><h1>${escapeHtml(content.contact.title)}</h1></div><p class="lede">${escapeHtml(content.contact.lead)}</p></div></section>

@@ -28,7 +28,7 @@ test('matching service pages publish all five supplied real-project galleries', 
 
   for (const [route, project, expectedImages] of expectations) {
     const html = page(path.join('services', route));
-    const gallery = html.match(new RegExp(`<section class="real-project" data-project="${project}">([\\s\\S]*?)<\\/section>`));
+    const gallery = html.match(new RegExp(`<section class="real-project" data-project="${project}" id="${project}">([\\s\\S]*?)<\\/section>`));
     assert.ok(gallery, `${route} should show the ${project} real-project gallery`);
     assert.equal((gallery[1].match(/<img /g) || []).length, expectedImages, `${project} should retain its four-image project story`);
   }

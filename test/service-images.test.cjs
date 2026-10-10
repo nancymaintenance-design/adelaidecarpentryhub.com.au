@@ -40,7 +40,9 @@ test('custom kitchen and bathroom cabinetry uses the supplied project cover imag
   const detail = fs.readFileSync(path.join(publicDir, 'services', 'custom-kitchen-bathroom', 'index.html'), 'utf8');
 
   assert.ok(fs.existsSync(path.join(assetsDir, filename)), `${filename} should be kept in the source assets`);
-  assert.match(hub, new RegExp(`href="/services/custom-kitchen-bathroom/"[\\s\\S]{0,220}src="/assets/${filename}"`));
+  const card = hub.match(/<a class="service-media" href="\/services\/custom-kitchen-bathroom\/"[^>]*>([\s\S]*?)<\/a>/);
+  assert.ok(card, 'kitchen card should retain a service link');
+  assert.match(card[1], new RegExp(`src="/assets/${filename}"`));
   assert.match(hub, new RegExp(`src="/assets/${filename}" alt="${alt}"`));
   assert.match(detail, new RegExp(`src="/assets/${filename}" alt="${alt}"`));
 });
