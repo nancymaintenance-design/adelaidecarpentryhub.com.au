@@ -102,7 +102,7 @@
 
 ## 验证与浏览器证据
 
-最终验证：npm test 串行 81/81；npm run build 成功（38 规范页 + 404，共 39）；npm run check 全通过；public 为 cwd 以绝对测试路径执行 node --test tests/open-graph.test.js，1/1 通过。自动测试覆盖实际临时完整 build 产物，不以源文本存在或字数增加代替验收。Open Graph 测试在 public 执行，避免扫描历史档案；其 .js 使用 ESM 而根 package.json 未设 type，引起 MODULE_TYPELESS_PACKAGE_JSON 重解析性能提示。此提示不影响生成页面或测试结果；未为一个测试改变全项目模块语义。
+最终运行验证对应提交 b6f41f5，由控制器重新执行：npm test 串行 83/83，exit 0；npm run build 成功（38 规范页 + 404，共 39），exit 0；npm run check 的 38 个规范页全通过，exit 0；public 为 cwd 以绝对测试路径执行 node --test tests/open-graph.test.js，1/1 通过，exit 0。此前 81/81 属于提交 86c62cb 的历史运行。自动测试覆盖实际临时完整 build 产物，不以源文本存在或字数增加代替验收。Open Graph 测试在 public 执行，避免扫描历史档案；其 .js 使用 ESM 而根 package.json 未设 type，引起已知 MODULE_TYPELESS_PACKAGE_JSON 重解析性能提示。此提示不影响生成页面或测试结果；未为一个测试改变全项目模块语义。本次后续修正仅更新报告证据表述，未改运行代码，未重跑运行测试。
 
 验收裁定：首页原本没有 FAQPage，批准范围要求已有标记与可见内容一致，而非每个 FAQ 区块必须新增标记。因此首页按 canonical 前六问逐条校验；若存在 FAQPage 则同样核对。代价是首页仍无该可选结构数据，不影响可见答案或内部服务链接。About 的资料 disclosure 不属于问答标记契约。18 服务、8 指南、5 地区与 FAQ 页仍强制检查 FAQPage。服务/指南/地区 106 对问答核查未发现完全相同的问答对（不含首页与 FAQ 的有意复用）。
 
@@ -117,5 +117,5 @@
 - 现场评估费用、上门/交通/报价收费、取消条件、支付/排期约定、实际响应安排和每地址可用性。
 - 实际 GSC 页面/查询、GA4 有效配置与询盘归因/有效线索数据；目前无排名、搜索量、流量或转化增长证据。
 
-下一步是业主查看本地预览及独立最终审查；本报告不授权生产发布。
+独立全分支审查未发现 Critical/Important 阻塞项；其一项 Minor 为本报告验证版本表述，已作上述文档修正，待该修正的限定范围复审。下一步仍需业主查看并确认本地预览；本报告不授权生产发布。
 
