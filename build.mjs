@@ -366,8 +366,18 @@ function header(active = '') {
   return `<a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="/"><img class="brand-mark" src="/assets/mel-one-logo.png" alt=""><strong>${escapeHtml(brandName)}</strong></a><button class="menu" aria-expanded="false" aria-controls="nav">Menu</button><nav class="nav" id="nav" aria-label="Main"><div class="nav-links">${navItems.map(([href, label, key]) => `<a${active === key ? ' aria-current="page"' : ''} href="${href}">${label}</a>`).join('')}</div><a class="nav-cta" href="/contact/">Contact</a></nav></div></header>`;
 }
 
+function officeHoursText() {
+  const hours = content.contact.opening_hours;
+  const formatTime = (value) => {
+    const [hour, minute] = value.split(':').map(Number);
+    return `${hour % 12 || 12}${minute ? ':' + String(minute).padStart(2, '0') : ''} ${hour < 12 ? 'am' : 'pm'}`;
+  };
+  const timezone = hours.timezone.split('/').pop().replaceAll('_', ' ');
+  return `${hours.days[0]}–${hours.days.at(-1)}, ${formatTime(hours.opens)}–${formatTime(hours.closes)} (${timezone} local time)`;
+}
+
 function footer() {
-  return `<footer class="site-footer"><div class="wrap footer-grid"><div><a class="footer-brand" href="/">${escapeHtml(brandName)}</a><p>${escapeHtml(content.brand.tagline)}</p></div><div><strong>Services</strong><a href="/services/">${escapeHtml(copy.servicesTitle)}</a><a href="/service-areas/">Service areas</a><a href="/about/">About</a></div><div><strong>Content</strong><a href="/insights/">${escapeHtml(copy.insightsTitle)}</a><a href="/faq/">${escapeHtml(copy.faqTitle)}</a></div><div><strong>Contact</strong><a href="/contact/">${escapeHtml(content.contact.cta)}</a><p style="color:var(--muted);font-size:14px;margin-top:8px;">${escapeHtml(content.contact.phone)}<br>${escapeHtml(content.contact.email)}<br>${escapeHtml(content.contact.address)}</p></div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} ${escapeHtml(brandName)} · Adelaide, SA</span><span>${escapeHtml(content.brand.industry_label)}</span></div></footer>`;
+  return `<footer class="site-footer"><div class="wrap footer-grid"><div><a class="footer-brand" href="/">${escapeHtml(brandName)}</a><p>${escapeHtml(content.brand.tagline)}</p></div><div><strong>Services</strong><a href="/services/">${escapeHtml(copy.servicesTitle)}</a><a href="/service-areas/">Service areas</a><a href="/about/">About</a></div><div><strong>Content</strong><a href="/insights/">${escapeHtml(copy.insightsTitle)}</a><a href="/faq/">${escapeHtml(copy.faqTitle)}</a></div><div><strong>Contact</strong><a href="/contact/">${escapeHtml(content.contact.cta)}</a><p style="color:var(--muted);font-size:14px;margin-top:8px;">${escapeHtml(content.contact.phone)}<br>${escapeHtml(content.contact.email)}<br>${escapeHtml(content.contact.address)}<br>Office hours: ${escapeHtml(officeHoursText())}</p></div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} ${escapeHtml(brandName)} · Adelaide, SA</span><span>${escapeHtml(content.brand.industry_label)}</span></div></footer>`;
 }
 
 function page({ title, description, route, active = '', body, jsonLd }) {
@@ -670,6 +680,7 @@ const homeBody = `
       <span class="section-no">04 / Visit us</span>
       <h2 id="office-location-title">Visit our Adelaide office</h2>
       <p class="office-address">63 Pirie St, Adelaide SA 5000</p>
+      <p class="office-hours">Office hours: ${escapeHtml(officeHoursText())}</p>
       <p>Please contact us before visiting so we can make sure the right person is available to discuss your project.</p>
       <div class="actions">
         <a class="btn primary" href="${officeMapUrl}" target="_blank" rel="noopener">Open in Google Maps</a>
@@ -696,6 +707,12 @@ writeRoute('/', page({ title: 'Adelaide Carpentry, Joinery & Timber Restoration'
       description: content.seo.site_description,
       telephone: content.contact.phone,
       email: content.contact.email,
+      openingHoursSpecification: [{
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: content.contact.opening_hours.days.map((day) => `https://schema.org/${day}`),
+        opens: content.contact.opening_hours.opens,
+        closes: content.contact.opening_hours.closes,
+      }],
       address: {
         '@type': 'PostalAddress',
         streetAddress: '63 Pirie St',
@@ -1083,6 +1100,7 @@ const aboutBody = `<section class="page-hero"><div class="wrap page-hero-grid"><
 <section class="section"><div class="wrap about-company">
   <div class="section-head"><div><p class="kicker">COMPANY &amp; INSURANCE</p><h2>${escapeHtml(content.about.company_title || 'Company & insurance details')}</h2></div><p>${escapeHtml(content.about.company_intro || '')}</p></div>
   <dl class="company-details">${companyDetails}</dl>
+  <p class="office-hours">Office hours: ${escapeHtml(officeHoursText())}</p>
 </div></section>
 <section class="section section-alt"><div class="wrap">
   <div class="section-head"><div><p class="kicker">HOW A JOB IS ARRANGED</p><h2>${escapeHtml(content.about.process_title || 'Clear details before work begins')}</h2></div><p>${escapeHtml(content.about.process_lead || '')}</p></div>
@@ -1113,6 +1131,7 @@ const contactBody = `<section class="page-hero"><div class="wrap page-hero-grid"
         Phone: <strong>${escapeHtml(content.contact.phone)}</strong><br>
         Email: <strong>${escapeHtml(content.contact.email)}</strong><br>
         Address: <strong>${escapeHtml(content.contact.address)}</strong><br>
+        Office hours: <strong>${escapeHtml(officeHoursText())}</strong><br>
         Service area: Adelaide metro &amp; regional SA
       </p>
     </div>

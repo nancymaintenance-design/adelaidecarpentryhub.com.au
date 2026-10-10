@@ -1410,6 +1410,12 @@
     "phone": "0403 202 949",
     "email": "handymanfelix.au2026@outlook.com",
     "address": "63 Pirie St, Adelaide, SA 5000",
+    "opening_hours": {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "09:00",
+      "closes": "21:00",
+      "timezone": "Australia/Adelaide"
+    },
     "preparation": [
       "Project type and brief (e.g. kitchen reno / new home framing / decking / heritage repair)",
       "Suburb (Adelaide metro or regional SA)",
