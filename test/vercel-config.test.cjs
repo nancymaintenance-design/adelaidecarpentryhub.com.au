@@ -7,18 +7,21 @@ const vercelConfig = JSON.parse(readFileSync(join(__dirname, '..', 'vercel.json'
 
 test('Vercel config retains asset caching and applies global security headers', () => {
   const headerRules = vercelConfig.headers;
-  const assetRule = headerRules.find(({ source }) => source === '/(.*)\\.(png|jpg|jpeg|webp|gif|svg|ico|woff|woff2)');
+  assert.equal(headerRules.length, 2, 'exactly the asset and global header rules should be configured');
 
-  assert.ok(assetRule, 'static asset cache rule should remain present');
-  assert.ok(assetRule.headers.some(({ key, value }) =>
-    key === 'Cache-Control' && value === 'public, max-age=604800, stale-while-revalidate=86400'),
-  'static asset cache header should remain unchanged');
+  assert.deepEqual(headerRules[0], {
+    source: '/(.*)\\.(png|jpg|jpeg|webp|gif|svg|ico|woff|woff2)',
+    headers: [
+      { key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' },
+    ],
+  }, 'static asset cache rule should remain exact and separate');
 
-  const globalRule = headerRules.find(({ source }) => source === '/(.*)');
-  assert.ok(globalRule, 'all-path header rule should be present');
-
-  const headers = new Map(globalRule.headers.map(({ key, value }) => [key, value]));
-  assert.equal(headers.get('X-Content-Type-Options'), 'nosniff');
-  assert.equal(headers.get('Referrer-Policy'), 'strict-origin-when-cross-origin');
-  assert.equal(headers.get('X-Frame-Options'), 'SAMEORIGIN');
+  assert.deepEqual(headerRules[1], {
+    source: '/(.*)',
+    headers: [
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+    ],
+  }, 'global rule should contain exactly the three security headers');
 });
