@@ -42,7 +42,10 @@ test('services render optional FAQs after decision sections with identical schem
   assert.match(html, /<h2>Framing scope questions<\/h2>/);
   assert.match(html, /<p>Confirm the design &amp; responsible project parties before booking\.<\/p>/);
   assert.equal(graph(html)['@graph'].find(item => item['@type'] === 'FAQPage').mainEntity[0].acceptedAnswer.text, 'Confirm the design & responsible project parties before booking.');
-  assert.ok(html.indexOf('What to include in a framing enquiry') < html.indexOf('<h2>Framing scope questions'));
+  const decisionIndex = html.indexOf('What to include in a framing enquiry');
+  const faqIndex = html.indexOf('<h2>Framing scope questions');
+  assert.ok(decisionIndex >= 0 && faqIndex >= 0, 'both section headings exist');
+  assert.ok(decisionIndex < faqIndex);
   assert.match(html, /<h2>Prepare your framing brief<\/h2>/);
   assert.match(html, /href="\/contact\/">Discuss framing scope<\/a>/);
   assert.match(html, /<h2>Compare your next timber stage<\/h2>/);

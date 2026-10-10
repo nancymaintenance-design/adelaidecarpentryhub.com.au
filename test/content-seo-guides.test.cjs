@@ -43,6 +43,7 @@ test('eight guides render useful FAQs with matching schema and route readers to 
     assert.equal(blocks.length, item.faqs.length);
     const graph = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
     const schema = graph.find(x=>x['@type']==='FAQPage');
+    assert.ok(schema, item.slug + ': mandatory FAQ schema');
     item.faqs.forEach((faq,i)=>{
       assert.ok(blocks[i].includes('<summary>'+escape(faq.question)+'</summary>'));
       assert.ok(blocks[i].includes('<p>'+escape(faq.answer)+'</p>'));

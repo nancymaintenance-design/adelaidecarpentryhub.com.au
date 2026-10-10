@@ -9,12 +9,12 @@
       "description": "Adelaide CBD carpentry and joinery services for timber window repairs, doors, interior trim, decks, fencing and practical timber maintenance.",
       "lead": "Need carpentry or joinery in Adelaide CBD? MEL ONE arranges a site assessment for doors, windows, trim and timber repairs, checks the cause and confirms the plan and quote.",
       "bookingTitle": "Book Adelaide CBD Carpentry & Joinery",
-      "focus": "For CBD properties, the first useful step is a clear conversation about access, occupied areas, parking or loading constraints and the condition of the timber element. MEL ONE's standardised maintenance team uses that information to plan a practical next step rather than guessing from a short description. Contact MEL ONE to arrange the on-site assessment; we check the timber, confirm access and provide the agreed scope and written quote.",
+      "focus": "For Adelaide CBD work, explain the timber task and where it sits within the property. Separate a door or window operation problem from surrounding jamb or trim damage using the linked service pages. Note who can authorise the work, occupied rooms, parking or loading arrangements and any building-manager requirements before an assessment is arranged.",
       "assessment": "Whether the work concerns a timber window frame, a sticking door, detailed joinery, worn interior trim or an outdoor timber element, our carpenters begin by identifying what is moving, weathering, deteriorating or no longer fitting as intended. Photos showing the wider setting and the close detail help distinguish a local repair question from work that needs wider coordination.",
       "bookingDetails": [
         { "title": "Street and property location", "text": "Start with the Adelaide CBD street, property type and the room or outdoor area involved. This helps us understand the location before discussing a booking." },
         { "title": "Access and working conditions", "text": "Mention stairs, lifts, apartment access, parking, loading requirements, occupied rooms, gates or any timing limits that could affect a repair visit." },
-        { "title": "Photos, dimensions and symptoms", "text": "Send a wide image, a close image and approximate measurements where possible. Note whether timber is sticking, loose, split, weathered, damp or no longer closing cleanly." }
+        { "title": "Photos, dimensions and symptoms", "text": "Photos and approximate measurements are optional. If available, send a wide image and a close image. Note whether timber is sticking, loose, split, weathered, damp or no longer closing cleanly." }
       ],
       "scenarios": [
         { "title": "Inner-city doors, windows and trims", "text": "We can assess timber window repairs, frame deterioration, door operation, hardware concerns, jambs, architraves, skirting and fine finishing details in occupied interior spaces." },
@@ -24,9 +24,9 @@
       "serviceSlugs": ["door-window-repairs", "door-jamb-interior-trim", "architectural-joinery", "renovation-carpentry", "timber-fencing-repairs-replacement", "decking-restoration-flooring"],
       "faqs": [
         { "question": "Do you provide carpentry and joinery near Currie Street?", "answer": "Yes. Currie Street is included in Adelaide CBD. Select it below or provide it in the form with the timber work you need assessed." },
-        { "question": "What should I send for a timber window repair in Adelaide CBD?", "answer": "Include the street, clear photos of the frame and moving parts, a short note about the symptom, approximate size and any access or scheduling details." },
+        { "question": "What should I send for a timber window repair in Adelaide CBD?", "answer": "The street, symptom and access arrangements are enough to start. Photos and approximate sizes are optional; if available, include the frame and moving parts. The assessment then establishes the repair scope and any adjoining work." },
         { "question": "Can you help with a timber door that no longer closes properly?", "answer": "We inspect the door, frame, hinges, hardware and surrounding trim on site to identify why the door binds and confirm the adjustment or repair scope and quote." },
-        { "question": "How quickly will MEL ONE respond to a CBD enquiry?", "answer": "MEL ONE can respond in as little as 30 minutes, subject to current availability. Include your street and contact details so the team can assess the next step quickly." }
+        { "question": "How quickly will MEL ONE respond to a CBD enquiry?", "answer": "Contact the team during the published hours, seven days from 09:00 to 21:00 Adelaide time. Response and assessment arrangements depend on availability and the work required; confirm the appointment and any assessment charges before booking." }
       ],
       "locations": ["King William Street", "Pirie Street", "Grenfell Street", "Currie Street", "Waymouth Street", "Flinders Street", "Franklin Street", "Rundle Mall"]
     },
@@ -35,7 +35,7 @@
       "description": "East End Adelaide carpentry and joinery for timber doors, window frames, interior finishing, renovation carpentry, decks, fences and timber maintenance.",
       "lead": "MEL ONE provides East End Adelaide carpentry and joinery services for timber repairs, detailed interior work and outdoor timber maintenance. Contact us to arrange an on-site assessment and written quote.",
       "bookingTitle": "Book East End Adelaide Carpentry & Joinery",
-      "focus": "East End enquiries benefit from clear detail about the property, access and the existing timber finish. A standardised repair process helps MEL ONE's experienced carpenters identify the right questions for doors, windows, trims, joinery or exposed timber before arranging the next step. Contact MEL ONE to arrange the on-site assessment; we check the timber, confirm access and provide the agreed scope and written quote.",
+      "focus": "For an East End enquiry, identify whether you need a window repair, interior finishing, new joinery or outdoor timber work. Existing finishes and adjoining surfaces help define the intended result. Say who is approving the scope and whether other trades or room use affect the sequence; a listed street does not establish project availability.",
       "assessment": "A careful first assessment can avoid treating a visible gap, sticking sash or worn trim as an isolated issue when adjoining timber, hardware, moisture or movement should also be considered. We ask for the street, the condition you can see, images and the outcome you are seeking so the work can be discussed accurately.",
       "bookingDetails": [
         { "title": "Tell us the East End street", "text": "Include Rundle Street, Frome Street, Hutt Street, Wakefield Street, Halifax Street or East Terrace and a brief property description." },
@@ -51,7 +51,7 @@
       "faqs": [
         { "question": "Do you service Hutt Street and nearby East End streets?", "answer": "Yes. Hutt Street and the listed East End streets are part of this service region. Use the selected street link to add it to your enquiry." },
         { "question": "Can timber window frame repair and interior trim be discussed together?", "answer": "Yes. Sharing images of both the frame and adjoining trim helps us prepare the assessment. We inspect both on site and confirm a coordinated repair scope and quote." },
-        { "question": "What information helps with an East End joinery enquiry?", "answer": "A short scope, photos, approximate measurements, material or finish preferences and access information help us prepare the site measure and confirm the joinery specification and quote." },
+        { "question": "What information helps with an East End joinery enquiry?", "answer": "Start with the intended use, finish preferences and who can approve the work. Photos and approximate measurements are optional for the first enquiry. A site measure and agreed specification are needed before a detailed joinery quote." },
         { "question": "Does MEL ONE handle timber preservation and moisture-related questions?", "answer": "We can discuss visible timber condition, weather exposure and moisture concerns as part of a practical maintenance or repair assessment; photos and the location of the affected timber are helpful." }
       ],
       "locations": ["Rundle Street", "Frome Street", "Hutt Street", "Wakefield Street", "Halifax Street", "East Terrace"]
@@ -61,12 +61,12 @@
       "description": "West End Adelaide carpentry and joinery services for timber repair, doors, windows, fit-out work, interior finishing, decking, fencing and gates.",
       "lead": "For West End Adelaide timber repairs and joinery work, MEL ONE assesses the timber and access on site and confirms the required work, materials and written quote.",
       "bookingTitle": "Book West End Adelaide Carpentry & Joinery",
-      "focus": "West End properties can involve different access, occupied areas and timing considerations. MEL ONE's ten-plus years in carpentry and standardised maintenance approach help turn an initial timber repair enquiry into a clearer scope: what is affected, what can be seen, where it is located and what access is available. Contact MEL ONE to arrange the on-site assessment; we check the timber, confirm access and provide the agreed scope and written quote.",
-      "assessment": "Our ten-year-experience carpenters use the first details to investigate the likely repair path. This may mean considering the relationship between a timber door and its hardware, a window sash and frame, interior fit-out trim and adjoining finishes, or exposed decking/fencing and its weather conditions. Accurate diagnosis starts with evidence rather than a one-size-fits-all answer.",
+      "focus": "For West End work, distinguish an immediate operation or damage concern from a planned fit-out or refurbishment. Explain which rooms can be accessed, any business operating hours and who approves changes to the premises. We discuss the carpentry package, adjoining work and assessment arrangements before agreeing a written scope.",
+      "assessment": "The assessment use the first details to investigate the likely repair path. This may mean considering the relationship between a timber door and its hardware, a window sash and frame, interior fit-out trim and adjoining finishes, or exposed decking/fencing and its weather conditions. Accurate diagnosis starts with evidence rather than a one-size-fits-all answer.",
       "bookingDetails": [
         { "title": "Confirm the street and access", "text": "Include Gouger Street, Grote Street, Morphett Street, Hindley Street, Light Square or Merrifield Street, then note the best access point and timing." },
         { "title": "Identify the repair priority", "text": "Tell us whether operation, safety, water exposure, appearance, a missing timber part or a renovation sequence is the immediate concern." },
-        { "title": "Provide practical evidence", "text": "Photos, close-ups, approximate dimensions and a note of previous repair attempts help the team ask more precise questions." }
+        { "title": "Provide practical evidence", "text": "Photos, close-ups and approximate dimensions are optional. If available, add when the problem started and any previous repair attempts. Confirm the property owner's or manager's authority for the proposed scope." }
       ],
       "scenarios": [
         { "title": "Door, hardware and window repair", "text": "We can discuss timber door replacement questions, door hardware repair, window frame condition, sticking or damaged openings and practical repair-versus-replacement considerations." },
@@ -87,8 +87,8 @@
       "description": "North Terrace and Riverbank carpentry and joinery services for timber repairs, doors, windows, interior finishes, exposed timber maintenance and practical access planning.",
       "lead": "MEL ONE provides North Terrace and Riverbank carpentry and joinery services. Tell us the timber issue and street to arrange a site assessment and quote, including the building access requirements.",
       "bookingTitle": "Book North Terrace & Riverbank Carpentry & Joinery",
-      "focus": "For North Terrace and Riverbank enquiries, access planning is part of a good first carpentry conversation. Share the street, the type of timber work, whether it is internal or exposed, and any building or timing requirements. MEL ONE uses a standardised maintenance workflow to identify the information needed for an accurate response. Contact MEL ONE to arrange the on-site assessment; we check the timber, confirm access and provide the agreed scope and written quote.",
-      "assessment": "Our experienced carpenters assess what the visible signs may mean for the relevant timber element: a window frame affected by weather, a door and trim that no longer align, a detailed joinery item requiring measured repair, or external timber needing maintenance planning. The aim is to clarify the work before selecting a repair, replacement or coordination path.",
+      "focus": "For North Terrace and Riverbank enquiries, start with the timber element and the person authorised to arrange access and approve work. If the site requires an induction, loading booking, escorted entry or work window, mention the actual requirement. These questions concern your premises and do not imply experience at any named institution.",
+      "assessment": "The team assess what the visible signs may mean for the relevant timber element: a window frame affected by weather, a door and trim that no longer align, a detailed joinery item requiring measured repair, or external timber needing maintenance planning. The aim is to clarify the work before selecting a repair, replacement or coordination path.",
       "bookingDetails": [
         { "title": "Location and building access", "text": "Give the North Terrace, Festival Drive, Kintore Avenue, King William Road or Montefiore Road location and note entry, loading, lift, stairs, gate or scheduled-access requirements." },
         { "title": "Internal or external timber", "text": "Say whether the issue is an interior door/window/trim detail, structural timber concern, joinery item, deck, fence, gate or another exposed timber element." },
@@ -104,7 +104,7 @@
         { "question": "Do you cover North Terrace and Festival Drive?", "answer": "Yes. North Terrace, Festival Drive and the listed Riverbank streets are included. Choose the street below to send it through with your enquiry." },
         { "question": "Why do access details matter before carpentry work is discussed?", "answer": "Access can affect how a site is assessed and scheduled. Sharing entry, loading, stairs, lift, parking or timing information helps avoid assumptions." },
         { "question": "Can I ask about timber exposed to rain or moisture?", "answer": "Yes. Note where the timber is, what weathering or moisture signs are visible and whether the issue affects a window, door, deck, fence, gate or other element." },
-        { "question": "How experienced is the MEL ONE carpentry team?", "answer": "MEL ONE has more than ten years in carpentry, with carpenters bringing ten years of experience and a standardised maintenance approach to repair enquiries." }
+        { "question": "What should a building manager confirm before a Riverbank assessment?", "answer": "Confirm the person authorising the visit, entry arrangements and any actual induction or loading requirements. Explain which timber work is requested and whether the work area stays occupied. Availability, assessment charges and the responsible parties are agreed before booking." }
       ],
       "locations": ["North Terrace", "Festival Drive", "Kintore Avenue", "King William Road", "Montefiore Road"]
     },
@@ -113,12 +113,12 @@
       "description": "North Adelaide carpentry and joinery services for timber window repairs, doors, fine interior work, decks, fences, gates and timber moisture management.",
       "lead": "MEL ONE provides North Adelaide carpentry and joinery services for timber repair, detailed joinery and outdoor timber maintenance. We inspect the affected area on site and confirm the work plan and quote.",
       "bookingTitle": "Book North Adelaide Carpentry & Joinery",
-      "focus": "North Adelaide property owners can start a carpentry enquiry with the street, the timber element and the issue they can see. MEL ONE has served more than 10,000 customers and draws on more than ten years in the trade to assess the work on site and confirm the repair plan and quote. Contact MEL ONE to arrange the on-site assessment; we check the timber, confirm access and provide the agreed scope and written quote.",
-      "assessment": "From timber window frame repairs and custom doors to deck refurbishment, fine carpentry, fencing, gates, skirting and moisture-aware maintenance, the useful starting point is the exact condition. Our experienced carpenters look for information about movement, wear, exposed end grain, gaps, hardware, paint or finish condition and moisture or weather exposure rather than assuming every timber issue has the same cause.",
+      "focus": "For North Adelaide enquiries, describe the existing timber profile, finish and repair objective before choosing a repair or new-work service. If heritage controls or owner approvals apply to your property, mention their status and who is coordinating them; location alone does not establish heritage status. Access and site conditions still need discussion before booking.",
+      "assessment": "From timber window frame repairs and custom doors to deck refurbishment, fine carpentry, fencing, gates, skirting and moisture-aware maintenance, the useful starting point is the exact condition. The team look for information about movement, wear, exposed end grain, gaps, hardware, paint or finish condition and moisture or weather exposure rather than assuming every timber issue has the same cause.",
       "bookingDetails": [
         { "title": "Choose the North Adelaide street", "text": "Select O'Connell Street, Melbourne Street, Lefevre Terrace, Barton Terrace West or East, Jeffcott Street or Ward Street before sending your enquiry." },
         { "title": "Explain the timber element", "text": "Identify whether the work involves timber structure, window/door components, interior trim, joinery, deck boards, fencing, gate hardware or preservation work." },
-        { "title": "Share evidence for accurate diagnosis", "text": "Include clear images, approximate dimensions, when the issue became noticeable and any moisture, weather, movement or access observations." }
+        { "title": "Share evidence for accurate diagnosis", "text": "Images and approximate dimensions are optional. Describe when the issue became noticeable, any moisture or movement signs, and who can authorise changes to the timber or adjoining finishes." }
       ],
       "scenarios": [
         { "title": "Timber windows, doors and fine details", "text": "We can discuss timber window repair, frame and sliding-window issues, timber door replacement questions, hardware, door jambs, architraves, skirting and custom joinery." },
@@ -130,7 +130,7 @@
         { "question": "Do you provide carpentry and joinery near O'Connell Street?", "answer": "Yes. O'Connell Street is in MEL ONE's North Adelaide service region. Select it from the street list to include it in your booking context." },
         { "question": "Can you discuss timber window repair and moisture prevention?", "answer": "Yes. Send photos of the timber, frame, finish and nearby exposure area, then describe any visible weathering, movement or moisture concerns to prepare the visit. We inspect the timber and moisture exposure on site and confirm the repair plan and quote." },
         { "question": "Can North Adelaide customers enquire about decks, fencing and gates?", "answer": "Yes. Describe the timber condition, approximate dimensions, access, adjoining fences or structures, and whether the priority is repair, replacement or maintenance planning." },
-        { "question": "Why do customers choose MEL ONE for local timber repairs?", "answer": "Customers choose MEL ONE for experienced carpenters, a standardised maintenance team, careful problem assessment and a response in as little as 30 minutes subject to current availability." }
+        { "question": "Does a North Adelaide address mean heritage approval is needed?", "answer": "The address alone does not establish heritage controls. Tell us whether the property is listed or subject to relevant controls and who is arranging advice or approvals. For older profiles, record the existing detail before deciding what to retain, repair or replace." }
       ],
       "locations": ["O'Connell Street", "Melbourne Street", "Lefevre Terrace", "Barton Terrace West", "Barton Terrace East", "Jeffcott Street", "Ward Street"]
     }

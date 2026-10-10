@@ -101,7 +101,7 @@ function applyAreaBookingContext() {
     const location = `${street}, ${region}`;
     const message = form.querySelector('textarea[name="message"]');
     const context = form.closest('.area-booking')?.querySelector('[data-area-context]');
-    if (context) context.textContent = `Selected location: ${location}. Add the timber work, photos where available and any access notes.`;
+    if (context) context.textContent = `Selected location: ${location}. Add the timber work and any access notes. Photos and approximate measurements are optional; existing images can be emailed to handymanfelix.au2026@outlook.com.`;
     if (message && !message.value.trim()) message.value = `Project location: ${location}\n\n`;
   }
 }
