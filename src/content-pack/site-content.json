@@ -1213,13 +1213,13 @@
       "slug": "adelaide-deck-replacement-guide",
       "title": "Adelaide Deck Replacement: When Boards, Joists or Fixings Need Attention",
       "summary": "A practical Adelaide deck replacement guide: how to distinguish surface wear from structural issues, what to inspect before requesting a quote, and how to scope a safer long-term repair.",
-      "lead": "A deck can look tired for cosmetic reasons, or it can be signalling a deeper problem. Separating the two before work is priced helps homeowners make a sound decision.",
+      "lead": "Surface wear can suit restoration, while decay, movement or damaged connections call for assessment before deciding on repair or replacement. Keep people away from an area that appears unsafe and describe the symptoms to the assessor.",
       "category": "Adelaide Decking Guide",
       "date": "2026-09-23",
       "sections": [
         {
-          "title": "Start with the part that has actually failed",
-          "summary": "Deck boards commonly weather first: raised grain, splinters, loose fasteners and localised rot can make the surface uncomfortable without proving that the frame needs replacement. A closer inspection should also include joists, bearers, posts, connection points and the timber where it meets the house. Soft timber, persistent movement, visible decay around fasteners or a deck that no longer drains freely are reasons to investigate the structure rather than simply re-oil the surface."
+          "title": "Separate surface wear from a structural concern",
+          "summary": "Faded colour, raised grain and worn finish do not by themselves establish that the deck frame needs replacing. Movement, soft timber, loose connections or a damaged stair or balustrade need an assessment of the affected construction. Record what you can see safely from normal access; do not remove boards, load-test the deck or disturb supports to investigate it yourself."
         },
         {
           "title": "How Adelaide exposure affects maintenance priorities",
@@ -1234,8 +1234,8 @@
           "summary": "MEL ONE inspects the deck boards, frame, post bases and connections on site to identify the repair required. We explain whether selective board replacement or a wider repair suits the condition, discuss approvals and engineering requirements, and confirm the work scope and quote before structural changes begin."
         },
         {
-          "title": "Read the deck from the ground up",
-          "summary": "A useful inspection follows the load path rather than stopping at the top boards. Look at the ground contact points, footings, posts, bearers, joists, blocking, fixings and the way water leaves the area. This order helps separate a surface-maintenance issue from a question that needs a more detailed structural assessment."
+          "title": "Ask for an assessment beyond the boards",
+          "summary": "The assessor needs to consider the accessible supports, framing, connections and moisture paths, not only the visible walking surface. Limited access may leave some conditions unresolved until an agreed investigation stage. The quote should identify those limits and explain how any newly exposed damage will be recorded and authorised before further work proceeds."
         },
         {
           "title": "Material choices after removal",
@@ -1253,7 +1253,44 @@
           "title": "Questions to ask at handover",
           "summary": "Ask which members were retained or replaced, what finish has been applied, how water is intended to drain, what areas need periodic review and how to report a concern. Keeping photographs of the work before boards are closed over can also be useful for future maintenance. Clear handover information is part of a durable deck, not an optional extra."
         }
-      ]
+      ],
+      "seo_title": "Adelaide Deck Replacement Guide | MEL ONE",
+      "seo_description": "Compare deck surface restoration, local repairs and replacement with condition assessment, quote factors and separate new-deck planning in Adelaide.",
+      "faq_title": "Deck repair or replacement questions",
+      "faqs": [
+        {
+          "question": "Does faded decking mean the deck needs replacing?",
+          "answer": "No. Surface wear can be different from deterioration in boards, supports or connections. An assessment establishes whether maintenance, local replacement or a wider scope suits the accessible condition."
+        },
+        {
+          "question": "Can new boards be installed on the old frame?",
+          "answer": "Only after the frame and relevant connections have been assessed for the proposed work. Reuse should be an explicit scope decision with any inaccessible or concealed areas recorded."
+        },
+        {
+          "question": "What changes the deck repair quote?",
+          "answer": "The repair extent, access, retained framing, board selection, stairs, balustrades, finishing and waste handling all matter. Record hidden-condition allowances and specialist interfaces separately."
+        },
+        {
+          "question": "Where do I start if I want a completely new deck?",
+          "answer": "Use outdoor living carpentry for a new layout or new deck scope. Use deck restoration for an existing deck repair; changes to the design may require a separate approval and engineering discussion.",
+          "related_links": [
+            {
+              "label": "New outdoor carpentry",
+              "href": "/services/outdoor-living/"
+            },
+            {
+              "label": "Existing deck restoration",
+              "href": "/services/decking-restoration-flooring/"
+            }
+          ]
+        }
+      ],
+      "related_title": "Services and further reading",
+      "planning": {
+        "title": "Prepare an existing-deck assessment brief",
+        "body": "Tell MEL ONE where the deck is, what wear or movement you have noticed and whether you want to retain its layout. We can discuss an assessment and a repair or replacement scope with concealed conditions identified. Photos, approximate dimensions and drawings are optional for the first enquiry; email any you have to handymanfelix.au2026@outlook.com. Site measurement and agreed details are needed before the affected work proceeds.",
+        "cta_label": "Discuss your existing deck"
+      }
     },
     {
       "slug": "adelaide-custom-wardrobe-planning",
@@ -1323,7 +1360,7 @@
       "faqs": [
         {
           "question": "Can I get a final wardrobe price from room photos?",
-          "answer": "Photos and approximate measurements help MEL ONE discuss an initial budget. The confirmed quote follows the site measure, agreed design and specification, and installation arrangements."
+          "answer": "Photos and approximate measurements are optional for the first enquiry and can help MEL ONE discuss an initial budget. The confirmed quote follows the site measure, agreed design and specification, and installation arrangements."
         },
         {
           "question": "What happens if I add drawers or change the doors?",
@@ -1337,35 +1374,44 @@
           "question": "What should I keep after installation?",
           "answer": "Keep the approved design and specification, quote and variations, care information, and handover record showing completed work and any agreed follow-up."
         }
-      ]
+      ],
+      "seo_title": "Custom Wardrobe Planning Guide Adelaide | MEL ONE",
+      "seo_description": "Plan a custom wardrobe with storage priorities, door clearance, site measurement, quote inclusions, drawing approval and installation handover.",
+      "faq_title": "Custom wardrobe planning questions",
+      "related_title": "Wardrobe services and related joinery",
+      "planning": {
+        "title": "Prepare your wardrobe brief",
+        "body": "Tell MEL ONE what you need to store, how you use the room and whether you prefer hinged or sliding doors. We can discuss the layout, then confirm site measurements, materials, hardware and approved drawings before manufacture. Photos, approximate dimensions and drawings are optional for the first enquiry; email any you have to handymanfelix.au2026@outlook.com. Site measurement and agreed details are needed before the affected work proceeds.",
+        "cta_label": "Discuss your wardrobe layout"
+      }
     },
     {
       "slug": "adelaide-heritage-timber-repairs",
-      "title": "Adelaide Heritage Timber Repairs: A Practical Scope for Doors, Windows and External Joinery",
-      "summary": "A practical guide to scoping heritage timber repairs in Adelaide, covering condition assessment, original details, repair-versus-replace decisions and approval checks before work begins.",
-      "lead": "Heritage timber work rewards careful observation. The best first decision is often to retain and repair sound original material rather than replace it by default.",
+      "title": "Adelaide heritage timber repairs: prepare a condition record and scope",
+      "summary": "Prepare an element-by-element condition record, access notes and repair questions for heritage doors, windows and external timber.",
+      "lead": "Prepare a condition record before deciding the repair scope: identify each element, describe visible symptoms and note access and existing project advice. This practical brief follows the conservation principles explained in the companion heritage guide.",
       "category": "Adelaide Heritage Guide",
       "date": "2026-09-23",
       "sections": [
         {
-          "title": "Record what is there before proposing a solution",
-          "summary": "Photograph each elevation and detail the parts that matter: profiles, mouldings, glazing bars, hardware, joints, paint build-up and areas of decay. Doors and windows may show localised damage at a sill, bottom rail or weather-exposed edge while much of the original joinery remains serviceable. A condition record helps distinguish a repairable component from one that has lost structural integrity."
+          "title": "Give each timber element a clear reference",
+          "summary": "Use a room, elevation or simple element name such as front window or side door so everyone discusses the same item. Note sticking, visible decay, water entry, damaged profiles or missing hardware from safe normal access. Existing photos are optional for the first enquiry; do not disturb coatings, glazing or timber to make a record. The site assessment provides the accessible condition detail needed to develop the scope."
         },
         {
-          "title": "Repair, splice or replace: make the decision visible",
-          "summary": "A good repair scope states which timber is retained, which decayed sections are cut back, how new timber is matched and where joints will be placed. This makes it easier to compare a local splice, a rebuilt sash or a complete replacement. Matching the visual profile is important, but so are the water-shedding detail, glazing, fixing method and paint system that will protect the work after installation."
+          "title": "Record the repair decision for each element",
+          "summary": "Ask the proposed scope to identify retained material, local repairs, replicated components or replacement items and the evidence behind each decision. Include profile references, finish responsibilities and unresolved conditions. The method must suit the assessed element and agreed conservation approach; a photo or generic repair description is not a specification for cutting or rebuilding old timber."
         },
         {
-          "title": "Check heritage and planning requirements early",
-          "summary": "Some Adelaide properties are subject to heritage or planning controls. Requirements vary with the property and the proposed work, especially where external fabric or visible street-facing elements are affected. Contact MEL ONE for an on-site assessment of the heritage timber. We review the proposed repair, identify the heritage or planning requirements, and confirm qualified service arrangements and required project documents before work starts. Formal approvals remain with the relevant authority; this guide does not replace heritage or legal advice."
+          "title": "Attach known heritage and approval information",
+          "summary": "Include any known listing status, previous advice, approved drawings and relevant correspondence with the project record. Requirements depend on the place and proposal; use PlanSA guidance to start the approval check and ask the relevant authority about unresolved requirements. MEL ONE’s carpentry scope should follow the agreed project information rather than promise the authority’s decision."
         },
         {
           "title": "Give the repair a maintenance plan",
           "summary": "Timber lasts longer when paint failure, failed sealant, blocked drainage paths and exposed end grain are addressed early. At handover, ask what has been repaired, which finish system has been used, when it should be reviewed and which warning signs—such as cracking, sticking, water entry or soft timber—should prompt another inspection."
         },
         {
-          "title": "Trace water before replacing timber",
-          "summary": "Decay around a sill, bottom rail or weatherboard junction commonly has a water-management story behind it. Observe flashing, drainage, end grain, paint failure, seals and the way the opening meets surrounding masonry or cladding. Replacing timber without resolving those interfaces can repeat the same damage cycle, even where the new work looks sound on the day it is installed."
+          "title": "Record moisture symptoms and responsibility",
+          "summary": "Note when water entry occurs, which areas remain damp and any previous repairs. Accessible observations help the assessment, but hidden drainage, flashing, glazing or wall problems may need another specialist. Ask who investigates the cause and what must be resolved before the timber repair is finished; replacement timber alone does not establish that water entry has been fixed."
         },
         {
           "title": "Respect evidence of the original construction",
@@ -1383,7 +1429,46 @@
           "title": "Build a staged restoration plan",
           "summary": "For a larger Adelaide property, the best route may be to prioritise the most exposed or unsafe openings first, then schedule the remaining work over time. A condition record, photo set and agreed repair approach make that staging more consistent. It helps owners protect important fabric while planning budgets, approvals and access in a calm, evidence-led way."
         }
-      ]
+      ],
+      "seo_title": "Heritage Timber Repair Scope Guide Adelaide | MEL ONE",
+      "seo_description": "Prepare a condition record and quote brief for Adelaide heritage timber repairs, with element IDs, concealed conditions, approvals and trade interfaces.",
+      "faq_title": "Preparing a heritage timber repair scope",
+      "faqs": [
+        {
+          "question": "What should a heritage timber condition record contain?",
+          "answer": "Identify each door, window or external element, the visible symptoms, access limits and any existing conservation or approval advice. Photos and approximate dimensions are optional at first enquiry; the assessment develops the repair scope."
+        },
+        {
+          "question": "How should hidden decay be handled in the quote?",
+          "answer": "Record what can be assessed, what remains concealed and any agreed investigation stage. Additional damage should be documented with its scope and price effect agreed before the affected repair proceeds."
+        },
+        {
+          "question": "Who checks approval requirements for a proposed repair?",
+          "answer": "Confirm the property status and proposed work with the relevant authority. Include known approval documents and name the person responsible for unresolved checks in the project brief.",
+          "related_links": [
+            {
+              "label": "PlanSA: find out if you need approval",
+              "href": "https://plan.sa.gov.au/development_applications/before_you_lodge/find_out_if_you_need_approval"
+            }
+          ]
+        },
+        {
+          "question": "How is this different from the restoration principles guide?",
+          "answer": "This guide prepares the element record, access information and quote scope. The companion guide explains significance, retention and evidence before choosing a conservation approach.",
+          "related_links": [
+            {
+              "label": "Read the heritage restoration principles",
+              "href": "/insights/heritage-building-timber-restoration/"
+            }
+          ]
+        }
+      ],
+      "related_title": "Services and further reading",
+      "planning": {
+        "title": "Prepare an element-by-element repair enquiry",
+        "body": "Tell MEL ONE which timber elements are affected, the symptoms and any known conservation or approval information. We can discuss safe assessment access, concealed conditions and the responsibilities to include in the repair quote. Photos, approximate dimensions and drawings are optional for the first enquiry; email any you have to handymanfelix.au2026@outlook.com. Site measurement and agreed details are needed before the affected work proceeds.",
+        "cta_label": "Discuss your heritage repair scope"
+      }
     }
   ],
   "method": {
@@ -1411,22 +1496,22 @@
   "insights": [
     {
       "slug": "why-integrated-carpentry-joinery",
-      "title": "Why a full-spectrum carpentry partner is the smarter choice",
-      "summary": "Site carpentry and fine joinery look like two trades, but when one project splits them the cost is rework, delay and over-budget. Here is how a full-spectrum partner removes that pain.",
-      "lead": "Choosing a provider that runs both on-site carpentry and workshop joinery sharply cuts project risk and communication cost.",
+      "title": "Carpenter, joiner or cabinet maker: who does your project need?",
+      "summary": "Choose the right timber scope and agree the handovers between site carpentry, architectural joinery and cabinetry before comparing quotes.",
+      "lead": "Choose by the work and its interfaces: a carpenter handles site timber work, a joiner creates fitted timber details, and a cabinet maker focuses on cabinets and storage. The scope can overlap, so confirm each provider’s actual responsibilities.",
       "category": "Buyer Guide",
       "sections": [
         {
-          "title": "The problem with split trades",
-          "summary": "Framing, fix-out and cabinetry by different subcontractors means mismatched measurements, poor sequence handover and rework cost that usually lands on the owner."
+          "title": "Start with the object and the stage of work",
+          "summary": "Site carpentry may involve framing, doors, trims or renovation timber work. Architectural joinery involves fitted features and detailed timber elements; cabinet making focuses on kitchens, wardrobes and other storage. These descriptions are a starting point, not proof of a provider’s capability. List the items you need and ask who will measure, manufacture, install and finish each one."
         },
         {
-          "title": "The full-spectrum advantage",
-          "summary": "One team does frame measuring and cabinetry detailing, so dimensions line up; accountability is clear with no finger-pointing; program is coordinated and predictable."
+          "title": "Coordination is a responsibility to agree",
+          "summary": "One contact can make communication simpler, but a combined quote does not establish that every trade is delivered by the same person. Ask which work is included, which specialists are separately engaged and who resolves the junctions. A clear allocation of responsibilities matters whether you appoint one provider or several."
         },
         {
-          "title": "How to spot a true full-spectrum partner",
-          "summary": "Signs: ① own workshop and equipment; ② own site carpentry crew; ③ one complete quote (not piecemeal); ④ reference projects you can visit."
+          "title": "Check evidence against the proposed work",
+          "summary": "Ask for relevant work examples and a written description of the proposed scope. Confirm who contracts the work, who supervises it where required and how to check the relevant licence details. A workshop, a broad service list or a company registration alone does not establish authority for every type of building work."
         },
         {
           "title": "Where coordination usually breaks down",
@@ -1448,30 +1533,63 @@
           "title": "Questions to ask before appointing a team",
           "summary": "Ask what work is completed in-house, who will be your site contact, how measurements are verified, when custom pieces are released for manufacture and how defects or changes are handled. Clear answers demonstrate process knowledge. They are more informative than broad claims about quality because they show how a team protects quality under real project conditions."
         }
-      ]
+      ],
+      "seo_title": "Carpenter, Joiner or Cabinet Maker? | MEL ONE Adelaide",
+      "seo_description": "Compare site carpentry, joinery and cabinet-making scopes, measurements and trade handovers before appointing a provider for an Adelaide project.",
+      "faq_title": "Choosing a carpentry and joinery scope",
+      "faqs": [
+        {
+          "question": "Does one provider need to do all the timber work?",
+          "answer": "No. The useful question is whether site dimensions, drawings, sequencing and responsibility are agreed. Separate providers can work together when their interfaces are documented."
+        },
+        {
+          "question": "Is a kitchen cabinet quote the same as a renovation quote?",
+          "answer": "No. A cabinetry quote can cover cabinet construction and installation while demolition, services, surfaces and making-good are separately agreed. Compare the included items before comparing totals."
+        },
+        {
+          "question": "When should final joinery measurements be taken?",
+          "answer": "At the stage when the relevant walls, floors, openings and service positions can be verified. Agree the measuring and drawing approval points before releasing custom pieces for manufacture."
+        },
+        {
+          "question": "How do I check a proposed contractor’s licence?",
+          "answer": "Use the Consumer and Business Services register to check the licence holder and relevant details, then confirm that the proposed work and contracting arrangements match. Company identity alone does not answer that question.",
+          "related_links": [
+            {
+              "label": "CBS: find a licence holder",
+              "href": "https://www.cbs.sa.gov.au/find-a-licence-holder"
+            }
+          ]
+        }
+      ],
+      "related_title": "Services and further reading",
+      "planning": {
+        "title": "Describe the timber items and handovers",
+        "body": "Tell MEL ONE which rooms or timber elements are involved, what has already been designed and who else is working on the project. We can discuss the carpentry or joinery scope and the responsibilities to record in a written quote. Photos, approximate dimensions and drawings are optional for the first enquiry; email any you have to handymanfelix.au2026@outlook.com. Site measurement and agreed details are needed before the affected work proceeds.",
+        "cta_label": "Discuss your timber scope"
+      }
     },
     {
       "slug": "kitchen-renovation-cost-guide",
-      "title": "Adelaide kitchen renovation costs: 2026 market guide",
-      "summary": "A kitchen reno is among the highest-return home improvements. We lay out typical Adelaide 2026 price bands and the key cost drivers so you are not over- or under-quoted.",
-      "lead": "Compare the scope, materials and allowances clearly before choosing a quote. This Adelaide guide provides a practical starting point for planning.",
+      "title": "Kitchen cabinetry costs: how to compare an Adelaide quote",
+      "summary": "Understand the cabinetry choices, site work, allowances and exclusions that shape a kitchen quote, without relying on generic market price bands.",
+      "lead": "A useful kitchen quote prices a defined scope. Compare cabinet layout, materials, hardware, installation and separate trade work before comparing the total.",
       "category": "Cost Guide",
       "sections": [
         {
-          "title": "Typical Adelaide bands (2026)",
-          "summary": "Cosmetic (new doors + benchtop): $15,000–$30,000. Mid (full cabinets + new stone + tile): $30,000–$55,000. High (solid-timber + stone + appliances): $55,000–$100,000+."
+          "title": "Compare the same cabinet scope",
+          "summary": "A door refresh, replacement cabinets and a changed room layout are different projects. List what remains and what is removed, the number and arrangement of cabinets, drawers and panels, and the installation work required. A total without this detail cannot show whether two quotes cover the same outcome. There is no reliable project price until the scope and conditions are understood."
         },
         {
-          "title": "Five cost drivers",
-          "summary": "① Cabinet material (solid > 2-pac > moisture board); ② Benchtop (natural stone > engineered > laminate); ③ Moving plumbing/power; ④ Demolition; ⑤ Project size (partial vs full strip)."
+          "title": "Separate the main quote factors",
+          "summary": "Cabinet size and complexity, substrate, visible finish, edging, drawer and hinge systems, internal accessories and appliance integration all affect the cabinetry scope. Transport, access, removal, protection and making-good also need an allocation. Benchtops, splashbacks, electrical and plumbing work should be identified as included, excluded or separately quoted rather than assumed to sit inside a cabinet total."
         },
         {
-          "title": "Holding the budget",
-          "summary": "① Keep existing plumbing points (one move ~$500–800); ② Engineered stone is ~half natural stone, similar durability; ③ Replace doors only, keep boxes; ④ Avoid structural changes."
+          "title": "Keep the useful layout before cutting features",
+          "summary": "Retaining a workable cabinet layout or sound cabinet boxes may reduce the work, but their condition and compatibility need checking. Compare simpler door details, a different finish or fewer specialist accessories against daily storage needs. Moving services needs a separately defined trade scope; it cannot be priced from a universal allowance or justified by a generic saving claim."
         },
         {
-          "title": "Treat guide prices as a starting point",
-          "summary": "Our published kitchen price bands help you plan the work. MEL ONE measures the room, checks access and existing conditions, and confirms cabinetry, benchtops, appliances, services and finishes in the written quote. We discuss material choices and custom details so you can see what is included."
+          "title": "Confirm lawful materials before ordering",
+          "summary": "Discuss the selected benchtop product with the responsible supplier and installer before specifying it. The engineered-stone prohibition and the distinction between new products and legacy work are explained in the sourced FAQ below. A material choice should be lawful, suitable for the room and coordinated with cabinet support and templating; it does not imply MEL ONE supplies or installs every benchtop system."
         },
         {
           "title": "Decide what must stay and what can move",
@@ -1486,29 +1604,62 @@
           "summary": "A kitchen renovation often involves demolition, rough-in services, wall and floor preparation, cabinetry installation, benchtop templating, splashback work, appliance connection and final adjustment. The exact order depends on the project. Identifying who owns each handover helps prevent a finished cabinet being removed or altered because a service or surface was not ready."
         },
         {
-          "title": "Bring a quote-ready brief",
-          "summary": "Useful inputs include a plan or measured sketch, photos, appliance models, a list of storage priorities, preferred materials, the condition of the existing room and a target program. Note whether the project is occupied and whether other renovation work is planned. This helps create a scope that reflects the kitchen you need, not a generic package built around assumptions."
+          "title": "Bring a brief, then resolve the missing selections",
+          "summary": "Start with the kitchen location, what you want to retain, storage priorities, appliance models if selected, and any known access or occupancy limits. Existing photos, approximate dimensions and drawings are optional at first enquiry. The site measure and agreed specification turn that initial discussion into a defined cabinetry quote; unresolved selections should remain identifiable allowances or exclusions."
         }
-      ]
+      ],
+      "seo_title": "Adelaide Kitchen Renovation Cost Guide | MEL ONE",
+      "seo_description": "Understand kitchen cabinetry quote factors, material choices, allowances and exclusions before discussing an Adelaide cabinet installation scope.",
+      "faq_title": "Kitchen cabinetry quote questions",
+      "faqs": [
+        {
+          "question": "Why can two kitchen cabinetry totals differ?",
+          "answer": "They may cover different cabinet quantities, finishes, hardware, removal, installation or making-good. Ask for those items and any allowances to be described so you can compare the same scope."
+        },
+        {
+          "question": "Can new engineered-stone benchtops be specified?",
+          "answer": "New engineered-stone benchtops, panels and slabs have been prohibited in South Australia since 1 July 2024. Legacy work and exemptions have separate conditions; this does not mean all stone products or all work on existing engineered stone are banned. Confirm the selected product and any existing-material work against current SafeWork SA guidance with the responsible specialist.",
+          "related_links": [
+            {
+              "label": "SafeWork SA: engineered-stone prohibition",
+              "href": "https://www.safework.sa.gov.au/industry/construction/engineered-stone-prohibition"
+            }
+          ]
+        },
+        {
+          "question": "Does a cabinet installation quote cover plumbing and electrical work?",
+          "answer": "Only when the written scope expressly includes the relevant arrangements. Identify the responsible trades, appliance connections, benchtops, splashbacks and surface preparation separately rather than assuming a complete kitchen renovation is included."
+        },
+        {
+          "question": "Can I start without a measured kitchen plan?",
+          "answer": "Yes. Describe the intended change and your storage priorities. Photos, approximate dimensions and drawings are optional for the first discussion; site measurement and agreed specifications are needed before a confirmed manufacturing scope."
+        }
+      ],
+      "related_title": "Services and further reading",
+      "planning": {
+        "title": "Prepare a cabinetry quote brief",
+        "body": "Tell MEL ONE what you want to retain or replace, your storage needs and any appliance or finish selections. Ask for cabinetry, installation, allowances and separate trade interfaces to be clear in the written scope. Photos, approximate dimensions and drawings are optional for the first enquiry; email any you have to handymanfelix.au2026@outlook.com. Site measurement and agreed details are needed before the affected work proceeds.",
+        "cta_label": "Discuss your kitchen cabinetry"
+      }
     },
     {
       "slug": "heritage-building-timber-restoration",
-      "title": "Heritage timber restoration: how it differs from ordinary renovation",
-      "summary": "Heritage timber repair combines skilled craftsmanship with careful planning and preservation requirements. Learn why it needs a specialist team and what SA considerations may apply.",
-      "lead": "Many 1920–1950s Adelaide homes use traditional timber and hand joinery. Restoring them takes both skill and heritage awareness.",
+      "title": "Heritage timber restoration: principles before replacement",
+      "summary": "Understand significance, retention and evidence when deciding how traditional timber work differs from ordinary renovation.",
+      "lead": "Start with what gives the timber significance and what can safely be retained. Heritage restoration balances condition, use and the evidence of original construction before choosing a repair or replacement.",
       "category": "Expertise",
       "sections": [
         {
-          "title": "Heritage listing and the rules",
-          "summary": "In SA, buildings on the State or Local Heritage Register need Heritage Approval (Section 49 permit) with a heritage-architect-reviewed method before timber repair starts."
+          "title": "Check the property status and proposed change",
+          "summary": "Age or an architectural style alone does not establish heritage protection. Check the property’s status and discuss the proposed work through the relevant planning and heritage pathway before changing significant fabric. Approval requirements depend on the place and the work; there is no universal permit or mandatory adviser rule that can be inferred from a timber repair description. Official guidance is linked in the FAQ below."
         },
         {
-          "title": "Traditional joinery demands",
-          "summary": "Mortise-and-tenon needs hand work not modern connectors; timber must match the original species and era; surface systems must follow period paint (lime wash, milk paint)."
+          "title": "Match the important detail, not an assumed period recipe",
+          "summary": "Surviving profiles, joints, hardware and finish evidence help establish an appropriate detail. A traditional joint or particular species may be relevant, but the repair specification should follow the actual element and the agreed conservation approach. Do not assume every period building needs the same timber, connector or coating simply because its appearance is similar."
         },
         {
-          "title": "MEL ONE heritage experience",
-          "summary": "Our joiners know Adelaide period forms (Federation Bungalow, Inter-War Californian Bungalow) and deliver compliant, faithful restoration."
+          "title": "Separate conservation advice from the carpentry scope",
+          "summary": "MEL ONE can discuss heritage timber carpentry against the recorded condition and agreed project information. The relevant authority decides formal approvals; heritage advisers and other responsible specialists address their own scopes. Ask what assessment, drawings, specifications and authorisations the proposed work needs before appointing the repair work."
         },
         {
           "title": "Start with significance, condition and use",
@@ -1523,33 +1674,78 @@
           "summary": "Timber does not fail in isolation. Flashing, drainage, glazing, paint, sealants, ventilation and adjacent masonry can all influence the service life of a repaired element. A restoration scope should identify these interfaces and the trades involved. This protects both the historic material that remains and the new timber introduced as part of a careful repair."
         },
         {
-          "title": "Know when specialist advice is needed",
-          "summary": "MEL ONE assesses the heritage timber on site, records its condition and plans the repair with the approved project information. We identify structural, glazing, moisture, lead-paint and heritage requirements and confirm the qualified service arrangements and required documents before work starts. Contact our Adelaide team to arrange an assessment and quote."
+          "title": "Identify specialist interfaces before work starts",
+          "summary": "Structural concerns, active water entry, glazing, suspect coatings and other old materials may need separate assessment and specialist arrangements. Include those responsibilities in the project brief. A carpentry discussion does not establish engineering, hazardous-material or approval authority, and preparation should not disturb unknown materials merely to obtain a photograph."
         },
         {
           "title": "Create a maintainable handover record",
           "summary": "Keep photos, notes on retained and replaced elements, material or finish information, and a simple schedule for review. This record gives future owners or trades a clearer picture of what was repaired and why. Heritage stewardship is easier when maintenance is based on evidence rather than a cycle of reacting only after paint failure, water entry or decay becomes obvious."
         }
-      ]
+      ],
+      "seo_title": "Heritage Timber Restoration Principles | MEL ONE Adelaide",
+      "seo_description": "Understand significance, original fabric, matching details and approval checks before choosing an Adelaide heritage timber restoration approach.",
+      "faq_title": "Heritage conservation decision questions",
+      "faqs": [
+        {
+          "question": "Does restoration always mean keeping every timber piece?",
+          "answer": "No. Retain sound significant material where appropriate, then compare local repair, replication or replacement against condition and the agreed conservation approach. Document the reason for each intervention."
+        },
+        {
+          "question": "Does an old Adelaide home automatically need heritage approval?",
+          "answer": "No. Check the property status and the proposed work. PlanSA explains how to find out whether approval is needed; the relevant authority determines the applicable requirements.",
+          "related_links": [
+            {
+              "label": "PlanSA: find out if you need approval",
+              "href": "https://plan.sa.gov.au/development_applications/before_you_lodge/find_out_if_you_need_approval"
+            }
+          ]
+        },
+        {
+          "question": "Where can I read about work in a State Heritage Area?",
+          "answer": "The South Australian environment department explains living and working in a State Heritage Area. Use that guidance to clarify the place and proposal with the relevant authority; do not assume the same pathway applies to every older property.",
+          "related_links": [
+            {
+              "label": "SA environment: living in a State Heritage Area",
+              "href": "https://www.environment.sa.gov.au/topics/heritage/owning-a-heritage-place/living-in-a-state-heritage-area"
+            }
+          ]
+        },
+        {
+          "question": "What should I read once the conservation approach is clear?",
+          "answer": "Use the practical heritage timber repair guide to prepare a condition record, identify elements and describe the proposed scope. Bring existing project advice to the discussion so the carpentry quote follows the agreed approach.",
+          "related_links": [
+            {
+              "label": "Prepare a heritage repair scope",
+              "href": "/insights/adelaide-heritage-timber-repairs/"
+            }
+          ]
+        }
+      ],
+      "related_title": "Services and further reading",
+      "planning": {
+        "title": "Discuss the conservation approach",
+        "body": "Tell MEL ONE which original timber matters, the building’s known heritage status and any existing conservation advice. We can discuss the timber scope and the information needed for an assessment and written quote. Photos, approximate dimensions and drawings are optional for the first enquiry; email any you have to handymanfelix.au2026@outlook.com. Site measurement and agreed details are needed before the affected work proceeds.",
+        "cta_label": "Discuss heritage carpentry"
+      }
     },
     {
       "slug": "timber-flooring-oiling-guide",
-      "title": "Solid vs engineered timber flooring: which suits your home?",
-      "summary": "Solid and engineered timber each have trade-offs. The right pick balances budget, floor level, moisture and look.",
-      "lead": "Timber flooring is among the most-used surfaces in a home. The wrong choice costs heavily in repair; the right one lifts comfort and value.",
+      "title": "Solid vs engineered timber flooring: choosing and restoring a floor",
+      "summary": "Compare solid and engineered timber by product, subfloor, wear layer and maintenance, then decide what can be repaired or refinished.",
+      "lead": "Neither solid nor engineered timber is automatically the better floor. Compare the selected product with the subfloor, moisture conditions, room use and future maintenance before choosing replacement or restoration.",
       "category": "Material Guide",
       "sections": [
         {
-          "title": "Solid timber pros & cons",
-          "summary": "Pros: natural grain, multiple sandings (100-year life), value. Cons: dearer, moisture-sensitive, pro install, not ideal on damp ground floors."
+          "title": "Solid timber: assess thickness and existing condition",
+          "summary": "Solid timber boards have timber through their thickness, but that does not promise an unlimited number of sandings or a fixed lifespan. Existing sanding, fixing position, damage, movement and the board profile affect what can be restored. Assess the actual floor before treating sanding and oiling as the solution; local repairs or a different finish approach may be needed."
         },
         {
-          "title": "Engineered timber pros & cons",
-          "summary": "Pros: ~60–70% of solid price, stable (less movement), straight onto slab, DIY-able. Cons: limited refinish (1–2 times), less warm sound."
+          "title": "Engineered timber: compare the complete product",
+          "summary": "Engineered flooring combines a timber surface with a layered construction. Products differ in wear-layer thickness, installation method, finish and repair options. Price and suitability cannot be expressed as one percentage of solid flooring. Check the manufacturer’s information and the existing floor before assuming it can be sanded or installed directly over a particular slab."
         },
         {
-          "title": "Adelaide recommendation",
-          "summary": "Ground floor: engineered (stable in moisture). Upper floors: budget-dependent. High budget + long value: solid (Blackwood, Jarrah). Wet areas (bath, laundry): hybrid flooring instead."
+          "title": "Choose by room conditions and product requirements",
+          "summary": "A ground-floor slab does not automatically make engineered timber suitable, and an upper floor does not automatically favour solid timber. Moisture assessment, subfloor preparation, acoustic requirements, floor height and the selected system need to agree. For rooms with frequent water exposure, confirm the product’s stated application limits before choosing any floor covering."
         },
         {
           "title": "Read the existing floor and subfloor first",
@@ -1571,30 +1767,57 @@
           "title": "Care after installation",
           "summary": "The right cleaning method, furniture protection, prompt attention to spills and sensible use of mats can help preserve a timber floor. Care advice should match the selected product and finish, not rely on a generic rule. Ask what to avoid, how to treat minor wear and when a professional review is appropriate so maintenance becomes planned rather than reactive."
         }
-      ]
+      ],
+      "seo_title": "Solid vs Engineered Timber Flooring Guide | MEL ONE Adelaide",
+      "seo_description": "Compare solid and engineered timber floors, subfloor conditions, wear layers and refinishing limits before planning an Adelaide floor repair or replacement.",
+      "faq_title": "Solid and engineered flooring questions",
+      "faqs": [
+        {
+          "question": "Can an engineered timber floor be sanded?",
+          "answer": "Sometimes, but the remaining wear layer, previous sanding, damage and manufacturer’s requirements decide what is possible. Do not assume a standard number of refinishes applies to every engineered floor."
+        },
+        {
+          "question": "Is solid timber always more expensive?",
+          "answer": "No useful comparison follows from the material name alone. Compare the selected product, subfloor preparation, removal, installation, edges and finishing for the same room and scope."
+        },
+        {
+          "question": "Will oiling fix a damaged timber floor?",
+          "answer": "Oiling changes the surface finish; it does not resolve loose boards, moisture problems or deep damage. Assess the cause and condition before agreeing repairs and a compatible finish."
+        },
+        {
+          "question": "What belongs in a floor restoration quote?",
+          "answer": "Record the floor type if known, rooms, accessible condition, repair areas, preparation, finish, transitions, furniture handling and access. Separate concealed conditions and other trade work from the agreed floor scope."
+        }
+      ],
+      "related_title": "Services and further reading",
+      "planning": {
+        "title": "Describe the existing floor before selecting a finish",
+        "body": "Tell MEL ONE whether you are repairing an existing floor or considering replacement, which rooms are involved and what wear or movement you have noticed. The assessment can establish the accessible condition and suitable repair or finishing scope. Photos, approximate dimensions and drawings are optional for the first enquiry; email any you have to handymanfelix.au2026@outlook.com. Site measurement and agreed details are needed before the affected work proceeds.",
+        "cta_label": "Discuss your timber floor"
+      }
     },
     {
       "slug": "commercial-fitout-process",
-      "title": "Commercial fitout, step by step: from design to opening",
-      "summary": "Restaurant, café, office or retail timber fitout is a complex job of design, fire and code compliance and program. Here is the full flow and key timing.",
-      "lead": "A well-planned fitout protects opening timelines, budget control and brand presentation. Understand the process before work begins.",
+      "title": "Commercial carpentry fitout: sequence, scope and responsibilities",
+      "summary": "Plan the timber part of a commercial fitout with clear drawings, site readiness, specialist interfaces and a recorded handover.",
+      "lead": "Plan a commercial carpentry fitout around decisions and site readiness, then agree a programme. Design, approvals, services, manufacturing and installation depend on each other; a generic week count cannot establish your opening date.",
       "category": "Process Guide",
       "sections": [
         {
-          "title": "Stage 1 — Design & partners",
-          "summary": "Engage designer/architect → our joinery team details → coordinate fire engineer → submit DA (with heritage approval if needed). Typically 4–8 weeks."
+          "title": "Define the timber package and decision owners",
+          "summary": "Identify counters, fitted storage, trims, partitions or feature joinery that belong in the timber package. Name the owner or authorised tenant contact, designer, head contractor and responsible specialists where involved. Agree who supplies the drawings, coordinates services and authorises changes; do not assume a carpentry contractor also owns the entire tenancy design or approval process."
         },
         {
-          "title": "Stage 2 — Build & install",
-          "summary": "Workshop build (6–8 wks) → strip-out & base works → joinery install (2–3 wks) → paint/finish → hardware. Typically 8–12 weeks."
+          "title": "Release production after the required checks",
+          "summary": "Review site dimensions, finished floor levels, service positions, materials and approved drawings before the affected pieces are manufactured. Record what must be ready for installation, who provides access and where materials can be stored. Production and installation timing depend on those decisions and supplier availability, so confirm the programme against the actual scope."
         },
         {
-          "title": "Stage 3 — Handover & open",
-          "summary": "Building compliance → fire inspection → (food) health inspection → pre-open clean → soft furnishings. Usually 2–3 weeks after joinery."
+          "title": "Agree the carpentry handover and wider opening tasks",
+          "summary": "Check the installed timber work against approved drawings and the agreed scope, operate doors and drawers, record adjustments and supply selected product care information. The tenant, head contractor and responsible specialists still need to coordinate their own completion and opening requirements. A carpentry handover alone does not establish permission to open the premises."
         },
         {
-          "title": "Timeline summary",
-          "summary": "Total ~16–26 weeks (4–6 months). A full fitout with DA is 2–3× a home job; start planning 6+ months out."
+          "title": "Build the programme around dependencies",
+          "summary": "List unresolved approvals, selections, lead times, base-building preparation and service interfaces before fixing work dates. For an operating site, agree working areas, isolation, protection, deliveries and access arrangements. Ask who updates the programme when a dependency changes and how variations are authorised. Separate the desired opening date from the installation commitments actually agreed."
         },
         {
           "title": "Confirm the base building information",
@@ -1613,10 +1836,43 @@
           "summary": "A fast commercial programme should not mean hiding decisions. Confirm finishes, access, tolerance, protection and handover responsibilities in writing, then review work at practical hold points. Clear records and a single point of contact make it easier to resolve issues while materials and trades are on site, rather than discovering them during final cleaning or the first week of trading."
         },
         {
-          "title": "Prepare an opening-ready brief",
-          "summary": "Tell MEL ONE the intended opening date, tenancy or landlord arrangements, brand requirements, operating hours and nominated trades or suppliers. Existing drawings and site photos are optional for the initial request; email them to handymanfelix.au2026@outlook.com if available. We inspect and measure the premises, review known constraints and confirm the work, programme and quote. Required approvals and agreed specifications must be in place before the affected fitout work begins."
+          "title": "Prepare an opening-focused brief",
+          "summary": "Tell MEL ONE the premises, intended opening date, occupancy arrangements, timber items and nominated project contacts. Existing drawings, dimensions and photos are optional for the initial enquiry. A site assessment can clarify the accessible conditions and carpentry scope. Required decisions and authorisations must be resolved by the responsible parties before the affected work proceeds."
         }
-      ]
+      ],
+      "seo_title": "Commercial Carpentry Fitout Process | MEL ONE Adelaide",
+      "seo_description": "Plan commercial timber fitout drawings, trade responsibilities, occupied-site access and handover before agreeing an Adelaide carpentry programme.",
+      "faq_title": "Commercial carpentry fitout questions",
+      "faqs": [
+        {
+          "question": "How long does a commercial carpentry fitout take?",
+          "answer": "The programme depends on scope, drawings, site readiness, selected materials, access and other trades. Agree the measuring, drawing approval, production and installation milestones for your project rather than relying on a universal duration."
+        },
+        {
+          "question": "Can timber fitout work be staged around trading?",
+          "answer": "Discuss the operating hours, protected routes, noise restrictions, deliveries and areas that can be released. Whether staging is workable depends on the premises and the agreed project arrangements."
+        },
+        {
+          "question": "Who handles fitout approvals and specialist services?",
+          "answer": "Name the responsible parties in the project scope. Carpentry does not automatically include design, fire, electrical, plumbing or approval services. Check the proposed work through the relevant approval pathway before relying on a programme.",
+          "related_links": [
+            {
+              "label": "PlanSA: find out if you need approval",
+              "href": "https://plan.sa.gov.au/development_applications/before_you_lodge/find_out_if_you_need_approval"
+            }
+          ]
+        },
+        {
+          "question": "What should be recorded at carpentry handover?",
+          "answer": "Record completed items, agreed adjustments, approved changes, hardware operation and care information. Keep any remaining specialist or opening requirements with their responsible parties."
+        }
+      ],
+      "related_title": "Services and further reading",
+      "planning": {
+        "title": "Define the commercial timber package",
+        "body": "Tell MEL ONE the premises, proposed timber items, desired opening date and who coordinates the project. We can discuss access, staging and what must be ready before measuring, manufacturing or installation. Photos, approximate dimensions and drawings are optional for the first enquiry; email any you have to handymanfelix.au2026@outlook.com. Site measurement and agreed details are needed before the affected work proceeds.",
+        "cta_label": "Discuss your fitout scope"
+      }
     }
   ],
   "faqs": [
