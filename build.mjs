@@ -377,7 +377,14 @@ function officeHoursText() {
 }
 
 function footer() {
-  return `<footer class="site-footer"><div class="wrap footer-grid"><div><a class="footer-brand" href="/">${escapeHtml(brandName)}</a><p>${escapeHtml(content.brand.tagline)}</p></div><div><strong>Services</strong><a href="/services/">${escapeHtml(copy.servicesTitle)}</a><a href="/service-areas/">Service areas</a><a href="/about/">About</a></div><div><strong>Content</strong><a href="/insights/">${escapeHtml(copy.insightsTitle)}</a><a href="/faq/">${escapeHtml(copy.faqTitle)}</a></div><div><strong>Contact</strong><a href="/contact/">${escapeHtml(content.contact.cta)}</a><p style="color:var(--muted);font-size:14px;margin-top:8px;">${escapeHtml(content.contact.phone)}<br>${escapeHtml(content.contact.email)}<br>${escapeHtml(content.contact.address)}<br>Office hours: ${escapeHtml(officeHoursText())}</p></div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} ${escapeHtml(brandName)} · Adelaide, SA</span><span>${escapeHtml(content.brand.industry_label)}</span></div></footer>`;
+  const socialLinks = [
+    ['Google Reviews', 'https://www.google.com/maps/place/MEL+ONE/data=!4m2!3m1!1s0x0:0x83ac26172ecb51d2?sa=X&ved=1t:2428&ictx=111', 'social-google.png'],
+    ['Instagram', 'https://www.instagram.com/melone.maintenance1/', 'social-instagram.svg'],
+    ['YouTube', 'https://www.youtube.com/@MelOneMaintenance', 'social-youtube.svg'],
+    ['TikTok', 'https://www.tiktok.com/@melonemaintenance5', 'social-tiktok.svg'],
+  ];
+  const social = `<section class="wrap footer-social" aria-labelledby="footer-social-heading"><h2 id="footer-social-heading">FOLLOW MEL ONE</h2><ul>${socialLinks.map(([label, href, logo]) => `<li><a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer"><img src="/assets/${logo}" alt="" width="24" height="24" loading="lazy" decoding="async"><span>${escapeHtml(label)}</span></a></li>`).join('')}</ul></section>`;
+  return `<footer class="site-footer"><div class="wrap footer-grid"><div><a class="footer-brand" href="/">${escapeHtml(brandName)}</a><p>${escapeHtml(content.brand.tagline)}</p></div><div><strong>Services</strong><a href="/services/">${escapeHtml(copy.servicesTitle)}</a><a href="/service-areas/">Service areas</a><a href="/about/">About</a></div><div><strong>Content</strong><a href="/insights/">${escapeHtml(copy.insightsTitle)}</a><a href="/faq/">${escapeHtml(copy.faqTitle)}</a></div><div><strong>Contact</strong><a href="/contact/">${escapeHtml(content.contact.cta)}</a><p style="color:var(--muted);font-size:14px;margin-top:8px;">${escapeHtml(content.contact.phone)}<br>${escapeHtml(content.contact.email)}<br>${escapeHtml(content.contact.address)}<br>Office hours: ${escapeHtml(officeHoursText())}</p></div></div>${social}<div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} ${escapeHtml(brandName)} · Adelaide, SA</span><span>${escapeHtml(content.brand.industry_label)}</span></div></footer>`;
 }
 
 function page({ title, description, route, active = '', body, jsonLd }) {
@@ -572,7 +579,7 @@ const imageFiles = [
   'project-door-before.webp', 'project-door-during.webp', 'project-door-detail.webp', 'project-door-after.webp',
   'project-fence-during.webp', 'project-fence-after-wide.webp', 'project-fence-after-gate.webp', 'project-fence-before.webp',
   'project-window-after-wide.webp', 'project-window-during.webp', 'project-window-after-detail.webp', 'project-window-before.webp',
-  'mel-one-logo.png'
+  'mel-one-logo.png', 'social-google.png', 'social-instagram.svg', 'social-youtube.svg', 'social-tiktok.svg'
 ];
 for (const img of imageFiles) {
   const src = path.join(srcAssets, img);

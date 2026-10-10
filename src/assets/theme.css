@@ -408,3 +408,13 @@ body:not(.interior) .closing .btn.primary:hover {
   background: #fffdf8;
   border-color: #fffdf8;
 }
+/* Shared footer social links: self-hosted platform marks and visible labels. */
+.site-footer { --muted: #e9dfcf; color: #e9dfcf; background: #102821; }
+.site-footer .footer-social { padding-top: 32px; }
+.site-footer .footer-social h2 { margin: 0 0 12px; color: #d5a46b; font-size: 16px; letter-spacing: .08em; }
+.site-footer .footer-social ul { display: flex; flex-wrap: wrap; gap: 12px 28px; padding: 0; margin: 0; list-style: none; }
+.site-footer .footer-social li { min-width: 0; max-width: 100%; }
+.site-footer .footer-social a { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px; color: #fff; text-decoration: none; }
+.site-footer .footer-social img { flex: 0 0 24px; width: 24px; height: 24px; object-fit: contain; }
+.site-footer .footer-social a:hover { text-decoration: underline; }
+.site-footer .footer-social a:focus-visible { outline: 2px solid #d5a46b; outline-offset: 4px; border-radius: 4px; }
