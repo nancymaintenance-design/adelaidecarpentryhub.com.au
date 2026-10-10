@@ -13,6 +13,15 @@ test('production build permits indexing and publishes canonical crawl signals', 
   assert.doesNotMatch(source, /Disallow: \/\\n/);
 });
 
+test('build publishes factual AI discovery links for canonical routes only', () => {
+  execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
+  const llms = fs.readFileSync(path.join(root, 'public', 'llms.txt'), 'utf8');
+  for (const route of ['/', '/about/', '/services/', '/service-areas/', '/insights/', '/contact/']) {
+    assert.ok(llms.includes(`https://www.adelaidecarpentryhub.com.au${route}`), `missing canonical route ${route}`);
+  }
+  assert.doesNotMatch(llms, /\/404\.html/);
+});
+
 test('home page publishes LocalBusiness schema for MEL ONE in Adelaide', () => {
   assert.match(source, /'@type': 'HomeAndConstructionBusiness'/);
   assert.match(source, /addressLocality: 'Adelaide'/);

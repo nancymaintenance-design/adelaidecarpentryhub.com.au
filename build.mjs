@@ -1104,6 +1104,30 @@ const allRoutes = [
   ...content.services.map((item) => `/services/${item.slug}/`),
   ...content.insights.map((item) => `/insights/${item.slug}/`),
 ];
+const routeLabels = new Map([
+  ['/', 'Home'],
+  ['/about/', 'About'],
+  ['/services/', 'Services'],
+  ['/service-areas/', 'Service Areas'],
+  ['/insights/', 'Insights'],
+  ['/faq/', 'FAQ'],
+  ['/contact/', 'Contact'],
+]);
+for (const service of content.services) routeLabels.set(`/services/${service.slug}/`, service.title);
+for (const insight of content.insights) routeLabels.set(`/insights/${insight.slug}/`, insight.title);
+for (const region of safeArray(serviceAreas.regions)) routeLabels.set(regionRoute(region), region.name);
+const llms = [
+  `# ${brandName}`,
+  '',
+  content.brand.site_description,
+  '',
+  'MEL ONE provides carpentry, custom joinery, decking, cabinetry and heritage timber restoration services. Explore the published service, service area and insight pages below.',
+  '',
+  '## Published pages',
+  ...allRoutes.filter((route) => route !== '/404.html').map((route) => `- [${routeLabels.get(route) || route}](${canonical(route)})`),
+  '',
+].join('\n');
+fs.writeFileSync(path.join(siteDir, 'llms.txt'), llms, 'utf8');
 fs.writeFileSync(path.join(siteDir, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${
     allRoutes.filter(r => r !== '/404.html').map(r => `<url><loc>${canonical(r)}</loc></url>`).join('')
