@@ -389,7 +389,13 @@
         },
         {
           "question": "Can new engineered-stone benchtops be included?",
-          "answer": "New engineered-stone benchtops, panels and slabs are prohibited under the applicable South Australian rules. Legacy work and exemptions have separate conditions. Confirm a lawful selected product and specialist responsibilities before ordering; alternative stone products may still present silica risks."
+          "answer": "New engineered-stone benchtops, panels and slabs are prohibited under the applicable South Australian rules. Legacy work and exemptions have separate conditions. Confirm a lawful selected product and specialist responsibilities before ordering; alternative stone products may still present silica risks.",
+          "related_links": [
+            {
+              "label": "SafeWork SA: engineered-stone prohibition",
+              "href": "https://www.safework.sa.gov.au/industry/construction/engineered-stone-prohibition"
+            }
+          ]
         },
         {
           "question": "What must be approved before cabinet manufacture?",
