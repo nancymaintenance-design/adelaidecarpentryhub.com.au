@@ -1119,7 +1119,7 @@ for (const region of safeArray(serviceAreas.regions)) routeLabels.set(regionRout
 const llms = [
   `# ${brandName}`,
   '',
-  content.brand.site_description,
+  content.seo.site_description,
   '',
   'MEL ONE provides carpentry, custom joinery, decking, cabinetry and heritage timber restoration services. Explore the published service, service area and insight pages below.',
   '',

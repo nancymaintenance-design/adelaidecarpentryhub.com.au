@@ -19,6 +19,8 @@ test('build publishes factual AI discovery links for canonical routes only', () 
   for (const route of ['/', '/about/', '/services/', '/service-areas/', '/insights/', '/contact/']) {
     assert.ok(llms.includes(`https://www.adelaidecarpentryhub.com.au${route}`), `missing canonical route ${route}`);
   }
+  const content = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content-pack', 'site-content.json'), 'utf8'));
+  assert.ok(llms.includes(content.seo.site_description), 'missing approved site description');
   assert.doesNotMatch(llms, /\/404\.html/);
 });
 
