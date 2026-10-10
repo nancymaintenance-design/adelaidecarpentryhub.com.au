@@ -502,14 +502,27 @@ const relatedTargets = {
 };
 
 function detailTitle(kind, item) {
-  return seoTitles[kind][item.slug] || `${item.title} Adelaide`;
+  return item.seo_title || seoTitles[kind][item.slug] || `${item.title} Adelaide`;
 }
 
 function detailDescription(item) {
-  return seoDescriptions[item.slug] || item.summary;
+  return item.seo_description || seoDescriptions[item.slug] || item.summary;
 }
 
-function relatedContent(kind, slug) {
+function renderFaq(item) {
+  const links = safeArray(item.related_links).map(link => `<li><a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a></li>`).join('');
+  return `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p>${links ? `<ul>${links}</ul>` : ''}</details>`;
+}
+
+function detailFaqs(item) {
+  return item.faqs?.length ? `<section><h2>${escapeHtml(item.faq_title || 'Project planning questions')}</h2>${item.faqs.map(renderFaq).join('')}</section>` : '';
+}
+
+function faqSchema(item) {
+  return item.faqs?.length ? [{ '@type': 'FAQPage', mainEntity: item.faqs.map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) }] : [];
+}
+
+function relatedContent(kind, slug, title) {
   const links = (relatedTargets[`${kind}:${slug}`] || []).map((target) => {
     const [targetKind, targetSlug] = target.split(':');
     const items = targetKind === 'service' ? content.services : content.insights;
@@ -518,7 +531,7 @@ function relatedContent(kind, slug) {
     const href = targetKind === 'service' ? `/services/${item.slug}/` : `/insights/${item.slug}/`;
     return `<li><a href="${href}">${escapeHtml(item.title)}</a></li>`;
   }).filter(Boolean).join('');
-  return `<aside class="service-brief related-content"><p class="kicker">Related planning</p><h2>Continue your Adelaide project research</h2><ul>${links}</ul><a class="text-link" href="/contact/">Discuss your project</a></aside>`;
+  return `<aside class="service-brief related-content"><p class="kicker">Related planning</p><h2>${escapeHtml(title || 'Continue your Adelaide project research')}</h2><ul>${links}</ul><a class="text-link" href="/contact/">Discuss your project</a></aside>`;
 }
 
 function collectionJsonLd(route, label, intro, items, kind) {
@@ -666,7 +679,7 @@ const homeBody = `
       <a class="btn" href="/faq/">${escapeHtml(copy.faqCta)}</a>
     </div>
     <div>
-      ${content.faqs.slice(0, 6).map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('')}
+      ${content.faqs.slice(0, 6).map(renderFaq).join('')}
     </div>
   </div>
 </section>
@@ -768,6 +781,12 @@ const serviceCard = (item, index) => `<article class="service-card">
 </article>`;
 
 const servicesBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">${escapeHtml(content.brand.industry_label)}</p><h1>${escapeHtml(copy.servicesTitle)}</h1></div><p class="lede">${escapeHtml(copy.servicesLead)}</p></div></section>
+<section class="section hub-planning"><div class="wrap reading article">
+  <h2>Find the right starting point</h2>
+  <p>For an existing fault, start with <a href="/services/door-window-repairs/">timber door and window repairs</a> or <a href="/services/restoration-maintenance/">timber damage and maintenance</a>. A damaged frame or architrave has its own <a href="/services/door-jamb-interior-trim/">door jamb and interior trim scope</a>. Describe the symptom and what has changed before choosing repair or replacement.</p>
+  <p>For new work, compare <a href="/services/storage-solutions/">built-in storage</a>, <a href="/services/custom-kitchen-bathroom/">kitchen and bathroom cabinetry</a> and <a href="/services/outdoor-living/">new decks and outdoor timber</a>. Existing deck repairs belong with <a href="/services/decking-restoration-flooring/">deck restoration</a>. For several rooms or staged work, <a href="/services/renovation-carpentry/">renovation carpentry</a> helps frame the package and trade interfaces.</p>
+  <p>Include the job, suburb, access and preferred timing in your <a href="/contact/">initial project enquiry</a>. Photos, dimensions and drawings are optional at this stage; email existing files if they help explain the work. Confirm assessment arrangements, any charges and what the written quote will cover before booking.</p>
+</div></section>
 <section class="section service-directory"><div class="wrap">
   ${serviceGroups.map((group) => {
     const items = group.slugs.map((slug) => content.services.find((item) => item.slug === slug)).filter(Boolean);
@@ -867,13 +886,14 @@ for (const [index, item] of content.services.entries()) {
   ${media(`service.${item.slug}`)}
   <article class="article">
     ${item.sections.map((section) => `<section><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.summary)}</p></section>`).join('')}
+    ${detailFaqs(item)}
     <aside class="service-brief">
       <p class="kicker">Planning notes</p>
-      <h2>One team, from first measure to final finish</h2>
-      <p>Tell MEL ONE what needs attention or what you want built, your Adelaide suburb and preferred timing. We arrange a site assessment, check the existing condition or measure for new work, and provide a written quote for the agreed scope, materials and access.</p>
-      <a class="text-link" href="/contact/">Discuss your project</a>
+      <h2>${escapeHtml(item.planning?.title || 'From first measure to agreed scope')}</h2>
+      <p>${escapeHtml(item.planning?.body || 'Tell MEL ONE what needs attention or what you want built, your Adelaide suburb and preferred timing. We arrange a site assessment, check the existing condition or measure for new work, and provide a written quote for the agreed scope, materials and access. Existing photos or drawings are optional for an initial enquiry.')}</p>
+      <a class="text-link" href="/contact/">${escapeHtml(item.planning?.cta_label || 'Discuss your project')}</a>
     </aside>
-    ${relatedContent('service', item.slug)}
+    ${relatedContent('service', item.slug, item.related_title)}
   </article>
 </div></section>${realProjectGallery(item.slug)}`;
   writeRoute(route, page({ title: detailTitle('service', item), description: detailDescription(item), route, active: 'services', body, jsonLd: {
@@ -889,6 +909,7 @@ for (const [index, item] of content.services.entries()) {
         provider: { '@id': canonical('/#business') },
       },
       breadcrumbList([['Home', '/'], [copy.servicesTitle, '/services/'], [item.title, route]]),
+      ...faqSchema(item),
     ],
   } }));
 }
@@ -916,14 +937,14 @@ function collection(kind, label, items, intro) {
     const article = `<section class="article-hero"><div class="wrap reading"><p class="kicker">${cat}${date}</p><h1>${escapeHtml(item.title)}</h1><p class="lede">${escapeHtml(item.lead)}</p><p class="editorial-attribution">Editorial guidance by <a href="/about/">${escapeHtml(brandName)}</a></p></div></section>
 <section class="section"><article class="wrap reading article">
   ${item.sections.map((section) => `<section><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.summary)}</p></section>`).join('')}
-  ${item.faqs?.length ? `<section><h2>Wardrobe quote and handover questions</h2>${item.faqs.map(faq => `<details><summary>${escapeHtml(faq.question)}</summary><p>${escapeHtml(faq.answer)}</p></details>`).join('')}</section>` : ''}
-  ${relatedContent('insight', item.slug)}
+  ${detailFaqs(item)}
+  ${relatedContent('insight', item.slug, item.related_title)}
 </article></section>
 <section class="section article-cta-section"><div class="wrap reading article-cta">
   <p class="kicker">Talk through your scope</p>
-  <h2>Planning a timber project in Adelaide?</h2>
-  <p>Tell MEL ONE about your Adelaide timber project or repair concern. We arrange a site assessment, confirm the work required and provide a written quote for the agreed scope. Existing photos or drawings are optional; email them to handymanfelix.au2026@outlook.com.</p>
-  <a class="btn primary" href="/contact/">Start an enquiry</a>
+  <h2>${escapeHtml(item.planning?.title || 'Planning a timber project in Adelaide?')}</h2>
+  <p>${escapeHtml(item.planning?.body || 'Tell MEL ONE about your Adelaide timber project or repair concern. We arrange a site assessment, confirm the work required and provide a written quote for the agreed scope. Existing photos or drawings are optional; email them to handymanfelix.au2026@outlook.com.')}</p>
+  <a class="btn primary" href="/contact/">${escapeHtml(item.planning?.cta_label || 'Start an enquiry')}</a>
 </div></section>`;
     writeRoute(route, page({ title: detailTitle('insight', item), description: detailDescription(item), route, active: kind, body: article, jsonLd: {
       '@context': 'https://schema.org',
@@ -939,7 +960,7 @@ function collection(kind, label, items, intro) {
           ...(item.date ? { datePublished: item.date } : {}),
         },
         breadcrumbList([['Home', '/'], [label, `/${kind}/`], [item.title, route]]),
-        ...(item.faqs?.length ? [{ '@type': 'FAQPage', mainEntity: item.faqs.map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) }] : []),
+        ...faqSchema(item),
       ],
     } }));
   }
@@ -999,7 +1020,7 @@ const areasBody = `<section class="page-hero service-areas-hero"><div class="wra
   <p class="kicker">Plan the site visit</p><h2>Connect your location with the work required</h2>
   <p>Use the directory to find the existing precinct page for your street, then choose a service by the timber task. A street listing helps organise an enquiry; the property, access and work required still need discussion. If your street is not listed, <a href="/contact/">contact MEL ONE</a> with the address and a short description so availability and scope can be confirmed.</p>
   <p>For sticking windows or damaged frames, start with <a href="/services/door-window-repairs/">door and window repairs</a> and compare the <a href="/services/door-window-repairs/#timber-window-repair">timber window project gallery</a>. For an outdoor project, read the <a href="/insights/adelaide-deck-replacement-guide/">deck replacement guide</a> alongside <a href="/services/outdoor-living/">outdoor living carpentry</a>. Older decorative timber may call for <a href="/services/heritage-carpentry/">heritage carpentry</a>; the <a href="/insights/adelaide-heritage-timber-repairs/">heritage repair guide</a> explains what to record before a repair decision.</p>
-  <p>Include entry arrangements, stairs, shared passages, parking or delivery constraints and whether rooms or premises remain occupied. Mention any building manager requirements, preferred work windows and nearby finishes needing protection. These details help shape a practical site assessment without assuming that neighbouring properties have the same conditions.</p>
+  <p>Include entry arrangements, stairs, shared passages, parking or delivery constraints and whether rooms or premises remain occupied. Mention any building manager requirements, preferred work windows and nearby finishes needing protection. Photos and drawings are optional for the first enquiry; existing files can be emailed. Confirm availability and the assessment arrangements for your specific address.</p>
   <p>For interior changes, review <a href="/services/renovation-carpentry/">renovation carpentry</a>; for a workplace, use <a href="/services/fitout-refurbishment/">fitout and refurbishment</a>. Explain the desired result, other trades involved and what is already decided. The initial discussion can then separate the carpentry package from adjoining work, identify further measurements or approvals and establish the information needed for a written quote.</p>
 </div></section>`;
 writeRoute('/service-areas/', page({ title: serviceAreas.title, description: serviceAreas.lead, route: '/service-areas/', active: 'areas', body: areasBody, jsonLd: { '@context': 'https://schema.org', '@type': 'Service', name: 'MEL ONE service areas', provider: { '@id': canonical('/#business') }, areaServed: safeArray(serviceAreas.regions).flatMap(region => locationsFor(region).map(name => ({ '@type': 'Place', name: `${name}, ${region.name}, Adelaide, South Australia` }))) } }));
@@ -1061,7 +1082,7 @@ fs.writeFileSync(path.join(siteDir, 'service-areas.json'), JSON.stringify({
 // ── FAQ ─────────────────────────────────────────────────────────────────
 const faqBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">FAQ</p><h1>${escapeHtml(copy.faqTitle)}</h1></div><p class="lede">${escapeHtml(copy.faqLead)}</p></div></section>
 <section class="section"><div class="wrap faq-page">
-  ${content.faqs.map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('')}
+  ${content.faqs.map(renderFaq).join('')}
 </div></section>`;
 writeRoute('/faq/', page({ title: copy.faqTitle, description: copy.faqLead, route: '/faq/', active: 'faq', body: faqBody, jsonLd: { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: content.faqs.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) } }));
 
@@ -1139,7 +1160,7 @@ const contactBody = `<section class="page-hero"><div class="wrap page-hero-grid"
         Email: <strong>${escapeHtml(content.contact.email)}</strong><br>
         Address: <strong>${escapeHtml(content.contact.address)}</strong><br>
         Office hours: <strong>${escapeHtml(officeHoursText())}</strong><br>
-        Service area: Adelaide metro &amp; regional SA
+        Service area: Share your location to confirm project availability
       </p>
     </div>
   </div>

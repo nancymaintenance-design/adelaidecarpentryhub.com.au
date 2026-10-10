@@ -103,7 +103,10 @@ test('detail pages provide a clear planning path and enquiry action without alte
   const interior = fs.readFileSync(path.join(root, 'src', 'assets', 'interior.css'), 'utf8');
   assert.match(source, /class="service-brief"/);
   assert.match(source, /class="wrap reading article-cta"/);
-  assert.match(source, /One team, from first measure to final finish/);
+  const service = fs.readFileSync(path.join(root, 'public/services/house-framing/index.html'), 'utf8');
+  assert.match(service, /class="service-brief"/);
+  assert.match(service, /href="\/contact\/">[^<]+<\/a>/);
+  assert.match(service, /(?:assessment|scope|measure)/i);
   assert.match(interior, /\.service-brief/);
   assert.match(interior, /\.article-cta/);
   assert.doesNotMatch(interior, /hero-image-bg/);

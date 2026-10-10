@@ -17,11 +17,11 @@
   "pageCopy": {
     "servicesTitle": "Carpentry & Joinery",
     "servicesHomeTitle": "One team, from structure to finish",
-    "servicesLead": "Explore MEL ONE’s practical timber capabilities — planned for the realities of Adelaide homes, businesses and ongoing property care.",
+    "servicesLead": "Choose the timber task first: repair existing work, plan new joinery or coordinate a renovation carpentry package. Explore the matching service, then discuss site conditions, materials and the written scope with MEL ONE.",
     "insightsTitle": "Timber Notes",
     "insightsLead": "Plain-language guides to planning, materials and timber work — prepared to help you ask better questions before work begins.",
     "faqTitle": "Questions, answered",
-    "faqLead": "A clear starting point for the questions that shape a scope, quote and site visit.",
+    "faqLead": "Understand quote factors, site arrangements, company checks and specialist responsibilities before booking Adelaide carpentry or joinery work.",
     "faqHomeTitle": "Start with the essentials",
     "faqHomeLead": "A few useful answers before you pick up the phone.",
     "faqCta": "Browse all questions"
@@ -974,11 +974,11 @@
   ],
   "method": {
     "title": "From frame to finish, delivered as one",
-    "lead": "The same team covers on-site carpentry and workshop joinery, so we cut subcontractor coordination, keep one quality standard and control the program.",
+    "lead": "Start with the timber work you need, then agree the measure, materials, responsibilities and installation sequence. Identify specialist trades and approvals early so each part of the quote has a clear owner.",
     "steps": [
       {
         "title": "Brief & site check",
-        "summary": "We learn your needs, inspect and measure where needed, and give expert advice and an initial plan — including a free preliminary assessment."
+        "summary": "Tell us the job, suburb and preferred timing. We discuss the next assessment or measure and confirm any visit, design or investigation charges before booking. Existing photos or drawings are optional."
       },
       {
         "title": "Design & quote",
@@ -986,11 +986,11 @@
       },
       {
         "title": "Build & install",
-        "summary": "Workshop joinery is precision-made and site carpentry built to code, all run by one project lead with live progress updates."
+        "summary": "Confirm the selected materials, access and installation sequence before work begins. The agreed scope identifies who handles adjoining trades, technical documents and any required inspections."
       },
       {
         "title": "Quality & handover",
-        "summary": "Full quality check on completion (plumb, level, hardware), client sign-off, then warranty and care advice."
+        "summary": "Review the agreed work, operation, finishes and outstanding items together. Keep the written scope, product information and any applicable warranty terms with the care instructions."
       }
     ]
   },
@@ -1208,67 +1208,81 @@
   "faqs": [
     {
       "question": "What kind of company is MEL ONE?",
-      "answer": "We are a local Adelaide full-spectrum timber company covering three areas: ① on-site structural carpentry (house framing, outdoor living, fix-out, formwork, commercial fitout); ② workshop fine joinery (custom cabinetry, architectural joinery, storage, timber doors/windows/furniture); ③ restoration & maintenance (termite repair, heritage carpentry, floor restoration). One accountable MEL ONE team manages your project from structural carpentry through to the finished timber details."
+      "answer": "MEL ONE is the Adelaide enquiry contact for carpentry, joinery and timber maintenance. Start with a repair, new timber feature or renovation scope; we discuss the site conditions, measure and written quote. Where the job needs engineering, pest treatment or another specialist trade, confirm the responsible provider and scope before booking.",
+      "related_links": [{ "label": "Compare carpentry and joinery services", "href": "/services/" }, { "label": "Check company and insurance details", "href": "/about/" }]
     },
     {
       "question": "Which Adelaide areas do you service?",
-      "answer": "Our core coverage is the Adelaide metropolitan area — City, North Adelaide, East and West Adelaide, the beachside suburbs (Glenelg, Henley Beach, Semaphore and more) and the Hills. Regional SA projects can be discussed by location; tell us where the job is."
+      "answer": "Share the suburb or site location and the work required so MEL ONE can confirm availability, access and the attending team. The current location pages cover Adelaide CBD, East End, West End, North Terrace and Riverbank, and North Adelaide; a listed street helps route the enquiry but does not confirm a booking.",
+      "related_links": [{ "label": "Find a local carpentry enquiry route", "href": "/service-areas/" }]
     },
     {
-      "question": "Are you licensed for building work in SA?",
-      "answer": "Yes. MEL ONE holds a South Australian Building Work Contractor Licence issued by Consumer and Business Services (CBS). Our structural carpentry is carried out within licence scope and to the SA Building Rules."
+      "question": "How can I check who is authorised for my building work?",
+      "answer": "Before accepting a building-work quote, confirm the legal contracting entity, licence number, permitted work and responsible supervisor for that scope. Check the details through Consumer and Business Services and ask how specialist work will be contracted. The company identity and insurance details on our About page are separate records; they do not establish licence scope.",
+      "related_links": [{ "label": "Check a licence holder with CBS", "href": "https://www.cbs.sa.gov.au/find-a-licence-holder" }, { "label": "MEL ONE company identity and insurance information", "href": "/about/" }]
     },
     {
       "question": "Do you work with builders?",
-      "answer": "Absolutely. We support house-and-land builders (carpentry subcontracting), renovation builders (kitchen/bath cabinetry supply and install) and commercial builders (fitout, formwork). We know AS 1684 framing and mainstream Australian build systems and slot into builder teams seamlessly."
+      "answer": "Builders can enquire about a defined carpentry or joinery package. Include the build stage, current drawings if available, supply responsibilities, access and proposed sequence. Before booking, agree the contracting party, scope, interfaces with other trades and who arranges inspections or design clarification.",
+      "related_links": [{ "label": "Prepare a house-framing scope", "href": "/services/house-framing/" }, { "label": "Plan second-fix carpentry", "href": "/services/fix-out-second-fix/" }]
     },
     {
       "question": "What does custom cabinetry cost?",
-      "answer": "Price depends on material, size and detail. MEL ONE cabinetry price range (cabinets only, no benchtops): standard 2-pac MDF $8,000–$18,000; mid composite $15,000–$30,000; solid/high-end (Blackwood, American Oak) $30,000–$60,000+. We give a written quote after measure, with a free preliminary assessment and 3D design."
+      "answer": "Cabinet dimensions, layout, door finish, internal fittings, hardware, removal and installation access affect the quote. Check whether benchtops, appliances, plumbing, electrical work and finishing are included or separately arranged. We measure for the agreed cabinetry scope and record inclusions, exclusions and selections in the written quote.",
+      "related_links": [{ "label": "Kitchen and bathroom cabinetry scope", "href": "/services/custom-kitchen-bathroom/" }, { "label": "Understand cabinetry quote factors", "href": "/insights/kitchen-renovation-cost-guide/" }]
     },
     {
       "question": "How is decking priced?",
-      "answer": "MEL ONE decking price ranges: Treated Pine $180–$280/m²; Merbau $280–$400/m²; Spotted Gum $320–$450/m²; base works and waterproofing add $2,000–$5,000. We confirm the materials, agreed scope and written quote after a site assessment."
+      "answer": "A deck quote depends on whether the work is a new structure or repair, the accessible frame condition, area, height, timber and finish, access and removal needs. Engineering, approvals and adjoining drainage work may require separate arrangements. A site assessment helps define the work before material and labour allowances are agreed.",
+      "related_links": [{ "label": "New decking and outdoor carpentry", "href": "/services/outdoor-living/" }, { "label": "Existing deck restoration and repair", "href": "/services/decking-restoration-flooring/" }]
     },
     {
-      "question": "Do you give free quotes?",
-      "answer": "Yes — a free preliminary assessment and quote. Simple jobs (one furniture piece, small repair) get a phone/photo estimate; complex jobs (kitchen reno, structural carpentry, commercial fitout) get an on-site measure and a detailed written quote valid 30 days."
+      "question": "What happens before I receive a quote?",
+      "answer": "Start with a brief description and location. We arrange the appropriate site visit or measure, identify any design work or further investigation needed, and confirm any charges before you book that step. The written quote should identify the work, materials, assumptions, exclusions, payment arrangements and validity period for your project.",
+      "related_links": [{ "label": "Start a carpentry quote enquiry", "href": "/contact/" }]
     },
     {
       "question": "What does termite damage repair cost?",
-      "answer": "Depends on extent and whether structure is involved: local jamb/floor replace $1,500–$5,000; partial frame repair (1–2 nodes) $5,000–$15,000; wide frame replace + barrier $15,000–$50,000+; engineer's report adds $1,500–$3,000. Act early — we coordinate a licensed pest controller to limit spread."
+      "answer": "The timber-repair scope depends on the damage that can be inspected, concealed areas, structural involvement and access for replacement. Pest assessment and treatment are separate specialist tasks. Obtain the pest findings and any required structural advice before agreeing timber repairs; opening an area may reveal additional work that needs a revised scope.",
+      "related_links": [{ "label": "Timber damage assessment and repair scope", "href": "/services/restoration-maintenance/" }]
     },
     {
       "question": "Can you do heritage building restoration?",
-      "answer": "Yes. Our joiners know Adelaide period forms (Federation Bungalow, Inter-War Californian Bungalow, Georgian/Victorian) and their timber character and repair craft. For heritage-listed buildings we prepare a compliant method under the SA Heritage Act and obtain Heritage Approval before work."
+      "answer": "Enquire about retaining and repairing existing timber, matching a profile or replacing a damaged element. Record the location, visible condition and any known heritage status. Before changing protected fabric, confirm the proposed scope and approval responsibilities with the relevant authority; the address and intended work determine the next checks.",
+      "related_links": [{ "label": "Heritage carpentry and timber retention", "href": "/services/heritage-carpentry/" }, { "label": "Check whether development approval is needed", "href": "https://plan.sa.gov.au/development_applications/before_you_lodge/find_out_if_you_need_approval" }]
     },
     {
       "question": "How long from kitchen measure to install?",
-      "answer": "Full kitchen reno (measure to install): standard cabinetry build 6–8 weeks; strip-out & base 1–2 weeks; install 1–2 weeks; finish & tune 3–5 days — about 10–14 weeks. Solid-timber cabinets may take 14–18 weeks for material lead. We give a dated program with clear milestones."
+      "answer": "Timing depends on final measurements, approved selections, material and hardware availability, site readiness and adjoining trades. Cabinetry installation is one part of a wider kitchen project. Ask which decisions must be signed off, what could change the sequence and when an installation window can be confirmed for the agreed scope.",
+      "related_links": [{ "label": "Plan kitchen cabinetry installation", "href": "/services/custom-kitchen-bathroom/" }]
     },
     {
       "question": "Do you take on commercial fitouts?",
-      "answer": "Yes. We deliver timber fitouts for Adelaide venues (restaurants, cafés, bars — partitions, feature ceilings, bars, displays), offices (partition walls, meeting feature walls, reception) and retail (brand walls, custom furniture), plus hotels and clinics. On large jobs we work with the head contractor as carpentry subcontractor."
+      "answer": "Discuss the carpentry and joinery portion of your commercial fitout: cabinetry, counters, timber features and agreed refurbishment work. Tell us whether the premises remain occupied, who manages the site and which areas must stay operational. Identify specialist services, approvals and certification responsibilities separately before the package is booked.",
+      "related_links": [{ "label": "Commercial carpentry fitout and refurbishment", "href": "/services/fitout-refurbishment/" }]
     },
     {
       "question": "Can I see completed projects?",
-      "answer": "Yes. With client consent we publish case studies (photos + description) on our projects page. For a specific type (kitchen, heritage, commercial fitout) we can arrange a visit where possible — Adelaide-local clients first."
+      "answer": "Selected service pages contain project photo sequences with captions showing stages of the work. Use them to discuss the kind of result and details you have in mind. The photographed scope belongs to that project; your property's condition, permissions and repair needs still require assessment.",
+      "related_links": [{ "label": "View the deck replacement photo sequence", "href": "/services/decking-restoration-flooring/#deck-replacement-adelaide" }, { "label": "View the heritage verandah project gallery", "href": "/services/heritage-carpentry/#heritage-verandah-restoration" }]
     },
     {
       "question": "How long for custom solid-timber furniture (e.g. a dining table)?",
-      "answer": "Design sign-off 1–2 weeks; timber sourcing/drying (if specific size/species) 2–4 weeks; machining & assembly 2–3 weeks; finish (sand, oil/paint) 1 week — about 6–10 weeks. Local Blackwood/Jarrah can run longer on supply; imported Oak is usually quicker. Confirmed at quote."
+      "answer": "Custom timber work depends on agreed dimensions and design, species availability, fabrication, finish and delivery access. Discuss the intended use and preferred timing first. Confirm drawings or selections and the proposed production sequence before relying on a delivery date; a change of size, timber or finish can affect both scope and timing.",
+      "related_links": [{ "label": "Custom timber doors and furniture planning", "href": "/services/custom-doors-furniture/" }]
     },
     {
       "question": "What warranty and quality assurance do you provide?",
-      "answer": "Structural carpentry: 6-year structural warranty per SA building law. Fine joinery/cabinetry: 2-year workmanship & material warranty. Floor & deck oiling: 1-year workmanship. Restoration: 1-year workmanship. All cover workmanship defects; material faults follow each supplier's warranty. Full terms are in the contract."
+      "answer": "Ask for the terms applicable to your agreed work and selected products before accepting the quote. Record who to contact about an issue, what completion checks are included and what maintenance the materials require. Keep supplier documents, the contract and handover notes together so any concern can be assessed against the actual scope."
     },
     {
       "question": "How do you manage site safety and cleanliness?",
-      "answer": "We run SWMS (Safe Work Method Statement): site risk assessment before start; barrier and signage; daily site clean; waste sorted and removed at completion; all workers hold White Card + insurance. On commercial fitouts we coordinate hours (after-hours/weekends) with the head contractor to minimise trading disruption."
+      "answer": "Discuss occupied rooms, public access, children, pets, dust, noise, waste removal and protection of retained surfaces before booking. The scope should identify site access and who manages safety arrangements with the builder or premises manager. Tell us about suspected hazardous materials or unstable timber so assessment and specialist responsibilities can be addressed before disturbance."
     },
     {
       "question": "How do I book a site assessment or quote?",
-      "answer": "Three ways: ① the contact form on our Contact page; ② phone 0403 202 949; ③ email handymanfelix.au2026@outlook.com. We reply within 24 hours. When booking, please note project type (kitchen reno / new home framing / decking / heritage repair), suburb, rough budget and preferred start — so we send the right person."
+      "answer": "Use the contact form, call 0403 202 949 or email handymanfelix.au2026@outlook.com. Include the job, suburb, preferred timing and access details. A budget guide can help discuss scope, but photos, dimensions and drawings are optional for the first enquiry; email existing files if useful. Confirm the assessment appointment and any charges before booking.",
+      "related_links": [{ "label": "Send a project or repair enquiry", "href": "/contact/" }]
     }
   ],
   "about": {
@@ -1311,7 +1325,7 @@
     "scope_title": "What we deliver across Adelaide",
     "scope": "MEL ONE brings together on-site carpentry, custom joinery and property-care work so clients can discuss the building structure, the visible finish and the day-to-day use of a space in one place. Our services include framing, decks and outdoor structures, second fix, commercial fitout, cabinetry, architectural joinery, storage, timber doors and furniture, flooring, restoration and heritage timber repair. The appropriate solution depends on the property, drawings, existing conditions and the project team. We inspect repairs or measure for new work on site and confirm the required materials, work scope and written quote. We agree qualified service arrangements and approval requirements before work begins.",
     "company_title": "Company & insurance details",
-    "company_intro": "Company identity, current public-liability information and the Adelaide enquiry contact are presented together so clients can check the basic details before arranging work.",
+    "company_intro": "Company identity, supplied public-liability information and the Adelaide enquiry contact are presented together. The policy details below are subject to its terms; ask for the current certificate and applicable cover for your work. Company registration and insurance do not establish a building licence or its permitted scope.",
     "company_details": [
       {
         "label": "Legal entity",
@@ -1399,13 +1413,13 @@
       },
       {
         "question": "What information helps prepare a clear quote?",
-        "answer": "Photos, drawings or dimensions, intended outcome, approximate timing, access constraints, existing conditions and any materials or appliances already selected are all useful. A good brief allows the conversation to focus on the real work required rather than a vague allowance that may not match the property."
+        "answer": "Start with the job, suburb, intended outcome, preferred timing and access constraints. Existing photos, drawings and approximate dimensions are optional; email them if useful. Mention materials or appliances already selected so the quote can address the actual work, interfaces and exclusions."
       }
     ]
   },
   "contact": {
     "title": "Start with one specific need",
-    "lead": "Tell MEL ONE what needs attention or what you want built. We arrange an on-site assessment or measure, confirm the required work and provide a written quote.",
+    "lead": "Tell MEL ONE what needs attention or what you want built, and where the job is. We arrange an on-site assessment or measure, confirm any charges before booking and prepare a written quote for the agreed scope.",
     "cta": "Contact",
     "phone": "0403 202 949",
     "email": "handymanfelix.au2026@outlook.com",
@@ -1418,8 +1432,8 @@
     },
     "preparation": [
       "Project type and brief (e.g. kitchen reno / new home framing / decking / heritage repair)",
-      "Suburb (Adelaide metro or regional SA)",
-      "Rough budget range (so we can recommend the right scope)",
+      "Suburb or site location (to confirm availability and access)",
+      "Budget guide if you have one (to discuss scope and selections)",
       "Preferred start timeframe",
       "Existing drawings or reference photos are optional; email them to handymanfelix.au2026@outlook.com"
     ]
