@@ -654,7 +654,7 @@ const homeBody = `
 writeRoute('/', page({ title: 'Adelaide Carpentry, Joinery & Timber Restoration', description: content.seo.site_description, route: '/', active: 'home', body: homeBody, jsonLd: {
   '@context': 'https://schema.org',
   '@graph': [
-    { '@type': 'WebSite', name: brandName, url: canonical('/'), description: content.seo.site_description },
+    { '@type': 'WebSite', '@id': canonical('/#website'), name: brandName, url: canonical('/'), description: content.seo.site_description, publisher: { '@id': canonical('/#business') } },
     {
       '@type': 'HomeAndConstructionBusiness',
       '@id': canonical('/#business'),
@@ -871,6 +871,8 @@ function collection(kind, label, items, intro) {
           description: detailDescription(item),
           mainEntityOfPage: canonical(route),
           publisher: { '@id': canonical('/#business') },
+          author: { '@id': canonical('/#business') },
+          ...(item.date ? { datePublished: item.date } : {}),
         },
         breadcrumbList([['Home', '/'], [label, `/${kind}/`], [item.title, route]]),
         ...(item.faqs?.length ? [{ '@type': 'FAQPage', mainEntity: item.faqs.map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) }] : []),

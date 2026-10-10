@@ -31,6 +31,34 @@ test('home page publishes LocalBusiness schema for MEL ONE in Adelaide', () => {
   assert.match(source, /logo: canonical\('\/favicon\.png'\)/);
 });
 
+test('generated structured data connects the site, services and articles to the approved business', () => {
+  execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
+  const graphFor = (route) => {
+    const html = fs.readFileSync(path.join(root, 'public', route, 'index.html'), 'utf8');
+    const scripts = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+    return scripts.flatMap((match) => {
+      const data = JSON.parse(match[1]);
+      return data['@graph'] || [data];
+    });
+  };
+  const businessId = 'https://www.adelaidecarpentryhub.com.au/#business';
+  const home = graphFor('');
+  const website = home.find((node) => node['@type'] === 'WebSite');
+  assert.equal(website['@id'], 'https://www.adelaidecarpentryhub.com.au/#website');
+  assert.deepEqual(website.publisher, { '@id': businessId });
+  assert.equal(home.find((node) => node['@type'] === 'HomeAndConstructionBusiness')['@id'], businessId);
+  assert.deepEqual(graphFor('services/house-framing').find((node) => node['@type'] === 'Service').provider, { '@id': businessId });
+  const content = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content-pack', 'site-content.json'), 'utf8'));
+  for (const slug of ['adelaide-deck-replacement-guide', 'why-integrated-carpentry-joinery']) {
+    const item = [...content.services, ...content.insights].find((entry) => entry.slug === slug);
+    const article = graphFor(`insights/${slug}`).find((node) => node['@type'] === 'Article');
+    assert.deepEqual(article.publisher, { '@id': businessId });
+    assert.deepEqual(article.author, { '@id': businessId });
+    assert.equal(Object.hasOwn(article, 'datePublished'), Boolean(item.date));
+    if (item.date) assert.equal(article.datePublished, item.date);
+  }
+});
+
 test('service and insight pages publish breadcrumb and local business relationships', () => {
   assert.match(source, /'@type': 'BreadcrumbList'/);
   assert.match(source, /provider: \{ '@id': canonical\('\/#business'\) \}/);
