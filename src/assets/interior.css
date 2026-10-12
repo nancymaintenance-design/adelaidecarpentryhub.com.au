@@ -234,6 +234,11 @@
   .interior .service-grid { grid-template-columns: 1fr; }
   .interior .method-grid { grid-template-columns: repeat(2, 1fr); }
 }
+@media (min-width: 701px) and (max-width: 1000px) {
+  .interior .header-inner { flex-wrap: wrap; padding-block: 12px; }
+  .interior .nav { flex-basis: 100%; min-width: 0; }
+  .interior .nav-links { min-width: 0; flex-wrap: wrap; }
+}
 @media (max-width: 700px) {
   .interior { --wide: min(100vw - 32px, 1200px); }
   .interior .site-header { position: relative; }
@@ -287,6 +292,8 @@
 .interior .suburb-list li a:hover { background: var(--ink); color: #fffdf8; }
 
 /* Regional carpentry and joinery pages */
+.interior .evidence-grid--text { display: block; max-width: 880px; }
+.interior .service-card-body:only-child { grid-column: 1 / -1; }
 .interior .area-region h2 a, .interior .area-region-link { color: inherit; text-decoration: none; }
 .interior .area-region-link { display: inline-block; margin: 16px 23px -5px; color: var(--accent); font-weight: 700; }
 .interior .area-detail-section { padding-block: clamp(58px, 7vw, 104px); }

@@ -60,12 +60,12 @@ test('area page marks its valid streets and uses one bottom contact form', () =>
   assert.match(source, /allowedStreets\.includes\(street\)/);
 });
 
-test('integrity checker accepts the 38-page service directory and sitemap', () => {
+test('integrity checker accepts the 47-page service directory and sitemap', () => {
   execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
   const result = execFileSync(process.execPath, ['check.cjs'], { cwd: root, encoding: 'utf8' });
 
-  assert.match(result, /Total pages: 38 \(expect 38\)/);
-  assert.match(result, /Sitemap has 38 <loc> entries/);
+  assert.match(result, /Total pages: 47 \(expect 47\)/);
+  assert.match(result, /Sitemap has 47 <loc> entries/);
   assert.match(result, /All checks passed/);
 });
 

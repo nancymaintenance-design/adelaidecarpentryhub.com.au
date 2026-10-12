@@ -523,6 +523,8 @@ function faqSchema(item) {
 }
 
 function relatedContent(kind, slug, title) {
+  const owner = (kind === 'service' ? content.services : content.insights).find(item => item.slug === slug);
+  const configured = safeArray(owner?.related_links).map(link => `<li><a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a></li>`);
   const links = (relatedTargets[`${kind}:${slug}`] || []).map((target) => {
     const [targetKind, targetSlug] = target.split(':');
     const items = targetKind === 'service' ? content.services : content.insights;
@@ -530,7 +532,7 @@ function relatedContent(kind, slug, title) {
     if (!item) return '';
     const href = targetKind === 'service' ? `/services/${item.slug}/` : `/insights/${item.slug}/`;
     return `<li><a href="${href}">${escapeHtml(item.title)}</a></li>`;
-  }).filter(Boolean).join('');
+  }).filter(Boolean).join('') + configured.join('');
   return `<aside class="service-brief related-content"><p class="kicker">Related planning</p><h2>${escapeHtml(title || 'Continue your Adelaide project research')}</h2><ul>${links}</ul><a class="text-link" href="/contact/">Discuss your project</a></aside>`;
 }
 
@@ -751,12 +753,12 @@ const serviceGroups = [
   {
     title: 'Structural and construction carpentry',
     lead: 'Timber work that helps establish and complete the building sequence from frame through second fix.',
-    slugs: ['house-framing', 'formwork-carpentry', 'fix-out-second-fix'],
+    slugs: ['house-framing', 'formwork-carpentry', 'fix-out-second-fix', 'subfloor-timber-repairs'],
   },
   {
     title: 'Interior finishing and renovation',
     lead: 'Detailed interior timber work for openings, trim, joinery and rooms being renewed.',
-    slugs: ['skirting-board-installation-repairs', 'door-jamb-interior-trim', 'renovation-carpentry', 'custom-kitchen-bathroom', 'architectural-joinery', 'storage-solutions', 'custom-doors-furniture', 'fitout-refurbishment'],
+    slugs: ['skirting-board-installation-repairs', 'door-jamb-interior-trim', 'renovation-carpentry', 'custom-kitchen-bathroom', 'architectural-joinery', 'storage-solutions', 'custom-doors-furniture', 'fitout-refurbishment', 'accessibility-carpentry'],
   },
   {
     title: 'Outdoor timber work',
@@ -766,12 +768,12 @@ const serviceGroups = [
   {
     title: 'Repairs, restoration and heritage work',
     lead: 'Practical repair and careful timber-restoration planning for existing Adelaide homes and details.',
-    slugs: ['door-window-repairs', 'restoration-maintenance', 'heritage-carpentry'],
+    slugs: ['door-window-repairs', 'restoration-maintenance', 'heritage-carpentry', 'fascia-eaves-repairs', 'weatherboard-repairs', 'pergola-repairs', 'timber-stairs-handrails', 'cabinet-repairs'],
   },
 ];
 
-const serviceCard = (item, index) => `<article class="service-card">
-  <a class="service-media" href="/services/${item.slug}/" aria-hidden="true" tabindex="-1">${thumb(`service.${item.slug}`)}</a>
+const serviceCard = (item, index) => `<article class="service-card">${slot(`service.${item.slug}`) ? `
+  <a class="service-media" href="/services/${item.slug}/" aria-hidden="true" tabindex="-1">${thumb(`service.${item.slug}`)}</a>` : ''}
   <div class="service-card-body">
     <span class="num">${String(index + 1).padStart(2, '0')}</span>
     <h3><a href="/services/${item.slug}/">${escapeHtml(item.title)}</a></h3>
@@ -882,7 +884,7 @@ function realProjectGallery(serviceSlug) {
 for (const [index, item] of content.services.entries()) {
   const route = `/services/${item.slug}/`;
   const body = `<section class="detail-hero"><div class="wrap detail-grid"><div><p class="kicker">SERVICE ${String(index + 1).padStart(2, '0')}</p><h1>${escapeHtml(item.title)}</h1></div><p class="lede">${escapeHtml(item.lead)}</p></div></section>
-<section class="section"><div class="wrap evidence-grid">
+<section class="section"><div class="wrap evidence-grid${slot(`service.${item.slug}`) ? '' : ' evidence-grid--text'}">
   ${media(`service.${item.slug}`)}
   <article class="article">
     ${item.sections.map((section) => `<section><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.summary)}</p></section>`).join('')}

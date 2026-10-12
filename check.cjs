@@ -24,7 +24,7 @@ let all = true;
 console.log('\n=== Ellis Website Integrity Check ===\n');
 
 // Page count
-all &= check(`Total pages: ${htmlFiles.length} (expect 38)`, htmlFiles.length === 38);
+all &= check(`Total pages: ${htmlFiles.length} (expect 47)`, htmlFiles.length === 47);
 
 // Home page content
 const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
@@ -60,7 +60,7 @@ all &= check('No old contact email', !home.includes('ellisservicesgroup9'));
 if (fs.existsSync(path.join(root, 'sitemap.xml'))) {
   const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
   const locMatches = sitemap.match(/<loc>/g) || [];
-  all &= check(`Sitemap has ${locMatches.length} <loc> entries`, locMatches.length === 38 && !sitemap.includes('/404.html'));
+  all &= check(`Sitemap has ${locMatches.length} <loc> entries`, locMatches.length === 47 && !sitemap.includes('/404.html'));
 } else {
   all &= check('Sitemap exists', false);
 }
@@ -85,7 +85,9 @@ const servicePages = ['house-framing', 'outdoor-living', 'fix-out-second-fix',
   'architectural-joinery', 'storage-solutions', 'custom-doors-furniture',
   'restoration-maintenance', 'heritage-carpentry', 'decking-restoration-flooring',
   'door-window-repairs', 'skirting-board-installation-repairs', 'door-jamb-interior-trim',
-  'timber-fencing-repairs-replacement', 'timber-gates-installation-repairs', 'renovation-carpentry'];
+  'timber-fencing-repairs-replacement', 'timber-gates-installation-repairs', 'renovation-carpentry',
+  'fascia-eaves-repairs', 'weatherboard-repairs', 'subfloor-timber-repairs', 'accessibility-carpentry',
+  'pergola-repairs', 'timber-stairs-handrails', 'cabinet-repairs'];
 for (const slug of servicePages) {
   const sp = path.join(root, 'services', slug, 'index.html');
   all &= check(`Service page: ${slug}`, fs.existsSync(sp) && fs.readFileSync(sp, 'utf8').length > 500);
@@ -96,7 +98,7 @@ const servicesCataloguePath = path.join(root, 'services.json');
 if (fs.existsSync(servicesCataloguePath)) {
   try {
     const servicesCatalogue = JSON.parse(fs.readFileSync(servicesCataloguePath, 'utf8'));
-    all &= check('services.json lists all 18 visible services', Array.isArray(servicesCatalogue.items) && servicesCatalogue.items.length === 18);
+    all &= check('services.json lists all 25 visible services', Array.isArray(servicesCatalogue.items) && servicesCatalogue.items.length === 25);
   } catch {
     all &= check('services.json is valid JSON', false);
   }
@@ -109,7 +111,8 @@ all &= check('rss.xml exists', fs.existsSync(path.join(root, 'rss.xml')));
 // Insights pages
 const insightPages = ['why-integrated-carpentry-joinery', 'kitchen-renovation-cost-guide',
   'heritage-building-timber-restoration', 'timber-flooring-oiling-guide', 'commercial-fitout-process',
-  'adelaide-deck-replacement-guide', 'adelaide-custom-wardrobe-planning', 'adelaide-heritage-timber-repairs'];
+  'adelaide-deck-replacement-guide', 'adelaide-custom-wardrobe-planning', 'adelaide-heritage-timber-repairs',
+  'adelaide-carpentry-cost-guide', 'outdoor-timber-selection-adelaide'];
 for (const slug of insightPages) {
   const ip = path.join(root, 'insights', slug, 'index.html');
   all &= check(`Insight page: ${slug}`, fs.existsSync(ip) && fs.readFileSync(ip, 'utf8').length > 500);

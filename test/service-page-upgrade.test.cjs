@@ -28,7 +28,7 @@ test('six detailed Adelaide services have unique routes and substantial visible 
   const servicePages = services.filter((service) => !insightSlugs.has(service.slug));
   const slugs = servicePages.map((service) => service.slug);
 
-  assert.equal(new Set(slugs).size, 18, 'all 18 service slugs should be unique');
+  assert.equal(new Set(slugs).size, 25, 'all 25 service slugs should be unique');
 
   for (const [slug, title] of detailedServices) {
     const service = servicePages.find((item) => item.slug === slug);
@@ -41,7 +41,7 @@ test('six detailed Adelaide services have unique routes and substantial visible 
 });
 
 const renderedTitles = new Map([
-  ['/services/door-window-repairs/', 'Adelaide Door &amp; Window Repairs | MEL ONE'],
+  ['/services/door-window-repairs/', 'Timber Door &amp; Window Repairs Adelaide | MEL ONE'],
   ['/services/skirting-board-installation-repairs/', 'Adelaide Skirting Board Installation &amp; Repairs | MEL ONE'],
   ['/services/door-jamb-interior-trim/', 'Adelaide Door Jambs &amp; Interior Trim | MEL ONE'],
   ['/services/timber-fencing-repairs-replacement/', 'Adelaide Timber Fencing Repairs &amp; Replacement | MEL ONE'],
@@ -94,9 +94,9 @@ test('service hub groups all visible services and publishes matching catalogue a
     'Repairs, restoration and heritage work',
   ]) assert.match(hub, new RegExp(label));
 
-  assert.equal((hub.match(/class="service-card"/g) || []).length, 18, 'hub should display all 18 services once');
+  assert.equal((hub.match(/class="service-card"/g) || []).length, 25, 'hub should display all 25 services once');
   const catalogue = JSON.parse(fs.readFileSync(path.join(publicDir, 'services.json'), 'utf8'));
-  assert.equal(catalogue.items.length, 18);
+  assert.equal(catalogue.items.length, 25);
   for (const item of catalogue.items) {
     assert.match(hub, new RegExp(`href="${item.url.replace('https://www.adelaidecarpentryhub.com.au', '')}"`));
     assert.match(hub, new RegExp(item.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));

@@ -133,3 +133,56 @@ h2 { text-wrap: balance; }
 .brand-mark { width: auto; min-width: 34px; height: 34px; padding-inline: 5px; white-space: nowrap; font-size: 14px; letter-spacing: 0; }
 .footer-grid:has(> div:nth-child(5)) { grid-template-columns: 1.6fr repeat(4, minmax(0, 1fr)); }
 @media (max-width: 700px) { .footer-grid:has(> div:nth-child(5)) { grid-template-columns: 1fr; } }
+
+/* Mobile navigation and layout: keep every control reachable inside the viewport. */
+@media (max-width: 700px) {
+  html, body { overflow-x: hidden; }
+
+  .site-header {
+    position: relative;
+    display: block;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .header-inner {
+    position: relative;
+    min-height: 70px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .brand { display: inline-flex; min-width: 0; align-items: center; gap: 7px; }
+  .brand strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .brand-mark { flex: 0 0 auto; margin-right: 0; }
+
+  .menu {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+
+  .nav {
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    gap: 14px;
+    padding: 16px;
+    box-shadow: 0 18px 30px rgba(23, 55, 47, .14);
+  }
+
+  .nav-links { width: 100%; }
+  .nav a, .nav-cta {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .nav-cta { justify-content: center; }
+
+  .section-head { margin-bottom: 28px; }
+  .choice, .editorial-card { min-height: 0; padding: 24px 20px; }
+  .service-row { padding-block: 24px; }
+  .contact-form input, .contact-form textarea { font-size: 16px; }
+  .footer-bottom { gap: 10px; }
+}

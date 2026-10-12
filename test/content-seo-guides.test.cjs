@@ -15,6 +15,8 @@ const routes = {
   'adelaide-deck-replacement-guide': 'decking-restoration-flooring',
   'adelaide-custom-wardrobe-planning': 'storage-solutions',
   'adelaide-heritage-timber-repairs': 'heritage-carpentry',
+  'adelaide-carpentry-cost-guide': 'renovation-carpentry',
+  'outdoor-timber-selection-adelaide': 'outdoor-living',
 };
 const guides = [...data.insights, ...data.services.filter(x => routes[x.slug])];
 const escape = s => s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
@@ -29,8 +31,8 @@ test.before(() => {
 test.after(() => fs.rmSync(fixture, {recursive:true, force:true}));
 const htmlFor = slug => fs.readFileSync(path.join(fixture, 'public/insights', slug, 'index.html'), 'utf8');
 // Break caught: omitted article FAQ rendering, schema-only answers, or wrong service destination.
-test('eight guides render useful FAQs with matching schema and route readers to existing primary services', () => {
-  assert.equal(guides.length, 8);
+test('ten guides render useful FAQs with matching schema and route readers to existing primary services', () => {
+  assert.equal(guides.length, 10);
   const titles = new Set(), descriptions = new Set();
   for (const item of guides) {
     const html = htmlFor(item.slug), body = visible(html);
@@ -63,7 +65,7 @@ test('eight guides render useful FAQs with matching schema and route readers to 
     assert.equal(article.datePublished, ['adelaide-deck-replacement-guide','adelaide-custom-wardrobe-planning','adelaide-heritage-timber-repairs'].includes(item.slug)?'2026-09-23':undefined);
     assert.equal(article.reviewedBy,undefined);
   }
-  assert.equal(titles.size,8); assert.equal(descriptions.size,8);
+  assert.equal(titles.size,10); assert.equal(descriptions.size,10);
 });
 // Break caught: regulatory guidance lacks visible source or falsely offers prohibited new material.
 test('kitchen material decision includes visible prohibition and legacy distinction beside official source',()=>{

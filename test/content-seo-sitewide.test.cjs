@@ -10,18 +10,19 @@ const expected = ['/', '/services/', '/insights/', '/faq/', '/about/', '/contact
   ...['house-framing','outdoor-living','fix-out-second-fix','formwork-carpentry','fitout-refurbishment','custom-kitchen-bathroom','architectural-joinery','storage-solutions','custom-doors-furniture','restoration-maintenance','heritage-carpentry','decking-restoration-flooring','door-window-repairs','skirting-board-installation-repairs','door-jamb-interior-trim','timber-fencing-repairs-replacement','timber-gates-installation-repairs','renovation-carpentry'].map(s=>'/services/'+s+'/'),
   ...['why-integrated-carpentry-joinery','kitchen-renovation-cost-guide','heritage-building-timber-restoration','timber-flooring-oiling-guide','commercial-fitout-process','adelaide-deck-replacement-guide','adelaide-custom-wardrobe-planning','adelaide-heritage-timber-repairs'].map(s=>'/insights/'+s+'/'),
   ...['adelaide-cbd','east-end','west-end','north-terrace-riverbank','north-adelaide'].map(s=>'/service-areas/'+s+'/')];
+expected.push(...['fascia-eaves-repairs','weatherboard-repairs','subfloor-timber-repairs','accessibility-carpentry','pergola-repairs','timber-stairs-handrails','cabinet-repairs'].map(s=>'/services/'+s+'/'), ...['adelaide-carpentry-cost-guide','outdoor-timber-selection-adelaide'].map(s=>'/insights/'+s+'/'));
 let fixture, output;
 const decode=s=>s.replaceAll('&amp;','&').replaceAll('&quot;','"').replaceAll('&#039;',"'").replaceAll('&lt;','<').replaceAll('&gt;','>');
 const read=route=>fs.readFileSync(path.join(output,route==='/'?'index.html':route.endsWith('/')?route+'index.html':route),'utf8');
 test.before(()=>{ fixture=fs.mkdtempSync(path.join(os.tmpdir(),'mel-sitewide-')); output=path.join(fixture,'public'); fs.cpSync(path.join(root,'src'),path.join(fixture,'src'),{recursive:true}); fs.copyFileSync(path.join(root,'build.mjs'),path.join(fixture,'build.mjs')); execFileSync(process.execPath,['build.mjs'],{cwd:fixture,stdio:'pipe'}); });
 test.after(()=>fs.rmSync(fixture,{recursive:true,force:true}));
 // Break caught: dropped/new indexable route, duplicate metadata, missing or skipped headings.
-test('38 canonical routes retain unique metadata and continuous heading hierarchy',()=>{
+test('47 canonical routes retain unique metadata and continuous heading hierarchy',()=>{
   const sitemap=fs.readFileSync(path.join(output,'sitemap.xml'),'utf8');
   assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>new URL(m[1]).pathname).sort(),expected.slice().sort());
   const titles=new Set(), descriptions=new Set();
   for(const route of expected){const html=read(route); const title=html.match(/<title>(.*?)<\/title>/)[1], description=html.match(/name="description" content="([^"]*)"/)[1]; assert.ok(title.trim()&&description.trim(),route); titles.add(title);descriptions.add(description);assert.equal((html.match(/<h1\b/g)||[]).length,1,route);let last=0;for(const m of html.matchAll(/<h([1-6])\b/g)){const n=+m[1];assert.ok(n<=last+1,route+': heading jump '+last+'→'+n);last=n;} assert.equal(new URL(decode(html.match(/rel="canonical" href="([^"]*)"/)[1])).pathname,route);}
-  assert.equal(titles.size,38);assert.equal(descriptions.size,38);
+  assert.equal(titles.size,47);assert.equal(descriptions.size,47);
 });
 // Break caught: stale destination/fragment, including contact context links.
 test('all generated internal links resolve paths and fragments',()=>{
@@ -29,7 +30,7 @@ test('all generated internal links resolve paths and fragments',()=>{
 });
 // Break caught: both visible and structured FAQs disappear, or their answers diverge.
 function assertFaqContract(route, html) {
-  const count = route === '/' ? 6 : route === '/faq/' ? 16 :
+  const count = route === '/' ? 6 : route === '/faq/' ? 23 :
     /^\/services\/[^/]+\/$/.test(route) ? 3 :
     /^\/insights\/[^/]+\/$/.test(route) ? 4 :
     /^\/service-areas\/[^/]+\/$/.test(route) ? 4 : 0;

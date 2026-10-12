@@ -28,7 +28,7 @@ test('SEO hubs publish collection and contact page structured data', () => {
 
   const graph = JSON.parse(services.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
   const collection = graph['@graph'].find((entry) => entry['@type'] === 'CollectionPage');
-  assert.equal(collection.mainEntity.itemListElement.length, 18, 'services schema should list each visible service once');
+  assert.equal(collection.mainEntity.itemListElement.length, 25, 'services schema should list each visible service once');
 });
 
 test('service and insight detail pages provide contextual related links', () => {

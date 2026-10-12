@@ -33,8 +33,8 @@ test.before(() => {
   execFileSync(process.execPath, ['build.mjs'], { cwd: fixture, stdio: 'pipe' });
 });
 test.after(() => fs.rmSync(fixture, { recursive: true, force: true }));
-test('eighteen service decision pages expose distinct FAQs, metadata and optional first enquiry information', () => {
-  assert.equal(services.length, 18);
+test('twenty-five service decision pages expose distinct FAQs, metadata and optional first enquiry information', () => {
+  assert.equal(services.length, 25);
   const titles = new Set(), descriptions = new Set(), questions = new Set();
   for (const item of services) {
     const html = fs.readFileSync(path.join(fixture, 'public/services', item.slug, 'index.html'), 'utf8');
@@ -59,8 +59,8 @@ test('eighteen service decision pages expose distinct FAQs, metadata and optiona
     for (const [, route] of related.matchAll(/href="(\/(?:services|insights)\/[^"#]+)"/g)) assert.ok(fs.existsSync(path.join(fixture, 'public', route, 'index.html')), route);
     assert.doesNotMatch([item.summary, item.lead, ...item.sections.map(x => x.summary)].join(' '), /H3\/H4|H4\/H5|cyclone-rated|zero rework|zero gaps|nail-free fixing|stays new|stays looking new|all by one team, no subcontracting/i, item.slug);
   }
-  assert.equal(titles.size, 18);
-  assert.equal(descriptions.size, 18);
+  assert.equal(titles.size, 25);
+  assert.equal(descriptions.size, 25);
 });
 test('kitchen prohibition advice links to official SafeWork SA guidance within its visible FAQ', () => {
   const html = visibleHtml(fs.readFileSync(path.join(fixture, 'public/services/custom-kitchen-bathroom/index.html'), 'utf8'));

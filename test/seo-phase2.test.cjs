@@ -74,7 +74,8 @@ test('guides expose MEL ONE editorial authorship, their supplied image and only 
     const article = graph(html)['@graph'].find((entry) => entry['@type'] === 'Article');
     assert.match(html, /<p class="editorial-attribution">Editorial guidance by <a href="\/about\/">MEL ONE<\/a><\/p>/);
     assert.deepEqual(article.author, { '@id': `${origin}/#business` });
-    assert.equal(article.image, origin + slots[`insight.${guide.slug}`].src);
+    const image = slots[`insight.${guide.slug}`]?.src;
+    assert.equal(article.image, image ? origin + image : undefined);
     assert.equal(article.datePublished, guide.date);
     if (!guide.date) assert.doesNotMatch(html, /<time\b|datePublished/);
   }
@@ -88,8 +89,8 @@ test('feeds omit invented publication dates and retain the three source dated gu
   const feed = JSON.parse(fs.readFileSync(path.join(output, 'feed.json')));
   const rss = fs.readFileSync(path.join(output, 'rss.xml'), 'utf8');
   const rssItems = [...rss.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((match) => match[1]);
-  assert.equal(feed.items.length, 8);
-  assert.equal(rssItems.length, 8);
+  assert.equal(feed.items.length, 10);
+  assert.equal(rssItems.length, 10);
   const dated = new Set(['adelaide-deck-replacement-guide', 'adelaide-custom-wardrobe-planning', 'adelaide-heritage-timber-repairs']);
   for (const item of feed.items) {
     const slug = item.url.split('/').at(-2);
