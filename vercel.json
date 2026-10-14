@@ -1,6 +1,473 @@
 {
   "buildCommand": "node build.mjs",
   "outputDirectory": "public",
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services/index.html",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas/index.html",
+      "destination": "/service-areas/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas",
+      "destination": "/service-areas/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/index.html",
+      "destination": "/insights/",
+      "permanent": true
+    },
+    {
+      "source": "/insights",
+      "destination": "/insights/",
+      "permanent": true
+    },
+    {
+      "source": "/faq/index.html",
+      "destination": "/faq/",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq/",
+      "permanent": true
+    },
+    {
+      "source": "/about/index.html",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/contact/index.html",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas/adelaide-cbd/index.html",
+      "destination": "/service-areas/adelaide-cbd/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas/adelaide-cbd",
+      "destination": "/service-areas/adelaide-cbd/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas/east-end/index.html",
+      "destination": "/service-areas/east-end/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas/east-end",
+      "destination": "/service-areas/east-end/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas/west-end/index.html",
+      "destination": "/service-areas/west-end/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas/west-end",
+      "destination": "/service-areas/west-end/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas/north-terrace-riverbank/index.html",
+      "destination": "/service-areas/north-terrace-riverbank/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas/north-terrace-riverbank",
+      "destination": "/service-areas/north-terrace-riverbank/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas/north-adelaide/index.html",
+      "destination": "/service-areas/north-adelaide/",
+      "permanent": true
+    },
+    {
+      "source": "/service-areas/north-adelaide",
+      "destination": "/service-areas/north-adelaide/",
+      "permanent": true
+    },
+    {
+      "source": "/services/house-framing/index.html",
+      "destination": "/services/house-framing/",
+      "permanent": true
+    },
+    {
+      "source": "/services/house-framing",
+      "destination": "/services/house-framing/",
+      "permanent": true
+    },
+    {
+      "source": "/services/outdoor-living/index.html",
+      "destination": "/services/outdoor-living/",
+      "permanent": true
+    },
+    {
+      "source": "/services/outdoor-living",
+      "destination": "/services/outdoor-living/",
+      "permanent": true
+    },
+    {
+      "source": "/services/fix-out-second-fix/index.html",
+      "destination": "/services/fix-out-second-fix/",
+      "permanent": true
+    },
+    {
+      "source": "/services/fix-out-second-fix",
+      "destination": "/services/fix-out-second-fix/",
+      "permanent": true
+    },
+    {
+      "source": "/services/formwork-carpentry/index.html",
+      "destination": "/services/formwork-carpentry/",
+      "permanent": true
+    },
+    {
+      "source": "/services/formwork-carpentry",
+      "destination": "/services/formwork-carpentry/",
+      "permanent": true
+    },
+    {
+      "source": "/services/fitout-refurbishment/index.html",
+      "destination": "/services/fitout-refurbishment/",
+      "permanent": true
+    },
+    {
+      "source": "/services/fitout-refurbishment",
+      "destination": "/services/fitout-refurbishment/",
+      "permanent": true
+    },
+    {
+      "source": "/services/custom-kitchen-bathroom/index.html",
+      "destination": "/services/custom-kitchen-bathroom/",
+      "permanent": true
+    },
+    {
+      "source": "/services/custom-kitchen-bathroom",
+      "destination": "/services/custom-kitchen-bathroom/",
+      "permanent": true
+    },
+    {
+      "source": "/services/architectural-joinery/index.html",
+      "destination": "/services/architectural-joinery/",
+      "permanent": true
+    },
+    {
+      "source": "/services/architectural-joinery",
+      "destination": "/services/architectural-joinery/",
+      "permanent": true
+    },
+    {
+      "source": "/services/storage-solutions/index.html",
+      "destination": "/services/storage-solutions/",
+      "permanent": true
+    },
+    {
+      "source": "/services/storage-solutions",
+      "destination": "/services/storage-solutions/",
+      "permanent": true
+    },
+    {
+      "source": "/services/custom-doors-furniture/index.html",
+      "destination": "/services/custom-doors-furniture/",
+      "permanent": true
+    },
+    {
+      "source": "/services/custom-doors-furniture",
+      "destination": "/services/custom-doors-furniture/",
+      "permanent": true
+    },
+    {
+      "source": "/services/restoration-maintenance/index.html",
+      "destination": "/services/restoration-maintenance/",
+      "permanent": true
+    },
+    {
+      "source": "/services/restoration-maintenance",
+      "destination": "/services/restoration-maintenance/",
+      "permanent": true
+    },
+    {
+      "source": "/services/heritage-carpentry/index.html",
+      "destination": "/services/heritage-carpentry/",
+      "permanent": true
+    },
+    {
+      "source": "/services/heritage-carpentry",
+      "destination": "/services/heritage-carpentry/",
+      "permanent": true
+    },
+    {
+      "source": "/services/decking-restoration-flooring/index.html",
+      "destination": "/services/decking-restoration-flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/services/decking-restoration-flooring",
+      "destination": "/services/decking-restoration-flooring/",
+      "permanent": true
+    },
+    {
+      "source": "/services/door-window-repairs/index.html",
+      "destination": "/services/door-window-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/door-window-repairs",
+      "destination": "/services/door-window-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/skirting-board-installation-repairs/index.html",
+      "destination": "/services/skirting-board-installation-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/skirting-board-installation-repairs",
+      "destination": "/services/skirting-board-installation-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/door-jamb-interior-trim/index.html",
+      "destination": "/services/door-jamb-interior-trim/",
+      "permanent": true
+    },
+    {
+      "source": "/services/door-jamb-interior-trim",
+      "destination": "/services/door-jamb-interior-trim/",
+      "permanent": true
+    },
+    {
+      "source": "/services/timber-fencing-repairs-replacement/index.html",
+      "destination": "/services/timber-fencing-repairs-replacement/",
+      "permanent": true
+    },
+    {
+      "source": "/services/timber-fencing-repairs-replacement",
+      "destination": "/services/timber-fencing-repairs-replacement/",
+      "permanent": true
+    },
+    {
+      "source": "/services/timber-gates-installation-repairs/index.html",
+      "destination": "/services/timber-gates-installation-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/timber-gates-installation-repairs",
+      "destination": "/services/timber-gates-installation-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/renovation-carpentry/index.html",
+      "destination": "/services/renovation-carpentry/",
+      "permanent": true
+    },
+    {
+      "source": "/services/renovation-carpentry",
+      "destination": "/services/renovation-carpentry/",
+      "permanent": true
+    },
+    {
+      "source": "/services/fascia-eaves-repairs/index.html",
+      "destination": "/services/fascia-eaves-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/fascia-eaves-repairs",
+      "destination": "/services/fascia-eaves-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/weatherboard-repairs/index.html",
+      "destination": "/services/weatherboard-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/weatherboard-repairs",
+      "destination": "/services/weatherboard-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/subfloor-timber-repairs/index.html",
+      "destination": "/services/subfloor-timber-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/subfloor-timber-repairs",
+      "destination": "/services/subfloor-timber-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/accessibility-carpentry/index.html",
+      "destination": "/services/accessibility-carpentry/",
+      "permanent": true
+    },
+    {
+      "source": "/services/accessibility-carpentry",
+      "destination": "/services/accessibility-carpentry/",
+      "permanent": true
+    },
+    {
+      "source": "/services/pergola-repairs/index.html",
+      "destination": "/services/pergola-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/pergola-repairs",
+      "destination": "/services/pergola-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/timber-stairs-handrails/index.html",
+      "destination": "/services/timber-stairs-handrails/",
+      "permanent": true
+    },
+    {
+      "source": "/services/timber-stairs-handrails",
+      "destination": "/services/timber-stairs-handrails/",
+      "permanent": true
+    },
+    {
+      "source": "/services/cabinet-repairs/index.html",
+      "destination": "/services/cabinet-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/services/cabinet-repairs",
+      "destination": "/services/cabinet-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/why-integrated-carpentry-joinery/index.html",
+      "destination": "/insights/why-integrated-carpentry-joinery/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/why-integrated-carpentry-joinery",
+      "destination": "/insights/why-integrated-carpentry-joinery/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/kitchen-renovation-cost-guide/index.html",
+      "destination": "/insights/kitchen-renovation-cost-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/kitchen-renovation-cost-guide",
+      "destination": "/insights/kitchen-renovation-cost-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/heritage-building-timber-restoration/index.html",
+      "destination": "/insights/heritage-building-timber-restoration/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/heritage-building-timber-restoration",
+      "destination": "/insights/heritage-building-timber-restoration/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/timber-flooring-oiling-guide/index.html",
+      "destination": "/insights/timber-flooring-oiling-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/timber-flooring-oiling-guide",
+      "destination": "/insights/timber-flooring-oiling-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/commercial-fitout-process/index.html",
+      "destination": "/insights/commercial-fitout-process/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/commercial-fitout-process",
+      "destination": "/insights/commercial-fitout-process/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/adelaide-carpentry-cost-guide/index.html",
+      "destination": "/insights/adelaide-carpentry-cost-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/adelaide-carpentry-cost-guide",
+      "destination": "/insights/adelaide-carpentry-cost-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/outdoor-timber-selection-adelaide/index.html",
+      "destination": "/insights/outdoor-timber-selection-adelaide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/outdoor-timber-selection-adelaide",
+      "destination": "/insights/outdoor-timber-selection-adelaide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/adelaide-deck-replacement-guide/index.html",
+      "destination": "/insights/adelaide-deck-replacement-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/adelaide-deck-replacement-guide",
+      "destination": "/insights/adelaide-deck-replacement-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/adelaide-custom-wardrobe-planning/index.html",
+      "destination": "/insights/adelaide-custom-wardrobe-planning/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/adelaide-custom-wardrobe-planning",
+      "destination": "/insights/adelaide-custom-wardrobe-planning/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/adelaide-heritage-timber-repairs/index.html",
+      "destination": "/insights/adelaide-heritage-timber-repairs/",
+      "permanent": true
+    },
+    {
+      "source": "/insights/adelaide-heritage-timber-repairs",
+      "destination": "/insights/adelaide-heritage-timber-repairs/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)\\.(png|jpg|jpeg|webp|gif|svg|ico|woff|woff2)",

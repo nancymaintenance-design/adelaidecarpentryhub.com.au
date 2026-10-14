@@ -12,7 +12,7 @@ const expectedImages = new Map([
   ['door-window-repairs', ['project-window-after-wide.webp', 'Completed timber window repair on an Adelaide home']],
   ['skirting-board-installation-repairs', ['service-skirting-board-installation-repairs.png', 'Carpenter installing interior skirting boards']],
   ['door-jamb-interior-trim', ['service-door-jamb-interior-trim.png', 'Carpenter fitting a timber door jamb and interior trim']],
-  ['timber-fencing-repairs-replacement', ['project-fence-after-gate.webp', 'Completed timber boundary fence and side gate']],
+  ['timber-fencing-repairs-replacement', ['project-fence-after-wide.webp', 'Completed timber boundary fence with integrated side gate']],
   ['timber-gates-installation-repairs', ['project-fence-after-gate.webp', 'Completed timber side gate integrated with a boundary fence']],
   ['renovation-carpentry', ['service-renovation-carpentry.png', 'Carpenter completing kitchen renovation timber work']],
 ]);
@@ -23,12 +23,14 @@ test('service cards and detail pages retain their selected supporting images', (
   const hub = fs.readFileSync(path.join(publicDir, 'services', 'index.html'), 'utf8');
   for (const [slug, [filename, alt]] of expectedImages) {
     assert.ok(fs.existsSync(path.join(assetsDir, filename)), `${filename} should be kept in the source assets`);
-    assert.match(hub, new RegExp(`href="/services/${slug}/"[\\s\\S]{0,220}src="/assets/${filename}"`));
-    assert.match(hub, new RegExp(`src="/assets/${filename}" alt="${alt}"`));
+    const card = hub.match(new RegExp(`<a class="service-media" href="/services/${slug}/"[^>]*>([\\s\\S]*?)<\\/a>`));
+    assert.ok(card, `${slug} should retain a service image link`);
+    assert.ok(card[1].includes(`src="/assets/${filename}" alt="${alt}"`), `${slug} card should use its approved image and alt`);
 
     const detail = fs.readFileSync(path.join(publicDir, 'services', slug, 'index.html'), 'utf8');
     assert.match(detail, new RegExp(`src="/assets/${filename}" alt="${alt}"`));
   }
+  assert.notEqual(expectedImages.get('timber-fencing-repairs-replacement')[0], expectedImages.get('timber-gates-installation-repairs')[0], 'fence and gate cards must use distinct images');
 });
 
 test('custom kitchen and bathroom cabinetry uses the supplied project cover image', () => {

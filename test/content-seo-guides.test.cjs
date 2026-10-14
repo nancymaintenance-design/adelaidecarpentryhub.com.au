@@ -78,7 +78,12 @@ test('kitchen material decision includes visible prohibition and legacy distinct
 });
 test('wardrobe retains substantial planning and both heritage guides serve different decisions',()=>{
   const wardrobe=guides.find(x=>x.slug==='adelaide-custom-wardrobe-planning');
-  assert.equal(wardrobe.sections.length,14); assert.equal(wardrobe.faqs.length,4);
+  assert.equal(wardrobe.faqs.length,4);
+  const wardrobeBody=visible(htmlFor('adelaide-custom-wardrobe-planning'));
+  for (const decision of [/measurements.*clearances/i,/internal layout/i,/manufacturing brief/i,/quote.*(?:change|variation)/i,/handover/i]) {
+    assert.match(wardrobeBody,decision);
+  }
+  assert.match(wardrobeBody,/hypothetical bedroom brief/i);
   const principles=visible(htmlFor('heritage-building-timber-restoration'));
   const scope=visible(htmlFor('adelaide-heritage-timber-repairs'));
   assert.match(principles,/significance/i); assert.match(scope,/condition record/i);

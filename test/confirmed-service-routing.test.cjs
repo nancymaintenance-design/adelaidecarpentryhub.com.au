@@ -19,11 +19,17 @@ test('confirmed repair route is discoverable and renders a text layout without s
     data.services.push({ ...data.services[0], slug: 'fascia-eaves-repairs', title: 'Fascia Repairs',
       related_links: [{ href: '/services/restoration-maintenance/', label: 'Related timber repairs' }] });
     fs.writeFileSync(file, JSON.stringify(data));
+    // This fixture deliberately represents a service without supplied imagery,
+    // even after the real fascia service receives its user-provided photo.
+    const manifestFile = path.join(fixture, 'src/assets/asset-manifest.json');
+    const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    delete manifest.slots['service.fascia-eaves-repairs'];
+    fs.writeFileSync(manifestFile, JSON.stringify(manifest));
     execFileSync(process.execPath, ['build.mjs'], { cwd: fixture, stdio: 'pipe' });
     const hub = fs.readFileSync(path.join(fixture, 'public/services/index.html'), 'utf8');
     const html = fs.readFileSync(path.join(fixture, 'public/services/fascia-eaves-repairs/index.html'), 'utf8');
     assert.ok(hub.includes('href="/services/fascia-eaves-repairs/"'), 'new repair service must be reachable from its directory');
-    assert.match(html, /class="wrap evidence-grid evidence-grid--text"/);
+    assert.match(html, /class="service-intro service-intro--text"/);
     assert.doesNotMatch(html, /<figure class="evidence-media"/);
     assert.ok(html.includes('<a href="/services/restoration-maintenance/">Related timber repairs</a>'), 'configured contextual link must render');
   } finally {

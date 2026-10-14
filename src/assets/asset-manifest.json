@@ -87,19 +87,44 @@
       "caption": "Door Jambs & Interior Trim"
     },
     "service.timber-fencing-repairs-replacement": {
-      "src": "/assets/project-fence-after-gate.webp",
-      "alt": "Completed timber boundary fence and side gate",
-      "caption": "Timber Fencing Repairs & Replacement — real Adelaide project"
+      "src": "/assets/project-fence-after-wide.webp",
+      "alt": "Completed timber boundary fence with integrated side gate",
+      "caption": "Completed timber boundary fence and side gate"
     },
     "service.timber-gates-installation-repairs": {
       "src": "/assets/project-fence-after-gate.webp",
       "alt": "Completed timber side gate integrated with a boundary fence",
-      "caption": "Timber Gate Installation & Repairs — real Adelaide project"
+      "caption": "Completed timber side gate with black hardware"
     },
     "service.renovation-carpentry": {
       "src": "/assets/service-renovation-carpentry.png",
       "alt": "Carpenter completing kitchen renovation timber work",
       "caption": "Renovation Carpentry"
+    },
+    "service.fascia-eaves-repairs": {
+      "src": "/assets/service-fascia-eaves-repairs.png",
+      "alt": "Exposed timber repairs beneath the eaves, with protected windows and preparation tools",
+      "caption": "Fascia and timber eaves repair in progress"
+    },
+    "service.weatherboard-repairs": {
+      "src": "/assets/service-weatherboard-repairs.png",
+      "alt": "Replacement timber weatherboards fitted beneath a window during exterior wall repairs",
+      "caption": "Local timber weatherboard replacement in progress"
+    },
+    "service.pergola-repairs": {
+      "src": "/assets/service-pergola-repairs.png",
+      "alt": "New timber posts and a beam fitted within an existing weathered pergola",
+      "caption": "Existing pergola with replacement timber posts and beam"
+    },
+    "service.timber-stairs-handrails": {
+      "src": "/assets/service-timber-stairs-handrails.png",
+      "alt": "Replacement timber stair handrail and newel post being fitted beside existing steps",
+      "caption": "Timber stair handrail and post repair in progress"
+    },
+    "service.cabinet-repairs": {
+      "src": "/assets/service-cabinet-repairs.png",
+      "alt": "Kitchen cabinet door removed and drawers open for hinge and runner repairs",
+      "caption": "Cabinet door and drawer repair work"
     },
     "insight.why-integrated-carpentry-joinery": {
       "src": "/assets/insight-integrated-joinery.jpg",
@@ -128,6 +153,16 @@
     "insight.adelaide-custom-wardrobe-planning": {
       "src": "/assets/insight-adelaide-custom-wardrobe.png",
       "alt": "Open custom wardrobe with integrated hanging, shelves and drawers"
+    },
+    "insight.adelaide-carpentry-cost-guide": {
+      "src": "/assets/insight-adelaide-carpentry-cost-guide.png",
+      "alt": "Carpenter measuring across exposed, deteriorated deck timber with a tape measure",
+      "caption": "Measuring exposed deck timber: dimensions help define the investigation, while the repair scope still needs assessment."
+    },
+    "insight.outdoor-timber-selection-adelaide": {
+      "src": "/assets/insight-outdoor-timber-selection-adelaide.png",
+      "alt": "Timber deck, steps and pergola with visible metal connections and tools nearby",
+      "caption": "Deck, steps and pergola shown together: the image does not identify timber species, treatment or compliance."
     },
     "insight.adelaide-heritage-timber-repairs": {
       "src": "/assets/insight-adelaide-heritage-timber-repairs.png",

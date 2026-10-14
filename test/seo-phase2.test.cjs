@@ -80,9 +80,11 @@ test('guides expose MEL ONE editorial authorship, their supplied image and only 
     if (!guide.date) assert.doesNotMatch(html, /<time\b|datePublished/);
   }
   assert.match(read('insights/adelaide-heritage-timber-repairs'), /href="\/services\/door-window-repairs\/"/);
-  const about = graph(read('about'));
+  const aboutGraph = graph(read('about'));
+  const about = aboutGraph['@graph'].find(node => node['@type'] === 'AboutPage');
   assert.equal(about['@type'], 'AboutPage');
   assert.deepEqual(about.mainEntity, { '@id': `${origin}/#business` });
+  assert.equal(aboutGraph['@graph'].filter(node => node['@id'] === `${origin}/#business`).length, 1);
 });
 
 test('feeds omit invented publication dates and retain the three source dated guides', () => {

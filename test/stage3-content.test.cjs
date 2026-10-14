@@ -12,5 +12,5 @@ test('wardrobe planning publishes quotation and approval decisions at the existi
   assert.ok((main.match(/<details>/g) || []).length >= 3, 'visible quote and change questions');
   for (const route of ['/services/storage-solutions/', '/services/architectural-joinery/', '/services/custom-doors-furniture/', '/contact/']) assert.ok(main.includes(`href="${route}"`), route);
   assert.ok(!fs.existsSync(path.join(root, 'public/services/adelaide-custom-wardrobe-planning')), 'guide must remain an insight');
-  assert.ok((main.match(/<h2>/g) || []).length >= 11, 'original planning sections retained');
+  for (const decision of [/measurements.*clearances/i, /daily and future storage/i, /doors, materials, lighting and ventilation/i, /manufacturing brief/i, /quote.*(?:change|variation)/i]) assert.match(main, decision);
 });

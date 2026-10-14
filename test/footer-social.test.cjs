@@ -15,7 +15,7 @@ test('shared footer publishes exact safe social links and local logos on home an
   ];
   for (const route of ['index.html', 'about/index.html', 'services/house-framing/index.html', '404.html']) {
     const html = fs.readFileSync(path.join(root, 'public', route), 'utf8');
-    const section = html.match(/<section class="wrap footer-social"[\s\S]*?<\/section>/)?.[0];
+    const section = html.match(/<nav class="footer-social"[\s\S]*?<\/nav>/)?.[0];
     assert.ok(section, route);
     assert.ok(section.includes('FOLLOW MEL ONE'));
     const links = [...section.matchAll(/<a href="([^"]+)" target="_blank" rel="noopener noreferrer"><img src="\/assets\/([^"]+)" alt="" width="24" height="24"[^>]*><span>([^<]+)<\/span><\/a>/g)];

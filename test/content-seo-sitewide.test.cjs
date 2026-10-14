@@ -32,6 +32,7 @@ test('all generated internal links resolve paths and fragments',()=>{
 function assertFaqContract(route, html) {
   const count = route === '/' ? 6 : route === '/faq/' ? 23 :
     /^\/services\/[^/]+\/$/.test(route) ? 3 :
+    ['/insights/adelaide-carpentry-cost-guide/', '/insights/outdoor-timber-selection-adelaide/'].includes(route) ? 5 :
     /^\/insights\/[^/]+\/$/.test(route) ? 4 :
     /^\/service-areas\/[^/]+\/$/.test(route) ? 4 : 0;
   const body = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '');
@@ -84,5 +85,5 @@ test('selected street context keeps photos optional and preserves customer text'
  assert.match(context.textContent,/photos.*optional/i);
  message.value='Customer-written project';vm.runInNewContext('applyAreaBookingContext()',sandbox);assert.equal(message.value,'Customer-written project');
  sandbox.window.location.search='?street=Unlisted';context.textContent='Unchanged';vm.runInNewContext('applyAreaBookingContext()',sandbox);assert.equal(context.textContent,'Unchanged');
- assert.match(read('/service-areas/adelaide-cbd/'),/Photos and approximate measurements are optional/);
+ assert.match(read('/service-areas/adelaide-cbd/'),/Photos and approximate (?:measurements|dimensions) are optional/);
 });

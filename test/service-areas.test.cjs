@@ -42,7 +42,7 @@ test('each region renders a unique crawlable carpentry page with useful local co
   const north = buildRegion('north-adelaide');
 
   assert.match(cbd, /<h1>Adelaide CBD Carpentry &amp; Joinery Services<\/h1>/);
-  assert.match(cbd, /Book Adelaide CBD Carpentry &amp; Joinery/);
+  assert.match(cbd, /<form class="contact-form" data-contact-form data-area-region="Adelaide CBD"/);
   assert.match(cbd, /Currie Street/);
   assert.match(north, /<h1>North Adelaide Carpentry &amp; Joinery Services<\/h1>/);
   assert.doesNotMatch(north, /door melbourne/i);
@@ -58,6 +58,27 @@ test('area page marks its valid streets and uses one bottom contact form', () =>
   assert.match(html, /<form class="contact-form" data-contact-form/);
   assert.match(source, /searchParams\.get\('street'\)/);
   assert.match(source, /allowedStreets\.includes\(street\)/);
+});
+
+// Break caught: area information fragments into repeated tiny sections, or consolidation loses street/form context.
+test('each compact area keeps one enquiry form and street-prefill links after a continuous repair and access brief', () => {
+  const areas = JSON.parse(fs.readFileSync(path.join(root, 'src/content-pack/city-streets.json'), 'utf8'));
+  execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
+  for (const region of areas.regions) {
+    const html = fs.readFileSync(path.join(root, 'public/service-areas', region.slug, 'index.html'), 'utf8');
+    const main = html.match(/<main[^>]*>([\s\S]*?)<\/main>/)[1];
+    assert.ok((main.match(/<section\b/g) || []).length <= 6, region.slug + ': compact section count');
+    assert.equal((main.match(/<form\b/g) || []).length, 1, region.slug);
+    assert.match(main, /id="book-area-work"/);
+    assert.ok(main.includes(`?street=${encodeURIComponent(region.locations[0])}#book-area-work`), region.slug);
+    assert.match(main, /data-area-streets=/);
+    const briefAt = main.indexOf('area-local-brief');
+    const linksAt = main.indexOf('area-service-links');
+    assert.ok(briefAt >= 0, `${region.slug}: local brief exists`);
+    assert.ok(linksAt >= 0, `${region.slug}: service links exist`);
+    assert.ok(briefAt < linksAt, `${region.slug}: local brief precedes service links`);
+    assert.match(main, /09:00 to 21:00 Adelaide time/);
+  }
 });
 
 test('integrity checker accepts the 47-page service directory and sitemap', () => {

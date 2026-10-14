@@ -7,10 +7,13 @@ const root = path.join(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'build.mjs'), 'utf8');
 
 test('production build permits indexing and publishes canonical crawl signals', () => {
-  assert.match(source, /const origin = process\.env\.SITE_ORIGIN \|\| 'https:\/\/www\.adelaidecarpentryhub\.com\.au'/);
-  assert.match(source, /<meta name="robots" content="index,follow">/);
-  assert.match(source, /Sitemap: \$\{canonical\('\/sitemap\.xml'\)\}/);
-  assert.doesNotMatch(source, /Disallow: \/\\n/);
+  execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
+  const home = fs.readFileSync(path.join(root, 'public/index.html'), 'utf8');
+  const robots = fs.readFileSync(path.join(root, 'public/robots.txt'), 'utf8');
+  assert.match(home, /<link rel="canonical" href="https:\/\/www\.adelaidecarpentryhub\.com\.au\/">/);
+  assert.match(home, /<meta name="robots" content="index,follow">/);
+  assert.match(robots, /Sitemap: https:\/\/www\.adelaidecarpentryhub\.com\.au\/sitemap\.xml/);
+  assert.doesNotMatch(robots, /Disallow: \/\s*(?:\n|$)/);
 });
 
 test('build publishes factual AI discovery links for canonical routes only', () => {
@@ -25,10 +28,13 @@ test('build publishes factual AI discovery links for canonical routes only', () 
 });
 
 test('home page publishes LocalBusiness schema for MEL ONE in Adelaide', () => {
-  assert.match(source, /'@type': 'HomeAndConstructionBusiness'/);
-  assert.match(source, /addressLocality: 'Adelaide'/);
-  assert.match(source, /telephone: content\.contact\.phone/);
-  assert.match(source, /logo: canonical\('\/favicon\.png'\)/);
+  const home = fs.readFileSync(path.join(root, 'public/index.html'), 'utf8');
+  const graph = JSON.parse(home.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+  const business = graph['@graph'].find(node => node['@type'] === 'HomeAndConstructionBusiness');
+  assert.equal(business.name, 'MEL ONE');
+  assert.equal(business.address.addressLocality, 'Adelaide');
+  assert.equal(business.telephone, '+61403202949');
+  assert.equal(business.logo, 'https://www.adelaidecarpentryhub.com.au/assets/mel-one-logo.png');
 });
 
 test('generated structured data connects the site, services and articles to the approved business', () => {
@@ -82,7 +88,8 @@ test('insights include three Adelaide planning guides and publish both subscript
 
 test('home page title and description target Adelaide carpentry searches concisely', () => {
   const content = fs.readFileSync(path.join(root, 'src', 'content-pack', 'site-content.json'), 'utf8');
-  assert.match(source, /title: 'Adelaide Carpentry, Joinery & Timber Restoration'/);
+  const home = fs.readFileSync(path.join(root, 'public/index.html'), 'utf8');
+  assert.match(home, /<title>Carpenter Adelaide — Residential Carpentry Services \| MEL ONE<\/title>/);
   assert.match(content, /MEL ONE provides Adelaide carpentry, custom joinery, decking, cabinetry and heritage timber restoration/);
 });
 
@@ -101,13 +108,14 @@ test('approved enquiry language keeps the on-site assessment and written-quote p
 
 test('detail pages provide a clear planning path and enquiry action without altering the home hero', () => {
   const interior = fs.readFileSync(path.join(root, 'src', 'assets', 'interior.css'), 'utf8');
-  assert.match(source, /class="service-brief"/);
-  assert.match(source, /class="wrap reading article-cta"/);
   const service = fs.readFileSync(path.join(root, 'public/services/house-framing/index.html'), 'utf8');
-  assert.match(service, /class="service-brief"/);
-  assert.match(service, /href="\/contact\/">[^<]+<\/a>/);
-  assert.match(service, /(?:assessment|scope|measure)/i);
-  assert.match(interior, /\.service-brief/);
+  const planning = service.match(/<aside class="service-rail"[^>]*>([\s\S]*?)<\/aside>/)?.[1];
+  assert.ok(planning, 'service planning rail');
+  assert.match(planning, /href="\/contact\/">[^<]+<\/a>/);
+  assert.match(planning, /(?:assessment|scope|measure)/i);
+  assert.match(interior, /\.service-rail/);
+  const guide = fs.readFileSync(path.join(root, 'public/insights/commercial-fitout-process/index.html'), 'utf8');
+  assert.match(guide, /class="wrap article-cta"/);
   assert.match(interior, /\.article-cta/);
   assert.doesNotMatch(interior, /hero-image-bg/);
 });
@@ -144,11 +152,13 @@ test('mobile layout keeps navigation, content columns and controls within a narr
 test('insight cards use a balanced responsive grid with rounded corners', () => {
   execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
   const insights = fs.readFileSync(path.join(root, 'public', 'insights', 'index.html'), 'utf8');
+  const base = fs.readFileSync(path.join(root, 'src', 'assets', 'base.css'), 'utf8');
   const interior = fs.readFileSync(path.join(root, 'src', 'assets', 'interior.css'), 'utf8');
   assert.match(insights, /class="[^"]*card-grid--balanced[^"]*"/);
   assert.match(interior, /\.interior \.card-grid\.card-grid--balanced/);
   assert.match(interior, /:nth-last-child\(2\):nth-child\(3n \+ 1\)/);
-  assert.match(interior, /\.interior \.editorial-card\s*\{[^}]*border-radius: 12px;/s);
+  assert.match(base, /--card-radius:\s*16px;/);
+  assert.match(interior, /\.interior \.editorial-card\s*\{[^}]*border-radius: var\(--card-radius\);/s);
 });
 
 test('home page service and insight cards share the rounded-card treatment', () => {
@@ -158,8 +168,8 @@ test('home page service and insight cards share the rounded-card treatment', () 
   assert.equal((home.match(/class="choice"/g) || []).length, 6);
   assert.equal((home.match(/class="editorial-card"/g) || []).length, 3);
   assert.match(theme, /body:not\(\.interior\) \.choice-grid\s*\{[^}]*gap: 16px;[^}]*border: 0;/s);
-  assert.match(theme, /body:not\(\.interior\) \.choice\s*\{[^}]*border-radius: 12px;/s);
-  assert.match(theme, /body:not\(\.interior\) \.editorial-card\s*\{[^}]*border-radius: 12px;/s);
+  assert.match(theme, /body:not\(\.interior\) \.choice\s*\{[^}]*border-radius: var\(--card-radius\);/s);
+  assert.match(theme, /body:not\(\.interior\) \.editorial-card\s*\{[^}]*border-radius: var\(--card-radius\);/s);
   assert.match(theme, /body:not\(\.interior\) \.card-grid\.card-grid--balanced\s*\{\s*grid-template-columns: 1fr;/);
   assert.match(theme, /body:not\(\.interior\) \.card-grid\.card-grid--balanced > :last-child:nth-child\(odd\)/);
 });

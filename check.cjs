@@ -28,7 +28,7 @@ all &= check(`Total pages: ${htmlFiles.length} (expect 47)`, htmlFiles.length ==
 
 // Home page content
 const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-all &= check('Homepage has hero title', home.includes('Full-Cycle Woodworking') || home.includes('full-spectrum') || home.includes('From Structure to Finish'));
+all &= check('Homepage has hero title', /<h1>Carpenter Adelaide<br><span>Carpentry services for homes and businesses<\/span><\/h1>/.test(home));
 all &= check('Homepage has nav', home.includes('<nav') || home.includes('nav-links'));
 all &= check('Homepage has service cards', home.includes('choice-grid') && home.includes('Carpentry'));
 all &= check('Homepage has footer', home.includes('footer'));
@@ -50,7 +50,7 @@ all &= check('Contact page has address', contactPage.includes('63 Pirie St'));
 
 // About page
 const aboutPage = fs.readFileSync(path.join(root, 'about', 'index.html'), 'utf8');
-all &= check('About page has company record', aboutPage.includes('Company &amp; insurance details') && aboutPage.includes('39 666 325 408'));
+all &= check('About page has company record', aboutPage.includes('<h2>Carpentry Company and Insurance Details</h2>') && aboutPage.includes('39 666 325 408'));
 
 // No Chinese placeholders remaining
 all &= check('No Chinese placeholder text', !home.includes('全周期') && !home.includes('待补充') && !home.includes('阿德莱德'));

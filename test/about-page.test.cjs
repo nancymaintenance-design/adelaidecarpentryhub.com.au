@@ -10,7 +10,7 @@ test('About page presents Adelaide company, insurance and contact details with t
   execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
   const about = fs.readFileSync(path.join(root, 'public', 'about', 'index.html'), 'utf8');
 
-  assert.match(about, /Company &amp; insurance details/);
+  assert.match(about, /<h2>Carpentry Company and Insurance Details<\/h2>/);
   assert.match(about, /Mel One Property Maintenance Pty Ltd/);
   assert.match(about, /39 666 325 408/);
   assert.match(about, /Chubb Insurance Australia Limited/);

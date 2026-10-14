@@ -44,7 +44,7 @@ test('service and insight detail pages provide contextual related links', () => 
 
   for (const route of routes) {
     const page = readRoute(route);
-    const module = page.match(/<aside class="service-brief related-content">([\s\S]*?)<\/aside>/);
+    const module = page.match(/<nav class="related-content"[^>]*>([\s\S]*?)<\/nav>/);
     assert.ok(module, `${route} should publish a related-content module`);
     assert.ok((module[1].match(/href="\//g) || []).length >= 2, `${route} should include at least two contextual links`);
   }
@@ -53,10 +53,10 @@ test('service and insight detail pages provide contextual related links', () => 
 test('priority service and insight pages use concise Adelaide search titles', () => {
   execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
   const expectations = new Map([
-    ['/services/custom-kitchen-bathroom/', 'Adelaide Kitchen &amp; Bathroom Cabinetry | MEL ONE'],
-    ['/services/heritage-carpentry/', 'Adelaide Heritage Carpentry | MEL ONE'],
-    ['/insights/kitchen-renovation-cost-guide/', 'Adelaide Kitchen Renovation Cost Guide | MEL ONE'],
-    ['/insights/adelaide-deck-replacement-guide/', 'Adelaide Deck Replacement Guide | MEL ONE'],
+    ['/services/custom-kitchen-bathroom/', 'Kitchen &amp; Bathroom Cabinetry Adelaide — Custom Joinery | MEL ONE'],
+    ['/services/heritage-carpentry/', 'Heritage Carpenter Adelaide — Timber Repairs &amp; Restoration | MEL ONE'],
+    ['/insights/kitchen-renovation-cost-guide/', 'Kitchen Cabinetry Costs Adelaide — Quote Comparison Guide | MEL ONE'],
+    ['/insights/adelaide-deck-replacement-guide/', 'Deck Replacement Adelaide — Repair or Replace Guide | MEL ONE'],
   ]);
 
   for (const [route, title] of expectations) {

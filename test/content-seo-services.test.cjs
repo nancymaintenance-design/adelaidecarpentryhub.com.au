@@ -49,13 +49,13 @@ test('twenty-five service decision pages expose distinct FAQs, metadata and opti
       assert.ok(!questions.has(faq.question), faq.question);
       questions.add(faq.question);
     }
-    const planning = visibleHtml(html).match(/<aside class="service-brief">([\s\S]*?)<\/aside>/)?.[1];
+    const planning = visibleHtml(html).match(/<aside class="service-rail"[^>]*>([\s\S]*?)<\/aside>/)?.[1];
     assert.ok(planning, `${item.slug}: rendered planning block`);
     assert.ok(planning.includes(`<p>${escapeHtml(item.planning.body)}</p>`), `${item.slug}: planning body`);
     assert.match(planning, /optional/i, item.slug);
     assert.match(planning, /measure|assessment|inspect|visit/i, item.slug);
     assert.ok(planning.includes(`href="/contact/">${escapeHtml(item.planning.cta_label)}</a>`), `${item.slug}: planning CTA`);
-    const related = html.match(/<aside class="service-brief related-content">([\s\S]*?)<\/aside>/)[1];
+    const related = html.match(/<nav class="related-content"[^>]*>([\s\S]*?)<\/nav>/)[1];
     for (const [, route] of related.matchAll(/href="(\/(?:services|insights)\/[^"#]+)"/g)) assert.ok(fs.existsSync(path.join(fixture, 'public', route, 'index.html')), route);
     assert.doesNotMatch([item.summary, item.lead, ...item.sections.map(x => x.summary)].join(' '), /H3\/H4|H4\/H5|cyclone-rated|zero rework|zero gaps|nail-free fixing|stays new|stays looking new|all by one team, no subcontracting/i, item.slug);
   }

@@ -9,12 +9,12 @@ const contentPath = path.join(root, 'src', 'content-pack', 'site-content.json');
 const publicDir = path.join(root, 'public');
 
 const detailedServices = new Map([
-  ['door-window-repairs', 'Door & Window Repairs'],
-  ['skirting-board-installation-repairs', 'Skirting Board Installation & Repairs'],
-  ['door-jamb-interior-trim', 'Door Jambs & Interior Trim'],
-  ['timber-fencing-repairs-replacement', 'Timber Fencing Repairs & Replacement'],
-  ['timber-gates-installation-repairs', 'Timber Gate Installation & Repairs'],
-  ['renovation-carpentry', 'Renovation Carpentry'],
+  ['door-window-repairs', 'Timber Door & Window Repairs Adelaide'],
+  ['skirting-board-installation-repairs', 'Skirting Board Repairs Adelaide — Installation & Replacement'],
+  ['door-jamb-interior-trim', 'Door Frame & Jamb Repairs Adelaide — Architraves & Interior Trim'],
+  ['timber-fencing-repairs-replacement', 'Timber Fence Repairs Adelaide — Replacement Posts, Rails & Palings'],
+  ['timber-gates-installation-repairs', 'Timber Gate Repairs Adelaide — Installation & Replacement'],
+  ['renovation-carpentry', 'Renovation Carpentry Adelaide — Timber Repairs & Fit-off'],
 ]);
 
 const insightSlugs = new Set([
@@ -23,7 +23,19 @@ const insightSlugs = new Set([
   'adelaide-heritage-timber-repairs',
 ]);
 
-test('six detailed Adelaide services have unique routes and substantial visible planning content', () => {
+// Catches lost purchasing decisions after consolidation, without prescribing
+// how many headings an editor must use to explain them.
+const requiredDecisions = new Map([
+  ['door-window-repairs', [/sash.*(?:cord|balance)/i, /concealed access/i, /glazing/i, /repair.*replacement/i]],
+  ['skirting-board-installation-repairs', [/profile.*(?:material|thickness)/i, /flooring.*(?:height|junction|thickness)/i, /primer.*coating/i]],
+  ['door-jamb-interior-trim', [/retained.*leaf/i, /load-bearing wall/i, /making-good/i]],
+  ['timber-fencing-repairs-replacement', [/posts.*rails/i, /boundary/i, /removal.*waste/i]],
+  ['timber-gates-installation-repairs', [/post movement/i, /automation/i, /latch alignment/i]],
+  ['renovation-carpentry', [/authorised/i, /tenant/i, /concealed damage/i, /additional repair.*approved/i]],
+]);
+
+test('six detailed Adelaide services retain unique routes, visible scope decisions and three matching FAQs', () => {
+  execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
   const { services } = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
   const servicePages = services.filter((service) => !insightSlugs.has(service.slug));
   const slugs = servicePages.map((service) => service.slug);
@@ -36,16 +48,30 @@ test('six detailed Adelaide services have unique routes and substantial visible 
     assert.equal(service.title, title, `${slug} should have its distinct service title`);
     assert.ok(service.summary.length >= 80, `${slug} should provide a useful card summary`);
     assert.ok(service.lead.length >= 120, `${slug} should provide a visitor-focused lead`);
-    assert.ok(service.sections.length >= 7, `${slug} should have at least seven visible planning sections`);
+    const html = fs.readFileSync(path.join(publicDir, 'services', slug, 'index.html'), 'utf8');
+    const body = html.match(/<article class="article">([\s\S]*?)<\/article>/)[1];
+    const visible = body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    for (const decision of requiredDecisions.get(slug)) {
+      assert.match(visible, decision, `${slug}: retain a meaningful scope decision`);
+    }
+    assert.equal(service.faqs.length, 3, `${slug}: retain three FAQs`);
+    const graph = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+    const faq = graph.find(item => item['@type'] === 'FAQPage');
+    assert.equal(faq.mainEntity.length, 3, `${slug}: matching FAQ schema`);
+    const esc = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+    for (const entry of faq.mainEntity) {
+      assert.ok(body.includes(esc(entry.name)), `${slug}: visible question`);
+      assert.ok(body.includes(esc(entry.acceptedAnswer.text)), `${slug}: visible answer`);
+    }
   }
 });
 
 const renderedTitles = new Map([
   ['/services/door-window-repairs/', 'Timber Door &amp; Window Repairs Adelaide | MEL ONE'],
-  ['/services/skirting-board-installation-repairs/', 'Adelaide Skirting Board Installation &amp; Repairs | MEL ONE'],
-  ['/services/door-jamb-interior-trim/', 'Adelaide Door Jambs &amp; Interior Trim | MEL ONE'],
-  ['/services/timber-fencing-repairs-replacement/', 'Adelaide Timber Fencing Repairs &amp; Replacement | MEL ONE'],
-  ['/services/timber-gates-installation-repairs/', 'Adelaide Timber Gate Installation &amp; Repairs | MEL ONE'],
+  ['/services/skirting-board-installation-repairs/', 'Skirting Board Repairs Adelaide — Installation &amp; Replacement | MEL ONE'],
+  ['/services/door-jamb-interior-trim/', 'Door Frame &amp; Jamb Repairs Adelaide — Architraves &amp; Interior Trim | MEL ONE'],
+  ['/services/timber-fencing-repairs-replacement/', 'Timber Fence Repairs Adelaide — Replacement Posts, Rails &amp; Palings | MEL ONE'],
+  ['/services/timber-gates-installation-repairs/', 'Timber Gate Repairs Adelaide — Installation &amp; Replacement | MEL ONE'],
   ['/services/renovation-carpentry/', 'Adelaide Renovation Carpentry | MEL ONE'],
 ]);
 
@@ -76,7 +102,7 @@ test('detailed service routes render distinct SEO titles, structured data and us
     assert.ok(service, `${route} should publish Service JSON-LD`);
     assert.equal(service.url, `https://www.adelaidecarpentryhub.com.au${route}`);
 
-    const related = html.match(/<aside class="service-brief related-content">([\s\S]*?)<\/aside>/);
+    const related = html.match(/<nav class="related-content"[^>]*>([\s\S]*?)<\/nav>/);
     assert.ok(related, `${route} should publish related content`);
     assert.ok((related[1].match(/href="\/services\/[^"/]+\//g) || []).length >= 3, `${route} should link to at least three related service pages`);
   }
@@ -89,9 +115,9 @@ test('service hub groups all visible services and publishes matching catalogue a
 
   for (const label of [
     'Structural and construction carpentry',
-    'Interior finishing and renovation',
+    'Interior Carpentry, Joinery and Renovation',
     'Outdoor timber work',
-    'Repairs, restoration and heritage work',
+    'Timber Repairs, Restoration and Heritage Carpentry',
   ]) assert.match(hub, new RegExp(label));
 
   assert.equal((hub.match(/class="service-card"/g) || []).length, 25, 'hub should display all 25 services once');

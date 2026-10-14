@@ -8,6 +8,7 @@
   --wide: min(1180px, calc(100vw - 48px));
   --reading: min(680px, 100%);
   --space-1: 12px; --space-2: 20px; --space-3: 32px; --space-4: 56px; --space-5: 96px;
+  --card-radius: 16px;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -46,17 +47,18 @@ h3 { font-size: 24px; line-height: 1.3; }
 .page-hero h1, .detail-hero h1, .article-hero h1 { margin-bottom: 0; }
 .page-hero .lede, .detail-hero .lede { margin-bottom: 0; }
 .choice-grid, .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-.choice, .editorial-card { background: var(--bg); padding: var(--space-3); min-height: 240px; }
+.choice, .editorial-card { background: var(--bg); padding: var(--space-3); min-height: 240px; border-radius: var(--card-radius); }
 .choice:hover, .editorial-card:hover { background: var(--surface); }
 .choice { display: block; }
 .choice .num { color: var(--accent); font: 700 13px system-ui; }
 .method { background: var(--ink); color: #f9f5ec; }
 .method .section-no { color: color-mix(in srgb, var(--accent) 75%, white); }
 .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
-.method-step { border-top: 1px solid color-mix(in srgb, white 30%, transparent); padding-top: var(--space-2); }
+.method-step { border: 1px solid color-mix(in srgb, white 30%, transparent); border-radius: var(--card-radius); padding: var(--space-2); background: color-mix(in srgb, white 6%, transparent); }
 .faq { display: grid; grid-template-columns: .7fr 1.3fr; gap: var(--space-5); }
 .faq-page { max-width: 880px; }
 details { border-top: 1px solid var(--line); padding-block: var(--space-2); }
+.faq details { margin-top: 12px; padding: var(--space-2); border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
 summary { cursor: pointer; font-weight: 700; }
 .closing { background: var(--surface); }
 .closing-inner, .contact-grid, .evidence-grid, .admin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 7vw, 96px); align-items: start; }
@@ -71,10 +73,17 @@ summary { cursor: pointer; font-weight: 700; }
 .contact-form label { display: grid; gap: 8px; margin-bottom: 20px; font-weight: 700; }
 .contact-form input, .contact-form textarea, .admin-grid textarea { width: 100%; padding: 13px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; }
 .admin-grid textarea { min-height: 420px; font: 13px/1.55 ui-monospace, monospace; resize: vertical; }
-.site-footer { padding-block: var(--space-4); border-top: 1px solid var(--line); font-size: 14px; }
-.footer-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: var(--space-3); }
-.footer-grid a { display: block; margin-top: 8px; }
-.footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 26px; margin-top: 30px; border-top: 1px solid var(--line); }
+.site-footer { padding-block: 32px 20px; border-top: 1px solid var(--line); font-size: 14px; }
+.footer-grid { display: grid; grid-template-columns: minmax(0,1.45fr) minmax(0,.85fr) minmax(0,.9fr) minmax(0,1.25fr); gap: 28px; }
+.footer-grid > * { min-width: 0; }
+.footer-grid a { display: flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+.footer-intro > p { margin: 4px 0 12px; line-height: 1.5; }
+.footer-contact { display: grid; font-style: normal; line-height: 1.5; }
+.footer-contact > span { display: block; margin-top: 8px; }
+.footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 16px; margin-top: 20px; border-top: 1px solid var(--line); }
+@media (min-width: 701px) and (max-width: 1100px) {
+  .footer-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
 .admin-note { color: var(--muted); font-size: 14px; }
 /* Fastlane compatibility: deterministic blocks use this small public class set. */
 main > section, main > .site-header, main > footer { width: var(--wide); margin-inline: auto; }
@@ -88,7 +97,7 @@ main > section, main > .site-header, main > footer { width: var(--wide); margin-
 .visual-stage { min-height: 360px; background: linear-gradient(137deg, var(--ink) 0 42%, var(--accent) 42% 55%, var(--surface) 55%); position: relative; overflow: hidden; }
 .visual-stage::after { content: ""; position: absolute; inset: 12%; border: 1px solid color-mix(in srgb, white 62%, transparent); transform: rotate(-8deg); }
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--line); background: var(--line); }
-.card { padding: 28px; min-height: 190px; background: var(--bg); }
+.card { padding: 28px; min-height: 190px; background: var(--bg); border-radius: var(--card-radius); }
 .card p { color: var(--muted); }
 .page-hero { padding-block: 64px 46px; border-bottom: 1px solid var(--line); }
 footer { padding-block: 40px; color: var(--muted); font-size: 14px; }
