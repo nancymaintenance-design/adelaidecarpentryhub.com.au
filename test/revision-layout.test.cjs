@@ -92,3 +92,22 @@ test('approved logo has a compact WebP header source and the original transparen
   const compact = fs.statSync(path.join(root, 'public/assets/mel-one-logo-168.webp'));
   assert.ok(compact.size < original.size / 10);
 });
+
+// Later-loaded interior CSS must not override the shared header typography.
+test('home and interior navigation share 14px normal-case text while interior active and button styles remain', () => {
+  const html = read('contact');
+  const css = name => fs.readFileSync(path.join(root, 'public', html.match(new RegExp(`href="(/assets/${name}\\.[a-f0-9]+\\.css)"`))[1]), 'utf8');
+  const base = css('base');
+  const interior = css('interior');
+  const shared = base.match(/\.site-header \.nav a\s*\{([^}]+)\}/)[1];
+  assert.match(shared, /font:\s*700 14px\/1\.3/);
+  assert.match(shared, /text-transform:\s*none/);
+  assert.match(shared, /letter-spacing:\s*0/);
+  for (const [, selector, declarations] of interior.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    if (/\.interior\b/.test(selector) && /\.nav(?=[\s.#[:>+~]|$)/.test(selector) && /\ba(?:\[|[:\s,]|$)/.test(selector)) {
+      assert.doesNotMatch(declarations, /(?:^|;)\s*(?:font(?:-size)?|text-transform|letter-spacing)\s*:/, selector.trim());
+    }
+  }
+  assert.match(interior, /\.interior \.nav a\[aria-current="page"\]\s*\{[^}]*text-decoration:\s*underline/);
+  assert.match(interior, /\.interior \.nav-cta\s*\{[^}]*background:\s*var\(--ink\);[^}]*color:\s*#fffdf8/);
+});

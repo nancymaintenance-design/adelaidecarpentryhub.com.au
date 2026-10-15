@@ -38,7 +38,6 @@
 }
 .interior .brand { display: inline-flex; align-items: center; gap: 9px; font-family: "Iowan Old Style", Georgia, serif; color: var(--ink); }
 .interior .brand-mark { width: 42px; min-width: 42px; height: 42px; margin: 0; padding: 0; border: 0; object-fit: contain; }
-.interior .nav a { letter-spacing: .04em; text-transform: uppercase; font-size: 12px; }
 .interior .nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 7px; }
 .interior .nav-cta, .interior .btn { border-radius: 2px; border-color: var(--ink); transition: background .18s ease, color .18s ease, transform .18s ease; }
 .interior .nav-cta { background: var(--ink); color: #fffdf8; }
