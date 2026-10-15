@@ -1,33 +1,23 @@
-/* Ellis Services Group — hero image + navigation spacing */
+/* MEL ONE — timber photography and shared navigation */
 
 /* ── Homepage full-bleed hero image ─────────────────────────────────── */
 .hero-image-bg {
   position: relative;
   width: 100%;
-  height: 85vh;
-  min-height: 520px;
+  min-height: clamp(560px, 70svh, 700px);
   overflow: hidden;
-  background-image: url('/assets/hero-bg.jpg');
+  background-image: var(--hero-image);
   background-size: cover;
-  background-position: center 30%;
-  background-attachment: fixed;
+  background-position: center 55%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
-/* Dark gradient overlay: covers the top ~35% (where the original logo text sits)
-   and fades to transparent so the bottom scenic content shows through */
+/* Preserve a readable text surface while the timber deck stays visible. */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(12, 6, 2, 0.82) 0%,
-    rgba(12, 6, 2, 0.72) 30%,
-    rgba(12, 6, 2, 0.45) 55%,
-    rgba(12, 6, 2, 0.15) 75%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg, rgba(11, 29, 23, .94), rgba(11, 29, 23, .78) 42%, rgba(11, 29, 23, .18) 78%);
   z-index: 0;
 }
 
@@ -36,8 +26,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  padding-top: 45vh;   /* push content down below the dark zone */
-  padding-bottom: clamp(48px, 8vw, 96px);
+  padding-block: 52px;
 }
 
 /* The hero-copy inside the wrap: keep it readable and not too wide */
@@ -46,10 +35,14 @@
 }
 
 /* Hero text colours on dark background */
-.hero-image-bg .kicker { color: #d4956a; }
-.hero-image-bg h1 { color: #fff; max-width: 18ch; }
-.hero-image-bg h1 span { color: #e8c49a; }
-.hero-image-bg .lede { color: rgba(255,255,255,0.82); max-width: 46ch; }
+.hero-image-bg .kicker { color: #e8c49a; }
+.hero-image-bg h1 { color: #fff; max-width: none; font-size: clamp(44px, 4.6vw, 66px); margin-bottom: 22px; }
+.hero-image-bg h1 span { display: inline-block; margin-top: 12px; color: #e8c49a; font-size: .65em; font-weight: 500; line-height: 1.2; letter-spacing: -.025em; }
+.hero-image-bg .lede { color: #fffdf8; max-width: 46ch; font-size: 18px; line-height: 1.6; margin-bottom: 26px; }
+.hero-image-bg .actions { gap: 12px; }
+.hero-image-bg .btn { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; }
+.hero-image-bg .btn.primary { background: #e8c49a; color: #17372f; border-color: #e8c49a; }
+.hero-image-bg .btn.primary:hover { background: #fffdf8; border-color: #fffdf8; }
 
 /* Ghost button (white outline) */
 .btn.ghost {
@@ -70,11 +63,13 @@
 /* Mobile hero */
 @media (max-width: 700px) {
   .hero-image-bg {
-    min-height: min(80svh, 640px);
-    background-attachment: scroll;
+    min-height: 0;
+    background-position: 60% center;
   }
-  .hero-image-content { padding-top: 36svh; }
-  .hero-image-bg h1 { font-size: clamp(30px, 9vw, 44px); }
+  .hero-overlay { background: linear-gradient(90deg, rgba(11, 29, 23, .92), rgba(11, 29, 23, .72)); }
+  .hero-image-content { padding-block: 36px 40px; }
+  .hero-image-bg h1 { font-size: clamp(34px, 9.6vw, 44px); }
+  .hero-image-bg .lede { font-size: 16px; }
 }
 
 /* ── About page layout ───────────────────────────────────────────── */
@@ -328,7 +323,7 @@ body:not(.interior) .card-grid.card-grid--balanced { grid-template-columns: 1fr;
   align-items: center;
 }
 .office-location-copy h2 {
-  max-width: 11ch;
+  max-width: none;
   margin: 12px 0 18px;
 }
 .office-location-copy > p:not(.office-address) {
@@ -364,7 +359,7 @@ body:not(.interior) .card-grid.card-grid--balanced { grid-template-columns: 1fr;
   .office-location-copy h2 { max-width: none; }
   .office-map-frame, .office-map-frame iframe { min-height: 300px; }
 }
-/* Homepage material layers — the hero image above remains intentionally untouched. */
+/* Homepage material layers. */
 .hero-image-bg + .section {
   background:
     radial-gradient(circle at 8% 4%, rgba(212, 149, 106, 0.16), transparent 24rem),

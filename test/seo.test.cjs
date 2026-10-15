@@ -145,7 +145,8 @@ test('mobile layout keeps navigation, content columns and controls within a narr
   assert.match(base, /\.header-inner\s*\{\s*position: relative;\s*min-height: 70px;\s*flex-direction: row;/);
   assert.match(base, /\.nav\s*\{\s*top: 100%;/);
   assert.match(base, /\.nav a, \.nav-cta\s*\{\s*display: flex;\s*align-items: center;\s*min-height: 44px;/);
-  assert.match(base, /html, body\s*\{ overflow-x: hidden; \}/);
+  assert.match(base, /html, body\s*\{ overflow-x: visible; \}/);
+  assert.doesNotMatch(base, /html, body\s*\{ overflow-x: hidden; \}/, 'page overflow must not conceal a layout error');
   assert.match(interior, /\.interior \.contact-form\s*\{ padding: 24px 18px; \}/);
 });
 

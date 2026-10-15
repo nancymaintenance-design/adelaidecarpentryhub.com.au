@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "slots": {
     "hero": {
-      "src": "/assets/hero-bg.jpg",
-      "alt": "MEL ONE — Adelaide Carpentry & Joinery",
-      "caption": "MEL ONE — Adelaide Full-Spectrum Carpentry & Joinery"
+      "src": "/assets/project-deck-after.webp",
+      "alt": "Timber deck and steps beside a brick home",
+      "caption": "Timber deck and steps"
     },
     "about": {
       "src": "/assets/about-team-2026-v2.jpg",

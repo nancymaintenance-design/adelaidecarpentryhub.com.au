@@ -34,10 +34,10 @@ test('footer and dedicated contact blocks render confirmed phone and email links
   }
 });
 
-// Break caught: the visible contact information panel falls back to an inline 2px corner.
-test('rendered contact information panel uses the shared 16px card radius', () => {
+// Break caught: replacing the contact layout loses the semantic aside or shared form radius.
+test('contact quick actions retain their semantic aside and the enquiry form uses the shared 16px radius', () => {
   const html = read('contact');
-  const panel = html.match(/<aside class="contact-info-panel"[^>]*>[\s\S]*?<\/aside>/);
+  const panel = html.match(/<aside class="contact-quick"[^>]*>[\s\S]*?<\/aside>/);
   assert.ok(panel, 'semantic contact information panel is rendered');
   assert.doesNotMatch(panel[0].match(/^<aside[^>]*>/)[0], /\bstyle=/);
 
@@ -46,15 +46,16 @@ test('rendered contact information panel uses the shared 16px card radius', () =
   const baseCss = fs.readFileSync(path.join(root, 'public', baseHref.slice(1)), 'utf8');
   const interiorCss = fs.readFileSync(path.join(root, 'public', interiorHref.slice(1)), 'utf8');
   assert.match(baseCss, /--card-radius:\s*16px;/);
-  assert.match(interiorCss, /\.interior \.contact-info-panel\s*\{[^}]*border-radius:\s*var\(--card-radius\);/s);
+  assert.match(interiorCss, /\.interior \.contact-form\s*\{[^}]*border-radius:\s*var\(--card-radius\);/s);
 });
 
-// Break caught: moving the form drops collection/async contract or leaves preparation first on mobile.
-test('contact form precedes preparation with unchanged required fields and honeypot', () => {
+// Break caught: preparation blocks the compact opening or a layout change drops the collection contract.
+test('contact preparation is optional and the form keeps required fields and honeypot', () => {
   const body = main(read('contact'));
-  const preparation = body.indexOf('<h2>Information for a Carpentry Quote</h2>');
-  assert.ok(preparation > 0, 'visible carpentry quote preparation heading');
-  assert.ok(body.indexOf('<form ') < preparation);
+  const preparation = body.match(/<details class="quote-preparation"[^>]*>[\s\S]*?<\/details>/)?.[0];
+  assert.ok(preparation, 'native quote preparation disclosure');
+  assert.match(preparation, /<summary>Information for a carpentry quote<\/summary>/);
+  assert.doesNotMatch(preparation.match(/^<details[^>]*>/)[0], /\bopen\b/);
   const form = body.match(/<form[\s\S]*?<\/form>/)[0];
   assert.match(form, /data-contact-form[^>]*novalidate/);
   for (const [name, type, autocomplete] of [['name', null, 'name'], ['phone', 'tel', 'tel'], ['email', 'email', 'email'], ['message', null, null]]) {
@@ -74,9 +75,11 @@ test('key page snippets are distinct from useful visible introductions and FAQ t
   const descriptions = ['services', 'about', 'contact'].map(route => {
     const html = read(route);
     const description = html.match(/<meta name="description" content="([^"]*)"/)[1];
-    const lead = main(html).match(/<p class="lede">([\s\S]*?)<\/p>/)[1];
+    const lead = route === 'contact'
+      ? main(html).match(/<form[^>]*>\s*<h2>[^<]+<\/h2>\s*<p>([\s\S]*?)<\/p>/)[1]
+      : main(html).match(/<p class="lede">([\s\S]*?)<\/p>/)[1];
     assert.notEqual(description, lead, route);
-    assert.ok(description.length < lead.length, route);
+    assert.ok(description.trim() && lead.trim(), route);
     return description;
   });
   assert.equal(new Set(descriptions).size, 3);

@@ -63,7 +63,7 @@ const sectionParagraphs = (section) => [section.summary, ...safeArray(section.pa
 function renderSection(section, id = '') {
   const links = safeArray(section.related_links).map(link => `<a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`).join(' · ');
   const table = section.comparison_table;
-  const comparison = table ? `<div class="quote-comparison"><table><caption>${escapeHtml(table.caption)}</caption><thead><tr>${safeArray(table.headers).map(header => `<th scope="col">${escapeHtml(header)}</th>`).join('')}</tr></thead><tbody>${safeArray(table.rows).map(row => `<tr>${safeArray(row).map((cell, index) => index === 0 ? `<th scope="row">${escapeHtml(cell)}</th>` : `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>` : '';
+  const comparison = table ? `<p class="table-help">Scroll the table sideways on a small screen to compare both scopes.</p><div class="quote-comparison" role="region" aria-label="Deck quote scope comparison" tabindex="0"><table><caption>${escapeHtml(table.caption)}</caption><thead><tr>${safeArray(table.headers).map(header => `<th scope="col">${escapeHtml(header)}</th>`).join('')}</tr></thead><tbody>${safeArray(table.rows).map(row => `<tr>${safeArray(row).map((cell, index) => index === 0 ? `<th scope="row">${escapeHtml(cell)}</th>` : `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>` : '';
   return `<section${id ? ` id="${escapeHtml(id)}"` : ''}><h2>${escapeHtml(section.title)}</h2>${paragraphs(sectionParagraphs(section))}${comparison}${links ? `<p>${links}</p>` : ''}</section>`;
 }
 
@@ -430,7 +430,7 @@ const navItems = [
 ];
 
 function header(active = '') {
-  return `<a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="/"><img class="brand-mark" src="/assets/mel-one-logo.png" alt=""><strong>${escapeHtml(brandName)}</strong></a><button class="menu" aria-expanded="false" aria-controls="nav">Menu</button><nav class="nav" id="nav" aria-label="Main"><div class="nav-links">${navItems.map(([href, label, key]) => `<a${active === key ? ' aria-current="page"' : ''} href="${href}">${label}</a>`).join('')}</div><a class="nav-cta" href="/contact/">Contact</a></nav></div></header>`;
+  return `<a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="/"><picture><source srcset="/assets/mel-one-logo-168.webp" type="image/webp"><img class="brand-mark" src="/assets/mel-one-logo.png" alt=""></picture><strong>${escapeHtml(brandName)}</strong></a><button class="menu" aria-expanded="false" aria-controls="nav">Menu</button><nav class="nav" id="nav" aria-label="Main"><div class="nav-links">${navItems.map(([href, label, key]) => `<a${active === key ? ' aria-current="page"' : ''} href="${href}">${label}</a>`).join('')}</div><a class="nav-cta" href="/contact/">Contact</a></nav></div></header>`;
 }
 
 function officeHoursText() {
@@ -451,7 +451,7 @@ function footer() {
     ['TikTok', 'https://www.tiktok.com/@melonemaintenance5', 'social-tiktok.svg'],
   ];
   const social = `<nav class="footer-social" aria-labelledby="footer-social-heading"><h2 id="footer-social-heading">FOLLOW MEL ONE</h2><ul>${socialLinks.map(([label, href, logo]) => `<li><a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer"><img src="/assets/${logo}" alt="" width="24" height="24" loading="lazy" decoding="async"><span>${escapeHtml(label)}</span></a></li>`).join('')}</ul></nav>`;
-  return `<footer class="site-footer"><div class="wrap footer-grid"><div class="footer-intro"><a class="footer-brand" href="/">${escapeHtml(brandName)}</a><p>${escapeHtml(content.brand.tagline)}</p>${social}</div><div><strong>Services</strong><a href="/services/">Carpentry &amp; joinery services</a><a href="/service-areas/">Service areas</a><a href="/about/">About</a></div><div><strong>Content</strong><a href="/insights/">Timber planning guides</a><a href="/faq/">Quotes and booking questions</a></div><div><strong>Contact</strong><a href="/contact/">${escapeHtml(content.contact.cta)}</a><address class="footer-contact">${phoneLink()}${emailLink()}<span>${escapeHtml(content.contact.address)}</span><span>Office hours: ${escapeHtml(officeHoursText())}</span></address></div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} ${escapeHtml(brandName)} · Adelaide, SA</span><span>${escapeHtml(content.brand.industry_label)}</span></div></footer>`;
+  return `<footer class="site-footer"><div class="wrap footer-grid"><div class="footer-intro"><a class="footer-brand" href="/">${escapeHtml(brandName)}</a><p>${escapeHtml(content.brand.tagline)}</p>${social}</div><div><strong>Services</strong><a href="/services/">Carpentry &amp; joinery services</a><a href="/service-areas/">Service areas</a><a href="/about/">About</a></div><div><strong>Content</strong><a href="/insights/">Timber planning guides</a><a href="/faq/">Quotes and booking questions</a><a href="/contact/#enquiry-data">Enquiry data use</a></div><div><strong>Contact</strong><a href="/contact/">${escapeHtml(content.contact.cta)}</a><address class="footer-contact">${phoneLink()}${emailLink()}<span>${escapeHtml(content.contact.address)}</span><span>Office hours: ${escapeHtml(officeHoursText())}</span></address></div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} ${escapeHtml(brandName)} · Adelaide, SA</span><span>${escapeHtml(content.brand.industry_label)}</span></div></footer>`;
 }
 
 function phoneLink() { return `<a href="tel:+61403202949">${escapeHtml(content.contact.phone)}</a>`; }
@@ -464,7 +464,7 @@ function businessEntity() {
       '@id': canonical('/#business'),
       name: brandName,
       url: canonical('/'),
-      image: canonical('/assets/hero-bg.jpg'),
+      image: canonical(slot('hero').src),
       logo: canonical('/assets/mel-one-logo.png'),
       description: content.seo.site_description,
       telephone: '+61403202949',
@@ -499,7 +499,7 @@ function withBusinessEntity(jsonLd) {
   ] };
 }
 
-function page({ title, description, route, active = '', body, jsonLd, robots = 'index,follow', ogImage = '/assets/hero-bg.jpg' }) {
+function page({ title, description, route, active = '', body, jsonLd, robots = 'index,follow', ogImage = slot('hero').src }) {
   const fullTitle = title.includes(brandName) ? title : `${title} | ${brandName}`;
   const structured = jsonLd ? `<script type="application/ld+json">${JSON.stringify(withBusinessEntity(jsonLd)).replaceAll('<', '\\u003c')}</script>` : '';
   const isInterior = route !== '/';
@@ -710,7 +710,7 @@ const imageFiles = [
   'project-door-before.webp', 'project-door-during.webp', 'project-door-detail.webp', 'project-door-after.webp',
   'project-fence-during.webp', 'project-fence-after-wide.webp', 'project-fence-after-gate.webp', 'project-fence-before.webp',
   'project-window-after-wide.webp', 'project-window-during.webp', 'project-window-after-detail.webp', 'project-window-before.webp',
-  'mel-one-logo.png', 'social-google.png', 'social-instagram.svg', 'social-youtube.svg', 'social-tiktok.svg'
+  'mel-one-logo.png', 'mel-one-logo-168.webp', 'social-google.png', 'social-instagram.svg', 'social-youtube.svg', 'social-tiktok.svg'
 ];
 for (const img of imageFiles) {
   const src = path.join(srcAssets, img);
@@ -731,7 +731,7 @@ const officeMapUrl = 'https://www.google.com/maps/place/63+Pirie+St,+Adelaide+SA
 const officeEmbedUrl = 'https://www.google.com/maps?q=63+Pirie+St%2C+Adelaide%20SA%205000%2C%20Australia&output=embed';
 
 const homeBody = `
-<section class="hero-image-bg">
+<section class="hero-image-bg" style="--hero-image:url('${escapeHtml(slot('hero').src)}')" aria-label="${escapeHtml(slot('hero').alt)}">
   <div class="hero-overlay"></div>
   <div class="hero-image-content">
     <div class="wrap">
@@ -771,7 +771,7 @@ const homeBody = `
       <p>${escapeHtml(content.method.lead)}</p>
     </div>
     <div class="choice-grid">
-      ${content.services.slice(0, 6).map((item, index) => `
+      ${['door-window-repairs', 'door-jamb-interior-trim', 'skirting-board-installation-repairs', 'cabinet-repairs', 'decking-restoration-flooring', 'storage-solutions'].map(slug => content.services.find(item => item.slug === slug)).filter(Boolean).map((item) => `
         <a class="choice" href="/services/${item.slug}/">
           <h3>${escapeHtml(displayTitle(item))}</h3>
           <p>${escapeHtml(item.summary)}</p>
@@ -882,7 +882,7 @@ const serviceCard = (item) => `<article class="service-card">${slot(`service.${i
   </div>
 </article>`;
 
-const servicesBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><h1>${escapeHtml(copy.servicesTitle)}</h1></div><p class="lede">${escapeHtml(copy.servicesLead)}</p></div></section>
+const servicesBody = `<section class="page-hero service-directory-hero"><div class="wrap"><h1>${escapeHtml(copy.servicesTitle)}</h1><p class="lede">Choose a timber repair, fitted joinery, outdoor work or construction service.</p><nav class="category-jumps" aria-label="Carpentry service categories">${serviceGroups.map(group => `<a href="#${group.id}">${escapeHtml(group.title)}</a>`).join('')}</nav><a class="btn primary" href="/contact/">Discuss your carpentry work</a></div></section>
 <section class="section service-directory"><div class="wrap">
   ${serviceGroups.map((group) => {
     const items = group.slugs.map((slug) => content.services.find((item) => item.slug === slug)).filter(Boolean);
@@ -1148,6 +1148,7 @@ const contactForm = (heading, lead, attributes = '') => `<form class="contact-fo
   <label>Your project or first question<textarea name="message" rows="6" style="resize:none" required></textarea></label>
   <input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;">
   <button class="btn primary" type="submit">Send enquiry</button>
+  <p class="form-data-link"><a href="/contact/#enquiry-data">Enquiry data use</a></p>
   <p data-brief-status role="status" aria-live="polite"></p>
 </form>`;
 
@@ -1262,26 +1263,17 @@ const aboutBody = `<section class="page-hero"><div class="wrap page-hero-grid"><
 writeRoute('/about/', page({ title: content.about.title, description: content.about.seo_description, route: '/about/', active: 'about', body: aboutBody, jsonLd: { '@context': 'https://schema.org', '@type': 'AboutPage', name: content.about.title, url: canonical('/about/'), description: content.about.lead, mainEntity: { '@id': canonical('/#business') } } }));
 
 // ── Contact ─────────────────────────────────────────────────────────────
-const contactBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><h1>${escapeHtml(content.contact.title)}</h1></div><p class="lede">${escapeHtml(content.contact.lead)}</p></div></section>
-<section class="section"><div class="wrap contact-grid">
+const contactBody = `<section class="page-hero contact-hero"><div class="wrap"><h1>${escapeHtml(content.contact.title)}</h1></div></section>
+<section class="section contact-section"><div class="wrap contact-grid contact-layout">
+  <aside class="contact-quick" aria-labelledby="contact-quick-title">
+    <h2 id="contact-quick-title">Call or email MEL ONE</h2>
+    <div class="contact-quick-actions">${phoneLink()}${emailLink()}</div>
+    <p class="contact-location"><strong>${escapeHtml(content.contact.address)}</strong><br>Office hours: ${escapeHtml(officeHoursText())}</p>
+    <details class="quote-preparation"><summary>Information for a carpentry quote</summary><ul class="check-list">${content.contact.preparation.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul><p>Share your location to confirm project availability. Photos and drawings are optional for the first enquiry.</p></details>
+  </aside>
   ${contactForm('Describe Your Carpentry Work', 'MEL ONE will reply using the email address you provide to discuss the job and assessment arrangements.')}
-  <div>
-    <h2>Information for a Carpentry Quote</h2>
-    <ul class="check-list">
-      ${content.contact.preparation.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
-    </ul>
-    <aside class="contact-info-panel" aria-label="Contact details">
-      <p style="font-weight:700;margin-bottom:12px;">Call or email MEL ONE</p>
-      <p style="color:var(--muted);font-size:14px;">
-        Phone: <strong>${phoneLink()}</strong><br>
-        Email: <strong>${emailLink()}</strong><br>
-        Address: <strong>${escapeHtml(content.contact.address)}</strong><br>
-        Office hours: <strong>${escapeHtml(officeHoursText())}</strong><br>
-        Service area: Share your location to confirm project availability
-      </p>
-    </aside>
-  </div>
-</div></section>`;
+</div></section>
+<section class="section enquiry-data" id="enquiry-data"><div class="wrap reading"><h2>Enquiry data use</h2><p>The form sends your name, phone number, email address and project description to MEL ONE so we can discuss your enquiry and assessment arrangements. The website sends these details by email using Resend to handymanfelix.au2026@outlook.com.</p><p>For questions about your enquiry data, email ${emailLink()}.</p></div></section>`;
 writeRoute('/contact/', page({ title: 'Request a Carpentry Quote Adelaide | MEL ONE', description: content.contact.seo_description, route: '/contact/', active: 'contact', body: contactBody, jsonLd: {
   '@context': 'https://schema.org',
   '@graph': [
