@@ -27,7 +27,7 @@ test('contact quick actions precede the unchanged four-field enquiry form and pr
   const quick = main.match(/<aside class="contact-quick"[\s\S]*?<\/aside>/)[0];
   const form = main.match(/<form\b[\s\S]*?<\/form>/)[0];
   assert.ok(main.indexOf(quick) < main.indexOf(form));
-  assert.match(quick, /href="tel:\+61403202949"/);
+  assert.match(quick, /href="tel:\+611300838722"/);
   assert.match(quick, /href="mailto:handymanfelix.au2026@outlook.com"/);
   assert.match(quick, /<details class="quote-preparation"><summary>/);
   assert.equal((form.match(/\brequired\b/g) || []).length, 4);

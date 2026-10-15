@@ -25,7 +25,7 @@ test('25 service pages expose one article and a unified enquiry and related rail
     assert.ok(rail.includes(`<p>${esc(item.planning.body)}</p>`), `${item.slug}: complete planning guidance`);
     assert.equal((rail.match(/href="\/contact\/"/g) || []).length, 1, `${item.slug}: one contact action`);
     assert.ok(rail.includes(`href="/contact/">${esc(item.planning.cta_label)}</a>`));
-    assert.match(rail, /href="tel:\+61403202949"/);
+    assert.match(rail, /href="tel:\+611300838722"/);
     const body = article.match(/<div class="service-body">([\s\S]*?)<\/div>/)?.[1];
     assert.ok(body);
     assert.doesNotMatch(body, /service-brief|related-content|service-rail/);

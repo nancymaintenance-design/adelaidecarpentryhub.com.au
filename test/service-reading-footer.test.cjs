@@ -59,7 +59,7 @@ test('all 47 sitemap pages share compact brand social navigation and semantic co
     const address = footer.match(/<address class="footer-contact">([\s\S]*?)<\/address>/)?.[1];
     assert.ok(address, route);
     assert.doesNotMatch(address, /<br|<p/);
-    assert.match(address, /href="tel:\+61403202949"/);
+    assert.match(address, /href="tel:\+611300838722"/);
     assert.match(address, /href="mailto:/);
     assert.ok(address.includes(esc(content.contact.address)));
     assert.match(address, /Office hours: Monday–Sunday, 9 am–9 pm \(Adelaide local time\)/);
