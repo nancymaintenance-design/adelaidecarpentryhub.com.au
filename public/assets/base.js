@@ -1,3 +1,14 @@
+const header = document.querySelector('.site-header');
+if (header) {
+  const updateHeaderHeight = () => {
+    const height = Math.ceil(header.getBoundingClientRect().height);
+    if (height > 0) document.documentElement.style.setProperty('--site-header-height', `${height}px`);
+  };
+  updateHeaderHeight();
+  if (typeof ResizeObserver === 'function') new ResizeObserver(updateHeaderHeight).observe(header);
+  window.addEventListener('resize', updateHeaderHeight);
+}
+
 const button = document.querySelector('.menu');
 const nav = document.querySelector('.nav');
 if (button && nav) button.addEventListener('click', () => {
