@@ -61,10 +61,14 @@ test('homepage and generic metadata use the inspected deck asset without retaini
   for (const route of ['', 'contact', 'services', 'about']) {
     const html = read(route);
     assert.ok(html.includes(`<meta property="og:image" content="https://www.adelaidecarpentryhub.com.au${hero.src}">`));
+    assert.doesNotMatch(html, /hero-bg\.jpg/);
+  }
+  for (const route of ['', 'contact', 'about']) {
+    const html = read(route);
     const graph = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
     const business = graph?.find(node => node['@type'] === 'HomeAndConstructionBusiness');
-    if (business) assert.equal(business.image, `https://www.adelaidecarpentryhub.com.au${hero.src}`);
-    assert.doesNotMatch(html, /hero-bg\.jpg/);
+    assert.ok(business, `${route || '/'}: required business schema exists`);
+    assert.equal(business.image, `https://www.adelaidecarpentryhub.com.au${hero.src}`);
   }
   assert.ok(fs.existsSync(path.join(root, 'src/assets/hero-bg.jpg')), 'original retained as evidence');
   const choices = home.match(/<div class="choice-grid">([\s\S]*?)<\/div>/)[1];
