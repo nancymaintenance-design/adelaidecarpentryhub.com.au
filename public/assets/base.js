@@ -6,15 +6,31 @@ if (button && nav) button.addEventListener('click', () => {
   button.setAttribute('aria-expanded', String(open));
 });
 
+function trackContactEvent(name, parameters) {
+  try {
+    if (typeof window.gtag === 'function') window.gtag('event', name, parameters);
+  } catch {
+    // Contact actions remain usable when analytics is unavailable.
+  }
+}
+
+for (const link of document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]')) {
+  const method = link.getAttribute('href').startsWith('tel:') ? 'phone' : 'email';
+  link.addEventListener('click', () => trackContactEvent('contact_click', { contact_method: method }));
+}
+
 for (const form of document.querySelectorAll('form[data-contact-form]')) {
+  let pending = false;
   form.addEventListener('submit', async event => {
     event.preventDefault();
+    if (pending) return;
     const data = new FormData(form);
     const name = String(data.get('name') || '').trim();
     const phone = String(data.get('phone') || '').trim();
     const email = String(data.get('email') || '').trim();
     const message = String(data.get('message') || '').trim();
     const status = form.querySelector('[data-brief-status]');
+    if (String(data.get('website') || '').trim()) { status.textContent = 'Please submit a valid enquiry.'; return; }
     const missing = [
       [name, 'name', 'Please enter your name.'],
       [phone, 'phone', 'Please add a phone number.'],
@@ -24,6 +40,7 @@ for (const form of document.querySelectorAll('form[data-contact-form]')) {
     if (missing) { status.textContent = missing[2]; form.elements[missing[1]].focus(); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = 'Please enter a valid email address.'; form.elements.email.focus(); return; }
     const button = form.querySelector('button[type="submit"]');
+    pending = true;
     button.disabled = true;
     status.textContent = 'Sending your enquiry…';
     try {
@@ -33,12 +50,14 @@ for (const form of document.querySelectorAll('form[data-contact-form]')) {
         body: JSON.stringify({ name, phone, email, message, website: String(data.get('website') || '') }),
       });
       const result = await response.json();
-      if (!response.ok) throw new Error(result.error || 'Unable to send your enquiry.');
+      if (!response.ok || result?.ok !== true) throw new Error(result?.error || 'Unable to send your enquiry.');
       form.reset();
       status.textContent = 'Thank you — your enquiry has been sent to MEL ONE.';
+      trackContactEvent('generate_lead', { form_name: 'carpentry_enquiry' });
     } catch (error) {
       status.textContent = error.message || 'We could not send your enquiry. Please call or email us directly.';
     } finally {
+      pending = false;
       button.disabled = false;
     }
   });

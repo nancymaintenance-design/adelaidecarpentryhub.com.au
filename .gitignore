@@ -2,3 +2,4 @@
 .env*
 .worktrees/
 .seo-cache/
+node_modules/
