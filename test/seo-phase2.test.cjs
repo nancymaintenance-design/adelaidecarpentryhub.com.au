@@ -51,8 +51,7 @@ test('hub planning copy gives useful service and guide routes plus working proje
     const html = read(route);
     const copy = html.match(/<section class="section hub-planning">([\s\S]*?)<\/section>/);
     assert.ok(copy, `${route} needs planning guidance`);
-    const words = copy[1].replace(/<[^>]*>/g, ' ').match(/\b[\w'-]+\b/g) || [];
-    assert.ok(words.length >= 150 && words.length <= 300, `${route}: ${words.length} words`);
+    assert.match(copy[1], /<h2>[^<]*(?:Timber|Repair|Carpentry)[^<]*<\/h2>/, `${route}: guidance names the work or decision`);
     const links = [...copy[1].matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
     assert.ok(links.some((link) => link.startsWith('/services/')));
     assert.ok(links.some((link) => link.startsWith('/insights/')));

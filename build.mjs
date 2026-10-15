@@ -62,7 +62,9 @@ const paragraphs = (items) => safeArray(items).map((item) => `<p>${escapeHtml(it
 const sectionParagraphs = (section) => [section.summary, ...safeArray(section.paragraphs)];
 function renderSection(section, id = '') {
   const links = safeArray(section.related_links).map(link => `<a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`).join(' · ');
-  return `<section${id ? ` id="${escapeHtml(id)}"` : ''}><h2>${escapeHtml(section.title)}</h2>${paragraphs(sectionParagraphs(section))}${links ? `<p>${links}</p>` : ''}</section>`;
+  const table = section.comparison_table;
+  const comparison = table ? `<div class="quote-comparison"><table><caption>${escapeHtml(table.caption)}</caption><thead><tr>${safeArray(table.headers).map(header => `<th scope="col">${escapeHtml(header)}</th>`).join('')}</tr></thead><tbody>${safeArray(table.rows).map(row => `<tr>${safeArray(row).map((cell, index) => index === 0 ? `<th scope="row">${escapeHtml(cell)}</th>` : `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>` : '';
+  return `<section${id ? ` id="${escapeHtml(id)}"` : ''}><h2>${escapeHtml(section.title)}</h2>${paragraphs(sectionParagraphs(section))}${comparison}${links ? `<p>${links}</p>` : ''}</section>`;
 }
 
 const content = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
@@ -755,7 +757,7 @@ const homeBody = `
 
 <section class="section project-pathways" aria-labelledby="project-pathways-title"><div class="wrap">
   <h2 id="project-pathways-title">Carpentry Repairs, Custom Joinery and Renovation Work</h2>
-  <p>A ‘carpenter near me’ search can lead to repairs, fitted joinery or new timber work. Browse our <a href="/service-areas/">street and precinct directory</a>, including <a href="/service-areas/north-adelaide/">North Adelaide timber repairs</a>, then share the job and access details to confirm assessment arrangements.</p>
+  <p>Choose a repair for an existing fault or an installation service for new timber work. Our <a href="/service-areas/">street and precinct directory</a> includes <a href="/service-areas/north-adelaide/">North Adelaide</a>; send your location and access details with the job.</p>
   <div class="contact-grid">
     <div><h3>Repair existing timber</h3><p>Find the part that needs attention: <a href="/services/door-window-repairs/">timber doors and sash windows</a>, <a href="/services/fascia-eaves-repairs/">fascia and eaves</a>, <a href="/services/weatherboard-repairs/">weatherboards and timber cladding</a>, or <a href="/services/decking-restoration-flooring/">existing decks and floorboards</a>. Describe what has changed so we can assess the repair.</p><a class="text-link" href="/services/restoration-maintenance/">Explore timber damage and maintenance ↗</a></div>
     <div><h3>Plan installation or new work</h3><p>Start with <a href="/services/outdoor-living/">new decks and outdoor timber</a>, <a href="/services/fix-out-second-fix/">second-fix doors and trim</a>, or <a href="/services/custom-kitchen-bathroom/">custom kitchen and bathroom cabinetry</a>. Tell us the intended use and build stage so we can plan the measure and quote.</p><a class="text-link" href="/services/">Explore all carpentry and joinery ↗</a></div>
@@ -846,24 +848,28 @@ writeRoute('/', page({ title: 'Carpenter Adelaide — Residential Carpentry Serv
 // ── Services index (with process merged in) ────────────────────────────
 const serviceGroups = [
   {
-    title: 'Structural and construction carpentry',
-    lead: 'Timber work that helps establish and complete the building sequence from frame through second fix.',
-    slugs: ['house-framing', 'formwork-carpentry', 'fix-out-second-fix', 'subfloor-timber-repairs'],
+    id: 'timber-repairs',
+    title: 'Residential Timber Repairs',
+    lead: 'Repair doors, windows, trim, cabinets and damaged timber; retain sound parts where the condition allows.',
+    slugs: ['door-window-repairs', 'door-jamb-interior-trim', 'skirting-board-installation-repairs', 'cabinet-repairs', 'restoration-maintenance', 'fascia-eaves-repairs', 'weatherboard-repairs', 'heritage-carpentry'],
   },
   {
-    title: 'Interior Carpentry, Joinery and Renovation',
-    lead: 'Detailed interior timber work for openings, trim, joinery and rooms being renewed.',
-    slugs: ['skirting-board-installation-repairs', 'door-jamb-interior-trim', 'renovation-carpentry', 'custom-kitchen-bathroom', 'architectural-joinery', 'storage-solutions', 'custom-doors-furniture', 'fitout-refurbishment', 'accessibility-carpentry'],
+    id: 'interior-joinery',
+    title: 'Interior Joinery and Renovation',
+    lead: 'Plan cabinetry, wardrobes, fitted timber details, second fix and entrance access changes.',
+    slugs: ['custom-kitchen-bathroom', 'storage-solutions', 'architectural-joinery', 'custom-doors-furniture', 'fix-out-second-fix', 'renovation-carpentry', 'accessibility-carpentry'],
   },
   {
-    title: 'Outdoor timber work',
-    lead: 'Decking, outdoor structures, fencing and gates planned for everyday use and site conditions.',
-    slugs: ['outdoor-living', 'decking-restoration-flooring', 'timber-fencing-repairs-replacement', 'timber-gates-installation-repairs'],
+    id: 'outdoor-timber',
+    title: 'Decks, Pergolas, Fences and Stairs',
+    lead: 'Compare existing deck and pergola repairs, timber gates, fences and stairs with a separate new outdoor structure scope.',
+    slugs: ['decking-restoration-flooring', 'pergola-repairs', 'timber-stairs-handrails', 'timber-fencing-repairs-replacement', 'timber-gates-installation-repairs', 'outdoor-living'],
   },
   {
-    title: 'Timber Repairs, Restoration and Heritage Carpentry',
-    lead: 'Practical repair and careful timber-restoration planning for existing homes and details.',
-    slugs: ['door-window-repairs', 'restoration-maintenance', 'heritage-carpentry', 'fascia-eaves-repairs', 'weatherboard-repairs', 'pergola-repairs', 'timber-stairs-handrails', 'cabinet-repairs'],
+    id: 'framing-fitouts',
+    title: 'Framing, Subfloors and Commercial Fitouts',
+    lead: 'Coordinate structural timber, concrete formwork and commercial carpentry with drawings, inspections and the project team.',
+    slugs: ['subfloor-timber-repairs', 'house-framing', 'formwork-carpentry', 'fitout-refurbishment'],
   },
 ];
 
@@ -872,22 +878,15 @@ const serviceCard = (item) => `<article class="service-card">${slot(`service.${i
   <div class="service-card-body">
     <h3><a href="/services/${item.slug}/">${escapeHtml(displayTitle(item))}</a></h3>
     <p>${escapeHtml(item.summary)}</p>
-    <a class="text-link" href="/services/${item.slug}/">View detail ↗</a>
+    <a class="text-link" href="/services/${item.slug}/">View service ↗</a>
   </div>
 </article>`;
 
 const servicesBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><h1>${escapeHtml(copy.servicesTitle)}</h1></div><p class="lede">${escapeHtml(copy.servicesLead)}</p></div></section>
-<section class="section hub-planning"><div class="wrap reading article">
-  <h2>Choose Carpentry Repairs, Installation or Renovation Work</h2>
-  <p>For work around <a href="/service-areas/north-adelaide/">North Adelaide</a>, use the existing street list and include the affected item in your enquiry. Street listings help describe the location; the property and work still need assessment.</p>
-  <p>For an existing fault, start with <a href="/services/door-window-repairs/">timber door and window repairs</a> or <a href="/services/restoration-maintenance/">timber damage and maintenance</a>. A damaged frame or architrave has its own <a href="/services/door-jamb-interior-trim/">door jamb and interior trim scope</a>. Describe the symptom and what has changed before choosing repair or replacement.</p>
-  <p>For new work, compare <a href="/services/storage-solutions/">built-in storage</a>, <a href="/services/custom-kitchen-bathroom/">kitchen and bathroom cabinetry</a> and <a href="/services/outdoor-living/">new decks and outdoor timber</a>. Existing deck repairs belong with <a href="/services/decking-restoration-flooring/">deck restoration</a>. For several rooms or staged work, <a href="/services/renovation-carpentry/">renovation carpentry</a> helps frame the package and trade interfaces.</p>
-  <p>Include the job, suburb, access and preferred timing in your <a href="/contact/">initial project enquiry</a>. Photos, dimensions and drawings are optional at this stage; email existing files if they help explain the work. Confirm assessment arrangements, any charges and what the written quote will cover before booking.</p>
-</div></section>
 <section class="section service-directory"><div class="wrap">
   ${serviceGroups.map((group) => {
     const items = group.slugs.map((slug) => content.services.find((item) => item.slug === slug)).filter(Boolean);
-    return `<section class="service-directory-group"><div class="section-head"><div><h2>${escapeHtml(group.title)}</h2></div><p>${escapeHtml(group.lead)}</p></div><div class="service-grid">${items.map(serviceCard).join('')}</div></section>`;
+    return `<section class="service-directory-group" id="${group.id}"><div class="section-head"><div><h2>${escapeHtml(group.title)}</h2></div><p>${escapeHtml(group.lead)}</p></div><div class="service-grid">${items.map(serviceCard).join('')}</div></section>`;
   }).join('')}
 </div></section>
 <section class="section method">
@@ -1018,13 +1017,11 @@ for (const [index, item] of content.services.entries()) {
 
 // ── Insights ─────────────────────────────────────────────────────────────
 const insightsPlanning = `<section class="section hub-planning"><div class="wrap reading article">
-  <h2>Carpentry Guides for a Clear Timber Project Brief</h2>
-  <p>Start with the guide closest to the decision you need to make. The <a href="/insights/adelaide-deck-replacement-guide/">deck replacement guide</a> explains what to record before comparing repair and replacement, while the <a href="/insights/kitchen-renovation-cost-guide/">kitchen renovation cost guide</a> helps you separate cabinetry choices from the wider renovation. For built-in storage, the <a href="/insights/adelaide-custom-wardrobe-planning/">wardrobe planning guide</a> covers layout, measurements and quote inclusions.</p>
-  <h2>Carpentry Scope, Written Quotes and Timber Material Decisions</h2>
-  <p>To choose the timber trade for your project, read <a href="/insights/why-integrated-carpentry-joinery/">carpenter, joiner or cabinet maker</a> before allocating the handovers. The <a href="/insights/timber-flooring-oiling-guide/">solid versus engineered flooring guide</a> compares products and restoration conditions. Use the matching service for the next discussion: <a href="/services/decking-restoration-flooring/">decking and timber flooring</a>, <a href="/services/custom-kitchen-bathroom/">kitchen cabinetry</a>, or <a href="/services/storage-solutions/">built-in storage</a>. Photos, dimensions and drawings are optional for the first enquiry; a site assessment establishes the accessible condition and agreed scope.</p>
-  <h2>Heritage Timber Conservation Principles and Repair Preparation</h2>
-  <p>Read the <a href="/insights/heritage-building-timber-restoration/">heritage restoration principles</a> to consider significance, retention and evidence. Then use the <a href="/insights/adelaide-heritage-timber-repairs/">heritage timber repair scope guide</a> to prepare an element record, access notes and repair questions. Existing project records show how work develops: compare the <a href="/services/decking-restoration-flooring/#deck-replacement-adelaide">deck replacement sequence</a> and the <a href="/services/heritage-carpentry/#heritage-verandah-restoration">heritage verandah gallery</a>. These examples support planning; they do not establish what your property needs.</p>
-  <p>Before enquiring, note access restrictions, occupied rooms, preferred timing and which trades are involved. For an operating workplace, read the <a href="/insights/commercial-fitout-process/">commercial fitout guide</a> and review <a href="/services/fitout-refurbishment/">fitout and refurbishment</a> for staging considerations. Bring unresolved questions to the first discussion so the written quote can identify inclusions, exclusions and the next decisions.</p>
+  <h2>Repair Decisions, Materials and Quote Inclusions</h2>
+  <p>Use the <a href="/insights/adelaide-deck-replacement-guide/">deck replacement guide</a> or <a href="/insights/timber-flooring-oiling-guide/">solid versus engineered flooring comparison</a> for existing timber. The <a href="/insights/kitchen-renovation-cost-guide/">kitchen cabinetry quote guide</a> and <a href="/insights/adelaide-custom-wardrobe-planning/">wardrobe planning guide</a> cover layout, measurement and installation decisions. For hourly arrangements and allowances, read the <a href="/insights/adelaide-carpentry-cost-guide/">carpentry quote comparison</a>; for exposure and upkeep, use <a href="/insights/outdoor-timber-selection-adelaide/">decking material advice</a>.</p>
+  <p>The next discussion belongs with the relevant service: <a href="/services/decking-restoration-flooring/">deck and floor repairs</a>, <a href="/services/custom-kitchen-bathroom/">kitchen cabinetry</a> or <a href="/services/storage-solutions/">built-in storage</a>. The <a href="/insights/why-integrated-carpentry-joinery/">carpenter, joiner and cabinet maker guide</a> helps allocate measurement and installation responsibilities. For occupied premises, read the <a href="/insights/commercial-fitout-process/">commercial fitout sequence</a> alongside <a href="/services/fitout-refurbishment/">fitout carpentry</a>.</p>
+  <h2>Heritage Timber Retention and Repair Records</h2>
+  <p>Read the <a href="/insights/heritage-building-timber-restoration/">heritage restoration principles</a> before preparing an <a href="/insights/adelaide-heritage-timber-repairs/">element-by-element condition record</a>. The <a href="/services/heritage-carpentry/#heritage-verandah-restoration">heritage verandah gallery</a> and <a href="/services/decking-restoration-flooring/#deck-replacement-adelaide">deck replacement sequence</a> show recorded project stages. Your own repair decisions depend on the property's condition and any applicable controls.</p>
 </div></section>`;
 
 function collection(kind, label, items, intro) {
@@ -1098,7 +1095,11 @@ const feedItems = content.insights.map((item) => ({
   url: canonical(`/insights/${item.slug}/`),
   title: item.title,
   summary: item.summary,
-  content_text: [item.lead, ...item.sections.map((section) => `${section.title}: ${sectionParagraphs(section).join('\n\n')}`)].join('\n\n'),
+  content_text: [item.lead, ...item.sections.map((section) => {
+    const table = section.comparison_table;
+    const comparison = table ? [table.caption, safeArray(table.headers).join(' | '), ...safeArray(table.rows).map(row => row.join(' | '))].join('\n') : '';
+    return `${section.title}: ${[...sectionParagraphs(section), comparison].filter(Boolean).join('\n\n')}`;
+  })].join('\n\n'),
   ...(feedDate(item) ? { date_published: feedDate(item) } : {}),
   tags: [item.category || copy.insightsTitle, 'Adelaide', 'Carpentry & Joinery'],
 }));
@@ -1130,7 +1131,7 @@ const areasBody = `<section class="page-hero service-areas-hero"><div class="wra
 </div></section>
 <section class="section hub-planning"><div class="wrap reading article">
   <h2>Local Repairs, Site Access and a Written Scope</h2>
-  <p>For a ‘carpenter near me’ search, the street and timber task help identify the next step. The directory includes <a href="/service-areas/north-adelaide/">North Adelaide</a> and the listed city precincts. Choose the relevant page to send a street with your enquiry. If your street is not listed, <a href="/contact/">contact MEL ONE</a> so availability and scope can be confirmed.</p>
+  <p>Use the directory to find carpentry near your street in <a href="/service-areas/north-adelaide/">North Adelaide</a> or the listed city precincts. Selecting a street adds it to your enquiry. If your street is not listed, <a href="/contact/">contact MEL ONE</a> to discuss availability and the work.</p>
   <p>For sticking openings, use <a href="/services/door-window-repairs/">door and window repairs</a> and the <a href="/services/door-window-repairs/#timber-window-repair">timber window gallery</a>. Existing decks need <a href="/insights/adelaide-deck-replacement-guide/">repair or replacement assessment</a>; new structures have a separate <a href="/services/outdoor-living/">outdoor carpentry scope</a>. For older details, read <a href="/services/heritage-carpentry/">heritage carpentry</a> and the <a href="/insights/adelaide-heritage-timber-repairs/">condition-record guide</a> before deciding what to retain.</p>
   <p>Include entry, stairs, shared passages, parking or loading limits, occupied rooms and who can authorise the work. For <a href="/services/renovation-carpentry/">renovations</a> or <a href="/services/fitout-refurbishment/">workplace fitouts</a>, identify adjoining trades and confirmed dimensions. Photos and drawings are optional. Agree the visit, any assessment charges and specialist or approval responsibilities before booking; the written quote records the agreed timber work and concealed-condition limits.</p>
   <p>Enquiries are welcome seven days from 09:00 to 21:00 Adelaide time. A listed street does not establish availability for a particular project.</p>
@@ -1156,18 +1157,18 @@ const renderServiceAreaPage = (region) => {
   const services = safeArray(region.serviceSlugs).map(serviceBySlug).filter(Boolean);
   const faqs = safeArray(region.faqs);
   const locations = locationsFor(region);
-  const body = `<section class="page-hero service-areas-hero"><div class="wrap page-hero-grid"><div><p class="kicker">ADELAIDE · ${escapeHtml(region.name.toUpperCase())}</p><h1>${escapeHtml(locationTitle)}</h1></div><div><p class="lede">${escapeHtml(region.lead)}</p><a class="btn primary" href="#book-area-work">Request a local site assessment</a></div></div></section>
+  const body = `<section class="page-hero service-areas-hero"><div class="wrap page-hero-grid"><div><h1>${escapeHtml(locationTitle)}</h1></div><div><p class="lede">${escapeHtml(region.lead)}</p><a class="btn primary" href="#book-area-work">Request a site assessment</a></div></div></section>
 <section class="section area-detail-section"><div class="wrap reading article area-local-brief">
   <h2>${escapeHtml(region.repairTitle)}</h2>${paragraphs(region.repairParagraphs)}
   <h3>${escapeHtml(region.accessTitle)}</h3>${paragraphs(region.accessParagraphs)}
-  <p>Enquiries are welcome seven days from 09:00 to 21:00 Adelaide time. Confirm the appointment, any assessment charges and who can approve the work before booking. Load-bearing damage, heritage controls and specialist trades need the relevant assessment, responsible party and required documents agreed before that work proceeds.</p>
+  <p>For load-bearing damage, heritage controls or specialist trade work, agree the assessment, responsible professional and required documents before the affected repair proceeds.</p>
 </div></section>
 <section class="section area-detail-section area-detail-tint"><div class="wrap">
   <h2>Timber Repair and Joinery Services</h2><div class="area-service-links">${services.map((service) => `<a href="/services/${service.slug}/"><strong>${escapeHtml(displayTitle(service))}</strong><span>${escapeHtml(service.summary)}</span><em>View service details →</em></a>`).join('')}</div>
   <h3 class="area-streets-title">${escapeHtml(region.name)} Street Selector</h3><p class="area-detail-intro">Choose your street to include it in the form below. Confirm availability, access and the work required before booking.</p><ul class="suburb-list area-detail-streets">${locations.map((location) => `<li><a href="${route}?street=${encodeURIComponent(location)}#book-area-work" aria-label="Book carpentry and joinery near ${escapeHtml(location)} in ${escapeHtml(region.name)}">${escapeHtml(location)}</a></li>`).join('')}</ul>
 </div></section>
 <section class="section area-detail-section"><div class="wrap area-faq"><h2>Local Carpentry FAQs</h2>${faqs.map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('')}</div></section>
-<section class="section area-booking" id="book-area-work"><div class="wrap contact-grid"><div><h2>Discuss Your Timber Repair or Joinery Work</h2><p data-area-context>Tell us the street, timber work and any access notes. We contact you to arrange the assessment, check the work required and confirm the scope and quote. Photos are optional; email existing images to handymanfelix.au2026@outlook.com.</p><p><strong>Phone:</strong> ${phoneLink()}<br><strong>Email:</strong> ${emailLink()}<br><strong>Office:</strong> ${escapeHtml(content.contact.address)}</p></div>${contactForm(region.bookingTitle, 'Outline the timber repair, joinery or maintenance work you would like to discuss.', `data-area-region="${escapeHtml(region.name)}" data-area-streets="${escapeHtml(JSON.stringify(locations))}"`)}</div></section>`;
+<section class="section area-booking" id="book-area-work"><div class="wrap contact-grid"><div><h2>Discuss Your Timber Repair or Joinery Work</h2><p data-area-context>Tell us the street, timber work and any access notes. We contact you to arrange the assessment, check the work required and confirm the scope and quote. Photos are optional; email existing images to handymanfelix.au2026@outlook.com.</p><p>Contact hours are seven days from 09:00 to 21:00 Adelaide time. Confirm the appointment, any assessment charges and who can approve the work before booking.</p><p><strong>Phone:</strong> ${phoneLink()}<br><strong>Email:</strong> ${emailLink()}<br><strong>Office:</strong> ${escapeHtml(content.contact.address)}</p></div>${contactForm(region.bookingTitle, 'Outline the timber repair, joinery or maintenance work you would like to discuss.', `data-area-region="${escapeHtml(region.name)}" data-area-streets="${escapeHtml(JSON.stringify(locations))}"`)}</div></section>`;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -1206,7 +1207,6 @@ writeRoute('/faq/', page({ title: 'Adelaide Carpentry FAQs', description: copy.f
 const valuesList = (content.about.values || []).map(v => {
   const details = (v.details || []).map(d => `<li>${escapeHtml(d)}</li>`).join('');
   return `<article class="value-card">
-    <div class="value-icon">${escapeHtml(v.heading[0])}</div>
     <h3>${escapeHtml(v.heading)}</h3>
     <p>${escapeHtml(v.body)}</p>
     ${details ? `<ul class="value-details">${details}</ul>` : ''}
@@ -1223,7 +1223,7 @@ const aboutImageSlot = (() => {
   return `<div class="about-image-placeholder" title="Drop your team/workshop photo here"><span>Image slot</span><small>Drop at assets/about.jpg</small></div>`;
 })();
 const companyDetails = (content.about.company_details || []).map((item) => `<div><dt>${escapeHtml(item.label)}</dt><dd>${item.url ? `<a class="text-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.value)} ↗</a>` : escapeHtml(item.value)}</dd></div>`).join('');
-const aboutSteps = (content.about.process_steps || []).map((item, index) => `<article class="value-card"><div class="value-icon">${String(index + 1).padStart(2, '0')}</div><h3>${escapeHtml(item.heading)}</h3><p>${escapeHtml(item.body)}</p></article>`).join('');
+const aboutSteps = (content.about.process_steps || []).map((item) => `<article class="value-card"><h3>${escapeHtml(item.heading)}</h3><p>${escapeHtml(item.body)}</p></article>`).join('');
 const aboutPriorities = (content.about.priorities || []).map((item) => `<article class="value-card"><h3>${escapeHtml(item.heading)}</h3><p>${escapeHtml(item.body)}</p></article>`).join('');
 const aboutFaq = (content.about.faqs || []).map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('');
 const aboutBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">ABOUT</p><h1>${escapeHtml(content.about.title)}</h1></div><p class="lede">${escapeHtml(content.about.lead)}</p></div></section>
@@ -1255,7 +1255,7 @@ const aboutBody = `<section class="page-hero"><div class="wrap page-hero-grid"><
   <div class="value-grid">${aboutPriorities}</div>
 </div></section>
 <section class="section section-alt"><div class="wrap reading about-faq">
-  <p class="kicker">GOOD TO KNOW</p><h2>${escapeHtml(content.about.faq_title || 'Company and project questions')}</h2>
+  <h2>${escapeHtml(content.about.faq_title || 'Company and project questions')}</h2>
   ${aboutFaq}
 </div></section>
 <section class="section closing"><div class="wrap closing-inner"><h2>Arrange Carpentry Assessment and a Written Quote</h2><div><p>Call ${phoneLink()}, email ${emailLink()} or use our contact form. Tell us the suburb, what needs attention and any important access details. We arrange a site assessment and confirm the work scope and written quote. Photos are optional; email existing images to handymanfelix.au2026@outlook.com.</p><a class="btn primary" href="/contact/">Contact MEL ONE</a></div></div></section>`;
@@ -1264,14 +1264,14 @@ writeRoute('/about/', page({ title: content.about.title, description: content.ab
 // ── Contact ─────────────────────────────────────────────────────────────
 const contactBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><h1>${escapeHtml(content.contact.title)}</h1></div><p class="lede">${escapeHtml(content.contact.lead)}</p></div></section>
 <section class="section"><div class="wrap contact-grid">
-  ${contactForm('Describe Your Carpentry Work', 'Send your project details directly to MEL ONE. We will reply using the email address you provide, then arrange the site assessment or measure and confirm any charges before booking.')}
+  ${contactForm('Describe Your Carpentry Work', 'MEL ONE will reply using the email address you provide to discuss the job and assessment arrangements.')}
   <div>
     <h2>Information for a Carpentry Quote</h2>
     <ul class="check-list">
       ${content.contact.preparation.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
     </ul>
     <aside class="contact-info-panel" aria-label="Contact details">
-      <p style="font-weight:700;margin-bottom:12px;">📞 Get in touch</p>
+      <p style="font-weight:700;margin-bottom:12px;">Call or email MEL ONE</p>
       <p style="color:var(--muted);font-size:14px;">
         Phone: <strong>${phoneLink()}</strong><br>
         Email: <strong>${emailLink()}</strong><br>
@@ -1297,7 +1297,7 @@ writeRoute('/contact/', page({ title: 'Request a Carpentry Quote Adelaide | MEL 
 } }));
 
 // ── 404 ─────────────────────────────────────────────────────────────────
-writeRoute('/404.html', page({ title: 'Adelaide Carpentry Page Not Found', description: 'The page you requested does not exist.', route: '/404.html', robots: 'noindex,follow', body: `<section class="page-hero"><div class="wrap"><p class="kicker">404</p><h1>Adelaide Carpentry Page Not Found</h1><p class="lede">Head back to the homepage to keep exploring our services and insights.</p><a class="btn primary" href="/">Back to home</a></div></section>` }));
+writeRoute('/404.html', page({ title: 'Adelaide Carpentry Page Not Found', description: 'The page you requested does not exist.', route: '/404.html', robots: 'noindex,follow', body: `<section class="page-hero"><div class="wrap"><p class="kicker">404</p><h1>Adelaide Carpentry Page Not Found</h1><p class="lede">Use the <a href="/services/">carpentry service directory</a> to find a repair or installation, or <a href="/contact/">contact MEL ONE</a> about the work.</p><a class="btn primary" href="/">Back to home</a></div></section>` }));
 
 // ── Sitemap & robots ────────────────────────────────────────────────────
 const allRoutes = [

@@ -24,6 +24,11 @@ test.before(() => {
     { title: 'First <section>', summary: 'First & only summary.', paragraphs: ['Second <script>never execute</script>.', 'Third "quoted" & final.'], related_links: [{ href: '/contact/?topic=wood&stage=quote', label: 'Discuss <timber> & scope' }] },
     { title: 'Legacy section', summary: 'Legacy summary without extras.' },
   ];
+  sections[0].comparison_table = {
+    caption: 'Compare <timber> & scope',
+    headers: ['Work item', 'Proposal "A"', 'Proposal <B>'],
+    rows: [['Boards & supports', '<script>table cell</script>', 'Inspect "concealed" timber']],
+  };
   content.services.find(item => item.slug === 'house-framing').sections = sections;
   content.insights.find(item => item.slug === 'commercial-fitout-process').sections = sections;
   fs.writeFileSync(contentFile, JSON.stringify(content));
@@ -63,4 +68,14 @@ test('plain guide feed includes each extra paragraph once in reading order', () 
   assert.ok(item.content_text.includes('First <section>: First & only summary.\n\nSecond <script>never execute</script>.\n\nThird "quoted" & final.'));
   assert.equal((item.content_text.match(/Second <script>/g) || []).length, 1);
   assert.ok(item.content_text.includes('Legacy section: Legacy summary without extras.'));
+});
+
+test('comparison tables escape every field and expose caption, column and row headers', () => {
+  for (const html of [serviceHtml, guideHtml]) {
+    assert.match(html, /<table><caption>Compare &lt;timber&gt; &amp; scope<\/caption><thead><tr><th scope="col">Work item<\/th><th scope="col">Proposal &quot;A&quot;<\/th><th scope="col">Proposal &lt;B&gt;<\/th>/);
+    assert.match(html, /<tbody><tr><th scope="row">Boards &amp; supports<\/th><td>&lt;script&gt;table cell&lt;\/script&gt;<\/td><td>Inspect &quot;concealed&quot; timber<\/td><\/tr><\/tbody>/);
+    assert.doesNotMatch(html, /<script>table cell/);
+  }
+  const item = feed.items.find(item => item.url.endsWith('/commercial-fitout-process/'));
+  assert.ok(item.content_text.includes('Boards & supports | <script>table cell</script> | Inspect "concealed" timber'));
 });

@@ -95,12 +95,12 @@ test('home page title and description target Adelaide carpentry searches concise
 
 test('approved enquiry language keeps the on-site assessment and written-quote path clear', () => {
   const content = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content-pack', 'site-content.json'), 'utf8'));
-  assert.equal(content.hero.primary_cta, 'Request a site assessment and quote');
-  assert.equal(content.hero.secondary_cta, 'Explore our services');
+  assert.match(content.hero.primary_cta, /request.*carpentry quote/i);
+  assert.match(content.hero.secondary_cta, /carpentry services/i);
   execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
   const home = fs.readFileSync(path.join(root, 'public', 'index.html'), 'utf8');
-  assert.match(home, /<a class="btn primary" href="\/contact\/">Request a site assessment and quote<\/a>/);
-  assert.match(home, /<a class="btn ghost" href="\/services\/">Explore our services<\/a>/);
+  assert.match(home, /<a class="btn primary" href="\/contact\/">Request a carpentry quote<\/a>/);
+  assert.match(home, /<a class="btn ghost" href="\/services\/">View carpentry services<\/a>/);
   assert.match(content.contact.lead, /on-site assessment or measure/i);
   assert.match(content.contact.lead, /written quote/i);
   assert.match(content.contact.preparation.at(-1), /drawings or reference photos/i);
@@ -112,7 +112,7 @@ test('detail pages provide a clear planning path and enquiry action without alte
   const planning = service.match(/<aside class="service-rail"[^>]*>([\s\S]*?)<\/aside>/)?.[1];
   assert.ok(planning, 'service planning rail');
   assert.match(planning, /href="\/contact\/">[^<]+<\/a>/);
-  assert.match(planning, /(?:assessment|scope|measure)/i);
+  assert.match(planning, /(?:assessment|scope|measure|site visit)/i);
   assert.match(interior, /\.service-rail/);
   const guide = fs.readFileSync(path.join(root, 'public/insights/commercial-fitout-process/index.html'), 'utf8');
   assert.match(guide, /class="wrap article-cta"/);

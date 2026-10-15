@@ -114,10 +114,10 @@ test('service hub groups all visible services and publishes matching catalogue a
   const hub = readRoute('/services/');
 
   for (const label of [
-    'Structural and construction carpentry',
-    'Interior Carpentry, Joinery and Renovation',
-    'Outdoor timber work',
-    'Timber Repairs, Restoration and Heritage Carpentry',
+    'Residential Timber Repairs',
+    'Interior Joinery and Renovation',
+    'Decks, Pergolas, Fences and Stairs',
+    'Framing, Subfloors and Commercial Fitouts',
   ]) assert.match(hub, new RegExp(label));
 
   assert.equal((hub.match(/class="service-card"/g) || []).length, 25, 'hub should display all 25 services once');
