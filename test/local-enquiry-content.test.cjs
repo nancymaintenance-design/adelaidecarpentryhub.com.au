@@ -16,7 +16,7 @@ test('all 25 service introductions offer a valid enquiry and accessible call act
     const body = main(read(`services/${slug}`));
     const hero = body.slice(0, body.indexOf('<section class="section"'));
     assert.match(hero, /class="btn primary" href="\/contact\/"/, slug);
-    assert.match(hero, /href="tel:\+611300838722"[^>]*>[^<]*0403 202 949<\/a>/, slug);
+    assert.match(hero, /href="tel:\+61403202949"[^>]*>[^<]*0403 202 949<\/a>/, slug);
     assert.ok(hero.indexOf('class="lede"') < hero.indexOf('href="/contact/"'), slug);
     assert.ok(fs.existsSync(path.join(root, 'public/contact/index.html')));
   }
@@ -28,9 +28,9 @@ test('footer and dedicated contact blocks render confirmed phone and email links
   for (const route of routes) {
     const html = read(route);
     const footer = html.match(/<footer[\s\S]*?<\/footer>/)[0];
-    assert.match(footer, /href="tel:\+611300838722">0403 202 949<\/a>/, route);
+    assert.match(footer, /href="tel:\+61403202949">0403 202 949<\/a>/, route);
     assert.match(footer, /href="mailto:handymanfelix.au2026@outlook.com"/, route);
-    if (route) assert.match(main(html), /href="tel:\+611300838722">0403 202 949<\/a>/, route);
+    if (route) assert.match(main(html), /href="tel:\+61403202949">0403 202 949<\/a>/, route);
   }
 });
 

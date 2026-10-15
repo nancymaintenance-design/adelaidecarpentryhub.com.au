@@ -454,9 +454,7 @@ function footer() {
   return `<footer class="site-footer"><div class="wrap footer-grid"><div class="footer-intro"><a class="footer-brand" href="/">${escapeHtml(brandName)}</a><p>${escapeHtml(content.brand.tagline)}</p>${social}</div><div><strong>Services</strong><a href="/services/">Carpentry &amp; joinery services</a><a href="/service-areas/">Service areas</a><a href="/about/">About</a></div><div><strong>Content</strong><a href="/insights/">Timber planning guides</a><a href="/faq/">Quotes and booking questions</a><a href="/contact/#enquiry-data">Enquiry data use</a></div><div><strong>Contact</strong><a href="/contact/">${escapeHtml(content.contact.cta)}</a><address class="footer-contact">${phoneLink()}${emailLink()}<span>${escapeHtml(content.contact.address)}</span><span>Office hours: ${escapeHtml(officeHoursText())}</span></address></div></div><div class="wrap footer-bottom"><span>© ${new Date().getFullYear()} ${escapeHtml(brandName)} · Adelaide, SA</span><span>${escapeHtml(content.brand.industry_label)}</span></div></footer>`;
 }
 
-// Routing targets are independent of visible contact details in site-content.json.
-const BUSINESS_PHONE_TARGET = '+611300838722';
-function phoneLink() { return `<a href="tel:${BUSINESS_PHONE_TARGET}">${escapeHtml(content.contact.phone)}</a>`; }
+function phoneLink() { return `<a href="tel:+61403202949">${escapeHtml(content.contact.phone)}</a>`; }
 function emailLink() { return `<a href="mailto:${escapeHtml(content.contact.email)}">${escapeHtml(content.contact.email)}</a>`; }
 
 // Share only the already confirmed homepage identity; do not infer external profiles.

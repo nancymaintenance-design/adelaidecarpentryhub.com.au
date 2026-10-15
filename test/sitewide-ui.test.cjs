@@ -64,7 +64,7 @@ test('every guide directory links to unique real article headings and confirmed 
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(([, id]) => id);
     assert.equal(new Set(ids).size, ids.length, `${slug}: unique semantic IDs`);
     assert.match(rail, /href="\/contact\/"/);
-    assert.match(rail, /href="tel:\+611300838722"/);
+    assert.match(rail, /href="tel:\+61403202949"/);
     assert.doesNotMatch(rail, /onclick=|aria-expanded=/);
   }
 });
