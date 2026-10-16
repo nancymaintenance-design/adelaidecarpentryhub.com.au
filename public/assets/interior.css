@@ -262,6 +262,17 @@ html:has(body.interior), body.interior { overflow-x: visible; }
 .interior details p { max-width: 70ch; margin: 0; padding: 0 18px 24px; color: var(--muted); }
 
 .interior .about-story-grid { gap: clamp(40px, 7vw, 96px); }
+.interior .about-story-grid { align-items: start; gap: 32px; }
+.interior .about-advisers h2 { margin: 0 0 16px; }
+.interior .advisers-intro { margin: 0 0 20px; }
+.interior .adviser-list { display: grid; gap: 12px; }
+.interior .adviser-card { padding: 20px 22px; border: 1px solid var(--line); border-radius: var(--card-radius); background: var(--surface); }
+.interior .adviser-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 16px; }
+.interior .adviser-heading h3 { margin: 0; font-size: 25px; }
+.interior .adviser-heading a { font-weight: 700; white-space: nowrap; }
+.interior .adviser-card p { margin: 10px 0 0; font-size: 16px; line-height: 1.6; }
+.interior .about-story-grid .about-image { margin: 0; }
+.interior .about-company > h2 { margin-bottom: 24px; }
 .interior .about-image { border-radius: var(--card-radius); box-shadow: none; border: 1px solid var(--line); }
 .interior .value-grid { gap: 16px; }
 .interior .value-card { position: relative; min-height: 100%; padding: 30px 26px; border-radius: var(--card-radius); border-color: var(--line); box-shadow: none; background: var(--surface); }

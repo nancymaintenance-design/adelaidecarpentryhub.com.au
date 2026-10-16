@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
+const { JSDOM } = require('jsdom');
 
 const root = path.resolve(__dirname, '..');
 
@@ -34,7 +35,15 @@ test('contact page uses a selected street as the project location', () => {
   const source = fs.readFileSync(path.join(root, 'src', 'assets', 'base.js'), 'utf8');
 
   assert.match(source, /get\('location'\)/);
-  assert.match(source, /Project location: \$\{selectedLocation\}/);
+  const dom = new JSDOM('<html lang="en"><body><form data-contact-form><textarea name="message"></textarea></form></body></html>', {
+    url: 'https://www.adelaidecarpentryhub.com.au/contact/?location=Pirie%20Street', runScripts: 'outside-only',
+  });
+  try {
+    dom.window.eval(source);
+    assert.equal(dom.window.document.querySelector('textarea').value, 'Project location: Pirie Street\n\n');
+  } finally {
+    dom.window.close();
+  }
 });
 
 test('each region renders a unique crawlable carpentry page with useful local content', () => {
@@ -81,12 +90,12 @@ test('each compact area keeps one enquiry form and street-prefill links after a 
   }
 });
 
-test('integrity checker accepts the 47-page service directory and sitemap', () => {
+test('integrity checker accepts the 96-page bilingual service directory and sitemap', () => {
   execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
   const result = execFileSync(process.execPath, ['check.cjs'], { cwd: root, encoding: 'utf8' });
 
-  assert.match(result, /Total pages: 47 \(expect 47\)/);
-  assert.match(result, /Sitemap has 47 <loc> entries/);
+  assert.match(result, /Total pages: 96 \(expect 96\)/);
+  assert.match(result, /Sitemap has 96 <loc> entries/);
   assert.match(result, /All checks passed/);
 });
 

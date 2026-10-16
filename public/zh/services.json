@@ -1,0 +1,158 @@
+{
+  "version": "https://adelaidecarpentryhub.com.au/services-catalogue/1.0",
+  "title": "MEL ONE 阿德莱德木工服务",
+  "home_page_url": "https://www.adelaidecarpentryhub.com.au/zh/services/",
+  "items": [
+    {
+      "name": "阿德莱德房屋木结构框架木工 — 房屋框架施工",
+      "title": "阿德莱德房屋木结构框架木工 — 房屋框架施工",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/house-framing/",
+      "description": "住宅房屋木结构框架，围绕已签发图纸、现场出入及检查责任规划。"
+    },
+    {
+      "name": "阿德莱德户外木工 — 木平台、凉棚与木屏风",
+      "title": "阿德莱德户外木工 — 木平台、凉棚与木屏风",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/outdoor-living/",
+      "description": "根据标高、排水、暴露条件及通道规划新木平台和凉棚；现有平台需要处理时，可比较修复方案。"
+    },
+    {
+      "name": "阿德莱德后期木工安装——门、踢脚板与门窗套线",
+      "title": "阿德莱德后期木工安装——门、踢脚板与门窗套线",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/fix-out-second-fix/",
+      "description": "为新建及翻新项目，将门、踢脚板、门窗套线及饰面连接协调成后期木工安装工程包。"
+    },
+    {
+      "name": "阿德莱德模板木工——楼板、梁与墙",
+      "title": "阿德莱德模板木工——楼板、梁与墙",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/formwork-carpentry/",
+      "description": "楼板、梁及墙的木模板，与现场团队共同规划定位放线、斜撑、预埋件及拆模。"
+    },
+    {
+      "name": "阿德莱德商业木工——装修与翻新",
+      "title": "阿德莱德商业木工——装修与翻新",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/fitout-refurbishment/",
+      "description": "商业木作装修围绕营业时间、饰面、现场出入条件及专业工程交接进行规划。"
+    },
+    {
+      "name": "阿德莱德厨房与浴室柜体——定制木作",
+      "title": "阿德莱德厨房与浴室柜体——定制木作",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/custom-kitchen-bathroom/",
+      "description": "按尺寸定制厨房橱柜、洗衣房柜体及浴室柜木作；布局、五金及安装与专业连接分别计价。"
+    },
+    {
+      "name": "阿德莱德建筑定制木作——墙面护板与木作细节",
+      "title": "阿德莱德建筑定制木作——墙面护板与木作细节",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/architectural-joinery/",
+      "description": "定制木墙板、隐形门细节及特色木作，与图纸、样板及安装接口协调。"
+    },
+    {
+      "name": "阿德莱德嵌入式衣柜 — 定制收纳与层架",
+      "title": "阿德莱德嵌入式衣柜 — 定制收纳与层架",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/storage-solutions/",
+      "description": "根据日常使用、柜门开启净空、材料及确认后的现场尺寸，规划嵌入式衣柜、书柜和书房收纳。"
+    },
+    {
+      "name": "阿德莱德定制木门与家具",
+      "title": "阿德莱德定制木门与家具",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/custom-doors-furniture/",
+      "description": "新定制木门及家具，与洞口条件、用途、五金及饰面要求匹配。"
+    },
+    {
+      "name": "阿德莱德木材腐烂维修 — 修复与维护",
+      "title": "阿德莱德木材腐烂维修 — 修复与维护",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/restoration-maintenance/",
+      "description": "检查剩余完好材料、潮湿原因及任何虫害或结构损坏后，进行局部木材腐朽维修、嵌接修补及构件更换。"
+    },
+    {
+      "name": "阿德莱德历史建筑木工——木材维修与修复",
+      "title": "阿德莱德历史建筑木工——木材维修与修复",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/heritage-carpentry/",
+      "description": "历史建筑木材维修重点包括保留原有构件、型线匹配、状况记录及针对具体物业的审批责任。"
+    },
+    {
+      "name": "阿德莱德户外木平台翻修与木地板维修",
+      "title": "阿德莱德户外木平台翻修与木地板维修",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/decking-restoration-flooring/",
+      "description": "现有户外木平台维修与重新饰面，以及分别规划的室内木地板安装和表面修复。"
+    },
+    {
+      "name": "阿德莱德木门窗维修",
+      "title": "阿德莱德木门窗维修",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/door-window-repairs/",
+      "description": "木门窗维修：确定更换方案前，先评估开合状况、局部木材损坏及维修选项。"
+    },
+    {
+      "name": "阿德莱德踢脚板维修 — 安装与更换",
+      "title": "阿德莱德踢脚板维修 — 安装与更换",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/skirting-board-installation-repairs/",
+      "description": "维修或更换损坏踢脚板段、匹配型线，并规划墙角、地面连接及涂装准备。"
+    },
+    {
+      "name": "阿德莱德门框与侧板维修——门窗套线与室内装饰木线",
+      "title": "阿德莱德门框与侧板维修——门窗套线与室内装饰木线",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/door-jamb-interior-trim/",
+      "description": "维修开裂侧板或更换损坏门框段，复用适用门扇，并匹配门窗套线与现有室内装饰线。"
+    },
+    {
+      "name": "阿德莱德木围栏维修 — 立柱、横档与围栏板更换",
+      "title": "阿德莱德木围栏维修 — 立柱、横档与围栏板更换",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/timber-fencing-repairs-replacement/",
+      "description": "木围栏维修：比较立板、横档及立柱损坏、更换范围、作业出入及边界责任。"
+    },
+    {
+      "name": "阿德莱德木围栏门维修 — 安装与更换",
+      "title": "阿德莱德木围栏门维修 — 安装与更换",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/timber-gates-installation-repairs/",
+      "description": "木门维修与安装，评估下垂、立柱、铰链、门闩及开启间隙。"
+    },
+    {
+      "name": "阿德莱德翻新木工 — 木材维修与收尾安装",
+      "title": "阿德莱德翻新木工",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/renovation-carpentry/",
+      "description": "翻新木工围绕现有状况、洞口改动、收尾阶段及已批准变更协调。"
+    },
+    {
+      "name": "阿德莱德檐口封板与木檐底维修——山墙封檐板更换",
+      "title": "阿德莱德檐口封板与木檐底维修——山墙封檐板更换",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/fascia-eaves-repairs/",
+      "description": "维修风化檐口封板、山墙封檐板及木檐底，包含板材匹配、固定基层检查及明确涂装范围。"
+    },
+    {
+      "name": "阿德莱德木质外墙挂板维修 — 局部木挂板更换",
+      "title": "阿德莱德木质外墙挂板维修 — 局部木挂板更换",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/weatherboard-repairs/",
+      "description": "更换单块或多块损坏木外墙挂板，匹配板材型线，并检查背部基层及相邻连接。"
+    },
+    {
+      "name": "阿德莱德架空地板下木结构维修 — 地板搁栅与承托梁",
+      "title": "阿德莱德架空地板下木结构维修 — 地板搁栅与承托梁",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/subfloor-timber-repairs/",
+      "description": "评估局部地板弹动、下陷及吱响，再结合安全进入条件和已确认结构要求，界定木支撑维修。"
+    },
+    {
+      "name": "阿德莱德无障碍木工与木坡道",
+      "title": "阿德莱德无障碍木工与木坡道",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/accessibility-carpentry/",
+      "description": "围绕使用者行动需求及评估后的现场，规划木门槛、入口调整、坡道及平台。"
+    },
+    {
+      "name": "阿德莱德木凉棚维修 — 立柱与横梁",
+      "title": "阿德莱德木凉棚维修 — 立柱与横梁",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/pergola-repairs/",
+      "description": "针对损坏立柱、梁及连接的木凉棚维修。规划局部更换、作业出入、饰面及经评估的结构责任。"
+    },
+    {
+      "name": "阿德莱德木楼梯、扶手与护栏维修",
+      "title": "阿德莱德木楼梯、扶手与护栏维修",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/timber-stairs-handrails/",
+      "description": "木楼梯、扶手及栏杆维修。局部维修或构件更换前，评估损坏踏步、松动固定件及支撑。"
+    },
+    {
+      "name": "阿德莱德柜门与抽屉维修",
+      "title": "阿德莱德柜门与抽屉维修",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/services/cabinet-repairs/",
+      "description": "MEL ONE Carpentry 柜门与抽屉维修。维修或更换前，评估铰链、滑轨、固定件及损坏柜体板材。"
+    }
+  ],
+  "language": "zh-Hans"
+}

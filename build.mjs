@@ -9,9 +9,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
+import { bilingualPages, chineseRoute, loadTranslations } from './tools/i18n.mjs';
+import { localizedResources } from './tools/localized-resources.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectDir = __dirname;
+const dictionary = loadTranslations(projectDir);
 
 // Detect deploy target: --docs for GitHub Pages, else local preview
 const isDocs = process.argv.includes('--docs');
@@ -22,6 +25,7 @@ const assetPath = path.join(projectDir, 'src', 'assets', 'asset-manifest.json');
 const themeCssSrc = path.join(projectDir, 'src', 'assets', 'theme.css');
 const interiorCssSrc = path.join(projectDir, 'src', 'assets', 'interior.css');
 const assetUrls = {};
+const pendingPages = new Map();
 const suppliedRepairPhotos = [
   'service-fascia-eaves-repairs',
   'service-weatherboard-repairs',
@@ -509,12 +513,7 @@ function page({ title, description, route, active = '', body, jsonLd, robots = '
 }
 
 function writeRoute(route, html) {
-  const destination = route === '/' ? path.join(siteDir, 'index.html')
-    : route === '/404.html' ? path.join(siteDir, '404.html')
-    : path.join(siteDir, route, 'index.html');
-  fs.mkdirSync(path.dirname(destination), { recursive: true });
-  fs.writeFileSync(destination, reserveImageSpace(html), 'utf8');
-  console.log(`  ✓ ${route}`);
+  pendingPages.set(route, reserveImageSpace(html));
 }
 
 const displayTitle = (item) => item.display_title || item.title;
@@ -1126,7 +1125,7 @@ const areasBody = `<section class="page-hero service-areas-hero"><div class="wra
 <section class="section area-directory-section"><div class="wrap" data-area-directory>
   <div class="area-directory-intro"><p class="kicker">City directory</p><h2>Carpentry by Street and Precinct</h2><p>Browse ${areaCount} City of Adelaide streets by precinct, or search the directory directly.</p></div>
   <div class="area-search-panel"><label for="area-search">${escapeHtml(serviceAreas.searchLabel)}</label><div class="area-search-control"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m1.35-5.15a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z"/></svg><input id="area-search" data-area-search type="search" autocomplete="off" placeholder="${escapeHtml(serviceAreas.searchPlaceholder)}"><button type="button" data-area-clear hidden>Clear</button></div><p class="area-search-status" data-area-status role="status" aria-live="polite">Showing all ${areaCount} streets.</p></div>
-  <div class="area-grid">${safeArray(serviceAreas.regions).map((region) => `<section class="area-region" data-area-region><header><h2><a href="${regionRoute(region)}">${escapeHtml(region.name)}</a></h2><span class="area-region-count">${locationsFor(region).length} streets</span></header><p><a class="area-region-link" href="${regionRoute(region)}">View ${escapeHtml(region.name)} carpentry services</a></p><ul class="suburb-list">${locationsFor(region).map(location => `<li data-location data-search="${escapeHtml((location + ' ' + region.name).toLocaleLowerCase('en-AU'))}"><a href="${regionRoute(region)}?street=${encodeURIComponent(location)}" aria-label="View carpentry services for ${escapeHtml(location)} in ${escapeHtml(region.name)}">${escapeHtml(location)}</a></li>`).join('')}</ul></section>`).join('')}</div>
+  <div class="area-grid">${safeArray(serviceAreas.regions).map((region) => `<section class="area-region" data-area-region><header><h2><a href="${regionRoute(region)}">${escapeHtml(region.name)}</a></h2><span class="area-region-count">${locationsFor(region).length} streets</span></header><p><a class="area-region-link" href="${regionRoute(region)}">View ${escapeHtml(region.name)} carpentry services</a></p><ul class="suburb-list">${locationsFor(region).map(location => `<li data-location data-search="${escapeHtml((location + ' ' + region.name + ' ' + (dictionary.get(region.name) || '')).toLocaleLowerCase('en-AU'))}"><a href="${regionRoute(region)}?street=${encodeURIComponent(location)}" aria-label="View carpentry services for ${escapeHtml(location)} in ${escapeHtml(region.name)}">${escapeHtml(location)}</a></li>`).join('')}</ul></section>`).join('')}</div>
   <p class="area-empty" data-area-empty hidden>No street matched that search. Try the full street name or clear the search.</p>
 </div></section>
 <section class="section hub-planning"><div class="wrap reading article">
@@ -1205,14 +1204,7 @@ const faqBody = `<section class="page-hero"><div class="wrap page-hero-grid"><di
 writeRoute('/faq/', page({ title: 'Adelaide Carpentry FAQs', description: copy.faqLead, route: '/faq/', active: 'faq', body: faqBody, jsonLd: { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: content.faqs.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) } }));
 
 // ── About ───────────────────────────────────────────────────────────────
-const valuesList = (content.about.values || []).map(v => {
-  const details = (v.details || []).map(d => `<li>${escapeHtml(d)}</li>`).join('');
-  return `<article class="value-card">
-    <h3>${escapeHtml(v.heading)}</h3>
-    <p>${escapeHtml(v.body)}</p>
-    ${details ? `<ul class="value-details">${details}</ul>` : ''}
-  </article>`;
-}).join('');
+const adviserCards = content.about.advisers.map(adviser => `<article class="adviser-card"><div class="adviser-heading"><h3>${escapeHtml(adviser.name)}</h3><a href="tel:${escapeHtml(adviser.telephone)}">${escapeHtml(adviser.phone)}</a></div><p>${escapeHtml(adviser.bio)}</p></article>`).join('');
 const aboutImageSlot = (() => {
   const item = slot('about');
   if (item && item.src) {
@@ -1224,42 +1216,21 @@ const aboutImageSlot = (() => {
   return `<div class="about-image-placeholder" title="Drop your team/workshop photo here"><span>Image slot</span><small>Drop at assets/about.jpg</small></div>`;
 })();
 const companyDetails = (content.about.company_details || []).map((item) => `<div><dt>${escapeHtml(item.label)}</dt><dd>${item.url ? `<a class="text-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.value)} ↗</a>` : escapeHtml(item.value)}</dd></div>`).join('');
-const aboutSteps = (content.about.process_steps || []).map((item) => `<article class="value-card"><h3>${escapeHtml(item.heading)}</h3><p>${escapeHtml(item.body)}</p></article>`).join('');
-const aboutPriorities = (content.about.priorities || []).map((item) => `<article class="value-card"><h3>${escapeHtml(item.heading)}</h3><p>${escapeHtml(item.body)}</p></article>`).join('');
-const aboutFaq = (content.about.faqs || []).map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`).join('');
 const aboutBody = `<section class="page-hero"><div class="wrap page-hero-grid"><div><p class="kicker">ABOUT</p><h1>${escapeHtml(content.about.title)}</h1></div><p class="lede">${escapeHtml(content.about.lead)}</p></div></section>
 <section class="section"><div class="wrap">
-  <h2 class="about-section-title">${escapeHtml(content.about.story_title)}</h2>
   <div class="about-story-grid">
-    <article class="reading">
-      <p>${escapeHtml(content.about.story)}</p>
-    </article>
+    <div class="about-advisers"><h2>${escapeHtml(content.about.advisers_title)}</h2><p class="advisers-intro">${escapeHtml(content.about.advisers_intro)}</p><div class="adviser-list">${adviserCards}</div></div>
     ${aboutImageSlot}
   </div>
-  <div class="value-grid">${valuesList}</div>
 </div></section>
 <section class="section section-alt"><div class="wrap reading">
   <h2>${escapeHtml(content.about.scope_title)}</h2>
   <p>${escapeHtml(content.about.scope)}</p>
 </div></section>
 <section class="section"><div class="wrap about-company">
-  <div class="section-head"><div><p class="kicker">COMPANY &amp; INSURANCE</p><h2>${escapeHtml(content.about.company_title || 'Company & insurance details')}</h2></div><p>${escapeHtml(content.about.company_intro || '')}</p></div>
+  <h2>${escapeHtml(content.about.company_title || 'Company & insurance details')}</h2>
   <dl class="company-details">${companyDetails}</dl>
-  <p class="office-hours">Office hours: ${escapeHtml(officeHoursText())}</p>
-</div></section>
-<section class="section section-alt"><div class="wrap">
-  <div class="section-head"><div><p class="kicker">ASSESSMENT &amp; BOOKING</p><h2>${escapeHtml(content.about.process_title || 'Clear details before work begins')}</h2></div><p>${escapeHtml(content.about.process_lead || '')}</p></div>
-  <div class="value-grid">${aboutSteps}</div>
-</div></section>
-<section class="section"><div class="wrap">
-  <div class="section-head"><div><p class="kicker">CUSTOMER PRIORITIES</p><h2>${escapeHtml(content.about.priorities_title || 'Site Conditions and Project Selections')}</h2></div><p>${escapeHtml(content.about.priorities_lead || '')}</p></div>
-  <div class="value-grid">${aboutPriorities}</div>
-</div></section>
-<section class="section section-alt"><div class="wrap reading about-faq">
-  <h2>${escapeHtml(content.about.faq_title || 'Company and project questions')}</h2>
-  ${aboutFaq}
-</div></section>
-<section class="section closing"><div class="wrap closing-inner"><h2>Arrange Carpentry Assessment and a Written Quote</h2><div><p>Call ${phoneLink()}, email ${emailLink()} or use our contact form. Tell us the suburb, what needs attention and any important access details. We arrange a site assessment and confirm the work scope and written quote. Photos are optional; email existing images to handymanfelix.au2026@outlook.com.</p><a class="btn primary" href="/contact/">Contact MEL ONE</a></div></div></section>`;
+</div></section>`;
 writeRoute('/about/', page({ title: content.about.title, description: content.about.seo_description, route: '/about/', active: 'about', body: aboutBody, jsonLd: { '@context': 'https://schema.org', '@type': 'AboutPage', name: content.about.title, url: canonical('/about/'), description: content.about.lead, mainEntity: { '@id': canonical('/#business') } } }));
 
 // ── Contact ─────────────────────────────────────────────────────────────
@@ -1288,16 +1259,45 @@ writeRoute('/contact/', page({ title: 'Request a Carpentry Quote Adelaide | MEL 
   ],
 } }));
 
+// Privacy copy is rendered through the same bilingual shell as the rest of the site.
+writeRoute('/clarity-privacy/', page({ title: 'Privacy and Microsoft Clarity', description: 'How MEL ONE handles enquiries and optional Microsoft Clarity analytics.', route: '/clarity-privacy/', body: `<section class="page-hero"><div class="wrap"><h1>Privacy and Microsoft Clarity</h1></div></section><section class="section"><div class="wrap reading"><h2>Enquiry information</h2><p>The form sends your name, phone number, email address and project description to MEL ONE so we can discuss your enquiry and assessment arrangements. The website sends these details by email using Resend to handymanfelix.au2026@outlook.com.</p><h2>Optional website analytics</h2><p>With your permission, Microsoft Clarity records masked page reading and clicks for heatmaps and session recordings. Recording stops when you start using a form or editable field. Contact and confirmation pages are excluded.</p><p>This preference controls Clarity only. You can browse and use the website without accepting. You can change your choice using the Clarity preferences button. If your browser requests no tracking, Clarity stays off.</p><p><a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft Privacy Statement</a></p><h2>Contact about your information</h2><p>For questions about your enquiry data, email ${emailLink()}.</p></div></section>` }));
+
 // ── 404 ─────────────────────────────────────────────────────────────────
 writeRoute('/404.html', page({ title: 'Adelaide Carpentry Page Not Found', description: 'The page you requested does not exist.', route: '/404.html', robots: 'noindex,follow', body: `<section class="page-hero"><div class="wrap"><p class="kicker">404</p><h1>Adelaide Carpentry Page Not Found</h1><p class="lede">Use the <a href="/services/">carpentry service directory</a> to find a repair or installation, or <a href="/contact/">contact MEL ONE</a> about the work.</p><a class="btn primary" href="/">Back to home</a></div></section>` }));
 
 // ── Sitemap & robots ────────────────────────────────────────────────────
 const allRoutes = [
-  '/', '/services/', '/service-areas/', '/insights/', '/faq/', '/about/', '/contact/', '/404.html',
+  '/', '/services/', '/service-areas/', '/insights/', '/faq/', '/about/', '/contact/', '/clarity-privacy/', '/404.html',
   ...safeArray(serviceAreas.regions).map(regionRoute),
   ...content.services.map((item) => `/services/${item.slug}/`),
   ...content.insights.map((item) => `/insights/${item.slug}/`),
 ];
+const extractOnly = process.argv.includes('--extract-i18n');
+const localizedPages = [];
+const untranslated = new Map();
+for (const [route, html] of pendingPages) {
+  if (extractOnly) localizedPages.push([route, html]);
+  else {
+    const result = bilingualPages(html, route, origin, dictionary);
+    for (const text of result.missing) {
+      if (!untranslated.has(text)) untranslated.set(text, []);
+      untranslated.get(text).push(route);
+    }
+    localizedPages.push([route, result.english], [chineseRoute(route), result.chinese]);
+  }
+}
+if (untranslated.size) {
+  const report = path.join(projectDir, '.seo-cache/i18n-missing.json');
+  fs.mkdirSync(path.dirname(report), { recursive: true });
+  fs.writeFileSync(report, JSON.stringify(Object.fromEntries(untranslated), null, 2));
+  throw new Error(`${untranslated.size} new or changed English strings need Chinese translations. See ${report}. Run npm run i18n:extract, update src/i18n/*.json, then rebuild.`);
+}
+for (const [route, html] of localizedPages) {
+  const destination = route.endsWith('.html') ? path.join(siteDir, route) : path.join(siteDir, route, 'index.html');
+  fs.mkdirSync(path.dirname(destination), { recursive: true });
+  fs.writeFileSync(destination, html, 'utf8');
+  console.log(`  ✓ ${route}`);
+}
 const routeLabels = new Map([
   ['/', 'Home'],
   ['/about/', 'About'],
@@ -1324,9 +1324,10 @@ const llms = [
 fs.writeFileSync(path.join(siteDir, 'llms.txt'), llms, 'utf8');
 fs.writeFileSync(path.join(siteDir, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${
-    allRoutes.filter(r => r !== '/404.html').map(r => `<url><loc>${canonical(r)}</loc></url>`).join('')
+    allRoutes.filter(r => r !== '/404.html').flatMap(r => extractOnly ? [r] : [r, chineseRoute(r)]).map(r => `<url><loc>${canonical(r)}</loc></url>`).join('')
   }</urlset>`, 'utf8');
 fs.writeFileSync(path.join(siteDir, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${canonical('/sitemap.xml')}\n`, 'utf8');
+if (!extractOnly) localizedResources(siteDir, new Map(localizedPages), origin, dictionary);
 
 console.log('\n✅ Build complete. Output: ' + siteDir);
-console.log(`   Total pages: ${allRoutes.length}`);
+console.log(`   Total pages: ${localizedPages.length}`);

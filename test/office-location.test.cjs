@@ -16,7 +16,7 @@ test('home page publishes the 63 Pirie Street office with an embedded map and Ma
   assert.match(home, /Please contact us before visiting so we can make sure the right person is available to discuss your project\./);
 });
 
-test('owner-confirmed hours appear in the office, footer, Contact and About and business schema', () => {
+test('owner-confirmed hours appear in the office, all footers, Contact and business schema', () => {
   const read = (route) => fs.readFileSync(path.join(root, 'public', route, 'index.html'), 'utf8');
   const home = read('');
   const hours = 'Monday–Sunday, 9 am–9 pm (Adelaide local time)';
@@ -26,7 +26,7 @@ test('owner-confirmed hours appear in the office, footer, Contact and About and 
     const html = read(route);
     const footer = html.match(/<footer[\s\S]*?<\/footer>/)[0];
     assert.ok(footer.includes(hours), `Footer hours missing on /${route}`);
-    if (route) assert.ok(html.slice(0, html.indexOf('<footer')).includes(hours), `Body hours missing on /${route}`);
+    if (route === 'contact') assert.ok(html.slice(0, html.indexOf('<footer')).includes(hours), `Body hours missing on /${route}`);
     assert.ok(html.includes('0403 202 949'));
     assert.ok(html.includes('handymanfelix.au2026@outlook.com'));
     assert.ok(html.includes('63 Pirie St, Adelaide, SA 5000'));

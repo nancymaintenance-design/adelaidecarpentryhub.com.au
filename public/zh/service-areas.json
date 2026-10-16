@@ -1,0 +1,250 @@
+{
+  "version": 1,
+  "title": "阿德莱德服务地区",
+  "updated": "2026-10-16",
+  "regions": [
+    {
+      "name": "阿德莱德中央商务区（Adelaide CBD）",
+      "slug": "adelaide-cbd",
+      "title": "阿德莱德中央商务区（Adelaide CBD）木工与定制木作服务",
+      "description": "阿德莱德中央商务区木工与定制木作服务，涵盖木窗维修、门、室内装饰线、户外木平台、围栏及实用木作维护。",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/service-areas/adelaide-cbd/",
+      "streets": [
+        "King William Street",
+        "Pirie Street",
+        "Grenfell Street",
+        "Currie Street",
+        "Waymouth Street",
+        "Flinders Street",
+        "Franklin Street",
+        "Rundle Mall"
+      ],
+      "services": [
+        {
+          "title": "阿德莱德木门窗维修",
+          "summary": "木门窗维修：确定更换方案前，先评估开合状况、局部木材损坏及维修选项。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/door-window-repairs/"
+        },
+        {
+          "title": "阿德莱德门框与侧板维修——门窗套线与室内装饰木线",
+          "summary": "维修开裂侧板或更换损坏门框段，复用适用门扇，并匹配门窗套线与现有室内装饰线。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/door-jamb-interior-trim/"
+        },
+        {
+          "title": "阿德莱德建筑定制木作——墙面护板与木作细节",
+          "summary": "定制木墙板、隐形门细节及特色木作，与图纸、样板及安装接口协调。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/architectural-joinery/"
+        },
+        {
+          "title": "阿德莱德翻新木工 — 木材维修与收尾安装",
+          "summary": "翻新木工围绕现有状况、洞口改动、收尾阶段及已批准变更协调。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/renovation-carpentry/"
+        },
+        {
+          "title": "阿德莱德木围栏维修 — 立柱、横档与围栏板更换",
+          "summary": "木围栏维修：比较立板、横档及立柱损坏、更换范围、作业出入及边界责任。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/timber-fencing-repairs-replacement/"
+        },
+        {
+          "title": "阿德莱德户外木平台翻修与木地板维修",
+          "summary": "现有户外木平台维修与重新饰面，以及分别规划的室内木地板安装和表面修复。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/decking-restoration-flooring/"
+        }
+      ]
+    },
+    {
+      "name": "东区（East End）",
+      "slug": "east-end",
+      "title": "阿德莱德东区（East End）木工与定制木作服务",
+      "description": "阿德莱德东区木工与定制木作，涵盖木门、窗框、室内收尾、翻新木工、户外木平台、围栏及木作维护。",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/service-areas/east-end/",
+      "streets": [
+        "Rundle Street",
+        "Frome Street",
+        "Hutt Street",
+        "Wakefield Street",
+        "Halifax Street",
+        "East Terrace"
+      ],
+      "services": [
+        {
+          "title": "阿德莱德木门窗维修",
+          "summary": "木门窗维修：确定更换方案前，先评估开合状况、局部木材损坏及维修选项。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/door-window-repairs/"
+        },
+        {
+          "title": "阿德莱德踢脚板维修 — 安装与更换",
+          "summary": "维修或更换损坏踢脚板段、匹配型线，并规划墙角、地面连接及涂装准备。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/skirting-board-installation-repairs/"
+        },
+        {
+          "title": "阿德莱德门框与侧板维修——门窗套线与室内装饰木线",
+          "summary": "维修开裂侧板或更换损坏门框段，复用适用门扇，并匹配门窗套线与现有室内装饰线。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/door-jamb-interior-trim/"
+        },
+        {
+          "title": "阿德莱德建筑定制木作——墙面护板与木作细节",
+          "summary": "定制木墙板、隐形门细节及特色木作，与图纸、样板及安装接口协调。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/architectural-joinery/"
+        },
+        {
+          "title": "阿德莱德木围栏门维修 — 安装与更换",
+          "summary": "木门维修与安装，评估下垂、立柱、铰链、门闩及开启间隙。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/timber-gates-installation-repairs/"
+        },
+        {
+          "title": "阿德莱德木材腐烂维修 — 修复与维护",
+          "summary": "检查剩余完好材料、潮湿原因及任何虫害或结构损坏后，进行局部木材腐朽维修、嵌接修补及构件更换。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/restoration-maintenance/"
+        }
+      ]
+    },
+    {
+      "name": "西区（West End）",
+      "slug": "west-end",
+      "title": "阿德莱德西区（West End）木工与定制木作服务",
+      "description": "阿德莱德西区木工与定制木作服务，涵盖木材维修、门窗、装修、室内收尾、户外木平台、围栏及门。",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/service-areas/west-end/",
+      "streets": [
+        "Gouger Street",
+        "Grote Street",
+        "Morphett Street",
+        "Hindley Street",
+        "Light Square",
+        "Merrifield Street"
+      ],
+      "services": [
+        {
+          "title": "阿德莱德木门窗维修",
+          "summary": "木门窗维修：确定更换方案前，先评估开合状况、局部木材损坏及维修选项。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/door-window-repairs/"
+        },
+        {
+          "title": "阿德莱德商业木工——装修与翻新",
+          "summary": "商业木作装修围绕营业时间、饰面、现场出入条件及专业工程交接进行规划。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/fitout-refurbishment/"
+        },
+        {
+          "title": "阿德莱德翻新木工 — 木材维修与收尾安装",
+          "summary": "翻新木工围绕现有状况、洞口改动、收尾阶段及已批准变更协调。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/renovation-carpentry/"
+        },
+        {
+          "title": "阿德莱德定制木门与家具",
+          "summary": "新定制木门及家具，与洞口条件、用途、五金及饰面要求匹配。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/custom-doors-furniture/"
+        },
+        {
+          "title": "阿德莱德木围栏维修 — 立柱、横档与围栏板更换",
+          "summary": "木围栏维修：比较立板、横档及立柱损坏、更换范围、作业出入及边界责任。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/timber-fencing-repairs-replacement/"
+        },
+        {
+          "title": "阿德莱德木围栏门维修 — 安装与更换",
+          "summary": "木门维修与安装，评估下垂、立柱、铰链、门闩及开启间隙。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/timber-gates-installation-repairs/"
+        }
+      ]
+    },
+    {
+      "name": "北大街与河岸区（North Terrace & Riverbank）",
+      "slug": "north-terrace-riverbank",
+      "title": "北大街与河岸区木工和定制木作服务",
+      "description": "北大街与河岸区木工和定制木作服务，涵盖木材维修、门窗、室内饰面、外露木材维护及实用进场规划。",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/service-areas/north-terrace-riverbank/",
+      "streets": [
+        "North Terrace",
+        "Festival Drive",
+        "Kintore Avenue",
+        "King William Road",
+        "Montefiore Road"
+      ],
+      "services": [
+        {
+          "title": "阿德莱德木门窗维修",
+          "summary": "木门窗维修：确定更换方案前，先评估开合状况、局部木材损坏及维修选项。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/door-window-repairs/"
+        },
+        {
+          "title": "阿德莱德建筑定制木作——墙面护板与木作细节",
+          "summary": "定制木墙板、隐形门细节及特色木作，与图纸、样板及安装接口协调。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/architectural-joinery/"
+        },
+        {
+          "title": "阿德莱德后期木工安装——门、踢脚板与门窗套线",
+          "summary": "为新建及翻新项目，将门、踢脚板、门窗套线及饰面连接协调成后期木工安装工程包。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/fix-out-second-fix/"
+        },
+        {
+          "title": "阿德莱德木材腐烂维修 — 修复与维护",
+          "summary": "检查剩余完好材料、潮湿原因及任何虫害或结构损坏后，进行局部木材腐朽维修、嵌接修补及构件更换。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/restoration-maintenance/"
+        },
+        {
+          "title": "阿德莱德户外木平台翻修与木地板维修",
+          "summary": "现有户外木平台维修与重新饰面，以及分别规划的室内木地板安装和表面修复。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/decking-restoration-flooring/"
+        },
+        {
+          "title": "阿德莱德木围栏维修 — 立柱、横档与围栏板更换",
+          "summary": "木围栏维修：比较立板、横档及立柱损坏、更换范围、作业出入及边界责任。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/timber-fencing-repairs-replacement/"
+        }
+      ]
+    },
+    {
+      "name": "北阿德莱德（North Adelaide）",
+      "slug": "north-adelaide",
+      "title": "北阿德莱德（North Adelaide）木工与定制木作服务",
+      "description": "北阿德莱德木工与定制木作服务，涵盖木窗维修、门、精细室内木作、户外木平台、围栏、大门及木材潮湿管理。",
+      "url": "https://www.adelaidecarpentryhub.com.au/zh/service-areas/north-adelaide/",
+      "streets": [
+        "O'Connell Street",
+        "Melbourne Street",
+        "Lefevre Terrace",
+        "Barton Terrace West",
+        "Barton Terrace East",
+        "Jeffcott Street",
+        "Ward Street"
+      ],
+      "services": [
+        {
+          "title": "阿德莱德木门窗维修",
+          "summary": "木门窗维修：确定更换方案前，先评估开合状况、局部木材损坏及维修选项。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/door-window-repairs/"
+        },
+        {
+          "title": "阿德莱德定制木门与家具",
+          "summary": "新定制木门及家具，与洞口条件、用途、五金及饰面要求匹配。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/custom-doors-furniture/"
+        },
+        {
+          "title": "阿德莱德门框与侧板维修——门窗套线与室内装饰木线",
+          "summary": "维修开裂侧板或更换损坏门框段，复用适用门扇，并匹配门窗套线与现有室内装饰线。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/door-jamb-interior-trim/"
+        },
+        {
+          "title": "阿德莱德翻新木工 — 木材维修与收尾安装",
+          "summary": "翻新木工围绕现有状况、洞口改动、收尾阶段及已批准变更协调。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/renovation-carpentry/"
+        },
+        {
+          "title": "阿德莱德户外木平台翻修与木地板维修",
+          "summary": "现有户外木平台维修与重新饰面，以及分别规划的室内木地板安装和表面修复。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/decking-restoration-flooring/"
+        },
+        {
+          "title": "阿德莱德木围栏维修 — 立柱、横档与围栏板更换",
+          "summary": "木围栏维修：比较立板、横档及立柱损坏、更换范围、作业出入及边界责任。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/timber-fencing-repairs-replacement/"
+        },
+        {
+          "title": "阿德莱德木围栏门维修 — 安装与更换",
+          "summary": "木门维修与安装，评估下垂、立柱、铰链、门闩及开启间隙。",
+          "url": "https://www.adelaidecarpentryhub.com.au/zh/services/timber-gates-installation-repairs/"
+        }
+      ]
+    }
+  ],
+  "language": "zh-Hans"
+}

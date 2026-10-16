@@ -30,5 +30,5 @@ test('regional structured data matches visible page identity and sitemap coverag
   assert.match(html, /"@type":"BreadcrumbList"/);
   assert.match(html, /Adelaide CBD Carpentry &amp; Joinery Services/);
   assert.match(sitemap, /https:\/\/www\.adelaidecarpentryhub\.com\.au\/service-areas\/adelaide-cbd\//);
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 47);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 96);
 });

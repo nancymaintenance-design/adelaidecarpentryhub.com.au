@@ -1,3 +1,17 @@
+const chinese = document.documentElement.lang.startsWith('zh');
+const ui = (english, translation) => chinese ? translation : english;
+// Equivalent pages keep the selected street, directory search and section anchor.
+for (const link of document.querySelectorAll('[data-language-switch]')) {
+  const updateDestination = () => {
+    const destination = new URL(link.getAttribute('href'), window.location.href);
+    destination.search = window.location.search;
+    destination.hash = window.location.hash;
+    link.href = destination.pathname + destination.search + destination.hash;
+  };
+  updateDestination();
+  link.addEventListener('click', updateDestination);
+}
+
 const header = document.querySelector('.site-header');
 if (header) {
   const updateHeaderHeight = () => {
@@ -41,19 +55,19 @@ for (const form of document.querySelectorAll('form[data-contact-form]')) {
     const email = String(data.get('email') || '').trim();
     const message = String(data.get('message') || '').trim();
     const status = form.querySelector('[data-brief-status]');
-    if (String(data.get('website') || '').trim()) { status.textContent = 'Please submit a valid enquiry.'; return; }
+    if (String(data.get('website') || '').trim()) { status.textContent = ui('Please submit a valid enquiry.', '请填写有效的咨询信息。'); return; }
     const missing = [
-      [name, 'name', 'Please enter your name.'],
-      [phone, 'phone', 'Please add a phone number.'],
-      [email, 'email', 'Please add an email address.'],
-      [message, 'message', 'Please add a short project note before saving.']
+      [name, 'name', ui('Please enter your name.', '请填写您的姓名。')],
+      [phone, 'phone', ui('Please add a phone number.', '请填写联系电话。')],
+      [email, 'email', ui('Please add an email address.', '请填写电子邮箱。')],
+      [message, 'message', ui('Please add a short project note before saving.', '请简要说明需要维修或安装的项目。')]
     ].find(([value]) => !value);
     if (missing) { status.textContent = missing[2]; form.elements[missing[1]].focus(); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = 'Please enter a valid email address.'; form.elements.email.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = ui('Please enter a valid email address.', '请填写有效的电子邮箱地址。'); form.elements.email.focus(); return; }
     const button = form.querySelector('button[type="submit"]');
     pending = true;
     button.disabled = true;
-    status.textContent = 'Sending your enquiry…';
+    status.textContent = ui('Sending your enquiry…', '正在发送您的咨询……');
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -63,10 +77,12 @@ for (const form of document.querySelectorAll('form[data-contact-form]')) {
       const result = await response.json();
       if (!response.ok || result?.ok !== true) throw new Error(result?.error || 'Unable to send your enquiry.');
       form.reset();
-      status.textContent = 'Thank you — your enquiry has been sent to MEL ONE.';
+      status.textContent = ui('Thank you — your enquiry has been sent to MEL ONE.', '感谢您的咨询，信息已发送至 MEL ONE。');
       trackContactEvent('generate_lead', { form_name: 'carpentry_enquiry' });
     } catch (error) {
-      status.textContent = error.message || 'We could not send your enquiry. Please call or email us directly.';
+      status.textContent = chinese
+        ? (['127.0.0.1', 'localhost'].includes(window.location.hostname) ? '本地预览暂不发送咨询。正式上线后可使用表单，也可直接电话或邮件联系我们。' : '咨询暂未发送成功，请重试，或直接电话、邮件联系我们。')
+        : error.message || 'We could not send your enquiry. Please call or email us directly.';
     } finally {
       pending = false;
       button.disabled = false;
@@ -98,7 +114,9 @@ for (const directory of document.querySelectorAll('[data-area-directory]')) {
     });
     empty.hidden = visible !== 0;
     clear.hidden = !query;
-    status.textContent = query ? `${visible} ${visible === 1 ? 'street' : 'streets'} found for “${input.value.trim()}”.` : `Showing all ${items.length} streets.`;
+    status.textContent = chinese
+      ? (query ? `与“${input.value.trim()}”匹配的街道：${visible} 条。` : `显示全部 ${items.length} 条街道。`)
+      : query ? `${visible} ${visible === 1 ? 'street' : 'streets'} found for “${input.value.trim()}”.` : `Showing all ${items.length} streets.`;
     const url = new URL(window.location.href);
     if (query) url.searchParams.set('location', input.value.trim()); else url.searchParams.delete('location');
     window.history.replaceState({}, '', url);
@@ -114,7 +132,7 @@ const selectedLocation = new URLSearchParams(window.location.search).get('locati
 if (selectedLocation) {
   const message = document.querySelector('form[data-contact-form] textarea[name="message"]');
   if (message && !message.value.trim()) {
-    message.value = `Project location: ${selectedLocation}\n\n`;
+    message.value = `${ui('Project location:', '项目地点：')} ${selectedLocation}\n\n`;
     message.focus();
   }
 }
@@ -131,8 +149,8 @@ function applyAreaBookingContext() {
     const location = `${street}, ${region}`;
     const message = form.querySelector('textarea[name="message"]');
     const context = form.closest('.area-booking')?.querySelector('[data-area-context]');
-    if (context) context.textContent = `Selected location: ${location}. Add the timber work and any access notes. Photos and approximate measurements are optional; existing images can be emailed to handymanfelix.au2026@outlook.com.`;
-    if (message && !message.value.trim()) message.value = `Project location: ${location}\n\n`;
+    if (context) context.textContent = ui(`Selected location: ${location}. Add the timber work and any access notes. Photos and approximate measurements are optional; existing images can be emailed to handymanfelix.au2026@outlook.com.`, `所选地点：${location}。请补充木工项目及出入安排。照片和大致尺寸并非必需；已有图片可发至 handymanfelix.au2026@outlook.com。`);
+    if (message && !message.value.trim()) message.value = `${ui('Project location:', '项目地点：')} ${location}\n\n`;
   }
 }
 

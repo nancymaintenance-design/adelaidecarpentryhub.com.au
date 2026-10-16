@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Integrity checker for Ellis Services Group website build
+// Integrity checker for MEL ONE bilingual website build
 const fs = require('fs');
 const path = require('path');
 const root = path.join(__dirname, 'public');
@@ -21,10 +21,10 @@ function walk(dir) {
 walk(root);
 
 let all = true;
-console.log('\n=== Ellis Website Integrity Check ===\n');
+console.log('\n=== MEL ONE Website Integrity Check ===\n');
 
 // Page count
-all &= check(`Total pages: ${htmlFiles.length} (expect 47)`, htmlFiles.length === 47);
+all &= check(`Total pages: ${htmlFiles.length} (expect 96)`, htmlFiles.length === 96);
 
 // Home page content
 const home = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
@@ -53,14 +53,18 @@ const aboutPage = fs.readFileSync(path.join(root, 'about', 'index.html'), 'utf8'
 all &= check('About page has company record', aboutPage.includes('<h2>Carpentry Company and Insurance Details</h2>') && aboutPage.includes('39 666 325 408'));
 
 // No Chinese placeholders remaining
-all &= check('No Chinese placeholder text', !home.includes('全周期') && !home.includes('待补充') && !home.includes('阿德莱德'));
+const chineseHomePath = path.join(root, 'zh', 'index.html');
+const chineseHome = fs.existsSync(chineseHomePath) ? fs.readFileSync(chineseHomePath, 'utf8') : '';
+all &= check('No Chinese placeholder text', !/全周期|待补充|待翻译|TODO/.test(home + chineseHome));
+all &= check('English navigation offers Chinese service', /<nav\b[\s\S]*?href="\/zh\/"[^>]*>中文服务<\/a>[\s\S]*?<\/nav>/.test(home));
+all &= check('Chinese homepage has translated service content', /<html[^>]*lang="zh-Hans"/.test(chineseHome) && /<h1[^>]*>[^<]*[\u3400-\u9fff]/.test(chineseHome) && /href="\/zh\/services\/"/.test(chineseHome));
 all &= check('No old contact email', !home.includes('ellisservicesgroup9'));
 
 // Sitemap
 if (fs.existsSync(path.join(root, 'sitemap.xml'))) {
   const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
   const locMatches = sitemap.match(/<loc>/g) || [];
-  all &= check(`Sitemap has ${locMatches.length} <loc> entries`, locMatches.length === 47 && !sitemap.includes('/404.html'));
+  all &= check(`Sitemap has ${locMatches.length} <loc> entries`, locMatches.length === 96 && !sitemap.includes('/404.html'));
 } else {
   all &= check('Sitemap exists', false);
 }

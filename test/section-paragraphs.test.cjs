@@ -17,6 +17,8 @@ test.before(() => {
   fs.mkdirSync(reports, { recursive: true });
   fixture = fs.mkdtempSync(path.join(reports, 'renderer-fixture-'));
   fs.copyFileSync(path.join(root, 'build.mjs'), path.join(fixture, 'build.mjs'));
+  fs.cpSync(path.join(root, 'tools'), path.join(fixture, 'tools'), { recursive: true });
+  fs.symlinkSync(path.join(root, 'node_modules'), path.join(fixture, 'node_modules'), 'junction');
   fs.cpSync(path.join(root, 'src'), path.join(fixture, 'src'), { recursive: true });
   const contentFile = path.join(fixture, 'src/content-pack/site-content.json');
   const content = JSON.parse(fs.readFileSync(contentFile, 'utf8'));
@@ -32,7 +34,7 @@ test.before(() => {
   content.services.find(item => item.slug === 'house-framing').sections = sections;
   content.insights.find(item => item.slug === 'commercial-fitout-process').sections = sections;
   fs.writeFileSync(contentFile, JSON.stringify(content));
-  execFileSync(process.execPath, ['build.mjs'], { cwd: fixture, stdio: 'pipe' });
+  execFileSync(process.execPath, ['build.mjs', '--extract-i18n'], { cwd: fixture, stdio: 'pipe' });
   serviceHtml = fs.readFileSync(path.join(fixture, 'public/services/house-framing/index.html'), 'utf8');
   guideHtml = fs.readFileSync(path.join(fixture, 'public/insights/commercial-fitout-process/index.html'), 'utf8');
   feed = JSON.parse(fs.readFileSync(path.join(fixture, 'public/feed.json'), 'utf8'));

@@ -111,6 +111,8 @@ test('clean builds reference existing hashed assets, retain aliases and change U
   const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'mel-one-hash-test-'));
   try {
     fs.copyFileSync(path.join(root, 'build.mjs'), path.join(temporary, 'build.mjs'));
+    fs.cpSync(path.join(root, 'tools'), path.join(temporary, 'tools'), { recursive: true });
+    fs.symlinkSync(path.join(root, 'node_modules'), path.join(temporary, 'node_modules'), 'junction');
     fs.cpSync(path.join(root, 'src'), path.join(temporary, 'src'), { recursive: true });
     const build = () => execFileSync(process.execPath, ['build.mjs'], { cwd: temporary, stdio: 'pipe' });
     const assetRefs = () => fs.readFileSync(path.join(temporary, 'public/about/index.html'), 'utf8')
@@ -129,7 +131,7 @@ test('clean builds reference existing hashed assets, retain aliases and change U
     for (const file of files) {
       const html = fs.readFileSync(path.join(temporary, 'public', file), 'utf8');
       const references = [...html.matchAll(/(?:src|href)="(\/assets\/[^" ]+\.(?:css|js))"/g)];
-      assert.equal(references.length, file === 'index.html' ? 3 : 4);
+      assert.equal(references.length, ['index.html', path.join('zh', 'index.html')].includes(file) ? 3 : 4);
       for (const [, url] of references) {
         assert.match(url, /\.[a-f0-9]{16}\.(?:css|js)$/);
         assert.ok(fs.existsSync(path.join(temporary, 'public', url)), `${file}: missing ${url}`);

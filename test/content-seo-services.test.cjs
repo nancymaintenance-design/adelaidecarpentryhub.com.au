@@ -30,6 +30,8 @@ test.before(() => {
   fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'mel-services-'));
   fs.cpSync(path.join(root, 'src'), path.join(fixture, 'src'), { recursive: true });
   fs.copyFileSync(path.join(root, 'build.mjs'), path.join(fixture, 'build.mjs'));
+  fs.cpSync(path.join(root, 'tools'), path.join(fixture, 'tools'), { recursive: true });
+  fs.symlinkSync(path.join(root, 'node_modules'), path.join(fixture, 'node_modules'), 'junction');
   execFileSync(process.execPath, ['build.mjs'], { cwd: fixture, stdio: 'pipe' });
 });
 test.after(() => fs.rmSync(fixture, { recursive: true, force: true }));

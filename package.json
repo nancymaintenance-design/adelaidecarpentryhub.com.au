@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "build": "node build.mjs && node clarity-install.mjs public clarity-site.json clarity-assets",
-    "build:docs": "node build.mjs --docs",
+    "build:docs": "node build.mjs --docs && node clarity-install.mjs docs clarity-site.json clarity-assets",
     "serve": "node serve.cjs",
     "start": "node serve.cjs",
+    "i18n:extract": "node build.mjs --extract-i18n && node tools/collect-i18n.mjs",
     "check": "node check.cjs",
     "test": "node --test --test-concurrency=1 test/*.test.cjs"
   },

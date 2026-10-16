@@ -45,7 +45,7 @@ test('all 25 services pair only the opening section with evidence and continue i
 // Catches a separate full-width social row, lost contact facts or different shared footers.
 test('all 47 sitemap pages share compact brand social navigation and semantic contact rows', () => {
   const sitemap = fs.readFileSync(path.join(root, 'public/sitemap.xml'), 'utf8');
-  const routes = [...sitemap.matchAll(/<loc>https:\/\/www\.adelaidecarpentryhub\.com\.au([^<]*)<\/loc>/g)].map(([, route]) => route);
+  const routes = [...sitemap.matchAll(/<loc>https:\/\/www\.adelaidecarpentryhub\.com\.au([^<]*)<\/loc>/g)].map(([, route]) => route).filter(route => !route.startsWith('/zh/') && route !== '/clarity-privacy/');
   assert.equal(routes.length, 47);
   let shared;
   for (const route of routes) {

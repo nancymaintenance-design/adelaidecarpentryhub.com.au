@@ -110,7 +110,7 @@ test('all service cards retain photo agreement or their honest text-first detail
   assert.equal(photographed, 23);
   assert.equal(textFirst, 2);
   assert.equal(catalogue.length, 25);
-  assert.equal((fs.readFileSync(path.join(output, 'sitemap.xml'), 'utf8').match(/<loc>/g) || []).length, 47);
+  assert.equal((fs.readFileSync(path.join(output, 'sitemap.xml'), 'utf8').match(/<loc>/g) || []).length, 96);
 });
 
 // Catches a deployed reduced-motion rule targeting descendants while the HTML scroller stays smooth.

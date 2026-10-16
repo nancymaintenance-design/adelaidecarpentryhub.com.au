@@ -8,7 +8,8 @@ const root = path.resolve(__dirname, '..');
 execFileSync(process.execPath, ['build.mjs'], { cwd: root, stdio: 'pipe' });
 const domain = 'https://www.adelaidecarpentryhub.com.au';
 const sitemap = fs.readFileSync(path.join(root, 'public/sitemap.xml'), 'utf8');
-const routes = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => new URL(m[1]).pathname);
+const allRoutes = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => new URL(m[1]).pathname);
+const routes = allRoutes.filter(route => !route.startsWith('/zh/') && route !== '/clarity-privacy/');
 const read = route => fs.readFileSync(path.join(root, 'public', route === '/404.html' ? route : `${route}index.html`), 'utf8');
 const json = html => JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
 const nodes = value => value['@graph'] || [value];
@@ -19,6 +20,7 @@ const manifest = JSON.parse(fs.readFileSync(path.join(root, 'src/assets/asset-ma
 const redirect = route => (config.redirects || []).find(rule => rule.source === route);
 
 test('all 47 canonical outputs retain indexability and the error document alone is noindex', () => {
+  assert.equal(allRoutes.length, 96);
   assert.equal(routes.length, 47);
   for (const route of routes) {
     const html = read(route);
@@ -63,7 +65,7 @@ test('every independent graph referencing the business defines one consistent ve
 
 test('prepared Vercel contract maps every known alias in one permanent hop without loops or nonpage matches', () => {
   assert.equal(config.trailingSlash, undefined, 'global trailingSlash would also redirect extensionless API routes');
-  const aliases = [['/index.html', '/'], ...routes.filter(r => r !== '/').flatMap(r => [[`${r}index.html`, r], [r.slice(0, -1), r]])];
+  const aliases = [['/index.html', '/'], ['/clarity-privacy-zh/', '/zh/clarity-privacy/'], ...allRoutes.filter(r => r !== '/').flatMap(r => [[`${r}index.html`, r], [r.slice(0, -1), r]])];
   assert.equal((config.redirects || []).length, aliases.length);
   for (const [alias, canonical] of aliases) {
     assert.deepEqual(redirect(alias), { source: alias, destination: canonical, permanent: true });
@@ -103,7 +105,7 @@ test('loopback preview serves the routing, status, MIME and safe failure contrac
   });
   await t.test('PORT=0 allocates an isolated ephemeral port', () => assert.ok(port > 0 && port !== 5173));
   await t.test('all canonical pages return 200; every HTML alias redirects once and preserves query bytes', async () => {
-    for (const route of routes) {
+    for (const route of allRoutes) {
       assert.equal((await request(route)).status, 200, route);
       const aliases = route === '/' ? ['/index.html'] : [`${route}index.html`, route.slice(0, -1)];
       for (const alias of aliases) {

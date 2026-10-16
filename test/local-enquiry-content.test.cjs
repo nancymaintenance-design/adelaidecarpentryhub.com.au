@@ -30,7 +30,8 @@ test('footer and dedicated contact blocks render confirmed phone and email links
     const footer = html.match(/<footer[\s\S]*?<\/footer>/)[0];
     assert.match(footer, /href="tel:\+61403202949">0403 202 949<\/a>/, route);
     assert.match(footer, /href="mailto:handymanfelix.au2026@outlook.com"/, route);
-    if (route) assert.match(main(html), /href="tel:\+61403202949">0403 202 949<\/a>/, route);
+    if (route === 'about') assert.match(main(html), /href="tel:\+61403202949">040 320 2949<\/a>/, 'Felix adviser uses the owner-provided display format');
+    else if (route) assert.match(main(html), /href="tel:\+61403202949">0403 202 949<\/a>/, route);
   }
 });
 

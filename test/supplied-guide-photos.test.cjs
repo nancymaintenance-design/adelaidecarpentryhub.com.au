@@ -110,7 +110,7 @@ test('photo-related sections and FAQs render with useful service links while ret
     });
   }
   const sitemap = fs.readFileSync(path.join(output, 'sitemap.xml'), 'utf8');
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 47);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 96);
   assert.equal(JSON.parse(fs.readFileSync(path.join(output, 'services.json'), 'utf8')).items.length, 25);
   assert.equal(JSON.parse(fs.readFileSync(path.join(output, 'feed.json'), 'utf8')).items.length, 10);
 });

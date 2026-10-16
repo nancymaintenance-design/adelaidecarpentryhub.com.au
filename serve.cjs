@@ -32,7 +32,7 @@ function createPreviewServer() {
       res.end(req.method === 'HEAD' ? undefined : body);
     };
     const notFound = () => {
-      try { send(404, fs.readFileSync(path.join(ROOT, '404.html')), mimeTypes['.html']); }
+      try { send(404, fs.readFileSync(path.join(ROOT, (req.url || '').startsWith('/zh/') ? 'zh/404.html' : '404.html')), mimeTypes['.html']); }
       catch { send(404, 'Page not found'); }
     };
     const raw = req.url || '/';
@@ -59,7 +59,7 @@ function createPreviewServer() {
     }
     const destination = aliases.get(pathname);
     if (destination) { send(308, '', undefined, { Location: destination + query }); return; }
-    if (pathname === '/404.html') { notFound(); return; }
+    if (pathname === '/404.html' || pathname === '/zh/404.html') { notFound(); return; }
     const filePath = path.resolve(ROOT, '.' + (pathname.endsWith('/') ? pathname + 'index.html' : pathname));
     const insideRoot = target => {
       const relative = path.relative(ROOT, target);

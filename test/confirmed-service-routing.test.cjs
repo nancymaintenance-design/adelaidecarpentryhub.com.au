@@ -13,6 +13,8 @@ test('confirmed repair route is discoverable and renders a text layout without s
   try {
     fs.cpSync(path.join(root, 'src'), path.join(fixture, 'src'), { recursive: true });
     fs.copyFileSync(path.join(root, 'build.mjs'), path.join(fixture, 'build.mjs'));
+  fs.cpSync(path.join(root, 'tools'), path.join(fixture, 'tools'), { recursive: true });
+  fs.symlinkSync(path.join(root, 'node_modules'), path.join(fixture, 'node_modules'), 'junction');
     const file = path.join(fixture, 'src/content-pack/site-content.json');
     const data = JSON.parse(fs.readFileSync(file, 'utf8'));
     data.services = data.services.filter(item => item.slug !== 'fascia-eaves-repairs');
@@ -25,7 +27,7 @@ test('confirmed repair route is discoverable and renders a text layout without s
     const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
     delete manifest.slots['service.fascia-eaves-repairs'];
     fs.writeFileSync(manifestFile, JSON.stringify(manifest));
-    execFileSync(process.execPath, ['build.mjs'], { cwd: fixture, stdio: 'pipe' });
+    execFileSync(process.execPath, ['build.mjs', '--extract-i18n'], { cwd: fixture, stdio: 'pipe' });
     const hub = fs.readFileSync(path.join(fixture, 'public/services/index.html'), 'utf8');
     const html = fs.readFileSync(path.join(fixture, 'public/services/fascia-eaves-repairs/index.html'), 'utf8');
     assert.ok(hub.includes('href="/services/fascia-eaves-repairs/"'), 'new repair service must be reachable from its directory');

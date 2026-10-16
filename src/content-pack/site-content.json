@@ -3407,6 +3407,13 @@
     "seo_description": "Meet MEL ONE, an Adelaide carpentry and joinery business. View company details and how site assessments, written quotes and specialist work are arranged.",
     "title": "About MEL ONE — Adelaide Carpentry & Joinery",
     "lead": "MEL ONE provides Adelaide carpentry and joinery for homeowners, property managers, builders and businesses. Our work includes timber repairs, fitted cabinetry and storage, renovation carpentry and outdoor timber, with a site visit and written quote for the agreed work.",
+    "advisers_title": "Customer Advisers",
+    "advisers_intro": "Speak with Riley, Ella or Felix about timber repairs, custom joinery and renovation work. Our advisers help organise your requirements and keep project communication clear.",
+    "advisers": [
+      { "name": "Riley", "phone": "048 242 2607", "telephone": "+61482422607", "bio": "Riley takes a friendly, attentive approach to enquiries, helping you describe the work, prioritise repairs and arrange the next conversation with our team." },
+      { "name": "Ella", "phone": "041 661 4281", "telephone": "+61416614281", "bio": "Ella helps organise cabinetry, storage and renovation requirements, explaining material choices and project details in clear language so your preferences are understood." },
+      { "name": "Felix", "phone": "040 320 2949", "telephone": "+61403202949", "bio": "Felix coordinates enquiries about timber repairs and installation, follows up project questions and keeps customer feedback central to communication with the team." }
+    ],
     "story_title": "Timber Repairs and Fitted Joinery",
     "story": "A sticking window, damaged deck board and new kitchen cabinet need different decisions. We inspect existing timber or measure the space for new work, then identify the parts to retain, replace or make. Access, room use, adjoining finishes and other trades inform the work sequence and quote.",
     "values": [

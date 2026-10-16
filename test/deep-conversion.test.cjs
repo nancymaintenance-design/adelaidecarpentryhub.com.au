@@ -49,7 +49,8 @@ test('repair and preparation blocks do not stop at a conversation or require fir
  for(const route of ['insights/adelaide-custom-wardrobe-planning','about']) {
   const text=visible(path.join(root,'public',route,'index.html'));
   assert.doesNotMatch(text,/When requesting a quote, provide photos|Start with room photos, approximate dimensions|Share the Adelaide suburb, clear photos/i,route);
-  assert.match(text,/optional/i,route);
+  if(route !== 'about') assert.match(text,/optional/i,route);
+  else assert.doesNotMatch(text,/Arrange Carpentry Assessment and a Written Quote/, 'About no longer repeats the contact preparation block');
   assert.match(text,/handymanfelix\.au2026@outlook\.com/i,route);
  }
  for(const service of content.services) for(const section of service.sections) {

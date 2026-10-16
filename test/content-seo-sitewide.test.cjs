@@ -14,12 +14,16 @@ expected.push(...['fascia-eaves-repairs','weatherboard-repairs','subfloor-timber
 let fixture, output;
 const decode=s=>s.replaceAll('&amp;','&').replaceAll('&quot;','"').replaceAll('&#039;',"'").replaceAll('&lt;','<').replaceAll('&gt;','>');
 const read=route=>fs.readFileSync(path.join(output,route==='/'?'index.html':route.endsWith('/')?route+'index.html':route),'utf8');
-test.before(()=>{ fixture=fs.mkdtempSync(path.join(os.tmpdir(),'mel-sitewide-')); output=path.join(fixture,'public'); fs.cpSync(path.join(root,'src'),path.join(fixture,'src'),{recursive:true}); fs.copyFileSync(path.join(root,'build.mjs'),path.join(fixture,'build.mjs')); execFileSync(process.execPath,['build.mjs'],{cwd:fixture,stdio:'pipe'}); });
+test.before(()=>{ fixture=fs.mkdtempSync(path.join(os.tmpdir(),'mel-sitewide-')); output=path.join(fixture,'public'); fs.cpSync(path.join(root,'src'),path.join(fixture,'src'),{recursive:true}); fs.copyFileSync(path.join(root,'build.mjs'),path.join(fixture,'build.mjs'));
+  fs.cpSync(path.join(root, 'tools'), path.join(fixture, 'tools'), { recursive: true });
+  fs.symlinkSync(path.join(root, 'node_modules'), path.join(fixture, 'node_modules'), 'junction'); execFileSync(process.execPath,['build.mjs'],{cwd:fixture,stdio:'pipe'}); });
 test.after(()=>fs.rmSync(fixture,{recursive:true,force:true}));
 // Break caught: dropped/new indexable route, duplicate metadata, missing or skipped headings.
 test('47 canonical routes retain unique metadata and continuous heading hierarchy',()=>{
   const sitemap=fs.readFileSync(path.join(output,'sitemap.xml'),'utf8');
-  assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>new URL(m[1]).pathname).sort(),expected.slice().sort());
+  const sitemapRoutes=[...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>new URL(m[1]).pathname);
+  assert.equal(sitemapRoutes.length,96);
+  assert.deepEqual(sitemapRoutes.filter(route=>!route.startsWith('/zh/')&&route!=='/clarity-privacy/').sort(),expected.slice().sort());
   const titles=new Set(), descriptions=new Set();
   for(const route of expected){const html=read(route); const title=html.match(/<title>(.*?)<\/title>/)[1], description=html.match(/name="description" content="([^"]*)"/)[1]; assert.ok(title.trim()&&description.trim(),route); titles.add(title);descriptions.add(description);assert.equal((html.match(/<h1\b/g)||[]).length,1,route);let last=0;for(const m of html.matchAll(/<h([1-6])\b/g)){const n=+m[1];assert.ok(n<=last+1,route+': heading jump '+last+'→'+n);last=n;} assert.equal(new URL(decode(html.match(/rel="canonical" href="([^"]*)"/)[1])).pathname,route);}
   assert.equal(titles.size,47);assert.equal(descriptions.size,47);
@@ -79,8 +83,9 @@ test('selected street context keeps photos optional and preserves customer text'
  const functionSource=source.slice(source.indexOf('function applyAreaBookingContext()'),source.indexOf('\napplyAreaBookingContext();'));
  const message={value:''}, context={textContent:''};
  const form={dataset:{areaRegion:'Adelaide CBD',areaStreets:'["Pirie Street"]'},querySelector:()=>message,closest:()=>({querySelector:()=>context})};
- const sandbox={URLSearchParams,window:{location:{search:'?street=Pirie%20Street'}},document:{querySelectorAll:()=>[form]}};
- vm.runInNewContext(functionSource+'; applyAreaBookingContext();',sandbox);
+ const sandbox={URLSearchParams,window:{location:{search:'?street=Pirie%20Street'}},document:{documentElement:{lang:'en'},querySelectorAll:()=>[form]}};
+ const languageSource=source.match(/^const chinese = .*;\r?\nconst ui = .*;/)[0];
+ vm.runInNewContext(languageSource+'\n'+functionSource+'; applyAreaBookingContext();',sandbox);
  assert.equal(message.value,'Project location: Pirie Street, Adelaide CBD\n\n');
  assert.match(context.textContent,/photos.*optional/i);
  message.value='Customer-written project';vm.runInNewContext('applyAreaBookingContext()',sandbox);assert.equal(message.value,'Customer-written project');
