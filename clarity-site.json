@@ -1,0 +1,18 @@
+{
+  "projectId": "yy15u4fmm6",
+  "hostname": "www.adelaidecarpentryhub.com.au",
+  "siteKind": "business",
+  "cookieDomains": [
+    "www.adelaidecarpentryhub.com.au",
+    "adelaidecarpentryhub.com.au"
+  ],
+  "storageKey": "mel-one.clarity-consent.v1",
+  "excludedPaths": [
+    "/contact/"
+  ],
+  "privacyPaths": {
+    "en": "/clarity-privacy/",
+    "zh": "/clarity-privacy-zh/"
+  },
+  "zhLanguage": "zh-Hant"
+}
