@@ -152,7 +152,7 @@ test('Chinese service and region catalogues, feeds and AI index cover the same w
   const feed = JSON.parse(fs.readFileSync(path.join(output, 'zh/feed.json')));
   const areas = JSON.parse(fs.readFileSync(path.join(output, 'zh/service-areas.json')));
   assert.equal(services.items.length, 25);
-  assert.equal(feed.items.length, 10);
+  assert.equal(feed.items.length, 36);
   assert.equal(areas.regions.length, 5);
   for (const item of [...services.items, ...feed.items]) {
     assert.match(item.title, /[\u3400-\u9fff]/);

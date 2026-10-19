@@ -90,8 +90,8 @@ test('feeds omit invented publication dates and retain the three source dated gu
   const feed = JSON.parse(fs.readFileSync(path.join(output, 'feed.json')));
   const rss = fs.readFileSync(path.join(output, 'rss.xml'), 'utf8');
   const rssItems = [...rss.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((match) => match[1]);
-  assert.equal(feed.items.length, 10);
-  assert.equal(rssItems.length, 10);
+  assert.equal(feed.items.length, 36);
+  assert.equal(rssItems.length, 36);
   const dated = new Set(['adelaide-deck-replacement-guide', 'adelaide-custom-wardrobe-planning', 'adelaide-heritage-timber-repairs']);
   for (const item of feed.items) {
     const slug = item.url.split('/').at(-2);

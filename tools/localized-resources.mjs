@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { JSDOM } from 'jsdom';
 import { chineseRoute, isCopy, normalize } from './i18n.mjs';
+import { enhanceFeeds } from './feed-resources.mjs';
 
 export function localizedResources(directory, pages, origin, dictionary) {
   const translate = value => {
@@ -44,4 +45,5 @@ export function localizedResources(directory, pages, origin, dictionary) {
     dom.window.close();
   }
   fs.writeFileSync(path.join(output, 'llms.txt'), lines.join('\n') + '\n');
+  enhanceFeeds(directory, pages, origin);
 }
