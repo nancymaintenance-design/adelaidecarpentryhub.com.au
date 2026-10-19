@@ -11,6 +11,7 @@ import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { bilingualPages, chineseRoute, loadTranslations } from './tools/i18n.mjs';
 import { localizedResources } from './tools/localized-resources.mjs';
+import { createLlms } from './tools/llms-resources.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectDir = __dirname;
@@ -1298,30 +1299,10 @@ for (const [route, html] of localizedPages) {
   fs.writeFileSync(destination, html, 'utf8');
   console.log(`  ✓ ${route}`);
 }
-const routeLabels = new Map([
-  ['/', 'Home'],
-  ['/about/', 'About'],
-  ['/services/', 'Services'],
-  ['/service-areas/', 'Service Areas'],
-  ['/insights/', 'Insights'],
-  ['/faq/', 'FAQ'],
-  ['/contact/', 'Contact'],
-]);
-for (const service of content.services) routeLabels.set(`/services/${service.slug}/`, service.title);
-for (const insight of content.insights) routeLabels.set(`/insights/${insight.slug}/`, insight.title);
-for (const region of safeArray(serviceAreas.regions)) routeLabels.set(regionRoute(region), region.name);
-const llms = [
-  `# ${brandName}`,
-  '',
-  content.seo.site_description,
-  '',
-  'MEL ONE provides carpentry, custom joinery, decking, cabinetry and heritage timber restoration services. Explore the published service, service area and insight pages below.',
-  '',
-  '## Published pages',
-  ...allRoutes.filter((route) => route !== '/404.html').map((route) => `- [${routeLabels.get(route) || route}](${canonical(route)})`),
-  '',
-].join('\n');
+const llmsSelection = JSON.parse(fs.readFileSync(path.join(projectDir, 'src/content-pack/llms-selection.json'), 'utf8'));
+const {markdown:llms} = createLlms(new Map(localizedPages), origin, brandName, content.seo.site_description, llmsSelection);
 fs.writeFileSync(path.join(siteDir, 'llms.txt'), llms, 'utf8');
+if(!extractOnly) fs.writeFileSync(path.join(siteDir, 'zh/llms.txt'), llms, 'utf8');
 fs.writeFileSync(path.join(siteDir, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${
     allRoutes.filter(r => r !== '/404.html').flatMap(r => extractOnly ? [r] : [r, chineseRoute(r)]).map(r => `<url><loc>${canonical(r)}</loc></url>`).join('')

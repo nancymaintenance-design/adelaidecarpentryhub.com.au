@@ -161,7 +161,9 @@ test('Chinese service and region catalogues, feeds and AI index cover the same w
   assert.equal(feed.language, 'zh-Hans');
   assert.match(feed.items[0].content_text, /[\u3400-\u9fff]/);
   assert.match(fs.readFileSync(path.join(output, 'zh/rss.xml'), 'utf8'), /<language>zh-Hans<\/language>/);
-  assert.equal((fs.readFileSync(path.join(output, 'zh/llms.txt'), 'utf8').match(/^- \[/gm) || []).length, 48);
+  const index=fs.readFileSync(path.join(output, 'zh/llms.txt'), 'utf8');
+  assert.equal(index,fs.readFileSync(path.join(output,'llms.txt'),'utf8'));
+  assert.ok(index.includes('https://www.adelaidecarpentryhub.com.au/zh/services/'));
   const config = JSON.parse(fs.readFileSync(path.join(root, 'clarity-site.json')));
   assert.ok(config.excludedPaths.includes('/zh/contact/'));
   assert.equal(config.privacyPaths.zh, '/zh/clarity-privacy/');

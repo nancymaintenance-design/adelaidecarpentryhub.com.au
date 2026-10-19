@@ -1,0 +1,20 @@
+[
+  {"route":"/", "group":"company", "reason":"Homepage and service overview", "selector":".lede"},
+  {"route":"/services/", "group":"services", "reason":"Directory provides access to remaining service owners", "selector":".lede"},
+  {"route":"/services/door-window-repairs/", "group":"services", "reason":"Existing timber opening repairs; includes project photo record", "selector":".lede"},
+  {"route":"/services/restoration-maintenance/", "group":"services", "reason":"Timber damage and rot repair owner", "selector":".lede"},
+  {"route":"/services/storage-solutions/", "group":"services", "reason":"Built-in storage and wardrobe owner", "selector":".lede"},
+  {"route":"/services/custom-kitchen-bathroom/", "group":"services", "reason":"Kitchen, bathroom and laundry cabinetry owner", "selector":".lede"},
+  {"route":"/services/outdoor-living/", "group":"services", "reason":"New outdoor timber work, distinct from repair", "selector":".lede"},
+  {"route":"/services/decking-restoration-flooring/", "group":"services", "reason":"Existing deck and indoor floor work; includes project photo record", "selector":".lede"},
+  {"route":"/services/heritage-carpentry/", "group":"services", "reason":"Retention-focused heritage repair; includes photo record", "selector":".lede"},
+  {"route":"/services/house-framing/", "group":"services", "reason":"Structural framing owner", "selector":".lede"},
+  {"route":"/services/fitout-refurbishment/", "group":"services", "reason":"Commercial fitout owner", "selector":".lede"},
+  {"route":"/service-areas/", "group":"company", "reason":"Area directory instead of repeating five precinct lists", "selector":".lede"},
+  {"route":"/about/", "group":"company", "reason":"Company identity and published advisers", "selector":".lede"},
+  {"route":"/contact/", "group":"company", "reason":"Quote and enquiry owner", "selector":".contact-form > p"},
+  {"route":"/insights/", "group":"guides", "reason":"Guide directory for the remaining specialist guides", "selector":".lede"},
+  {"route":"/insights/adelaide-carpentry-cost-guide/", "group":"guides", "reason":"Explains quote comparison without inventing a price list", "selector":".lede"},
+  {"route":"/insights/adelaide-deck-replacement-guide/", "group":"guides", "reason":"Repair versus replacement decisions", "selector":".lede"},
+  {"route":"/insights/adelaide-custom-wardrobe-planning/", "group":"guides", "reason":"Measured wardrobe planning and specification", "selector":".lede"}
+]

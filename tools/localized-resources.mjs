@@ -37,13 +37,5 @@ export function localizedResources(directory, pages, origin, dictionary) {
   const feed = JSON.parse(fs.readFileSync(path.join(output, 'feed.json'), 'utf8'));
   const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
   fs.writeFileSync(path.join(output, 'rss.xml'), `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>${escape(feed.title)}</title><link>${origin}/zh/insights/</link><description>${escape(feed.description)}</description><language>zh-Hans</language>${feed.items.map(item => `<item><title>${escape(item.title)}</title><link>${item.url}</link><guid isPermaLink="true">${item.id}</guid><description>${escape(item.summary)}</description>${item.date_published ? `<pubDate>${new Date(item.date_published).toUTCString()}</pubDate>` : ''}</item>`).join('')}</channel></rss>`);
-  const lines = ['# MEL ONE 中文服务', '', translate('MEL ONE provides Adelaide carpentry, custom joinery, decking, cabinetry and heritage timber restoration. Request a clear quote from one local team.'), '', '## 中文页面'];
-  for (const [route, html] of pages) {
-    if (!route.startsWith('/zh/') || route.endsWith('404.html')) continue;
-    const dom = new JSDOM(html);
-    lines.push(`- [${dom.window.document.querySelector('h1').textContent}](${origin}${route})`);
-    dom.window.close();
-  }
-  fs.writeFileSync(path.join(output, 'llms.txt'), lines.join('\n') + '\n');
   enhanceFeeds(directory, pages, origin);
 }
