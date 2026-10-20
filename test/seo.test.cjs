@@ -66,10 +66,18 @@ test('generated structured data connects the site, services and articles to the 
 });
 
 test('service and insight pages publish breadcrumb and local business relationships', () => {
-  assert.match(source, /'@type': 'BreadcrumbList'/);
-  assert.match(source, /provider: \{ '@id': canonical\('\/#business'\) \}/);
-  assert.match(source, /areaServed: \{ '@type': 'City', name: 'Adelaide' \}/);
-  assert.match(source, /mainEntityOfPage: canonical\(route\)/);
+  const origin='https://www.adelaidecarpentryhub.com.au';
+  const readGraph=route=>{
+    const html=fs.readFileSync(path.join(root,'public',route,'index.html'),'utf8');
+    return [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap(m=>{const value=JSON.parse(m[1]);return value['@graph']||[value];});
+  };
+  const service=readGraph('services/storage-solutions');
+  assert.deepEqual(service.find(n=>n['@type']==='Service').provider,{'@id':origin+'/#business'});
+  assert.deepEqual(service.find(n=>n['@type']==='Service').areaServed,{'@type':'City',name:'Adelaide'});
+  const guide=readGraph('insights/adelaide-custom-wardrobe-planning');
+  assert.equal(guide.find(n=>n['@type']==='Article').mainEntityOfPage,origin+'/insights/adelaide-custom-wardrobe-planning/');
+  assert.equal(guide.filter(n=>n['@type']==='BreadcrumbList').length,1);
+  assert.equal(guide.find(n=>n['@type']==='BreadcrumbList').itemListElement[1].item,origin+'/services/storage-solutions/');
 });
 
 test('insights include three Adelaide planning guides and publish both subscription feeds', () => {

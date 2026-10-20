@@ -18,3 +18,12 @@
 - 修改页面后执行 `npm run build`；缺页、noindex、canonical 或 hreflang 配对不符会阻止精选索引生成。不要恢复为全量 sitemap 清单，不新增 llms-full.txt 或批量 Markdown 副本。
 - 本地测试：`node --test test/llms-curated.test.cjs`。只读线上链接核查：`node tools/audit-llms.mjs`，结果写入本站 reports；如环境需要代理，可明确传 `--proxy=http://127.0.0.1:7897`。模拟 UA 不证明真实机器人来访。
 - 2026-10-20 用户在本地交付后明确要求“部署上线”，授权本轮精选双语 llms.txt 经 GitHub → Vercel 发布；不延伸至后续发布。训练爬虫政策、robots、WAF、URL、canonical 和可见页面保持原状。
+
+## 2026-10-20 双语服务导航与咨询路径
+
+- 本轮用户授权优化面包屑、上下级服务入口及咨询路径，仅本地工作分支交付；未授权推送、Preview、合并 main 或生产发布，不沿用上一轮 llms 发布授权。
+- `src/content-pack/customer-paths.json` 维护明确的中英短标签、真实父级、服务归属及编辑依据；不要通过 URL 分段自动推断。首页继续承接综合城市业务，优先服务保留已有直达入口；其余服务使用真实服务目录。
+- `tools/customer-paths.mjs` 在双语页面生成后统一输出可见路径和唯一 BreadcrumbList。不要恢复旧的分散生成器或只改 JSON-LD；不得改变现有 canonical/hreflang。首页、隐私工具页与 404 不硬塞商业面包屑。
+- 单服务指南归属必须经正文核实；服务父页在可见相关导航中给出指南入口，不能仅依靠收起的 FAQ。综合指南保留其栏目。真实案例仍为现有服务页图库，不编造独立案例 URL。
+- 任何标签、关系、正文服务入口修改都同时审查中英配对。`breadcrumb_click` 只复用现有 gtag，不新增追踪系统、不上传查询串或个人资料、不当作获客转化。
+- 测试：`npm test`；然后 `npm run build`（恢复 Clarity 注入）、`node --test tests/*.test.mjs`、`npm run check`。映射/链接图用 `node tools/customer-paths-audit.mjs after` 导出到本站 reports；候选 HTTP 和浏览器验证工具为 `tools/verify-customer-paths-http.mjs` 与 `tools/verify-customer-paths-browser.mjs`。这些结果不能证明正式站已发布或搜索增长。

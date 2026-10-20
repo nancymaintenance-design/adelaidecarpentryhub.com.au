@@ -490,3 +490,18 @@ html:has(body.interior), body.interior { overflow-x: visible; }
   .interior .contact-layout .contact-form h2 { font-size: 27px; }
   .interior .page-hero:not(.service-directory-hero):not(.contact-hero), .interior .detail-hero, .interior .article-hero { padding-block: 32px 26px; }
 }
+/* Compact, readable hierarchy; no extra section or fixed-height whitespace. */
+.breadcrumbs { grid-column: 1 / -1; min-width: 0; margin: 0 0 16px; font-size: 14px; line-height: 1.5; }
+.breadcrumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: 0; list-style: none; padding: 0; margin: 0; }
+.breadcrumbs li { display: flex; align-items: center; min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+.breadcrumbs li + li::before { content: ""; width: 5px; height: 5px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); margin: 0 12px; flex: 0 0 auto; }
+.breadcrumbs a { display: inline-flex; align-items: center; min-height: 36px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.breadcrumbs a:hover { text-decoration-thickness: 2px; }
+.breadcrumbs a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.breadcrumbs a:active { opacity: .75; }
+.breadcrumbs [aria-current] { color: var(--muted); }
+.interior .detail-grid:has(> .breadcrumbs), .interior .page-hero-grid:has(> .breadcrumbs) { row-gap: 12px; align-items: start; }
+.service-next-step { margin: 12px 0 0; max-width: 75ch; font-size: 16px; line-height: 1.7; }
+.service-next-step a { text-decoration: underline; text-underline-offset: 3px; }
+.interior .article p, .interior .article-cta p { overflow-wrap: anywhere; }
+@media (max-width: 700px) { .breadcrumbs { margin-bottom: 12px; } }

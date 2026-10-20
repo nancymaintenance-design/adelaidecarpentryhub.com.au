@@ -12,13 +12,22 @@ test.before(() => {
   execFileSync(process.execPath, ['clarity-install.mjs','public','clarity-site.json','clarity-assets'], {cwd:root,stdio:'pipe'});
 });
 
-// Catches accidental edits to visible markup, styles, runtime code or JSON-LD.
-test('feed changes leave all 98 HTML files and shared display assets byte-equivalent to the published baseline', () => {
-  const files=execFileSync('git',['ls-tree','-r','--name-only','622f374','public'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(file=>file.endsWith('.html')||/^public\/assets\/(base|theme|interior)\.(css|js)$/.test(file));
+// The operator now authorizes visible navigation. Preserve every original customer
+// section while allowing only the separately tested breadcrumb/service-entry additions.
+test('navigation changes retain all 98 pages original main content and indexing metadata', () => {
+  const files=execFileSync('git',['ls-tree','-r','--name-only','622f374','public'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(file=>file.endsWith('.html'));
   assert.equal(files.filter(file=>file.endsWith('.html')).length,98);
   for(const file of files) {
     const before=execFileSync('git',['show','622f374:'+file],{cwd:root,encoding:'utf8',maxBuffer:8*1024*1024});
-    assert.equal(fs.readFileSync(path.join(root,file),'utf8').replaceAll('\r\n','\n'),before.replaceAll('\r\n','\n'),file);
+    const oldDom=new JSDOM(before),newDom=new JSDOM(fs.readFileSync(path.join(root,file),'utf8'));
+    const old=oldDom.window.document,current=newDom.window.document;
+    current.querySelectorAll('.breadcrumbs,.service-next-step,[data-customer-guide]').forEach(n=>n.remove());
+    assert.equal(current.querySelector('main').innerHTML,old.querySelector('main').innerHTML,file+': original content');
+    for(const selector of ['title','link[rel="canonical"]','meta[name="robots"]', 'meta[name="description"]'])assert.equal(current.querySelector(selector).outerHTML,old.querySelector(selector).outerHTML,file+': '+selector);
+    assert.deepEqual([...current.querySelectorAll('link[hreflang]')].map(n=>n.outerHTML),[...old.querySelectorAll('link[hreflang]')].map(n=>n.outerHTML),file+': language pairs');
+    const originalSchemas=d=>[...d.querySelectorAll('script[type="application/ld+json"]')].flatMap(s=>{const value=JSON.parse(s.textContent);return value['@graph']||[value];}).filter(n=>n['@type']!=='BreadcrumbList').map(n=>{const copy=structuredClone(n);delete copy.breadcrumb;delete copy['@context'];return copy;});
+    assert.deepEqual(originalSchemas(current),originalSchemas(old),file+': non-breadcrumb schema');
+    oldDom.window.close();newDom.window.close();
   }
 });
 

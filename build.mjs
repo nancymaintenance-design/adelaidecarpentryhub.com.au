@@ -12,6 +12,7 @@ import { createHash } from 'node:crypto';
 import { bilingualPages, chineseRoute, loadTranslations } from './tools/i18n.mjs';
 import { localizedResources } from './tools/localized-resources.mjs';
 import { createLlms } from './tools/llms-resources.mjs';
+import { applyCustomerPaths } from './tools/customer-paths.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectDir = __dirname;
@@ -211,18 +212,6 @@ function heroMedia(slotId) {
 }
 
 function canonical(route) { return `${origin}${route}`; }
-
-function breadcrumbList(items) {
-  return {
-    '@type': 'BreadcrumbList',
-    itemListElement: items.map(([name, route], index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name,
-      item: canonical(route),
-    })),
-  };
-}
 
 const brandName = content.brand.name;
 const brandMark = content.brand.short_name;
@@ -670,7 +659,6 @@ function collectionJsonLd(route, label, intro, items, kind) {
           })),
         },
       },
-      breadcrumbList([['Home', '/'], [label, route]]),
     ],
   };
 }
@@ -1009,7 +997,6 @@ for (const [index, item] of content.services.entries()) {
         areaServed: { '@type': 'City', name: 'Adelaide' },
         provider: { '@id': canonical('/#business') },
       },
-      breadcrumbList([['Home', '/'], [copy.servicesTitle, '/services/'], [item.title, route]]),
       ...faqSchema(item),
     ],
   } }));
@@ -1068,7 +1055,6 @@ function collection(kind, label, items, intro) {
           ...(slot(`insight.${item.slug}`)?.src ? { image: canonical(slot(`insight.${item.slug}`).src) } : {}),
           ...(item.date ? { datePublished: item.date } : {}),
         },
-        breadcrumbList([['Home', '/'], [label, `/${kind}/`], [item.title, route]]),
         ...faqSchema(item),
       ],
     } }));
@@ -1174,7 +1160,6 @@ const renderServiceAreaPage = (region) => {
     '@context': 'https://schema.org',
     '@graph': [
       { '@type': 'Service', name: region.title, description: region.description, url: canonical(route), provider: { '@id': canonical('/#business') }, areaServed: locations.map((name) => ({ '@type': 'Place', name: `${name}, ${region.name}, Adelaide, South Australia` })) },
-      { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: canonical('/') }, { '@type': 'ListItem', position: 2, name: 'Service areas', item: canonical('/service-areas/') }, { '@type': 'ListItem', position: 3, name: region.name, item: canonical(route) }] },
       { '@type': 'FAQPage', mainEntity: faqs.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) }
     ]
   };
@@ -1256,7 +1241,6 @@ writeRoute('/contact/', page({ title: 'Request a Carpentry Quote Adelaide | MEL 
       description: content.contact.lead,
       mainEntity: { '@id': canonical('/#business') },
     },
-    breadcrumbList([['Home', '/'], ['Contact', '/contact/']]),
   ],
 } }));
 
@@ -1274,7 +1258,7 @@ const allRoutes = [
   ...content.insights.map((item) => `/insights/${item.slug}/`),
 ];
 const extractOnly = process.argv.includes('--extract-i18n');
-const localizedPages = [];
+let localizedPages = [];
 const untranslated = new Map();
 for (const [route, html] of pendingPages) {
   if (extractOnly) localizedPages.push([route, html]);
@@ -1293,6 +1277,9 @@ if (untranslated.size) {
   fs.writeFileSync(report, JSON.stringify(Object.fromEntries(untranslated), null, 2));
   throw new Error(`${untranslated.size} new or changed English strings need Chinese translations. See ${report}. Run npm run i18n:extract, update src/i18n/*.json, then rebuild.`);
 }
+const customerPaths = JSON.parse(fs.readFileSync(path.join(projectDir, 'src/content-pack/customer-paths.json'), 'utf8'));
+const customerNavigation = applyCustomerPaths(new Map(localizedPages), customerPaths, origin);
+localizedPages = [...customerNavigation.pages];
 for (const [route, html] of localizedPages) {
   const destination = route.endsWith('.html') ? path.join(siteDir, route) : path.join(siteDir, route, 'index.html');
   fs.mkdirSync(path.dirname(destination), { recursive: true });

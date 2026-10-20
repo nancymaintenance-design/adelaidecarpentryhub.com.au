@@ -1,0 +1,73 @@
+{
+  "origin": "https://www.adelaidecarpentryhub.com.au",
+  "brand": "MEL ONE",
+  "services": [
+    ["house-framing", "House Framing", "房屋木结构框架"],
+    ["outdoor-living", "Decks, Pergolas & Timber Screens", "新建木平台、凉棚与木屏风"],
+    ["fix-out-second-fix", "Second-fix Carpentry", "后期木工安装"],
+    ["formwork-carpentry", "Formwork Carpentry", "混凝土模板木工"],
+    ["fitout-refurbishment", "Commercial Fitout & Refurbishment", "商业木作装修与翻新"],
+    ["custom-kitchen-bathroom", "Kitchen & Bathroom Cabinetry", "厨房与浴室柜体"],
+    ["architectural-joinery", "Architectural Joinery & Wall Panelling", "装饰木作与墙板"],
+    ["storage-solutions", "Built-in Wardrobes & Custom Storage", "嵌入式衣柜与定制收纳"],
+    ["custom-doors-furniture", "Custom Timber Doors & Furniture", "定制木门与家具"],
+    ["restoration-maintenance", "Timber Rot Repairs & Maintenance", "木材腐烂维修与养护"],
+    ["heritage-carpentry", "Heritage Carpentry", "历史建筑木作修复"],
+    ["decking-restoration-flooring", "Deck Restoration & Timber Floor Repairs", "木平台翻新与木地板维修"],
+    ["door-window-repairs", "Timber Door & Window Repairs", "木门窗维修"],
+    ["skirting-board-installation-repairs", "Skirting Board Repairs & Installation", "踢脚板维修与安装"],
+    ["door-jamb-interior-trim", "Door Frame, Jamb & Trim Repairs", "门框与室内饰条维修"],
+    ["timber-fencing-repairs-replacement", "Timber Fence Repairs & Replacement", "木围栏维修与更换"],
+    ["timber-gates-installation-repairs", "Timber Gate Repairs & Installation", "木栅门维修与安装"],
+    ["renovation-carpentry", "Renovation Carpentry", "翻修木工"],
+    ["fascia-eaves-repairs", "Fascia & Timber Eaves Repairs", "檐口封板与木质檐底维修"],
+    ["weatherboard-repairs", "Timber Weatherboard Repairs", "木质外墙挂板维修"],
+    ["subfloor-timber-repairs", "Subfloor Timber Repairs", "地板下木结构维修"],
+    ["accessibility-carpentry", "Accessibility Carpentry", "无障碍木工"],
+    ["pergola-repairs", "Timber Pergola Repairs", "木质凉棚维修"],
+    ["timber-stairs-handrails", "Timber Stairs & Handrail Repairs", "木楼梯与扶手维修"],
+    ["cabinet-repairs", "Cabinet Door & Drawer Repairs", "柜门与抽屉维修"]
+  ],
+  "guides": [
+    ["why-integrated-carpentry-joinery", "Carpenter, Joiner & Cabinet Maker", "木工、细木工与柜体制作分工", null, "Multi-service trade selection, not one service"],
+    ["kitchen-renovation-cost-guide", "Kitchen Cabinetry Quotes", "厨房柜体报价比较", "custom-kitchen-bathroom", "Cabinet layout, hardware and installation costs"],
+    ["heritage-building-timber-restoration", "Heritage Timber Restoration", "历史建筑木材修复原则", "heritage-carpentry", "Retention and original profiles"],
+    ["timber-flooring-oiling-guide", "Solid & Engineered Timber Flooring", "实木与工程木地板比较", "decking-restoration-flooring", "Existing owner explicitly covers indoor floor decisions"],
+    ["commercial-fitout-process", "Commercial Fitout Planning", "商业木作装修流程", "fitout-refurbishment", "Commercial timber fitout scope and sequence"],
+    ["adelaide-carpentry-cost-guide", "Carpentry Quote Comparison", "木工报价比较", null, "Multi-service cost comparison; retains guide directory"],
+    ["outdoor-timber-selection-adelaide", "Decking Material Selection", "户外木平台选材", "outdoor-living", "New outdoor timber material specification"],
+    ["adelaide-deck-replacement-guide", "Deck Repair or Replacement", "木平台维修与更换比较", "decking-restoration-flooring", "Existing deck condition and repair decision, with link to new work"],
+    ["adelaide-custom-wardrobe-planning", "Custom Wardrobe Planning", "定制衣柜规划", "storage-solutions", "Measured wardrobe layout and storage specification"],
+    ["adelaide-heritage-timber-repairs", "Heritage Timber Repair Records", "历史建筑木作维修记录", "heritage-carpentry", "Condition recording for heritage repair"]
+  ],
+  "areas": [
+    ["adelaide-cbd", "Adelaide CBD", "阿德莱德市中心"],
+    ["east-end", "East End", "东区 East End"],
+    ["west-end", "West End", "西区 West End"],
+    ["north-terrace-riverbank", "North Terrace & Riverbank", "North Terrace 与河岸区"],
+    ["north-adelaide", "North Adelaide", "北阿德莱德"]
+  ],
+  "core": [
+    ["/", "Home", "首页", "homepage"],
+    ["/services/", "Carpentry & Joinery", "木工与定制木作", "service-directory"],
+    ["/service-areas/", "Service Areas", "服务地区", "area-directory"],
+    ["/insights/", "Timber Planning Guides", "木作指南", "guide-directory"],
+    ["/faq/", "Carpentry FAQ", "木工常见问题", "faq"],
+    ["/about/", "About MEL ONE", "关于 MEL ONE", "company"],
+    ["/contact/", "Contact & Quotes", "联系与报价", "contact"],
+    ["/clarity-privacy/", "Enquiry Data & Analytics", "咨询资料与分析设置", "privacy"]
+  ],
+  "priority_services": ["door-window-repairs", "restoration-maintenance", "storage-solutions", "custom-kitchen-bathroom", "outdoor-living", "decking-restoration-flooring", "heritage-carpentry", "house-framing", "fitout-refurbishment"],
+  "query_groups": {
+    "door-window-repairs": ["timber door repairs", "timber window repairs", "sash window repairs"],
+    "restoration-maintenance": ["timber rot repairs", "rotted timber repair", "timber maintenance"],
+    "storage-solutions": ["built-in wardrobes", "custom wardrobes", "custom storage"],
+    "custom-kitchen-bathroom": ["kitchen cabinetry", "laundry cabinets", "bathroom vanity joinery"],
+    "outdoor-living": ["new timber decking", "new pergolas", "timber privacy screens"],
+    "decking-restoration-flooring": ["deck restoration", "deck repairs", "timber floor repairs"],
+    "heritage-carpentry": ["heritage carpenter", "heritage timber restoration", "heritage joinery repairs"],
+    "house-framing": ["house framing", "framing carpenter", "timber wall framing"],
+    "fitout-refurbishment": ["commercial carpenter", "shop fitout carpentry", "commercial timber refurbishment"]
+  },
+  "excluded": ["/404.html", "/zh/404.html"]
+}

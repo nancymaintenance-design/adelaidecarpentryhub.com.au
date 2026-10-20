@@ -39,6 +39,17 @@ function trackContactEvent(name, parameters) {
   }
 }
 
+// Reuse the installed analytics destination; navigation is never a lead conversion.
+for (const link of document.querySelectorAll('.breadcrumbs a[data-breadcrumb-position]')) {
+  link.addEventListener('click', () => trackContactEvent('breadcrumb_click', {
+    source_path: window.location.pathname,
+    target_path: new URL(link.href, window.location.origin).pathname,
+    locale: chinese ? 'zh-Hans' : 'en-AU',
+    position: Number(link.dataset.breadcrumbPosition),
+    owner_id: link.closest('.breadcrumbs').dataset.ownerId,
+  }));
+}
+
 for (const link of document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]')) {
   const method = link.getAttribute('href').startsWith('tel:') ? 'phone' : 'email';
   link.addEventListener('click', () => trackContactEvent('contact_click', { contact_method: method }));
