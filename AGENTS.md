@@ -27,3 +27,14 @@
 - 单服务指南归属必须经正文核实；服务父页在可见相关导航中给出指南入口，不能仅依靠收起的 FAQ。综合指南保留其栏目。真实案例仍为现有服务页图库，不编造独立案例 URL。
 - 任何标签、关系、正文服务入口修改都同时审查中英配对。`breadcrumb_click` 只复用现有 gtag，不新增追踪系统、不上传查询串或个人资料、不当作获客转化。
 - 测试：`npm test`；然后 `npm run build`（恢复 Clarity 注入）、`node --test tests/*.test.mjs`、`npm run check`。映射/链接图用 `node tools/customer-paths-audit.mjs after` 导出到本站 reports；候选 HTTP 和浏览器验证工具为 `tools/verify-customer-paths-http.mjs` 与 `tools/verify-customer-paths-browser.mjs`。这些结果不能证明正式站已发布或搜索增长。
+
+## 2026-10-20 参考站对比后的服务目录
+
+- 用户已确认：25项服务添加紧凑页内目录，门窗页调整具体维修小标题，强化既有指南的服务入口；中英文同步，仅本地预览，不改URL、不增加大片区块。本轮不授权推送或部署。
+- `src/content-pack/service-navigation.json` 的三个短标签分别对应前三个正文主题；其他入口指向实际报价、相关导航及存在的项目照片。修改服务顺序或增加服务时同步核对标签和目标，不照搬其他品牌/地区事实。
+- 翻译继续复用 `src/i18n`，不覆盖相同英文键的已确认翻译。维护目录后运行 `node --test test/service-navigation.test.cjs` 及 `node tools/verify-service-navigation.mjs`，再执行原有全量测试与构建。
+
+## 2026-10-21 本地确认版本发布授权
+
+- 用户本轮明确要求“部署上线”，授权上述已确认的双语面包屑、服务目录和咨询路径经本站 GitHub → Vercel 链路发布。此前“仅本地”的记录为授权前状态，不延伸至其他网站或后续改动。
+- 只提交本轮清单及实际引用的静态资源；保留无关未跟踪文件，不强制推送，不修改安全政策、域名或业务事实。

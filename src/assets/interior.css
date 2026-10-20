@@ -505,3 +505,19 @@ html:has(body.interior), body.interior { overflow-x: visible; }
 .service-next-step a { text-decoration: underline; text-underline-offset: 3px; }
 .interior .article p, .interior .article-cta p { overflow-wrap: anywhere; }
 @media (max-width: 700px) { .breadcrumbs { margin-bottom: 12px; } }
+
+/* Service-specific native jumps: no sticky second header or fixed-height panels. */
+.interior .service-jumps-wrap { padding-block: 16px 0; }
+.interior .service-jumps ul { display: flex; flex-wrap: wrap; gap: 4px 20px; list-style: none; margin: 0; padding: 0 0 12px; border-bottom: 1px solid var(--line); }
+.interior .service-jumps a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; overflow-wrap: anywhere; }
+.interior .service-jumps a:hover { text-decoration-thickness: 2px; }
+.interior .service-jumps a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.interior .service-jumps a:active { color: var(--muted); }
+.interior .service-content [id^="service-section-"], .interior #service-related { scroll-margin-top: 24px; }
+.interior .service-content:has(.service-intro) { padding-top: 24px; }
+.interior .service-next-step { padding-left: 14px; border-left: 3px solid var(--accent); }
+.interior .service-next-step a { font-weight: 700; }
+@media (max-width: 1000px) {
+  .interior .service-content [id^="service-section-"], .interior #service-related { scroll-margin-top: 20px; }
+}
+@media (max-width: 700px) { .interior .service-jumps ul { gap: 2px 16px; } .interior .service-jumps a { font-size: 14px; } }

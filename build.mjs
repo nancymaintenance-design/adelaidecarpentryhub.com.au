@@ -74,6 +74,7 @@ function renderSection(section, id = '') {
 }
 
 const content = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
+const serviceNavigation = JSON.parse(fs.readFileSync(path.join(projectDir, 'src/content-pack/service-navigation.json'), 'utf8'));
 const insightSlugs = new Set([
   'adelaide-deck-replacement-guide',
   'adelaide-custom-wardrobe-planning',
@@ -964,23 +965,28 @@ function realProjectGallery(serviceSlug) {
 
 for (const [index, item] of content.services.entries()) {
   const route = `/services/${item.slug}/`;
+  const labels = serviceNavigation[item.slug];
+  if (!labels || labels.length !== 3 || !item.sections.length) throw new Error(`Missing service navigation: ${item.slug}`);
+  const project = safeArray(realProjects[item.slug])[0];
+  const jumps = `<nav class="service-jumps" aria-label="On this service page"><ul>${labels.slice(0, Math.min(3, item.sections.length - 1)).map((label, i) => `<li><a href="#service-section-${i + 1}">${escapeHtml(label)}</a></li>`).join('')}<li><a href="#service-section-${item.sections.length}">Quote details</a></li>${project ? `<li><a data-project-jump href="#${escapeHtml(project.id)}">Project photos</a></li>` : ''}<li><a href="#service-related">Related services and guides</a></li></ul></nav>`;
   const body = `<section class="detail-hero"><div class="wrap detail-grid"><div><h1>${escapeHtml(item.title)}</h1></div><div><p class="lede">${escapeHtml(item.lead)}</p><div class="actions service-enquiry"><a class="btn primary" href="/contact/">${escapeHtml(item.planning?.cta_label || `Discuss ${item.title.toLowerCase()}`)}</a>${phoneLink()}</div></div></div></section>
+<div class="wrap service-jumps-wrap">${jumps}</div>
 <section class="section service-content"><div class="wrap">
   <article class="article">
     <div class="service-intro${slot(`service.${item.slug}`) ? '' : ' service-intro--text'}">
       ${media(`service.${item.slug}`)}
-      ${item.sections.slice(0, 1).map((section) => renderSection(section)).join('')}
+      ${item.sections.slice(0, 1).map((section) => renderSection(section, 'service-section-1')).join('')}
     </div>
     <div class="service-layout">
     <div class="service-body">
-    ${item.sections.slice(1).map((section) => renderSection(section)).join('')}
+    ${item.sections.slice(1).map((section, i) => renderSection(section, `service-section-${i + 2}`)).join('')}
     ${detailFaqs(item)}
     </div>
     <aside class="service-rail" aria-label="Project planning and related services">
       <h2>${escapeHtml(item.planning?.title || 'From first measure to agreed scope')}</h2>
       <p>${escapeHtml(item.planning?.body || 'Tell MEL ONE what needs attention or what you want built, your suburb and preferred timing. We arrange a site assessment, check the existing condition or measure for new work, and provide a written quote for the agreed scope, materials and access. Existing photos or drawings are optional for an initial enquiry.')}</p>
       <div class="service-rail-actions"><a class="btn primary" href="/contact/">${escapeHtml(item.planning?.cta_label || 'Discuss your project')}</a>${phoneLink()}</div>
-    ${relatedContent('service', item.slug, item.related_title)}
+    <div id="service-related">${relatedContent('service', item.slug, item.related_title)}</div>
     </aside>
     </div>
   </article>

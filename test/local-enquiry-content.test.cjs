@@ -103,7 +103,7 @@ test('broad and specific service bodies provide contextual links in both directi
   const pairs = [['fix-out-second-fix', 'skirting-board-installation-repairs'], ['timber-fencing-repairs-replacement', 'timber-gates-installation-repairs'], ['door-window-repairs', 'door-jamb-interior-trim']];
   for (const [broad, detail] of pairs) for (const [from, to] of [[broad, detail], [detail, broad]]) {
     const article = main(read(`services/${from}`)).match(/<article class="article">([\s\S]*?)<\/article>/)[1];
-    const sections = [...article.matchAll(/<section>[\s\S]*?<\/section>/g)].map(m => m[0]);
+    const sections = [...article.matchAll(/<section(?:\s[^>]*)?>[\s\S]*?<\/section>/g)].map(m => m[0]);
     assert.ok(sections.some(section => section.includes(`href="/services/${to}/"`)), `${from} to ${to}`);
   }
 });

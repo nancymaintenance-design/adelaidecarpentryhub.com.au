@@ -13,7 +13,8 @@ test.before(() => {
 });
 
 // The operator now authorizes visible navigation. Preserve every original customer
-// section while allowing only the separately tested breadcrumb/service-entry additions.
+// section while allowing separately tested breadcrumb/service-entry additions and
+// the 2026-10-20 approved section directory + five door-repair heading edits.
 test('navigation changes retain all 98 pages original main content and indexing metadata', () => {
   const files=execFileSync('git',['ls-tree','-r','--name-only','622f374','public'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(file=>file.endsWith('.html'));
   assert.equal(files.filter(file=>file.endsWith('.html')).length,98);
@@ -21,8 +22,19 @@ test('navigation changes retain all 98 pages original main content and indexing 
     const before=execFileSync('git',['show','622f374:'+file],{cwd:root,encoding:'utf8',maxBuffer:8*1024*1024});
     const oldDom=new JSDOM(before),newDom=new JSDOM(fs.readFileSync(path.join(root,file),'utf8'));
     const old=oldDom.window.document,current=newDom.window.document;
-    current.querySelectorAll('.breadcrumbs,.service-next-step,[data-customer-guide]').forEach(n=>n.remove());
-    assert.equal(current.querySelector('main').innerHTML,old.querySelector('main').innerHTML,file+': original content');
+    current.querySelectorAll('.breadcrumbs,.service-next-step,[data-customer-guide],.service-jumps-wrap').forEach(n=>n.remove());
+    current.querySelectorAll('[id^="service-section-"]').forEach(n=>n.removeAttribute('id'));
+    const related=current.querySelector('#service-related');if(related)related.replaceWith(...related.childNodes);
+    const approvedHeadings=[
+      ['Timber Door Adjustments and Latch Repairs','Timber Door Repairs: Rubbing, Sticking and Latch Alignment','木门调整与锁舌维修','木门维修：摩擦、卡滞与锁舌对齐'],
+      ['Timber Window Frame and Sill Repairs','Timber Windows: Sills, Frames and Repairable Material','木窗框与窗台维修','木窗：窗台、窗框与可维修材料'],
+      ['Sash Window Cords and Balance Repairs','A Sash That Drops Shut or Is Painted Closed','窗扇绳索与平衡器维修','窗扇自行滑落关闭或被油漆粘住'],
+      ['Cavity Sliding Door Mechanisms and Access','Cavity Sliding and Other Timber Doors: Access to the Mechanism','暗藏式推拉门机构与检修','暗藏式推拉门及其他木门：机构检修条件'],
+      ['Door and Window Repair Quote Inclusions','Repair Quote, Finishing and Operation Checks','门窗维修报价内容','维修报价、饰面及运行检查']
+    ];
+    if(file.endsWith('/services/door-window-repairs/index.html'))for(const heading of current.querySelectorAll('h2'))for(const [en,oldEn,zh,oldZh]of approvedHeadings){if(heading.textContent===en)heading.textContent=oldEn;if(heading.textContent===zh)heading.textContent=oldZh;}
+    const compact=html=>html.replace(/>\s+</g,'><');
+    assert.equal(compact(current.querySelector('main').innerHTML),compact(old.querySelector('main').innerHTML),file+': original content');
     for(const selector of ['title','link[rel="canonical"]','meta[name="robots"]', 'meta[name="description"]'])assert.equal(current.querySelector(selector).outerHTML,old.querySelector(selector).outerHTML,file+': '+selector);
     assert.deepEqual([...current.querySelectorAll('link[hreflang]')].map(n=>n.outerHTML),[...old.querySelectorAll('link[hreflang]')].map(n=>n.outerHTML),file+': language pairs');
     const originalSchemas=d=>[...d.querySelectorAll('script[type="application/ld+json"]')].flatMap(s=>{const value=JSON.parse(s.textContent);return value['@graph']||[value];}).filter(n=>n['@type']!=='BreadcrumbList').map(n=>{const copy=structuredClone(n);delete copy.breadcrumb;delete copy['@context'];return copy;});

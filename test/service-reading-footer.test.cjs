@@ -20,7 +20,7 @@ test('all 25 services pair only the opening section with evidence and continue i
     const intro = article.match(/<div class="service-intro[^\"]*">([\s\S]*?)<\/div>/)?.[1];
     const body = article.match(/<div class="service-body">([\s\S]*?)<\/div>/)?.[1];
     assert.ok(intro && body, `${item.slug}: opening and independent reading body`);
-    assert.equal((intro.match(/<section>/g) || []).length, 1, `${item.slug}: only opening section beside photo`);
+    assert.equal((intro.match(/<section(?:\s[^>]*)?>/g) || []).length, 1, `${item.slug}: only opening section beside photo`);
     assert.ok(intro.includes(`<h2>${esc(item.sections[0].title)}</h2>`));
     assert.equal(intro.includes('<figure class="evidence-media"'), Boolean(slots[`service.${item.slug}`]));
     assert.doesNotMatch(body, /evidence-media/);

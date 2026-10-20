@@ -44,7 +44,7 @@ test('service opening and reading body retain all sections and FAQ answers in so
     const intro = article.match(/<div class="service-intro[^\"]*">([\s\S]*?)<\/div>/)?.[1];
     const body = article.match(/<div class="service-body">([\s\S]*?)<\/div>/)?.[1];
     assert.ok(intro && body, item.slug);
-    assert.equal((intro.match(/<section>/g) || []).length, 1, item.slug);
+    assert.equal((intro.match(/<section(?:\s[^>]*)?>/g) || []).length, 1, item.slug);
     let previous = -1;
     for (const [index, section] of item.sections.entries()) {
       for (const text of [section.summary, ...(section.paragraphs || [])]) {

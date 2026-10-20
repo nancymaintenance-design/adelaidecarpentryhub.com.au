@@ -117,7 +117,7 @@ const serviceSubtopics = {
   'restoration-maintenance': /localised timber decay.*splice/i,
   'heritage-carpentry': /heritage timber profile matching/i,
   'decking-restoration-flooring': /floorboard replacement/i,
-  'door-window-repairs': /sash.*drops shut|sash.*painted closed/i,
+  'door-window-repairs': /sash.*cords|sash.*balance repairs/i,
   'skirting-board-installation-repairs': /damaged skirting profile.*matching/i,
   'door-jamb-interior-trim': /split door jamb/i,
   'timber-fencing-repairs-replacement': /leaning timber fence posts/i,
