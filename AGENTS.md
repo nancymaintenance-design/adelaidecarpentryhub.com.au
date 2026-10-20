@@ -17,4 +17,4 @@
 - 精选 Owner 路由及纳入理由维护在 `src/content-pack/llms-selection.json`；标题和简短摘要由 `tools/llms-resources.mjs` 从当前生成页面 H1 和指定正文选择器取得，不另建品牌事实库。
 - 修改页面后执行 `npm run build`；缺页、noindex、canonical 或 hreflang 配对不符会阻止精选索引生成。不要恢复为全量 sitemap 清单，不新增 llms-full.txt 或批量 Markdown 副本。
 - 本地测试：`node --test test/llms-curated.test.cjs`。只读线上链接核查：`node tools/audit-llms.mjs`，结果写入本站 reports；如环境需要代理，可明确传 `--proxy=http://127.0.0.1:7897`。模拟 UA 不证明真实机器人来访。
-- 本轮仅授权本地工作分支交付，未授权推送、合并 main 或发布生产。训练爬虫政策、robots、WAF、URL、canonical 和可见页面保持原状。
+- 2026-10-20 用户在本地交付后明确要求“部署上线”，授权本轮精选双语 llms.txt 经 GitHub → Vercel 发布；不延伸至后续发布。训练爬虫政策、robots、WAF、URL、canonical 和可见页面保持原状。
