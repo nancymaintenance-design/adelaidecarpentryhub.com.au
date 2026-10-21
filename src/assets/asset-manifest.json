@@ -53,7 +53,7 @@
     },
     "service.custom-doors-furniture": {
       "src": "/assets/doors-furniture.jpg",
-      "alt": "Custom doors and furniture — handcrafted in our workshop",
+      "alt": "Joiners assembling timber furniture at workshop benches",
       "caption": "Custom Doors, Windows & Furniture"
     },
     "service.restoration-maintenance": {
@@ -157,12 +157,12 @@
     "insight.adelaide-carpentry-cost-guide": {
       "src": "/assets/insight-adelaide-carpentry-cost-guide.png",
       "alt": "Carpenter measuring across exposed, deteriorated deck timber with a tape measure",
-      "caption": "Measuring exposed deck timber: dimensions help define the investigation, while the repair scope still needs assessment."
+      "caption": "Measuring the exposed deck timber before assessing the repair scope."
     },
     "insight.outdoor-timber-selection-adelaide": {
       "src": "/assets/insight-outdoor-timber-selection-adelaide.png",
       "alt": "Timber deck, steps and pergola with visible metal connections and tools nearby",
-      "caption": "Deck, steps and pergola shown together: the image does not identify timber species, treatment or compliance."
+      "caption": "Timber deck, steps and pergola with connections visible beside the outdoor area."
     },
     "insight.adelaide-heritage-timber-repairs": {
       "src": "/assets/insight-adelaide-heritage-timber-repairs.png",

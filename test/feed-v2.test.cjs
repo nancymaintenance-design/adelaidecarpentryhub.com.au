@@ -12,16 +12,22 @@ test.before(() => {
   execFileSync(process.execPath, ['clarity-install.mjs','public','clarity-site.json','clarity-assets'], {cwd:root,stdio:'pipe'});
 });
 
-// The operator now authorizes visible navigation. Preserve every original customer
-// section while allowing separately tested breadcrumb/service-entry additions and
-// the 2026-10-20 approved section directory + five door-repair heading edits.
-test('navigation changes retain all 98 pages original main content and indexing metadata', () => {
+// Preserve all customer sections and unedited copy. The operator authorized
+// bilingual copy changes on 2026-10-21; only the exact reviewed pairs below may
+// differ from the historical navigation baseline. Routes and indexing stay fixed.
+test('approved navigation and copy changes preserve all 98 page structures, unedited content and indexing metadata', async () => {
+  const {visitCopy, normalize} = await import('../tools/i18n.mjs');
+  const approvedCopy = new Map(require('./fixtures/customer-copy-approved.json').pairs.map(([before,after])=>[normalize(before),after]));
   const files=execFileSync('git',['ls-tree','-r','--name-only','622f374','public'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(file=>file.endsWith('.html'));
   assert.equal(files.filter(file=>file.endsWith('.html')).length,98);
   for(const file of files) {
     const before=execFileSync('git',['show','622f374:'+file],{cwd:root,encoding:'utf8',maxBuffer:8*1024*1024});
     const oldDom=new JSDOM(before),newDom=new JSDOM(fs.readFileSync(path.join(root,file),'utf8'));
     const old=oldDom.window.document,current=newDom.window.document;
+    visitCopy(old, value => {
+      const replacement=approvedCopy.get(normalize(value));
+      return replacement ? value.replace(value.trim(),replacement) : value;
+    });
     current.querySelectorAll('.breadcrumbs,.service-next-step,[data-customer-guide],.service-jumps-wrap').forEach(n=>n.remove());
     current.querySelectorAll('[id^="service-section-"]').forEach(n=>n.removeAttribute('id'));
     const related=current.querySelector('#service-related');if(related)related.replaceWith(...related.childNodes);

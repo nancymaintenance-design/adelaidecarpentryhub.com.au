@@ -24,7 +24,8 @@ test('service groups put residential repairs first and retain all 25 unique serv
 test('carpentry cost guide declares its purpose and renders the existing deck comparison without invented prices', () => {
   const html = read('insights/adelaide-carpentry-cost-guide');
   assert.match(html, /<h1>Carpentry Costs Adelaide — Quote Comparison Guide<\/h1>/);
-  assert.match(html, /class="lede">This is a quote-comparison guide, not a price list/);
+  assert.match(html, /class="lede">We price carpentry from the job, timber condition, materials and access/);
+  assert.match(html, /We do not publish a standard hourly rate or project price in this guide/);
   const table = html.match(/<table>[\s\S]*?<\/table>/)[0];
   assert.match(table, /<caption>Hypothetical deck quote comparison: work included, without prices<\/caption>/);
   assert.equal((table.match(/scope="col"/g) || []).length, 3);

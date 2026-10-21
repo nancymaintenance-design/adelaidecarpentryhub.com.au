@@ -71,7 +71,7 @@ for (const form of document.querySelectorAll('form[data-contact-form]')) {
       [name, 'name', ui('Please enter your name.', '请填写您的姓名。')],
       [phone, 'phone', ui('Please add a phone number.', '请填写联系电话。')],
       [email, 'email', ui('Please add an email address.', '请填写电子邮箱。')],
-      [message, 'message', ui('Please add a short project note before saving.', '请简要说明需要维修或安装的项目。')]
+      [message, 'message', ui('Please describe the repair or installation before sending your enquiry.', '发送咨询前，请简要说明需要维修或安装的项目。')]
     ].find(([value]) => !value);
     if (missing) { status.textContent = missing[2]; form.elements[missing[1]].focus(); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = ui('Please enter a valid email address.', '请填写有效的电子邮箱地址。'); form.elements.email.focus(); return; }
@@ -88,7 +88,7 @@ for (const form of document.querySelectorAll('form[data-contact-form]')) {
       const result = await response.json();
       if (!response.ok || result?.ok !== true) throw new Error(result?.error || 'Unable to send your enquiry.');
       form.reset();
-      status.textContent = ui('Thank you — your enquiry has been sent to MEL ONE.', '感谢您的咨询，信息已发送至 MEL ONE。');
+      status.textContent = ui('Thank you — your enquiry has been sent to us. Any visit and assessment charges will be confirmed separately; this is not a booking confirmation.', '感谢您的咨询，信息已发送给我们。上门时间及任何检查费用将另行确认，此提示不代表预约成功。');
       trackContactEvent('generate_lead', { form_name: 'carpentry_enquiry' });
     } catch (error) {
       status.textContent = chinese

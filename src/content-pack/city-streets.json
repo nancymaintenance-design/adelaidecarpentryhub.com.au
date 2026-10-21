@@ -1,6 +1,6 @@
 {
   "title": "Adelaide service areas",
-  "lead": "Find your street in the five listed city precincts, then describe the timber repair or installation and access. A street selection adds location context to the enquiry; appointment availability is confirmed before booking.",
+  "lead": "Find your street in our five listed city precincts, then tell us the repair or installation you need. Selecting a street adds it to your enquiry; we discuss access, availability and any assessment charges before confirming an appointment.",
   "searchLabel": "Find your street",
   "searchPlaceholder": "Start typing a street or precinct",
   "regions": [
@@ -9,7 +9,7 @@
       "slug": "adelaide-cbd",
       "title": "Adelaide CBD Carpentry & Joinery Services",
       "description": "Adelaide CBD carpentry and joinery services for timber window repairs, doors, interior trim, decks, fencing and practical timber maintenance.",
-      "lead": "Enquire about timber door and window repairs, jambs, interior joinery or outdoor timber in Adelaide CBD. Include parking, loading or building-entry arrangements so MEL ONE can plan the site visit and quote.",
+      "lead": "We repair timber doors, windows, jambs and interior trim, and plan joinery and outdoor timber work in Adelaide CBD. Tell us the job and any parking, loading or building-entry requirements so we can arrange the site assessment and quote.",
       "bookingTitle": "Request a Local Carpentry Assessment",
       "serviceSlugs": [
         "door-window-repairs",
@@ -63,7 +63,7 @@
       "slug": "east-end",
       "title": "East End Adelaide Carpentry & Joinery Services",
       "description": "East End Adelaide carpentry and joinery for timber doors, window frames, interior finishing, renovation carpentry, decks, fences and timber maintenance.",
-      "lead": "Discuss sticking timber windows, rubbing doors, skirting, fitted joinery or outdoor repairs in East End. Explain the fault and any finishes you want to retain, along with entry and room-access details.",
+      "lead": "We repair sticking timber windows, rubbing doors, skirting and outdoor timber in East End, and plan fitted joinery. Tell us what has changed, which finishes you want to retain and how we can access the room or work area.",
       "bookingTitle": "Request a Local Carpentry Assessment",
       "serviceSlugs": [
         "door-window-repairs",
@@ -115,7 +115,7 @@
       "slug": "west-end",
       "title": "West End Adelaide Carpentry & Joinery Services",
       "description": "West End Adelaide carpentry and joinery services for timber repair, doors, windows, fit-out work, interior finishing, decking, fencing and gates.",
-      "lead": "Discuss door repairs, joinery, timber fences or staged fitout work in West End. Separate immediate faults from planned refurbishment, and include operating hours or areas that need to stay in use.",
+      "lead": "We carry out door repairs, joinery, timber fence repairs and agreed fitout carpentry in West End. Send your repair list or refurbishment brief, including operating hours and areas that need to remain in use, so we can discuss the work sequence.",
       "bookingTitle": "Request a Local Carpentry Assessment",
       "serviceSlugs": [
         "door-window-repairs",
@@ -128,7 +128,7 @@
       "faqs": [
         {
           "question": "Do you provide West End carpentry near Gouger Street?",
-          "answer": "Yes. Gouger Street is in the West End service region. Select the street in the list so it is included in the booking context."
+          "answer": "Yes. We take carpentry enquiries for Gouger Street in West End. Choose it from the list to add the location to your enquiry; the visit is confirmed separately."
         },
         {
           "question": "Can you assess door hardware and timber door concerns together?",
@@ -167,7 +167,7 @@
       "slug": "north-terrace-riverbank",
       "title": "North Terrace & Riverbank Carpentry & Joinery Services",
       "description": "North Terrace and Riverbank carpentry and joinery services for timber repairs, doors, windows, interior finishes, exposed timber maintenance and practical access planning.",
-      "lead": "Enquire about doors, windows, fitted joinery and exposed timber around North Terrace and Riverbank. Name the affected item and actual site-entry requirements, including any loading, induction or escorted access arrangements.",
+      "lead": "We repair doors, windows and exposed timber, and plan fitted joinery around North Terrace and Riverbank. Tell us the affected item and any loading, induction or escorted-entry requirements so we can plan access for your assessment.",
       "bookingTitle": "Request a Local Carpentry Assessment",
       "serviceSlugs": [
         "door-window-repairs",
@@ -209,7 +209,7 @@
       ],
       "accessTitle": "Site Entry and Authorised Access",
       "accessParagraphs": [
-        "Give the street and person authorised to arrange access and approve work. Mention any actual induction, loading booking, escorted entry, lift, stairs or work-window requirement. These details concern your premises; the directory does not imply experience at a named institution.",
+        "Give us the street and the person authorised to arrange access and approve work. Tell us about any induction, loading booking, escorted entry, lifts, stairs or work windows required at your premises so we can discuss the visit arrangements.",
         "Photos and approximate dimensions are optional. Describe whether the area stays occupied and what needs to change. The quote should record access, repair or new-work details, concealed-condition limits and any specialist or approval responsibilities before booking."
       ]
     },
@@ -218,7 +218,7 @@
       "slug": "north-adelaide",
       "title": "North Adelaide Carpentry & Joinery Services",
       "description": "North Adelaide carpentry and joinery services for timber window repairs, doors, fine interior work, decks, fences, gates and timber moisture management.",
-      "lead": "Discuss timber windows, doors, interior details or outdoor repairs with MEL ONE. Give your street and the part that needs attention so the site assessment and written quote can address the actual property.",
+      "lead": "We repair timber windows, doors, interior trim and outdoor timber in North Adelaide. Send us your street and the parts needing attention so we can assess the property, discuss what can be retained and prepare the written scope and quote.",
       "bookingTitle": "Request a Local Carpentry Assessment",
       "serviceSlugs": [
         "door-window-repairs",
@@ -232,7 +232,7 @@
       "faqs": [
         {
           "question": "Do you provide carpentry and joinery near O'Connell Street?",
-          "answer": "Yes. O'Connell Street is in MEL ONE's North Adelaide service region. Select it from the street list to include it in your booking context."
+          "answer": "Yes. We take carpentry enquiries for O'Connell Street in North Adelaide. Select it from the street list to add the location to your enquiry; the visit is confirmed separately."
         },
         {
           "question": "Can you discuss timber window repair and moisture prevention?",
