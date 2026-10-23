@@ -602,7 +602,7 @@ const relatedTargets = {
   'insight:timber-flooring-oiling-guide': ['service:decking-restoration-flooring', 'service:restoration-maintenance', 'service:outdoor-living'],
   'insight:commercial-fitout-process': ['service:fitout-refurbishment', 'service:architectural-joinery', 'service:fix-out-second-fix'],
   'insight:adelaide-deck-replacement-guide': ['service:decking-restoration-flooring', 'service:outdoor-living', 'service:restoration-maintenance'],
-  'insight:adelaide-custom-wardrobe-planning': ['service:storage-solutions', 'service:custom-kitchen-bathroom', 'service:architectural-joinery', 'service:custom-doors-furniture'],
+  'insight:adelaide-custom-wardrobe-planning': ['service:storage-solutions', 'service:custom-kitchen-bathroom', 'service:architectural-joinery', 'service:custom-doors-furniture', 'service:cabinet-repairs'],
   'insight:adelaide-heritage-timber-repairs': ['service:heritage-carpentry', 'insight:heritage-building-timber-restoration', 'service:restoration-maintenance', 'service:door-window-repairs'],
 };
 
@@ -748,7 +748,7 @@ const homeBody = `
   <h2 id="project-pathways-title">Carpentry Repairs, Custom Joinery and Renovation Work</h2>
   <p>Choose a repair for an existing fault or an installation service for new timber work. Our <a href="/service-areas/">street and precinct directory</a> includes <a href="/service-areas/north-adelaide/">North Adelaide</a>; send your location and access details with the job.</p>
   <div class="contact-grid">
-    <div><h3>Repair existing timber</h3><p>Find the part that needs attention: <a href="/services/door-window-repairs/">timber doors and sash windows</a>, <a href="/services/fascia-eaves-repairs/">fascia and eaves</a>, <a href="/services/weatherboard-repairs/">weatherboards and timber cladding</a>, or <a href="/services/decking-restoration-flooring/">existing decks and floorboards</a>. Describe what has changed so we can assess the repair.</p><a class="text-link" href="/services/restoration-maintenance/">Explore timber damage and maintenance ↗</a></div>
+    <div><h3>Repair existing timber</h3><p>Start with the problem: <a href="/services/door-window-repairs/">a sticking timber door or sash window</a>, <a href="/services/cabinet-repairs/">a dropped cupboard door or jammed drawer</a>, <a href="/services/decking-restoration-flooring/">damaged decking or floorboards</a>, <a href="/services/fascia-eaves-repairs/">deteriorating fascia or timber eaves</a>, <a href="/services/weatherboard-repairs/">damaged weatherboards</a>, or <a href="/services/timber-stairs-handrails/">loose timber steps or handrails</a>. Tell us what has changed so we can assess the repair.</p><a class="text-link" href="/services/restoration-maintenance/">Explore timber damage and maintenance ↗</a></div>
     <div><h3>Plan installation or new work</h3><p>Start with <a href="/services/outdoor-living/">new decks and outdoor timber</a>, <a href="/services/fix-out-second-fix/">second-fix doors and trim</a>, or <a href="/services/custom-kitchen-bathroom/">custom kitchen and bathroom cabinetry</a>. Tell us the intended use and build stage so we can plan the measure and quote.</p><a class="text-link" href="/services/">Explore all carpentry and joinery ↗</a></div>
   </div>
 </div></section>

@@ -1,0 +1,41 @@
+{
+  "baseline": "d3d2b3cdb854363d483cf8e1a208c85d266df6d3",
+  "pairs": [
+    {
+      "file": "public/index.html",
+      "selector": ".project-pathways .contact-grid > div:first-child p",
+      "before": "<p>Find the part that needs attention: <a href=\"/services/door-window-repairs/\">timber doors and sash windows</a>, <a href=\"/services/fascia-eaves-repairs/\">fascia and eaves</a>, <a href=\"/services/weatherboard-repairs/\">weatherboards and timber cladding</a>, or <a href=\"/services/decking-restoration-flooring/\">existing decks and floorboards</a>. Describe what has changed so we can assess the repair.</p>",
+      "after": "<p>Start with the problem: <a href=\"/services/door-window-repairs/\">a sticking timber door or sash window</a>, <a href=\"/services/cabinet-repairs/\">a dropped cupboard door or jammed drawer</a>, <a href=\"/services/decking-restoration-flooring/\">damaged decking or floorboards</a>, <a href=\"/services/fascia-eaves-repairs/\">deteriorating fascia or timber eaves</a>, <a href=\"/services/weatherboard-repairs/\">damaged weatherboards</a>, or <a href=\"/services/timber-stairs-handrails/\">loose timber steps or handrails</a>. Tell us what has changed so we can assess the repair.</p>"
+    },
+    {
+      "file": "public/zh/index.html",
+      "selector": ".project-pathways .contact-grid > div:first-child p",
+      "before": "<p>查找需要处理的部分： <a href=\"/zh/services/door-window-repairs/\">木门与提拉木窗</a>、 <a href=\"/zh/services/fascia-eaves-repairs/\">檐口封板与檐底</a>、 <a href=\"/zh/services/weatherboard-repairs/\">外墙挂板与木饰面板</a>，或 <a href=\"/zh/services/decking-restoration-flooring/\">现有户外木平台与地板条</a>。请描述发生了什么变化，便于我们评估维修。</p>",
+      "after": "<p>按遇到的问题选择： <a href=\"/zh/services/door-window-repairs/\">木门或升降窗卡滞</a>、 <a href=\"/zh/services/cabinet-repairs/\">柜门下垂或抽屉卡住</a>、 <a href=\"/zh/services/decking-restoration-flooring/\">木平台或地板板材损坏</a>、 <a href=\"/zh/services/fascia-eaves-repairs/\">檐口封板或木质檐底老化损坏</a>、 <a href=\"/zh/services/weatherboard-repairs/\">木质外墙挂板损坏</a>，或 <a href=\"/zh/services/timber-stairs-handrails/\">木台阶或扶手松动</a>。请告诉我们出现了哪些变化，以便评估维修。</p>"
+    },
+    {
+      "file": "public/services/storage-solutions/index.html",
+      "selector": "#service-section-4",
+      "before": "<section id=\"service-section-4\"><h2>Measured Drawings, Materials and Installation</h2><p>Rough room measurements are useful for planning, but the final measure records wall variation, floors, ceiling height, skirtings and installation access. Fillers and scribes allow a measured unit to meet an irregular existing room; their intended appearance should be clear on the approved detail. Large units may also need delivery and stair-turn checks before manufacture.</p><p>Agree cabinet and door materials, edging, handles, hinges, runners and visible finishes with the layout. Samples help when new storage meets existing joinery or flooring. Before handover, review doors, drawers, shelving, visible edges and any retained service access against the agreed specification.</p></section>",
+      "after": "<section id=\"service-section-4\"><h2>Measured Drawings, Materials and Installation</h2><p>Rough room measurements are useful for planning, but the final measure records wall variation, floors, ceiling height, skirtings and installation access. Fillers and scribes allow a measured unit to meet an irregular existing room; their intended appearance should be clear on the approved detail. Large units may also need delivery and stair-turn checks before manufacture.</p><p>Agree cabinet and door materials, edging, handles, hinges, runners and visible finishes with the layout. Samples help when new storage meets existing joinery or flooring. Before handover, review doors, drawers, shelving, visible edges and any retained service access against the agreed specification.</p><p><a href=\"/services/cabinet-repairs/\">Repair existing cupboard doors and drawers</a></p></section>"
+    },
+    {
+      "file": "public/zh/services/storage-solutions/index.html",
+      "selector": "#service-section-4",
+      "before": "<section id=\"service-section-4\"><h2>实测图纸、材料与安装</h2><p>房间粗略尺寸有助于规划，但最终测量需记录墙体偏差、地面、天花板高度、踢脚板及安装通道。填缝板和贴合修边可使按尺寸制作的柜体适应不规则旧房，其预期外观应在批准详图中清楚说明。大型柜体制作前，可能还需核查运输通道和楼梯转弯。</p><p>随布局一起约定柜体与柜门材料、封边、把手、铰链、滑轨及可见饰面。新收纳与现有定制木作或地板相接时，样品有助于判断。交接前，按约定规格检查柜门、抽屉、层板、可见边缘及保留的设施检修通道。</p></section>",
+      "after": "<section id=\"service-section-4\"><h2>实测图纸、材料与安装</h2><p>房间粗略尺寸有助于规划，但最终测量需记录墙体偏差、地面、天花板高度、踢脚板及安装通道。填缝板和贴合修边可使按尺寸制作的柜体适应不规则旧房，其预期外观应在批准详图中清楚说明。大型柜体制作前，可能还需核查运输通道和楼梯转弯。</p><p>随布局一起约定柜体与柜门材料、封边、把手、铰链、滑轨及可见饰面。新收纳与现有定制木作或地板相接时，样品有助于判断。交接前，按约定规格检查柜门、抽屉、层板、可见边缘及保留的设施检修通道。</p><p><a href=\"/zh/services/cabinet-repairs/\">维修现有柜门与抽屉</a></p></section>"
+    },
+    {
+      "file": "public/insights/adelaide-custom-wardrobe-planning/index.html",
+      "selector": ".related-content ul",
+      "before": "<ul><li><a href=\"/services/storage-solutions/\">Built-in Wardrobes &amp; Custom Storage</a></li><li><a href=\"/services/custom-kitchen-bathroom/\">Kitchen &amp; Bathroom Cabinetry</a></li><li><a href=\"/services/architectural-joinery/\">Architectural Joinery &amp; Wall Panelling</a></li><li><a href=\"/services/custom-doors-furniture/\">Custom Timber Doors &amp; Furniture</a></li></ul>",
+      "after": "<ul><li><a href=\"/services/storage-solutions/\">Built-in Wardrobes &amp; Custom Storage</a></li><li><a href=\"/services/custom-kitchen-bathroom/\">Kitchen &amp; Bathroom Cabinetry</a></li><li><a href=\"/services/architectural-joinery/\">Architectural Joinery &amp; Wall Panelling</a></li><li><a href=\"/services/custom-doors-furniture/\">Custom Timber Doors &amp; Furniture</a></li><li><a href=\"/services/cabinet-repairs/\">Cabinet Door &amp; Drawer Repairs</a></li></ul>"
+    },
+    {
+      "file": "public/zh/insights/adelaide-custom-wardrobe-planning/index.html",
+      "selector": ".related-content ul",
+      "before": "<ul><li><a href=\"/zh/services/storage-solutions/\">嵌入式衣柜与定制收纳</a></li><li><a href=\"/zh/services/custom-kitchen-bathroom/\">厨房与浴室柜体</a></li><li><a href=\"/zh/services/architectural-joinery/\">建筑定制木作与墙面护板</a></li><li><a href=\"/zh/services/custom-doors-furniture/\">定制木门与家具</a></li></ul>",
+      "after": "<ul><li><a href=\"/zh/services/storage-solutions/\">嵌入式衣柜与定制收纳</a></li><li><a href=\"/zh/services/custom-kitchen-bathroom/\">厨房与浴室柜体</a></li><li><a href=\"/zh/services/architectural-joinery/\">建筑定制木作与墙面护板</a></li><li><a href=\"/zh/services/custom-doors-furniture/\">定制木门与家具</a></li><li><a href=\"/zh/services/cabinet-repairs/\">柜门与抽屉维修</a></li></ul>"
+    }
+  ]
+}

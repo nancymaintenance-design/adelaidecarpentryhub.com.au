@@ -28,6 +28,15 @@ test('approved navigation and copy changes preserve all 98 page structures, uned
       const replacement=approvedCopy.get(normalize(value));
       return replacement ? value.replace(value.trim(),replacement) : value;
     });
+    // 2026-10-23: exact bilingual repair-path edits, reviewed against production.
+    // Check every approved replacement before restoring its baseline for the
+    // existing whole-page preservation assertion below.
+    for(const change of require('./fixtures/repair-paths-approved.json').pairs.filter(p=>p.file===file)){
+      const node=current.querySelector(change.selector);
+      assert.equal(node?.outerHTML,change.after,file+': approved repair path');
+      const fragment=JSDOM.fragment(change.before);
+      node.replaceWith(fragment);
+    }
     current.querySelectorAll('.breadcrumbs,.service-next-step,[data-customer-guide],.service-jumps-wrap').forEach(n=>n.remove());
     current.querySelectorAll('[id^="service-section-"]').forEach(n=>n.removeAttribute('id'));
     const related=current.querySelector('#service-related');if(related)related.replaceWith(...related.childNodes);
