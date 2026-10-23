@@ -27,8 +27,8 @@ test('service-area directory groups City of Adelaide streets and links each one 
   assert.match(html, /King William Street/);
   assert.match(html, /O'Connell Street/);
   assert.match(html, /href="\/service-areas\/adelaide-cbd\/"/);
-  assert.match(html, /href="\/service-areas\/adelaide-cbd\/\?street=King%20William%20Street"/);
-  assert.match(html, /href="\/service-areas\/north-adelaide\/\?street=O'Connell%20Street"/);
+  assert.match(html, /href="\/service-areas\/adelaide-cbd\/#book-area-work" data-area-street="King William Street"/);
+  assert.match(html, /href="\/service-areas\/north-adelaide\/#book-area-work" data-area-street="O&#039;Connell Street"/);
 });
 
 test('contact page uses a selected street as the project location', () => {
@@ -65,7 +65,7 @@ test('area page marks its valid streets and uses one bottom contact form', () =>
   assert.match(html, /data-area-region="Adelaide CBD"/);
   assert.match(html, /data-area-streets="[^\"]*Currie Street/);
   assert.match(html, /<form class="contact-form" data-contact-form/);
-  assert.match(source, /searchParams\.get\('street'\)/);
+  assert.match(source, /new URLSearchParams\(window\.location\.search\)\.get\('street'\)/);
   assert.match(source, /allowedStreets\.includes\(street\)/);
 });
 
@@ -79,7 +79,10 @@ test('each compact area keeps one enquiry form and street-prefill links after a 
     assert.ok((main.match(/<section\b/g) || []).length <= 6, region.slug + ': compact section count');
     assert.equal((main.match(/<form\b/g) || []).length, 1, region.slug);
     assert.match(main, /id="book-area-work"/);
-    assert.ok(main.includes(`?street=${encodeURIComponent(region.locations[0])}#book-area-work`), region.slug);
+    const d=new JSDOM(html).window.document;
+    const first=d.querySelector('.area-detail-streets a[data-area-street]');
+    assert.equal(first.getAttribute('href'),`/service-areas/${region.slug}/#book-area-work`);
+    assert.equal(first.dataset.areaStreet,region.locations[0]);d.defaultView.close();
     assert.match(main, /data-area-streets=/);
     const briefAt = main.indexOf('area-local-brief');
     const linksAt = main.indexOf('area-service-links');

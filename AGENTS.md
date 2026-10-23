@@ -44,3 +44,11 @@
 - 用户明确要求将本轮 Adelaide Carpentry Hub 中英文文案优化按 GitHub → Vercel 部署上线，并核验正式网站、更新交接资料。授权仅涵盖本轮已确认候选，不延伸至其他站点或后续修改。
 - 客户文案的源内容、配套翻译、共享模板和精确修订测试夹具一并发布；Feed/RSS及llms仍按当前正文生成，不新增功能或业务承诺。原18个无关未跟踪散列资源继续保留，不整包提交。
 - 本轮内部覆盖、事实依据、修改表及验证证据在本站 reports/customer-first-copy-2026-10-21；复用写作约定在同级 obsidian/客户文案写作规则.md，均不纳入公开构建。
+
+## 2026-10-23 街道选择与canonical本地修复
+
+- 本轮仅授权本地实现和验证，不推送、合并main或部署。当前生产基线为4fa79f1，最终候选与证据见reports/street-canonical-fix-2026-10-23及Obsidian最新交接。
+- 街道是咨询表单状态，入口由build.mjs输出地区主路径、#book-area-work和data-area-street；base.js增强为#book-area-work&street=…，处理中英切换、同页选择、hashchange/popstate及客户草稿保留。不得恢复批量?street=站内入口或把片段写入canonical/hreflang/sitemap。
+- tools/street-routing.cjs统一处理旧street查询请求；proxy.js为Vercel路由中间件入口，serve.cjs复用同一逻辑。只对已存在的中英五地区及其已知别名、GET/HEAD执行308；保留无关查询串，非法街道不预填。联系页/目录的location参数和API不属于此规则。
+- vercel.json中20条地区别名规则的missing street条件用于将旧街道请求交给中间件，避免先整理路径再跳转状态。删除条件或扩大匹配范围前必须验证Vercel本地实际跳转，不得只凭预览服务器推断平台行为。
+- 新行为回归测试test/street-state.test.cjs；完整测试沿用npm test、npm run build、Clarity测试和npm run check。Vercel CLI dev --local仅作本机验证，不拉取远程环境或部署；本轮报告保留实际HTTP与浏览器证据。历史全页保护仅允许已核准街道入口差异。

@@ -1,6 +1,7 @@
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
+const {streetRedirect}=require('./tools/street-routing.cjs');
 
 const ROOT = path.join(__dirname, 'public');
 // Exact aliases share the locally prepared Vercel contract. No API is loaded here.
@@ -58,6 +59,8 @@ function createPreviewServer() {
       return;
     }
     const destination = aliases.get(pathname);
+    const street = streetRedirect(raw, req.method);
+    if (street) { send(street.status, '', undefined, { Location: street.location }); return; }
     if (destination) { send(308, '', undefined, { Location: destination + query }); return; }
     if (pathname === '/404.html' || pathname === '/zh/404.html') { notFound(); return; }
     const filePath = path.resolve(ROOT, '.' + (pathname.endsWith('/') ? pathname + 'index.html' : pathname));

@@ -1,4 +1,5 @@
 {
+  "proxy": { "entrypoint": "proxy.js", "matcher": ["/service-areas/:path*","/zh/service-areas/:path*"] },
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "redirects": [
@@ -20,16 +21,26 @@
     {"source":"/clarity-privacy","destination":"/clarity-privacy/","permanent":true},
     {"source":"/zh/clarity-privacy/index.html","destination":"/zh/clarity-privacy/","permanent":true},
     {"source":"/zh/clarity-privacy","destination":"/zh/clarity-privacy/","permanent":true},
-    {"source":"/zh/service-areas/adelaide-cbd/index.html","destination":"/zh/service-areas/adelaide-cbd/","permanent":true},
-    {"source":"/zh/service-areas/adelaide-cbd","destination":"/zh/service-areas/adelaide-cbd/","permanent":true},
-    {"source":"/zh/service-areas/east-end/index.html","destination":"/zh/service-areas/east-end/","permanent":true},
-    {"source":"/zh/service-areas/east-end","destination":"/zh/service-areas/east-end/","permanent":true},
-    {"source":"/zh/service-areas/west-end/index.html","destination":"/zh/service-areas/west-end/","permanent":true},
-    {"source":"/zh/service-areas/west-end","destination":"/zh/service-areas/west-end/","permanent":true},
-    {"source":"/zh/service-areas/north-terrace-riverbank/index.html","destination":"/zh/service-areas/north-terrace-riverbank/","permanent":true},
-    {"source":"/zh/service-areas/north-terrace-riverbank","destination":"/zh/service-areas/north-terrace-riverbank/","permanent":true},
-    {"source":"/zh/service-areas/north-adelaide/index.html","destination":"/zh/service-areas/north-adelaide/","permanent":true},
-    {"source":"/zh/service-areas/north-adelaide","destination":"/zh/service-areas/north-adelaide/","permanent":true},
+    {"source":"/zh/service-areas/adelaide-cbd/index.html","destination":"/zh/service-areas/adelaide-cbd/",
+      "missing": [{ "type": "query", "key": "street" }],"permanent":true},
+    {"source":"/zh/service-areas/adelaide-cbd","destination":"/zh/service-areas/adelaide-cbd/",
+      "missing": [{ "type": "query", "key": "street" }],"permanent":true},
+    {"source":"/zh/service-areas/east-end/index.html","destination":"/zh/service-areas/east-end/",
+      "missing": [{ "type": "query", "key": "street" }],"permanent":true},
+    {"source":"/zh/service-areas/east-end","destination":"/zh/service-areas/east-end/",
+      "missing": [{ "type": "query", "key": "street" }],"permanent":true},
+    {"source":"/zh/service-areas/west-end/index.html","destination":"/zh/service-areas/west-end/",
+      "missing": [{ "type": "query", "key": "street" }],"permanent":true},
+    {"source":"/zh/service-areas/west-end","destination":"/zh/service-areas/west-end/",
+      "missing": [{ "type": "query", "key": "street" }],"permanent":true},
+    {"source":"/zh/service-areas/north-terrace-riverbank/index.html","destination":"/zh/service-areas/north-terrace-riverbank/",
+      "missing": [{ "type": "query", "key": "street" }],"permanent":true},
+    {"source":"/zh/service-areas/north-terrace-riverbank","destination":"/zh/service-areas/north-terrace-riverbank/",
+      "missing": [{ "type": "query", "key": "street" }],"permanent":true},
+    {"source":"/zh/service-areas/north-adelaide/index.html","destination":"/zh/service-areas/north-adelaide/",
+      "missing": [{ "type": "query", "key": "street" }],"permanent":true},
+    {"source":"/zh/service-areas/north-adelaide","destination":"/zh/service-areas/north-adelaide/",
+      "missing": [{ "type": "query", "key": "street" }],"permanent":true},
     {"source":"/zh/services/house-framing/index.html","destination":"/zh/services/house-framing/","permanent":true},
     {"source":"/zh/services/house-framing","destination":"/zh/services/house-framing/","permanent":true},
     {"source":"/zh/services/outdoor-living/index.html","destination":"/zh/services/outdoor-living/","permanent":true},
@@ -173,51 +184,61 @@
     {
       "source": "/service-areas/adelaide-cbd/index.html",
       "destination": "/service-areas/adelaide-cbd/",
+      "missing": [{ "type": "query", "key": "street" }],
       "permanent": true
     },
     {
       "source": "/service-areas/adelaide-cbd",
       "destination": "/service-areas/adelaide-cbd/",
+      "missing": [{ "type": "query", "key": "street" }],
       "permanent": true
     },
     {
       "source": "/service-areas/east-end/index.html",
       "destination": "/service-areas/east-end/",
+      "missing": [{ "type": "query", "key": "street" }],
       "permanent": true
     },
     {
       "source": "/service-areas/east-end",
       "destination": "/service-areas/east-end/",
+      "missing": [{ "type": "query", "key": "street" }],
       "permanent": true
     },
     {
       "source": "/service-areas/west-end/index.html",
       "destination": "/service-areas/west-end/",
+      "missing": [{ "type": "query", "key": "street" }],
       "permanent": true
     },
     {
       "source": "/service-areas/west-end",
       "destination": "/service-areas/west-end/",
+      "missing": [{ "type": "query", "key": "street" }],
       "permanent": true
     },
     {
       "source": "/service-areas/north-terrace-riverbank/index.html",
       "destination": "/service-areas/north-terrace-riverbank/",
+      "missing": [{ "type": "query", "key": "street" }],
       "permanent": true
     },
     {
       "source": "/service-areas/north-terrace-riverbank",
       "destination": "/service-areas/north-terrace-riverbank/",
+      "missing": [{ "type": "query", "key": "street" }],
       "permanent": true
     },
     {
       "source": "/service-areas/north-adelaide/index.html",
       "destination": "/service-areas/north-adelaide/",
+      "missing": [{ "type": "query", "key": "street" }],
       "permanent": true
     },
     {
       "source": "/service-areas/north-adelaide",
       "destination": "/service-areas/north-adelaide/",
+      "missing": [{ "type": "query", "key": "street" }],
       "permanent": true
     },
     {

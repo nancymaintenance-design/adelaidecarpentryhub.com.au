@@ -5,6 +5,8 @@ const path = require('node:path');
 const os = require('node:os');
 const {execFileSync} = require('node:child_process');
 const vm = require('node:vm');
+const {JSDOM}=require('jsdom');
+const origin='https://www.adelaidecarpentryhub.com.au';
 const root = path.resolve(__dirname, '..');
 const expected = ['/', '/services/', '/insights/', '/faq/', '/about/', '/contact/', '/service-areas/',
   ...['house-framing','outdoor-living','fix-out-second-fix','formwork-carpentry','fitout-refurbishment','custom-kitchen-bathroom','architectural-joinery','storage-solutions','custom-doors-furniture','restoration-maintenance','heritage-carpentry','decking-restoration-flooring','door-window-repairs','skirting-board-installation-repairs','door-jamb-interior-trim','timber-fencing-repairs-replacement','timber-gates-installation-repairs','renovation-carpentry'].map(s=>'/services/'+s+'/'),
@@ -74,21 +76,17 @@ test('area FAQ first-enquiry images and dimensions remain explicitly optional', 
   }
 });
 // Break caught: missing street context, multiple forms, expanded area schema.
-test('five existing areas keep street query links, one form and exact location schema',()=>{
+test('five existing areas keep native street controls, one form and exact location schema',()=>{
  const regions=require('../src/content-pack/city-streets.json').regions;
- for(const r of regions){const route='/service-areas/'+r.slug+'/',html=read(route);assert.equal((html.match(/<form\b/g)||[]).length,1,r.slug);assert.ok(html.includes('data-area-region="'+r.name.replaceAll('&','&amp;')+'"'));assert.match(html,/Photos are optional/);const graph=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];assert.deepEqual(graph.find(s=>s['@type']==='Service').areaServed.map(x=>x.name),r.locations.map(n=>n+', '+r.name+', Adelaide, South Australia'));for(const street of r.locations)assert.ok(html.includes('href="'+route+'?street='+encodeURIComponent(street)+'#book-area-work"'),street);}
+ for(const r of regions){const route='/service-areas/'+r.slug+'/',html=read(route);assert.equal((html.match(/<form\b/g)||[]).length,1,r.slug);assert.ok(html.includes('data-area-region="'+r.name.replaceAll('&','&amp;')+'"'));assert.match(html,/Photos are optional/);const graph=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];assert.deepEqual(graph.find(s=>s['@type']==='Service').areaServed.map(x=>x.name),r.locations.map(n=>n+', '+r.name+', Adelaide, South Australia'));const d=new JSDOM(html).window.document;const links=[...d.querySelectorAll('.area-detail-streets a[data-area-street]')];assert.deepEqual(links.map(a=>a.dataset.areaStreet),r.locations);for(const link of links)assert.equal(link.getAttribute('href'),route+'#book-area-work');d.defaultView.close();}
 });
 test('selected street context keeps photos optional and preserves customer text',()=>{
  const source=fs.readFileSync(path.join(root,'src/assets/base.js'),'utf8');
- const functionSource=source.slice(source.indexOf('function applyAreaBookingContext()'),source.indexOf('\napplyAreaBookingContext();'));
- const message={value:''}, context={textContent:''};
- const form={dataset:{areaRegion:'Adelaide CBD',areaStreets:'["Pirie Street"]'},querySelector:()=>message,closest:()=>({querySelector:()=>context})};
- const sandbox={URLSearchParams,window:{location:{search:'?street=Pirie%20Street'}},document:{documentElement:{lang:'en'},querySelectorAll:()=>[form]}};
- const languageSource=source.match(/^const chinese = .*;\r?\nconst ui = .*;/)[0];
- vm.runInNewContext(languageSource+'\n'+functionSource+'; applyAreaBookingContext();',sandbox);
+ const dom=new JSDOM(read('/service-areas/adelaide-cbd/'),{url:origin+'/service-areas/adelaide-cbd/#book-area-work&street=Pirie%20Street',runScripts:'outside-only'});
+ dom.window.eval(source);const message=dom.window.document.querySelector('textarea[name=message]'),context=dom.window.document.querySelector('[data-area-context]');
  assert.equal(message.value,'Project location: Pirie Street, Adelaide CBD\n\n');
  assert.match(context.textContent,/photos.*optional/i);
- message.value='Customer-written project';vm.runInNewContext('applyAreaBookingContext()',sandbox);assert.equal(message.value,'Customer-written project');
- sandbox.window.location.search='?street=Unlisted';context.textContent='Unchanged';vm.runInNewContext('applyAreaBookingContext()',sandbox);assert.equal(context.textContent,'Unchanged');
+ message.value='Customer-written project';dom.window.dispatchEvent(new dom.window.Event('popstate'));assert.equal(message.value,'Customer-written project');
+ dom.window.history.replaceState({},'','#book-area-work&street=Unlisted');dom.window.dispatchEvent(new dom.window.Event('popstate'));assert.equal(message.value,'Customer-written project');assert.doesNotMatch(context.textContent,/Selected location:/);dom.window.close();
  assert.match(read('/service-areas/adelaide-cbd/'),/Photos and approximate (?:measurements|dimensions) are optional/);
 });

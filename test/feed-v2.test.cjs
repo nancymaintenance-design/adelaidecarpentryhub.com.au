@@ -37,6 +37,17 @@ test('approved navigation and copy changes preserve all 98 page structures, uned
       const fragment=JSDOM.fragment(change.before);
       node.replaceWith(fragment);
     }
+    // Only approved street controls may change their URL representation.
+    for(const a of current.querySelectorAll('a[data-area-street]')){
+      assert.match(file,/^public\/(zh\/)?service-areas\//);
+      assert.ok(a.closest('.suburb-list'));
+      const destination=new URL(a.getAttribute('href'),origin);
+      assert.equal(destination.search,'');assert.equal(destination.hash,'#book-area-work');
+      const slug=destination.pathname.split('/').filter(Boolean).at(-1);
+      assert.ok(require('../src/content-pack/city-streets.json').regions.find(r=>r.slug===slug)?.locations.includes(a.dataset.areaStreet));
+      a.setAttribute('href',destination.pathname+'?street='+encodeURIComponent(a.dataset.areaStreet)+(a.closest('.area-detail-streets')?'#book-area-work':''));
+      a.removeAttribute('data-area-street');
+    }
     current.querySelectorAll('.breadcrumbs,.service-next-step,[data-customer-guide],.service-jumps-wrap').forEach(n=>n.remove());
     current.querySelectorAll('[id^="service-section-"]').forEach(n=>n.removeAttribute('id'));
     const related=current.querySelector('#service-related');if(related)related.replaceWith(...related.childNodes);

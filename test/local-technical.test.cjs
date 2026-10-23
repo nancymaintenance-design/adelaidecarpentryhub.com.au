@@ -68,7 +68,9 @@ test('prepared Vercel contract maps every known alias in one permanent hop witho
   const aliases = [['/index.html', '/'], ['/clarity-privacy-zh/', '/zh/clarity-privacy/'], ...allRoutes.filter(r => r !== '/').flatMap(r => [[`${r}index.html`, r], [r.slice(0, -1), r]])];
   assert.equal((config.redirects || []).length, aliases.length);
   for (const [alias, canonical] of aliases) {
-    assert.deepEqual(redirect(alias), { source: alias, destination: canonical, permanent: true });
+    const expected={ source: alias, destination: canonical, permanent: true };
+    if(/^\/(zh\/)?service-areas\/[^/]+\/$/.test(canonical))expected.missing=[{type:'query',key:'street'}];
+    assert.deepEqual(redirect(alias), expected);
     assert.equal(redirect(canonical), undefined, `${alias} loops or chains`);
     assert.ok(fs.existsSync(path.join(root, 'public', `${canonical}index.html`)));
   }
@@ -104,15 +106,16 @@ test('loopback preview serves the routing, status, MIME and safe failure contrac
     req.end();
   });
   await t.test('PORT=0 allocates an isolated ephemeral port', () => assert.ok(port > 0 && port !== 5173));
-  await t.test('all canonical pages return 200; every HTML alias redirects once and preserves query bytes', async () => {
+  await t.test('all canonical pages return 200; aliases preserve unrelated query bytes and migrate street state', async () => {
     for (const route of allRoutes) {
       assert.equal((await request(route)).status, 200, route);
       const aliases = route === '/' ? ['/index.html'] : [`${route}index.html`, route.slice(0, -1)];
       for (const alias of aliases) {
         const response = await request(`${alias}?street=King%20William%20Street&tag=a&tag=b`);
         assert.equal(response.status, 308, alias);
-        assert.equal(response.headers.location, `${route}?street=King%20William%20Street&tag=a&tag=b`);
-        assert.equal((await request(response.headers.location)).status, 200);
+        const streetRedirect=require('../tools/street-routing.cjs').streetRedirect(`${alias}?street=King%20William%20Street&tag=a&tag=b`);
+        assert.equal(response.headers.location, streetRedirect?.location||`${route}?street=King%20William%20Street&tag=a&tag=b`);
+        assert.equal((await request(response.headers.location.split('#')[0])).status, 200);
       }
     }
   });

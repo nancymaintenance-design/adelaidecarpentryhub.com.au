@@ -89,8 +89,8 @@ test('language switching preserves selected street and current anchor in both di
     page.window.eval(script);
     const link = page.window.document.querySelector('[data-language-switch]');
     assert.equal(new URL(link.href).pathname, target + route);
-    assert.equal(new URL(link.href).searchParams.get('street'), 'Rundle Mall');
-    assert.equal(new URL(link.href).hash, '#book-area-work');
+    assert.equal(new URL(link.href).searchParams.get('street'), null);
+    assert.equal(new URL(link.href).hash, '#book-area-work&street=Rundle%20Mall');
     assert.match(page.window.document.querySelector('textarea').value, /Rundle Mall/);
     if (current) assert.match(page.window.document.querySelector('[data-area-context]').textContent, /^所选地点/);
     page.window.close();

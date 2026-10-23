@@ -1,5 +1,6 @@
 const chinese = document.documentElement.lang.startsWith('zh');
 const ui = (english, translation) => chinese ? translation : english;
+normalizeLegacyStreetState();
 // Equivalent pages keep the selected street, directory search and section anchor.
 for (const link of document.querySelectorAll('[data-language-switch]')) {
   const updateDestination = () => {
@@ -10,6 +11,8 @@ for (const link of document.querySelectorAll('[data-language-switch]')) {
   };
   updateDestination();
   link.addEventListener('click', updateDestination);
+  window.addEventListener('hashchange', updateDestination);
+  window.addEventListener('popstate', updateDestination);
 }
 
 const header = document.querySelector('.site-header');
@@ -148,21 +151,66 @@ if (selectedLocation) {
   }
 }
 
-function applyAreaBookingContext() {
-  const searchParams = new URLSearchParams(window.location.search);
-  const street = searchParams.get('street');
+function normalizeLegacyStreetState() {
+  const street = new URLSearchParams(window.location.search).get('street');
   if (!street) return;
+  for (const form of document.querySelectorAll('form[data-area-region]')) {
+    let allowed = []; try { allowed = JSON.parse(form.dataset.areaStreets || '[]'); } catch { continue; }
+    if (!allowed.includes(street)) continue;
+    const url = new URL(window.location.href);
+    url.searchParams.delete('street');
+    url.hash = `book-area-work&street=${encodeURIComponent(street)}`;
+    window.history.replaceState(window.history.state, '', url);
+    break;
+  }
+}
+
+for (const link of document.querySelectorAll('a[data-area-street]')) {
+  const destination = new URL(link.getAttribute('href'), window.location.href);
+  destination.hash = `book-area-work&street=${encodeURIComponent(link.dataset.areaStreet)}`;
+  link.href = destination.pathname + destination.search + destination.hash;
+  link.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (link.href === window.location.href) {
+      event.preventDefault();
+      applyAreaBookingContext();
+    }
+  });
+}
+
+const areaDraftPrefixes = new WeakMap();
+const areaContextDefaults = new WeakMap();
+function applyAreaBookingContext() {
+  const hash = window.location.hash || '';
+  const street = hash.startsWith('#book-area-work&')
+    ? new URLSearchParams(hash.slice('#book-area-work&'.length)).get('street')
+    : new URLSearchParams(window.location.search).get('street');
   for (const form of document.querySelectorAll('form[data-area-region]')) {
     const region = form.dataset.areaRegion;
     let allowedStreets = [];
     try { allowedStreets = JSON.parse(form.dataset.areaStreets || '[]'); } catch { allowedStreets = []; }
-    if (!allowedStreets.includes(street)) continue;
-    const location = `${street}, ${region}`;
     const message = form.querySelector('textarea[name="message"]');
     const context = form.closest('.area-booking')?.querySelector('[data-area-context]');
+    if (context && !areaContextDefaults.has(context)) areaContextDefaults.set(context, context.textContent);
+    if (!allowedStreets.includes(street)) {
+      const prefix = areaDraftPrefixes.get(form);
+      if (message && prefix && message.value.startsWith(prefix)) message.value = message.value.slice(prefix.length);
+      areaDraftPrefixes.delete(form);
+      if (context) context.textContent = areaContextDefaults.get(context);
+      continue;
+    }
+    const location = `${street}, ${region}`;
     if (context) context.textContent = ui(`Selected location: ${location}. Add the timber work and any access notes. Photos and approximate measurements are optional; existing images can be emailed to handymanfelix.au2026@outlook.com.`, `所选地点：${location}。请补充木工项目及出入安排。照片和大致尺寸并非必需；已有图片可发至 handymanfelix.au2026@outlook.com。`);
-    if (message && !message.value.trim()) message.value = `${ui('Project location:', '项目地点：')} ${location}\n\n`;
+    const prefix = `${ui('Project location:', '项目地点：')} ${location}\n\n`;
+    const previous = areaDraftPrefixes.get(form);
+    if (message && (!message.value.trim() || (previous && message.value.startsWith(previous)))) {
+      message.value = prefix + (previous && message.value.startsWith(previous) ? message.value.slice(previous.length) : '');
+      areaDraftPrefixes.set(form, prefix);
+    }
+    if (hash.startsWith('#book-area-work&')) document.getElementById('book-area-work')?.scrollIntoView?.({block:'start'});
   }
 }
 
 applyAreaBookingContext();
+window.addEventListener('hashchange', applyAreaBookingContext);
+window.addEventListener('popstate', applyAreaBookingContext);
