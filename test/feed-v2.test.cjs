@@ -44,6 +44,12 @@ test('approved navigation and copy changes preserve all 98 page structures, uned
       assert.equal(node?.outerHTML,change.after,file+': approved local service path');
       node.replaceWith(JSDOM.fragment(change.before));
     }
+    // Exact 2026-10-24 framing/rot local copy nodes; all other page content stays guarded.
+    for(const change of require('./fixtures/two-service-approved.json').pairs.filter(p=>p.file===file)){
+      const node=current.querySelector(change.selector);
+      assert.equal(node?.outerHTML,change.after,file+': approved framing/rot candidate');
+      node.replaceWith(JSDOM.fragment(change.before));
+    }
     // Only approved street controls may change their URL representation.
     for(const a of current.querySelectorAll('a[data-area-street]')){
       assert.match(file,/^public\/(zh\/)?service-areas\//);

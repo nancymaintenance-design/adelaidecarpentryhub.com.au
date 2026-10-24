@@ -79,9 +79,10 @@
         },
         {
           "title": "Current Drawings, Set-out and Framing Materials",
-          "summary": "Architectural plans describe the spaces, while structural and supplier details establish member sizes, supports and connections for the affected work. Check that the drawing revisions agree before setting out wall lines, opening dimensions, stair voids and service allowances. Unresolved dimensions or conflicting details need an answer from the responsible project party before installation.",
+          "summary": "For a framing quote, send the current architectural, structural and supplier drawings and tell us the build stage. We check that revisions agree before setting out wall lines, openings, stair voids and service allowances. Unresolved dimensions or conflicting details need an answer from the responsible project party before the affected work starts.",
           "paragraphs": [
-            "Timber selection follows the specified member, treatment and exposure, rather than substituting a similar-looking piece. Agree who orders and supplies timber, proprietary connections and trusses, and how deliveries will be stored and protected on site. Keeping material schedules with the current drawings makes it easier to identify a supply omission or changed detail before it disrupts the framing sequence."
+            "Supply and materials: confirm who orders and supplies timber, proprietary connections and trusses. The member, treatment and exposure follow the project specification rather than a similar-looking substitute. Keep the material schedule with the current drawings so omissions or changed details can be resolved before installation.",
+            "Access and deliveries: describe the route for long members, lifting access and where deliveries can be stored and protected. We review those arrangements with the framing scope before the quote is agreed."
           ]
         },
         {
@@ -852,9 +853,27 @@
       "sections": [
         {
           "title": "Timber Rot: Understand the Damage and the Cause",
-          "summary": "Timber rot repairs begin by locating the affected element and checking the safely accessible condition around it. Soft timber, staining, open joints, sticking openings and movement can have different causes. A cracked filler repair with soft material beneath it needs assessment of the remaining timber, not another assumed cosmetic patch.",
+          "summary": "If you are unsure which timber is affected, or decay crosses several components, we assess the safely accessible damage and compare local repair, splicing or replacement. Tell us about softness, open joints or movement. For a clearly identified window, pergola, fascia or weatherboard fault, use the matching repair service below.",
           "paragraphs": [
             "Moisture paths, drainage, ventilation, coatings and adjoining services help explain why deterioration may return. Roofing, plumbing, waterproofing or glazing problems can need another specialist's investigation and remedy. Record which cause is confirmed, what remains uncertain and who resolves it before the repaired area is closed or finished."
+          ],
+          "related_links": [
+            {
+              "href": "/services/door-window-repairs/",
+              "label": "Timber Door & Window Repairs"
+            },
+            {
+              "href": "/services/pergola-repairs/",
+              "label": "Timber pergola post and beam repairs"
+            },
+            {
+              "href": "/services/fascia-eaves-repairs/",
+              "label": "Fascia and timber eaves repairs"
+            },
+            {
+              "href": "/services/weatherboard-repairs/",
+              "label": "Local weatherboard repairs"
+            }
           ]
         },
         {
@@ -875,13 +894,7 @@
           "title": "Access, Opening-up and Repair Coordination",
           "summary": "The visible damage may not show the complete extent behind paint, trims or linings. MEL ONE identifies accessible findings and discusses any opening-up needed to develop the scope. Do not disturb unstable timber or enter an unsafe area to produce enquiry photos.",
           "paragraphs": [
-            "Agree removal, protection, access and specialist handovers before permanent work begins. Once concealed areas are exposed, record additional damage and obtain agreement for changed work, cost and timing before extending the repair. A damaged pergola, window, deck or weatherboard can be routed to its specific service where the affected element is already clear."
-          ],
-          "related_links": [
-            {
-              "href": "/services/pergola-repairs/",
-              "label": "Scope damaged pergola posts and beams"
-            }
+            "Agree removal, protection, access and specialist handovers before permanent work begins. Once concealed areas are exposed, record additional damage and obtain agreement for changed work, cost and timing before extending the repair."
           ]
         },
         {
@@ -1526,6 +1539,12 @@
           "summary": "Renovation carpentry starts with the rooms, retained elements and proposed changes. Existing walls may be uneven, floors may have changed and previous alterations can leave conditions that early drawings do not show. MEL ONE assesses accessible timber and junctions before defining repair, replacement or new finishing work.",
           "paragraphs": [
             "A renovation package can combine doors, jambs, skirtings, architraves and agreed timber repairs or joinery interfaces. Framing alterations remain conditional on the required design, assessment and project arrangements. Identify who owns each timber task and each adjoining trade package so one carpentry allowance is not read as permission for the entire renovation."
+          ],
+          "related_links": [
+            {
+              "href": "/services/house-framing/",
+              "label": "Plan wall framing and altered openings"
+            }
           ]
         },
         {
