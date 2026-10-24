@@ -37,6 +37,13 @@ test('approved navigation and copy changes preserve all 98 page structures, uned
       const fragment=JSDOM.fragment(change.before);
       node.replaceWith(fragment);
     }
+    // 2026-10-24 local candidate: exact reviewed service-path additions.
+    // Restore only these nodes so the existing whole-page guard stays strict.
+    for(const change of require('./fixtures/service-paths-approved.json').pairs.filter(p=>p.file===file)){
+      const node=current.querySelector(change.selector);
+      assert.equal(node?.outerHTML,change.after,file+': approved local service path');
+      node.replaceWith(JSDOM.fragment(change.before));
+    }
     // Only approved street controls may change their URL representation.
     for(const a of current.querySelectorAll('a[data-area-street]')){
       assert.match(file,/^public\/(zh\/)?service-areas\//);

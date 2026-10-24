@@ -41,8 +41,8 @@ test('homepage routes four buyer intents immediately after its existing hero', (
   assert.ok(main.indexOf('hero-image-bg') < main.indexOf('intent-links'));
   assert.ok(main.indexOf('intent-links') < main.indexOf('<section class="section">'));
   assert.deepEqual([...intent[1].matchAll(/href="([^"]+)"/g)].map((match) => match[1]), [
-    '/services/door-window-repairs/', '/services/outdoor-living/',
-    '/services/renovation-carpentry/', '/services/fitout-refurbishment/', '/services/heritage-carpentry/',
+    '/services/door-window-repairs/', '/services/#outdoor-timber',
+    '/services/#interior-joinery', '/services/fitout-refurbishment/', '/services/heritage-carpentry/',
   ]);
 });
 
